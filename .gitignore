@@ -46,6 +46,16 @@ reports/*.json
 reports/*.html
 reports/*.pdf
 
+# Large ML Models and Data Files (exclude from GitHub)
+models/*.h5
+models/*.pkl
+*.db
+*.csv
+analysis_results.json
+all_nepse_stocks_*.json
+all_nepse_stocks_*.csv
+all_stocks_*.json
+
 # Jupyter Notebooks
 .ipynb_checkpoints
 *.ipynb
