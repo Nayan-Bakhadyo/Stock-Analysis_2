@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-11-17T12:14:13.830150",
-  "total_processed": 139,
+  "last_updated": "2025-11-17T12:19:21.703320",
+  "total_processed": 140,
   "stocks": {
     "NABIL": {
       "last_analyzed": "2025-11-15T23:43:40.183393",
@@ -832,6 +832,12 @@
     },
     "MSHL": {
       "last_analyzed": "2025-11-17T12:14:13.830150",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "MSLB": {
+      "last_analyzed": "2025-11-17T12:19:21.703320",
       "status": "success",
       "error": null,
       "analysis_count": 1

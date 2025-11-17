@@ -37493,5 +37493,291 @@
     "analysis_timestamp": "2025-11-17T12:14:13.784337",
     "data_points": 470,
     "error": null
+  },
+  {
+    "symbol": "MSLB",
+    "timestamp": "2025-11-17T12:19:21.703295",
+    "price_data": {
+      "total_days": 1638,
+      "latest_price": 1347.8,
+      "latest_date": "2025-11-17 00:00:00",
+      "highest_price": 3212.0,
+      "lowest_price": 660.0,
+      "avg_volume": 1835.456043956044
+    },
+    "news": {
+      "total_articles": 0,
+      "avg_sentiment": "positive",
+      "sentiment_label": "NEUTRAL",
+      "articles": []
+    },
+    "fundamentals": {},
+    "technical_analysis": {
+      "symbol": "MSLB",
+      "current_price": 1347.8,
+      "indicators": {
+        "sma_short": 1379.1142857142856,
+        "sma_medium": 1349.5400000000002,
+        "sma_long": 1423.6452000000002,
+        "rsi": 59.352750809061476,
+        "macd": -7.5212128750793,
+        "macd_signal": -8.567668516915246,
+        "macd_histogram": 1.046455641835946,
+        "stochastic_k": 37.31466227347608,
+        "stochastic_d": 38.30150359919764,
+        "bb_upper": 1471.714446462494,
+        "bb_middle": 1349.5400000000002,
+        "bb_lower": 1227.3655535375065,
+        "atr": 68.04285714285716
+      },
+      "signals": {
+        "trend": "Sideways",
+        "trend_score": 0.5,
+        "rsi_signal": "Neutral",
+        "rsi_score": 0.5,
+        "macd_signal": "Buy",
+        "macd_score": 0.7,
+        "stochastic_signal": "Neutral",
+        "stochastic_score": 0.5,
+        "bb_signal": "Within Bands",
+        "bb_score": 0.5
+      },
+      "patterns": [
+        {
+          "pattern": "Head and Shoulders",
+          "type": "Bearish",
+          "confidence": 0.7
+        },
+        {
+          "pattern": "Double Top",
+          "type": "Bearish",
+          "confidence": 0.65
+        }
+      ],
+      "candlestick_patterns": [
+        {
+          "pattern": "Doji",
+          "type": "Neutral",
+          "confidence": 0.7,
+          "position": 3,
+          "description": "Indecision - potential reversal"
+        },
+        {
+          "pattern": "Marubozu",
+          "type": "Bearish",
+          "confidence": 0.8,
+          "position": 5,
+          "description": "Strong bearish momentum"
+        },
+        {
+          "pattern": "Doji",
+          "type": "Neutral",
+          "confidence": 0.7,
+          "position": 8,
+          "description": "Indecision - potential reversal"
+        },
+        {
+          "pattern": "Bullish Engulfing",
+          "type": "Bullish",
+          "confidence": 0.8,
+          "position": 9,
+          "description": "Strong bullish reversal"
+        }
+      ],
+      "support_resistance": {
+        "support": [
+          1219.43,
+          1242.29,
+          1264.0
+        ],
+        "resistance": [
+          1635.8,
+          1561.96,
+          1559.07
+        ],
+        "current_price": 1347.8
+      },
+      "momentum": {
+        "price_change_5d": -5.084507042253525,
+        "price_change_20d": 3.7567359507313283,
+        "volume_ratio": 1.5610289385217315,
+        "obv_trend": "Falling",
+        "momentum_strength": "Strong"
+      },
+      "technical_score": 35.5,
+      "recommendation": "Sell",
+      "analysis_date": "2025-11-17T12:16:56.571398"
+    },
+    "candlestick_patterns": [
+      {
+        "pattern": "Doji",
+        "type": "Neutral",
+        "confidence": 0.7,
+        "position": 3,
+        "description": "Indecision - potential reversal"
+      },
+      {
+        "pattern": "Marubozu",
+        "type": "Bearish",
+        "confidence": 0.8,
+        "position": 5,
+        "description": "Strong bearish momentum"
+      },
+      {
+        "pattern": "Doji",
+        "type": "Neutral",
+        "confidence": 0.7,
+        "position": 8,
+        "description": "Indecision - potential reversal"
+      },
+      {
+        "pattern": "Bullish Engulfing",
+        "type": "Bullish",
+        "confidence": 0.8,
+        "position": 9,
+        "description": "Strong bullish reversal"
+      }
+    ],
+    "trading_insights": {
+      "profitability_probability": 29.54,
+      "confidence_level": "Low",
+      "time_horizon": "short",
+      "recommendation": {
+        "action": "STRONG SELL",
+        "confidence": "High",
+        "reasoning": [
+          "\u2713 Positive market sentiment",
+          "\u2713 Favorable risk-reward ratio"
+        ]
+      },
+      "risk_reward_ratio": {
+        "ratio": 2.52,
+        "potential_profit_percent": 15.68,
+        "potential_loss_percent": 6.22,
+        "nearest_support": 1264.0,
+        "nearest_resistance": 1559.07
+      },
+      "position_size": {
+        "recommended_percent": 2.48,
+        "max_percent": 10.0,
+        "reasoning": "Based on 29.5% probability and 2.52 R:R ratio"
+      },
+      "entry_points": {
+        "aggressive": 1347.8,
+        "conservative": 1320.84
+      },
+      "exit_points": {
+        "target_1": 1559.07,
+        "target_2": 1549.97
+      },
+      "stop_loss": 1280.41,
+      "take_profit": 1549.97,
+      "current_price": 1347.8,
+      "potential_profit_pct": 0,
+      "potential_loss_pct": 0
+    },
+    "scores": {
+      "technical": 35.5,
+      "fundamental": 40.0,
+      "sentiment": 64.7,
+      "momentum": 44.15
+    },
+    "key_insights": [
+      "\ud83d\udcca Current trend: Sideways",
+      "\ud83d\udcaa Positive EPS growth (11.11%)",
+      "\ud83d\udcf0 Market sentiment: NEUTRAL (10 articles)",
+      "\ud83d\udcc8 5-day momentum: down 5.08%"
+    ],
+    "warnings": [
+      "\u26a0\ufe0f High P/E ratio (33.56)",
+      "\u26a0\ufe0f Bearish pattern detected: Head and Shoulders",
+      "\u26a0\ufe0f Bearish pattern detected: Double Top"
+    ],
+    "ml_predictions": {
+      "current_price": 1347.8,
+      "prediction_date": "2025-11-17",
+      "horizons": {
+        "1_week": {
+          "weeks_ahead": 1,
+          "days_ahead": 5,
+          "target_date": "2025-11-24",
+          "predicted_price": 1392.37,
+          "avg_price": 1407.78,
+          "price_range": {
+            "min": 1392.37,
+            "max": 1425.85
+          },
+          "price_change": 44.57,
+          "price_change_pct": 3.31,
+          "confidence_score": 99.1,
+          "trend": "UP"
+        },
+        "2_week": {
+          "weeks_ahead": 2,
+          "days_ahead": 10,
+          "target_date": "2025-12-01",
+          "predicted_price": 1371.65,
+          "avg_price": 1393.24,
+          "price_range": {
+            "min": 1371.65,
+            "max": 1425.85
+          },
+          "price_change": 23.85,
+          "price_change_pct": 1.77,
+          "confidence_score": 98.7,
+          "trend": "UP"
+        },
+        "4_week": {
+          "weeks_ahead": 4,
+          "days_ahead": 20,
+          "target_date": "2025-12-15",
+          "predicted_price": 1356.6,
+          "avg_price": 1377.47,
+          "price_range": {
+            "min": 1356.6,
+            "max": 1425.85
+          },
+          "price_change": 8.8,
+          "price_change_pct": 0.65,
+          "confidence_score": 98.5,
+          "trend": "UP"
+        },
+        "6_week": {
+          "weeks_ahead": 6,
+          "days_ahead": 30,
+          "target_date": "2025-12-29",
+          "predicted_price": 1352.95,
+          "avg_price": 1369.7,
+          "price_range": {
+            "min": 1352.95,
+            "max": 1425.85
+          },
+          "price_change": 5.15,
+          "price_change_pct": 0.38,
+          "confidence_score": 98.5,
+          "trend": "UP"
+        }
+      },
+      "trend_analysis": {
+        "overall_trend": "BULLISH",
+        "avg_predicted_change": 1.53,
+        "avg_confidence": 98.7,
+        "bullish_horizons": 4,
+        "bearish_horizons": 0,
+        "best_horizon": {
+          "period": "1_week",
+          "change_pct": 3.31,
+          "predicted_price": 1392.37
+        },
+        "worst_horizon": {
+          "period": "6_week",
+          "change_pct": 0.38,
+          "predicted_price": 1352.95
+        }
+      }
+    },
+    "analysis_timestamp": "2025-11-17T12:19:21.654219",
+    "data_points": 1638,
+    "error": null
   }
 ]
