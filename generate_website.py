@@ -700,6 +700,136 @@ main {
     background: #f9fafb;
 }
 
+/* Detailed Analysis Sections */
+.detailed-analysis {
+    padding: 2rem;
+    background: #f8fafc;
+    border-top: 1px solid #e5e7eb;
+}
+
+.analysis-details-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.analysis-details-section:last-child {
+    margin-bottom: 0;
+}
+
+.analysis-details-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.analysis-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    border-left: 3px solid #667eea;
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.detail-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.detail-value.positive {
+    color: #10b981;
+}
+
+.detail-value.negative {
+    color: #ef4444;
+}
+
+.detail-value.trend-bullish {
+    color: #10b981;
+    background: #ecfdf5;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+}
+
+.detail-value.trend-bearish {
+    color: #ef4444;
+    background: #fef2f2;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+}
+
+.detail-value.trend-neutral {
+    color: #f59e0b;
+    background: #fef3c7;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+}
+
+.detail-value.sentiment-positive {
+    color: #10b981;
+    background: #ecfdf5;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.detail-value.sentiment-negative {
+    color: #ef4444;
+    background: #fef2f2;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.detail-value.sentiment-neutral {
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+/* Last Updated Section */
+.last-updated-section {
+    padding: 1rem 2rem;
+    background: #f3f4f6;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.last-updated-icon {
+    font-size: 1.2rem;
+}
+
+.last-updated-text {
+    font-weight: 500;
+}
+
 .patterns-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1094,6 +1224,19 @@ function createDetailedView(stock) {
                 </div>
             </div>
             
+            <!-- Detailed Analysis Information -->
+            <div class="detailed-analysis">
+                ${createTechnicalAnalysisDetails(stock)}
+                ${createFundamentalAnalysisDetails(stock)}
+                ${createSentimentAnalysisDetails(stock)}
+            </div>
+            
+            <!-- Last Updated -->
+            <div class="last-updated-section">
+                <span class="last-updated-icon">🕐</span>
+                <span class="last-updated-text">Last Updated: ${formatTimestamp(stock.timestamp)}</span>
+            </div>
+            
             ${mlPredictions ? createMLPredictionsSection(mlPredictions) : ''}
             
             ${patterns.length > 0 ? createCandlestickPatternsSection(patterns) : ''}
@@ -1232,6 +1375,236 @@ function createWarningsSection(warnings) {
             ${items}
         </div>
     `;
+}
+
+function formatTimestamp(timestamp) {
+    if (!timestamp) return 'N/A';
+    const date = new Date(timestamp);
+    return date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+function createTechnicalAnalysisDetails(stock) {
+    const technical = stock.technical_analysis || {};
+    const indicators = technical.indicators || {};
+    const signals = technical.signals || {};
+    const momentum = technical.momentum || {};
+    const supportResistance = technical.support_resistance || {};
+    
+    // Get support and resistance levels
+    const support = supportResistance.support ? supportResistance.support[0] : 0;
+    const resistance = supportResistance.resistance ? supportResistance.resistance[0] : 0;
+    
+    return `
+        <div class="analysis-details-section">
+            <h4 class="analysis-details-title">🔧 Technical Analysis Details</h4>
+            <div class="analysis-details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Trend</span>
+                    <span class="detail-value trend-${(signals.trend || 'neutral').toLowerCase()}">${signals.trend || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">RSI (14)</span>
+                    <span class="detail-value">${(indicators.rsi || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">MACD</span>
+                    <span class="detail-value">${(indicators.macd || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">MACD Signal</span>
+                    <span class="detail-value">${signals.macd_signal || 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">SMA 20</span>
+                    <span class="detail-value">NPR ${(indicators.sma_medium || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">SMA 50</span>
+                    <span class="detail-value">NPR ${(indicators.sma_long || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Support Level</span>
+                    <span class="detail-value">NPR ${support.toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Resistance Level</span>
+                    <span class="detail-value">NPR ${resistance.toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">ATR (Volatility)</span>
+                    <span class="detail-value">${(indicators.atr || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">5-Day Change</span>
+                    <span class="detail-value ${momentum.price_change_5d >= 0 ? 'positive' : 'negative'}">${momentum.price_change_5d >= 0 ? '+' : ''}${(momentum.price_change_5d || 0).toFixed(2)}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">20-Day Change</span>
+                    <span class="detail-value ${momentum.price_change_20d >= 0 ? 'positive' : 'negative'}">${momentum.price_change_20d >= 0 ? '+' : ''}${(momentum.price_change_20d || 0).toFixed(2)}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Technical Score</span>
+                    <span class="detail-value">${(stock.scores?.technical || 0).toFixed(1)}/100</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function createFundamentalAnalysisDetails(stock) {
+    const fundamentals = stock.fundamentals || {};
+    const insights = stock.trading_insights || {};
+    
+    // Extract from key_insights for additional data
+    const keyInsights = stock.key_insights || [];
+    let peRatio = 0, epsGrowth = 0;
+    
+    keyInsights.forEach(insight => {
+        const peMatch = insight.match(/P\/E ratio \(([0-9.]+)\)/);
+        const epsMatch = insight.match(/EPS growth \(([0-9.]+)%\)/);
+        if (peMatch) peRatio = parseFloat(peMatch[1]);
+        if (epsMatch) epsGrowth = parseFloat(epsMatch[1]);
+    });
+    
+    return `
+        <div class="analysis-details-section">
+            <h4 class="analysis-details-title">💼 Fundamental Analysis Details</h4>
+            <div class="analysis-details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">P/E Ratio</span>
+                    <span class="detail-value">${(fundamentals.pe_ratio || peRatio || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">P/B Ratio</span>
+                    <span class="detail-value">${(fundamentals.pb_ratio || fundamentals.price_to_book || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">EPS</span>
+                    <span class="detail-value">NPR ${(fundamentals.eps || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">EPS Growth</span>
+                    <span class="detail-value ${epsGrowth > 0 ? 'positive' : epsGrowth < 0 ? 'negative' : ''}">${epsGrowth > 0 ? '+' : ''}${epsGrowth.toFixed(2)}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Book Value</span>
+                    <span class="detail-value">NPR ${(fundamentals.book_value || 0).toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">ROE</span>
+                    <span class="detail-value">${(fundamentals.roe || 0).toFixed(2)}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Dividend Yield</span>
+                    <span class="detail-value">${(fundamentals.dividend_yield || 0).toFixed(2)}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Market Cap</span>
+                    <span class="detail-value">${fundamentals.market_cap ? formatMarketCap(fundamentals.market_cap) : 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Fundamental Score</span>
+                    <span class="detail-value">${(stock.scores?.fundamental || 0).toFixed(1)}/100</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Sector</span>
+                    <span class="detail-value">${fundamentals.sector || fundamentals.industry || 'N/A'}</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function createSentimentAnalysisDetails(stock) {
+    const news = stock.news || {};
+    const sentiment = stock.sentiment_details || {};
+    
+    // Get sentiment from news object or sentiment_details
+    const sentimentLabel = news.sentiment_label || sentiment.sentiment_label || 'NEUTRAL';
+    const avgSentiment = news.avg_sentiment || sentiment.overall_sentiment || 0;
+    const totalArticles = news.total_articles || sentiment.articles_analyzed || 0;
+    
+    // Calculate sentiment score (0-100 scale)
+    let sentimentScore = 50; // Default neutral
+    if (typeof avgSentiment === 'number') {
+        // If it's already 0-1 scale, convert to 0-100
+        sentimentScore = avgSentiment <= 1 ? avgSentiment * 100 : avgSentiment;
+    } else if (avgSentiment === 'positive') {
+        sentimentScore = 75;
+    } else if (avgSentiment === 'negative') {
+        sentimentScore = 25;
+    }
+    
+    // Count article types
+    const articles = news.articles || [];
+    let positiveCount = sentiment.positive_articles || 0;
+    let negativeCount = sentiment.negative_articles || 0;
+    let neutralCount = sentiment.neutral_articles || 0;
+    
+    // If not in sentiment_details, try to count from articles
+    if (!sentiment.positive_articles && articles.length > 0) {
+        articles.forEach(article => {
+            const score = article.sentiment_score || 0;
+            if (score > 0.1) positiveCount++;
+            else if (score < -0.1) negativeCount++;
+            else neutralCount++;
+        });
+    }
+    
+    return `
+        <div class="analysis-details-section">
+            <h4 class="analysis-details-title">📰 Sentiment Analysis Details</h4>
+            <div class="analysis-details-grid">
+                <div class="detail-item">
+                    <span class="detail-label">Overall Sentiment</span>
+                    <span class="detail-value sentiment-${sentimentLabel.toLowerCase()}">
+                        ${sentimentLabel}
+                    </span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Sentiment Score</span>
+                    <span class="detail-value">${sentimentScore.toFixed(1)}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Articles Analyzed</span>
+                    <span class="detail-value">${totalArticles}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Positive Articles</span>
+                    <span class="detail-value positive">${positiveCount}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Negative Articles</span>
+                    <span class="detail-value negative">${negativeCount}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Neutral Articles</span>
+                    <span class="detail-value">${neutralCount}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Sentiment Score</span>
+                    <span class="detail-value">${(stock.scores?.sentiment || 0).toFixed(1)}/100</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Sentiment Trend</span>
+                    <span class="detail-value">${sentiment.sentiment_trend || 'N/A'}</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function formatMarketCap(value) {
+    if (value >= 1e9) return `${(value / 1e9).toFixed(2)}B`;
+    if (value >= 1e6) return `${(value / 1e6).toFixed(2)}M`;
+    if (value >= 1e3) return `${(value / 1e3).toFixed(2)}K`;
+    return value.toFixed(0);
 }
 
 function createErrorCard(stock) {

@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-11-17T15:11:28.098340",
-  "total_processed": 159,
+  "last_updated": "2025-11-17T17:53:03.198584",
+  "total_processed": 166,
   "stocks": {
     "NABIL": {
       "last_analyzed": "2025-11-17T13:01:01.246799",
@@ -825,10 +825,10 @@
       "analysis_count": 1
     },
     "MPFL": {
-      "last_analyzed": "2025-11-17T12:11:38.338780",
+      "last_analyzed": "2025-11-17T16:48:16.302604",
       "status": "success",
       "error": null,
-      "analysis_count": 1
+      "analysis_count": 2
     },
     "MSHL": {
       "last_analyzed": "2025-11-17T12:14:13.830150",
@@ -952,6 +952,48 @@
     },
     "NICFC": {
       "last_analyzed": "2025-11-17T15:11:28.098340",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NICGF2": {
+      "last_analyzed": "2025-11-17T16:22:56.488074",
+      "status": "success",
+      "error": null,
+      "analysis_count": 2
+    },
+    "NICL": {
+      "last_analyzed": "2025-11-17T16:31:31.825560",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NICLBSL": {
+      "last_analyzed": "2025-11-17T16:35:25.314993",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NICSF": {
+      "last_analyzed": "2025-11-17T16:38:50.319437",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NIFRA": {
+      "last_analyzed": "2025-11-17T16:42:46.155282",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NIFRAGED": {
+      "last_analyzed": "2025-11-17T16:44:00.962468",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "hrl": {
+      "last_analyzed": "2025-11-17T17:53:03.198584",
       "status": "success",
       "error": null,
       "analysis_count": 1

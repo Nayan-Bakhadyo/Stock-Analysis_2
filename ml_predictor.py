@@ -115,34 +115,40 @@ class MLStockPredictor:
         
         return data
     
-    def create_sequences(self, data: np.ndarray, lookback: int) -> Tuple[np.ndarray, np.ndarray]:
+    def create_sequences(self, data: np.ndarray, lookback: int, forecast_days: int = 7) -> Tuple[np.ndarray, np.ndarray]:
         """
-        Create sequences for LSTM training
+        Create sequences for LSTM training with multi-output (7-day predictions)
         
         Args:
             data: Scaled feature array
-            lookback: Number of timesteps to look back
+            lookback: Number of historical timesteps
+            forecast_days: Number of days to forecast (default: 7)
             
         Returns:
-            X (features), y (targets)
+            X, y arrays for training
+            X shape: (samples, lookback, features)
+            y shape: (samples, forecast_days) - predicts next 7 days
         """
         X, y = [], []
         
-        for i in range(lookback, len(data)):
+        # Need enough data for lookback + forecast_days
+        for i in range(lookback, len(data) - forecast_days + 1):
             X.append(data[i-lookback:i])
-            y.append(data[i, 0])  # Predict close price (first column)
+            # y contains next 7 days of close prices
+            y.append(data[i:i+forecast_days, 0])  # Next 7 days close prices
         
         return np.array(X), np.array(y)
     
-    def build_lstm_model(self, input_shape: Tuple[int, int]) -> Sequential:
+    def build_lstm_model(self, input_shape: Tuple[int, int], forecast_days: int = 7) -> Sequential:
         """
-        Build LSTM model architecture
+        Build LSTM model architecture with multi-output (7-day predictions)
         
         Args:
             input_shape: Shape of input (timesteps, features)
+            forecast_days: Number of days to forecast (default: 7)
             
         Returns:
-            Compiled Keras model
+            Compiled Keras model that outputs 7 price predictions
         """
         model = Sequential([
             Bidirectional(LSTM(128, return_sequences=True), input_shape=input_shape),
@@ -154,8 +160,10 @@ class MLStockPredictor:
             LSTM(32, return_sequences=False),
             Dropout(0.2),
             
+            Dense(32, activation='relu'),
+            Dropout(0.1),
             Dense(16, activation='relu'),
-            Dense(1)
+            Dense(forecast_days)  # Output 7 predictions (Day 1-7)
         ])
         
         model.compile(
@@ -198,24 +206,24 @@ class MLStockPredictor:
         # Scale features
         scaled_features = self.feature_scaler.fit_transform(features)
         
-        # Create sequences
-        print(f"🔄 Creating sequences (lookback={self.lookback_days})...")
-        X, y = self.create_sequences(scaled_features, self.lookback_days)
+        # Create sequences (multi-output: 7 days)
+        print(f"🔄 Creating sequences (lookback={self.lookback_days}, forecast=7 days)...")
+        X, y = self.create_sequences(scaled_features, self.lookback_days, forecast_days=7)
         
         if len(X) < 10:
-            return {'error': f'Insufficient data. Need at least {self.lookback_days + 10} days'}
+            return {'error': f'Insufficient data. Need at least {self.lookback_days + 17} days'}
         
         # Split train/validation
         split_idx = int(len(X) * (1 - validation_split))
         X_train, X_val = X[:split_idx], X[split_idx:]
         y_train, y_val = y[:split_idx], y[split_idx:]
         
-        print(f"✓ Training set: {len(X_train)} samples")
+        print(f"✓ Training set: {len(X_train)} samples (each predicts 7 days)")
         print(f"✓ Validation set: {len(X_val)} samples")
         
         # Build model
-        print("🏗️ Building LSTM model...")
-        self.model = self.build_lstm_model((self.lookback_days, len(feature_cols)))
+        print("🏗️ Building multi-output LSTM model (7-day predictions)...")
+        self.model = self.build_lstm_model((self.lookback_days, len(feature_cols)), forecast_days=7)
         
         # Callbacks
         early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
@@ -294,16 +302,16 @@ class MLStockPredictor:
         print(f"  ✓ Model loaded: {model_path}")
         return True
     
-    def predict_future_prices(self, df: pd.DataFrame, weeks: List[int] = [1, 2, 4, 6]) -> Dict:
+    def predict_future_prices(self, df: pd.DataFrame, days: List[int] = None) -> Dict:
         """
-        Predict future prices for multiple time horizons
+        Predict future prices using multi-output LSTM (predicts 7 days at once)
         
         Args:
             df: DataFrame with historical OHLCV data
-            weeks: List of weeks ahead to predict
+            days: List of days to return (1-7). If None, returns all 7 days
             
         Returns:
-            Dictionary with predictions for each time horizon
+            Dictionary with predictions for each day (1-7)
         """
         if not TENSORFLOW_AVAILABLE:
             return {'error': 'TensorFlow not available'}
@@ -325,76 +333,63 @@ class MLStockPredictor:
         # Get current price
         current_price = float(df['close'].iloc[-1])
         
+        # Use recent data for prediction
+        recent_data = data[feature_cols].iloc[-self.lookback_days:].values
+        scaled_recent = self.feature_scaler.transform(recent_data)
+        
+        # Prepare input (1, 60, 11)
+        X_pred = scaled_recent.reshape(1, self.lookback_days, len(feature_cols))
+        
+        # Get all 7 predictions in ONE forward pass (no error accumulation!)
+        predictions_scaled = self.model.predict(X_pred, verbose=0)[0]  # Shape: (7,)
+        
+        # Convert predictions back to original scale
+        # Create dummy array with same shape as feature set for inverse transform
+        dummy = np.zeros((7, len(feature_cols)))
+        dummy[:, 0] = predictions_scaled
+        unscaled = self.feature_scaler.inverse_transform(dummy)
+        predicted_prices = unscaled[:, 0]
+        
+        # Build results
+        if days is None:
+            days = list(range(1, 8))  # All 7 days
+        
         predictions = {
             'current_price': current_price,
             'prediction_date': datetime.now().strftime('%Y-%m-%d'),
-            'horizons': {}
+            'model_type': 'multi_output_lstm',
+            'days': {}
         }
         
-        # Make predictions for each time horizon
-        for week in weeks:
-            days_ahead = int(week * 5)  # Trading days (5 days/week), convert to int
-            
-            # Use recent data for prediction
-            recent_data = data[feature_cols].iloc[-self.lookback_days:].values
-            scaled_recent = self.feature_scaler.transform(recent_data)
-            
-            # Iteratively predict future values
-            future_predictions = []
-            last_sequence = scaled_recent.copy()
-            
-            for _ in range(days_ahead):
-                # Prepare input
-                X_pred = last_sequence[-self.lookback_days:].reshape(1, self.lookback_days, len(feature_cols))
+        for day in days:
+            if 1 <= day <= 7:
+                predicted_price = float(predicted_prices[day-1])
+                price_change = predicted_price - current_price
+                price_change_pct = (price_change / current_price) * 100
                 
-                # Predict next day
-                next_pred = self.model.predict(X_pred, verbose=0)[0, 0]
-                future_predictions.append(next_pred)
-                
-                # Update sequence (shift and add prediction)
-                new_row = last_sequence[-1].copy()
-                new_row[0] = next_pred  # Update close price
-                last_sequence = np.vstack([last_sequence[1:], new_row])
-            
-            # Convert predictions back to original scale
-            # Create dummy array with same shape as feature set
-            dummy = np.zeros((len(future_predictions), len(feature_cols)))
-            dummy[:, 0] = future_predictions
-            unscaled = self.feature_scaler.inverse_transform(dummy)
-            predicted_prices = unscaled[:, 0]
-            
-            # Calculate statistics
-            final_price = float(predicted_prices[-1])
-            avg_price = float(np.mean(predicted_prices))
-            min_price = float(np.min(predicted_prices))
-            max_price = float(np.max(predicted_prices))
-            price_change_pct = ((final_price - current_price) / current_price) * 100
-            
-            # Calculate confidence based on prediction variance
-            price_std = np.std(predicted_prices)
-            confidence_score = max(0, min(100, 100 - (price_std / current_price * 100)))
-            
-            predictions['horizons'][f'{week}_week'] = {
-                'weeks_ahead': week,
-                'days_ahead': days_ahead,
-                'target_date': (datetime.now() + timedelta(weeks=week)).strftime('%Y-%m-%d'),
-                'predicted_price': round(final_price, 2),
-                'avg_price': round(avg_price, 2),
-                'price_range': {
-                    'min': round(min_price, 2),
-                    'max': round(max_price, 2)
-                },
-                'price_change': round(final_price - current_price, 2),
-                'price_change_pct': round(price_change_pct, 2),
-                'confidence_score': round(confidence_score, 1),
-                'trend': 'UP' if price_change_pct > 0 else 'DOWN' if price_change_pct < 0 else 'FLAT'
-            }
+                predictions['days'][f'day_{day}'] = {
+                    'day': day,
+                    'target_date': (datetime.now() + timedelta(days=day)).strftime('%Y-%m-%d'),
+                    'predicted_price': round(predicted_price, 2),
+                    'price_change': round(price_change, 2),
+                    'price_change_pct': round(price_change_pct, 2),
+                    'trend': 'UP' if price_change_pct > 0 else 'DOWN' if price_change_pct < 0 else 'FLAT'
+                }
+        
+        # Add summary statistics
+        predictions['summary'] = {
+            'avg_predicted_price': round(float(np.mean(predicted_prices[:len(days)])), 2),
+            'min_predicted_price': round(float(np.min(predicted_prices[:len(days)])), 2),
+            'max_predicted_price': round(float(np.max(predicted_prices[:len(days)])), 2),
+            'total_change_pct': round(((predicted_prices[len(days)-1] - current_price) / current_price) * 100, 2),
+            'volatility': round(float(np.std(predicted_prices[:len(days)])), 2)
+        }
         
         return predictions
     
     def get_trend_analysis(self, predictions: Dict) -> Dict:
         """
-        Analyze predicted trends across time horizons
+        Analyze predicted trends across daily predictions
         
         Args:
             predictions: Predictions dictionary from predict_future_prices
@@ -402,15 +397,14 @@ class MLStockPredictor:
         Returns:
             Trend analysis summary
         """
-        if 'error' in predictions or not predictions.get('horizons'):
+        if 'error' in predictions or not predictions.get('days'):
             return {}
         
-        horizons = predictions['horizons']
+        days = predictions['days']
         
         # Analyze trends
-        trends = [h['trend'] for h in horizons.values()]
-        avg_change = np.mean([h['price_change_pct'] for h in horizons.values()])
-        avg_confidence = np.mean([h['confidence_score'] for h in horizons.values()])
+        trends = [d['trend'] for d in days.values()]
+        avg_change = np.mean([d['price_change_pct'] for d in days.values()])
         
         # Determine overall trend
         up_count = trends.count('UP')
@@ -424,25 +418,25 @@ class MLStockPredictor:
             overall_trend = 'NEUTRAL'
         
         # Get best and worst predictions
-        best_horizon = max(horizons.items(), key=lambda x: x[1]['price_change_pct'])
-        worst_horizon = min(horizons.items(), key=lambda x: x[1]['price_change_pct'])
+        best_day = max(days.items(), key=lambda x: x[1]['price_change_pct'])
+        worst_day = min(days.items(), key=lambda x: x[1]['price_change_pct'])
         
         return {
             'overall_trend': overall_trend,
             'avg_predicted_change': round(avg_change, 2),
-            'avg_confidence': round(avg_confidence, 1),
-            'bullish_horizons': up_count,
-            'bearish_horizons': down_count,
-            'best_horizon': {
-                'period': best_horizon[0],
-                'change_pct': round(best_horizon[1]['price_change_pct'], 2),
-                'predicted_price': best_horizon[1]['predicted_price']
+            'bullish_days': up_count,
+            'bearish_days': down_count,
+            'best_day': {
+                'day': best_day[0],
+                'change_pct': round(best_day[1]['price_change_pct'], 2),
+                'predicted_price': best_day[1]['predicted_price']
             },
-            'worst_horizon': {
-                'period': worst_horizon[0],
-                'change_pct': round(worst_horizon[1]['price_change_pct'], 2),
-                'predicted_price': worst_horizon[1]['predicted_price']
-            }
+            'worst_day': {
+                'day': worst_day[0],
+                'change_pct': round(worst_day[1]['price_change_pct'], 2),
+                'predicted_price': worst_day[1]['predicted_price']
+            },
+            'volatility': predictions['summary']['volatility']
         }
 
 
@@ -483,8 +477,8 @@ if __name__ == "__main__":
         exit(1)
     
     # Make predictions
-    print("\n🔮 Making multi-week predictions...")
-    predictions = predictor.predict_future_prices(df, weeks=[1, 2, 4, 6])
+    print("\n🔮 Making 7-day predictions (multi-output LSTM)...")
+    predictions = predictor.predict_future_prices(df, days=[1, 2, 3, 4, 5, 6, 7])
     
     if 'error' in predictions:
         print(f"❌ Error: {predictions['error']}")

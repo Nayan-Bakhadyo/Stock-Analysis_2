@@ -1,6 +1,7 @@
 """
 Quick ML Price Predictions for All Stocks
-Uses saved ML models to predict 1-5 day ahead prices
+Uses saved MULTI-OUTPUT LSTM models to predict 1-7 day ahead prices
+Predicts all 7 days simultaneously (no error accumulation!)
 Ranks stocks by profitability from highest to lowest
 """
 import os
@@ -15,11 +16,13 @@ from data_fetcher import NepseDataFetcher
 
 def predict_all_stocks():
     """
-    Load all saved ML models and generate 1-5 day predictions
+    Load all saved ML models and generate 1-7 day predictions using multi-output LSTM
+    Predicts all 7 days simultaneously in ONE forward pass (no error accumulation)
     Rank by profitability
     """
     print("\n" + "="*80)
-    print("ML PRICE PREDICTIONS FOR ALL STOCKS (1-5 DAYS AHEAD)")
+    print("ML PRICE PREDICTIONS FOR ALL STOCKS (1-7 DAYS AHEAD)")
+    print("Multi-Output LSTM - Predicts All Days Simultaneously")
     print("="*80)
     
     # Find all saved models
@@ -60,35 +63,29 @@ def predict_all_stocks():
             # Get current price
             current_price = float(price_data['close'].iloc[-1])
             
-            # Predict 1-5 days ahead (convert days to weeks: 1 day = 0.2 week)
+            # Initialize predictions dictionary
             predictions = {}
+            
+            # Predict all 7 days at once using multi-output LSTM
             try:
-                # Predict all 5 days at once
-                pred = ml_predictor.predict_future_prices(price_data, weeks=[0.2, 0.4, 0.6, 0.8, 1.0])
+                pred = ml_predictor.predict_future_prices(price_data, days=[1, 2, 3, 4, 5, 6, 7])
                 
-                if pred and 'horizons' in pred:
+                if pred and 'days' in pred:
                     # Extract predictions for each day
-                    day_map = {
-                        '0.2_week': 'day_1',
-                        '0.4_week': 'day_2',
-                        '0.6_week': 'day_3',
-                        '0.8_week': 'day_4',
-                        '1.0_week': 'day_5'
-                    }
-                    
-                    for horizon_key, day_key in day_map.items():
-                        if horizon_key in pred['horizons']:
-                            predictions[day_key] = pred['horizons'][horizon_key]['predicted_price']
+                    for day in range(1, 8):
+                        day_key = f'day_{day}'
+                        if day_key in pred['days']:
+                            predictions[day_key] = pred['days'][day_key]['predicted_price']
                         else:
                             predictions[day_key] = current_price
                 else:
                     # Fallback: use current price
-                    for day in range(1, 6):
+                    for day in range(1, 8):
                         predictions[f'day_{day}'] = current_price
                     
             except Exception as e:
                 # Fallback: use current price for all days
-                for day in range(1, 6):
+                for day in range(1, 8):
                     predictions[f'day_{day}'] = current_price
             
             # Calculate returns for each day
@@ -100,7 +97,7 @@ def predict_all_stocks():
             # Calculate average return across all days
             avg_return = np.mean(list(returns.values()))
             
-            # Store results
+            # Store results (now with 7 days)
             predictions_data.append({
                 'symbol': symbol,
                 'current_price': current_price,
@@ -114,8 +111,12 @@ def predict_all_stocks():
                 'day_4_return': returns.get('day_4', 0),
                 'day_5_price': predictions.get('day_5', current_price),
                 'day_5_return': returns.get('day_5', 0),
+                'day_6_price': predictions.get('day_6', current_price),
+                'day_6_return': returns.get('day_6', 0),
+                'day_7_price': predictions.get('day_7', current_price),
+                'day_7_return': returns.get('day_7', 0),
                 'avg_return': avg_return,
-                'total_5day_return': returns.get('day_5', 0)
+                'total_7day_return': returns.get('day_7', 0)
             })
             
             print(f"✓ Avg return: {avg_return:+.2f}%")
@@ -128,11 +129,11 @@ def predict_all_stocks():
     predictions_data.sort(key=lambda x: x['avg_return'], reverse=True)
     
     # Display results
-    print("\n" + "="*80)
-    print("PREDICTIONS RANKED BY PROFITABILITY (HIGHEST TO LOWEST)")
-    print("="*80)
-    print(f"{'Rank':<5} {'Symbol':<10} {'Current':<10} {'1D %':<8} {'2D %':<8} {'3D %':<8} {'4D %':<8} {'5D %':<8} {'Avg %':<8}")
-    print("-"*80)
+    print("\n" + "="*100)
+    print("PREDICTIONS RANKED BY PROFITABILITY (HIGHEST TO LOWEST) - 7 DAY FORECAST")
+    print("="*100)
+    print(f"{'Rank':<5} {'Symbol':<10} {'Current':<10} {'1D %':<8} {'2D %':<8} {'3D %':<8} {'4D %':<8} {'5D %':<8} {'6D %':<8} {'7D %':<8} {'Avg %':<8}")
+    print("-"*100)
     
     for rank, stock in enumerate(predictions_data, 1):
         print(f"{rank:<5} {stock['symbol']:<10} NPR {stock['current_price']:<7.2f} "
@@ -141,11 +142,13 @@ def predict_all_stocks():
               f"{stock['day_3_return']:+6.2f}% "
               f"{stock['day_4_return']:+6.2f}% "
               f"{stock['day_5_return']:+6.2f}% "
+              f"{stock['day_6_return']:+6.2f}% "
+              f"{stock['day_7_return']:+6.2f}% "
               f"{stock['avg_return']:+6.2f}%")
     
     # Top 10 Most Profitable
     print("\n" + "="*80)
-    print("TOP 10 MOST PROFITABLE STOCKS (Next 5 Days)")
+    print("TOP 10 MOST PROFITABLE STOCKS (Next 7 Days)")
     print("="*80)
     
     for rank, stock in enumerate(predictions_data[:10], 1):
@@ -156,16 +159,18 @@ def predict_all_stocks():
         print(f"   Day 3: NPR {stock['day_3_price']:.2f} ({stock['day_3_return']:+.2f}%)")
         print(f"   Day 4: NPR {stock['day_4_price']:.2f} ({stock['day_4_return']:+.2f}%)")
         print(f"   Day 5: NPR {stock['day_5_price']:.2f} ({stock['day_5_return']:+.2f}%)")
+        print(f"   Day 6: NPR {stock['day_6_price']:.2f} ({stock['day_6_return']:+.2f}%)")
+        print(f"   Day 7: NPR {stock['day_7_price']:.2f} ({stock['day_7_return']:+.2f}%)")
     
     # Bottom 10 Least Profitable
     print("\n" + "="*80)
-    print("BOTTOM 10 LEAST PROFITABLE STOCKS (Next 5 Days)")
+    print("BOTTOM 10 LEAST PROFITABLE STOCKS (Next 7 Days)")
     print("="*80)
     
     for rank, stock in enumerate(predictions_data[-10:], 1):
         print(f"\n{rank}. {stock['symbol']} - Average Return: {stock['avg_return']:+.2f}%")
         print(f"   Current Price: NPR {stock['current_price']:.2f}")
-        print(f"   Day 5 Predicted: NPR {stock['day_5_price']:.2f} ({stock['day_5_return']:+.2f}%)")
+        print(f"   Day 7 Predicted: NPR {stock['day_7_price']:.2f} ({stock['day_7_return']:+.2f}%)")
     
     # Save to JSON
     output_file = 'ml_predictions_ranked.json'
@@ -182,7 +187,7 @@ def predict_all_stocks():
 
 def predict_quick(symbol):
     """
-    Quick prediction for a single stock (1-5 days)
+    Quick 7-day prediction for a single stock using multi-output LSTM
     
     Args:
         symbol: Stock symbol
@@ -210,26 +215,19 @@ def predict_quick(symbol):
     
     print(f"\nCurrent Price: NPR {current_price:.2f}")
     print(f"Last Updated: {price_data['date'].iloc[-1]}")
-    print(f"\nPredictions:")
+    print(f"\nPredictions (7-Day Multi-Output LSTM):")
     print("-"*60)
     
-    # Predict all 5 days at once
+    # Predict all 7 days at once
     try:
-        pred = ml_predictor.predict_future_prices(price_data, weeks=[0.2, 0.4, 0.6, 0.8, 1.0])
+        pred = ml_predictor.predict_future_prices(price_data, days=[1, 2, 3, 4, 5, 6, 7])
         
-        if pred and 'horizons' in pred:
-            day_map = {
-                '0.2_week': 1,
-                '0.4_week': 2,
-                '0.6_week': 3,
-                '0.8_week': 4,
-                '1.0_week': 5
-            }
-            
-            for horizon_key, day_num in day_map.items():
-                if horizon_key in pred['horizons']:
-                    predicted_price = pred['horizons'][horizon_key]['predicted_price']
-                    return_pct = ((predicted_price - current_price) / current_price) * 100
+        if pred and 'days' in pred:
+            for day_num in range(1, 8):
+                day_key = f'day_{day_num}'
+                if day_key in pred['days']:
+                    predicted_price = pred['days'][day_key]['predicted_price']
+                    return_pct = pred['days'][day_key]['price_change_pct']
                     print(f"Day {day_num}: NPR {predicted_price:7.2f} ({return_pct:+6.2f}%)")
                 else:
                     print(f"Day {day_num}: NPR {current_price:7.2f} (+0.00%)")

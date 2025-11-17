@@ -61,10 +61,10 @@ def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracke
         if result.get('sentiment_details'):
             sentiment = result['sentiment_details']
             news_summary = {
-                'total_articles': sentiment.get('articles_analyzed', 0),
+                'total_articles': sentiment.get('total_articles', sentiment.get('articles_analyzed', 0)),
                 'avg_sentiment': sentiment.get('overall_sentiment', 0),
                 'sentiment_label': sentiment.get('sentiment_label', 'NEUTRAL'),
-                'articles': []
+                'articles': sentiment.get('articles', [])  # Copy the actual articles array
             }
         
         # Structure the complete result

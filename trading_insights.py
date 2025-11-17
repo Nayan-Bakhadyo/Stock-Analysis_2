@@ -84,16 +84,53 @@ class TradingInsightsEngine:
         fundamental_analysis = self.fundamental_analyzer.comprehensive_analysis(fundamental_data)
         
         print("📰 Analyzing market sentiment...")
-        # Try to use cached news first
+        # Combine cached news + fetch new articles
         if use_cache:
+            # Step 1: Get cached news from database
             cached_news = self.sync_manager.get_cached_news(symbol, days=180)
-            if cached_news and len(cached_news) >= 5:
-                print(f"  ℹ️ Using {len(cached_news)} cached articles")
-                sentiment_analysis = self._analyze_cached_sentiment(cached_news)
+            print(f"  → Found {len(cached_news)} cached articles in database")
+            
+            # Step 2: Fetch latest news (will auto-deduplicate with database)
+            print(f"  → Fetching latest news articles...")
+            fresh_sentiment = self.news_scraper.get_aggregate_sentiment(symbol, max_articles=10)
+            
+            # Step 3: Get updated cached news (includes newly fetched ones)
+            all_cached_news = self.sync_manager.get_cached_news(symbol, days=180)
+            
+            if all_cached_news and len(all_cached_news) >= 5:
+                # Check if articles have sentiment scores
+                articles_with_sentiment = sum(1 for a in all_cached_news if a.get('sentiment_score') is not None)
+                
+                if articles_with_sentiment >= 5:
+                    print(f"  ✓ Analyzing {len(all_cached_news)} total articles (cached + new)")
+                    sentiment_analysis = self._analyze_cached_sentiment(all_cached_news)
+                    # Add articles array
+                    sentiment_analysis['articles'] = all_cached_news
+                    sentiment_analysis['total_articles'] = len(all_cached_news)
+                else:
+                    # Analyze all cached articles without sentiment scores
+                    print(f"  → Computing sentiment for {len(all_cached_news)} articles")
+                    from sentiment_analyzer import SentimentAnalyzer
+                    sent_analyzer = SentimentAnalyzer()
+                    sentiment_df = sent_analyzer.analyze_news_list(all_cached_news)
+                    
+                    # Calculate aggregate metrics
+                    avg_score = sentiment_df['score'].mean() if not sentiment_df.empty else 0
+                    sentiment_analysis = {
+                        'overall_sentiment': avg_score,
+                        'sentiment_label': 'POSITIVE' if avg_score > 0.1 else 'NEGATIVE' if avg_score < -0.1 else 'NEUTRAL',
+                        'articles_analyzed': len(all_cached_news),
+                        'total_articles': len(all_cached_news),
+                        'positive_articles': len(sentiment_df[sentiment_df['sentiment'] == 'positive']) if not sentiment_df.empty else 0,
+                        'negative_articles': len(sentiment_df[sentiment_df['sentiment'] == 'negative']) if not sentiment_df.empty else 0,
+                        'neutral_articles': len(sentiment_df[sentiment_df['sentiment'] == 'neutral']) if not sentiment_df.empty else 0,
+                        'articles': all_cached_news
+                    }
             else:
-                print("  → Fetching fresh news articles...")
-                sentiment_analysis = self.news_scraper.get_aggregate_sentiment(symbol, max_articles=10)
+                # Use fresh sentiment if not enough cached articles
+                sentiment_analysis = fresh_sentiment
         else:
+            # No cache - just fetch fresh
             sentiment_analysis = self.news_scraper.get_aggregate_sentiment(symbol, max_articles=10)
         
         # Broker analysis (optional but recommended)
@@ -213,7 +250,7 @@ class TradingInsightsEngine:
                     # Try to load existing model
                     if self.ml_predictor.load_model(symbol):
                         print(f"  ✓ Loaded existing ML model for {symbol}")
-                        ml_predictions = self.ml_predictor.predict_future_prices(price_data, weeks=[1, 2, 4, 6])
+                        ml_predictions = self.ml_predictor.predict_future_prices(price_data, days=[1, 2, 3, 4, 5, 6, 7])
                     else:
                         print(f"  ℹ️ No existing model found, training new model...")
                         reuse_ml_model = False  # Force training
@@ -221,7 +258,7 @@ class TradingInsightsEngine:
                 # Train new model if not reusing or load failed
                 if not reuse_ml_model:
                     self.ml_predictor.train_model(price_data, epochs=30, batch_size=32, validation_split=0.15)
-                    ml_predictions = self.ml_predictor.predict_future_prices(price_data, weeks=[1, 2, 4, 6])
+                    ml_predictions = self.ml_predictor.predict_future_prices(price_data, days=[1, 2, 3, 4, 5, 6, 7])
                     # Save the trained model for this stock
                     self.ml_predictor.save_model(symbol)
                 
@@ -278,7 +315,7 @@ class TradingInsightsEngine:
             },
             'weights_used': adjusted_weights,
             'technical_analysis': technical_analysis,
-            'fundamental_analysis': fundamental_analysis.get('metrics', {}),
+            'fundamental_analysis': fundamental_analysis,  # Save complete fundamental analysis
             'sentiment_details': sentiment_analysis,
             'broker_analysis': broker_analysis,
             'ml_predictions': ml_predictions,  # ML price predictions
@@ -335,9 +372,11 @@ class TradingInsightsEngine:
             'overall_sentiment': sentiment_score / 100,
             'sentiment_label': label,
             'articles_analyzed': len(cached_news),
+            'total_articles': len(cached_news),
             'positive_articles': sum(1 for a in cached_news if a.get('sentiment_score', 0) > 0.1),
             'negative_articles': sum(1 for a in cached_news if a.get('sentiment_score', 0) < -0.1),
-            'neutral_articles': sum(1 for a in cached_news if -0.1 <= a.get('sentiment_score', 0) <= 0.1)
+            'neutral_articles': sum(1 for a in cached_news if -0.1 <= a.get('sentiment_score', 0) <= 0.1),
+            'articles': cached_news
         }
     
     def _get_fundamental_data(self, symbol: str, current_price: float) -> Dict:
