@@ -1,0 +1,72 @@
+Traceback (most recent call last):
+  File "/Users/Nayan/Documents/Business/Stock_Analysis/simple_analysis.py", line 76, in analyze_stock
+    'avg_volume': float(price_data['volume'].mean()) if 'volume' in price_data.columns else 0
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/series.py", line 6570, in mean
+    return NDFrame.mean(self, axis, skipna, numeric_only, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/generic.py", line 12485, in mean
+    return self._stat_function(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/generic.py", line 12442, in _stat_function
+    return self._reduce(
+           ^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/series.py", line 6478, in _reduce
+    return op(delegate, skipna=skipna, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/nanops.py", line 147, in f
+    result = alt(values, axis=axis, skipna=skipna, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/nanops.py", line 404, in new_func
+    result = func(values, axis=axis, skipna=skipna, mask=mask, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/nanops.py", line 720, in nanmean
+    the_sum = _ensure_numeric(the_sum)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/anaconda3/envs/Stock_Prediction/lib/python3.11/site-packages/pandas/core/nanops.py", line 1701, in _ensure_numeric
+    raise TypeError(f"Could not convert string '{x}' to numeric")
+TypeError: Could not convert string '69,423.0079,172.0050,014.0047,263.0063,880.0048,703.0044,459.0043,704.0038,427.0072,676.0081,167.0067,932.0064,476.0083,641.0066,938.0042,334.0034,983.0034,096.0040,199.0025,831.0042,962.0016,660.00122,490.0055,373.0059,254.0028,626.0030,997.0048,977.0078,401.0043,284.0065,413.0053,374.0031,168.0038,107.0037,341.0038,379.0032,708.0049,884.0051,578.0037,178.0033,330.0032,079.0027,560.0027,044.0046,224.0039,600.0049,391.0021,898.0029,577.0032,775.00' to numeric
+
+🚀 Starting analysis for 1 stocks: NABIL
+
+======================================================================
+ANALYZING: NABIL
+======================================================================
+
+📈 Syncing price history...
+
+🔄 Syncing price history for NABIL... (limited to 50 rows for testing)
+  → No existing data, performing full sync
+
+======================================================================
+Scraping price history for NABIL
+======================================================================
+
+✓ Chrome driver initialized
+→ Loading https://www.sharesansar.com/company/nabil...
+✓ Clicked Price History tab
+✓ Set table to show 50 rows per page
+✓ Found 18 table(s)
+✓ Table 12 headers: ['S.N.', 'Date', 'Open', 'High', 'Low', 'Ltp', '% Change', 'Qty', 'Turnover']
+→ Scraping page 1...
+  ✓ Found 50 rows on page 1
+  → Reached target of 50 rows, stopping
+✓ Scraped 50 total price records across 1 page(s)
+  ✓ Saved 50 price records
+✓ Browser closed
+  ✓ Added 50 new records
+  ✓ Got 50 days of price data
+  ℹ️ Columns: ['symbol', 'date', 'open', 'high', 'low', 'close', 'volume']
+
+❌ Error analyzing NABIL: Could not convert string '69,423.0079,172.0050,014.0047,263.0063,880.0048,703.0044,459.0043,704.0038,427.0072,676.0081,167.0067,932.0064,476.0083,641.0066,938.0042,334.0034,983.0034,096.0040,199.0025,831.0042,962.0016,660.00122,490.0055,373.0059,254.0028,626.0030,997.0048,977.0078,401.0043,284.0065,413.0053,374.0031,168.0038,107.0037,341.0038,379.0032,708.0049,884.0051,578.0037,178.0033,330.0032,079.0027,560.0027,044.0046,224.0039,600.0049,391.0021,898.0029,577.0032,775.00' to numeric
+
+======================================================================
+✅ ANALYSIS COMPLETE
+======================================================================
+
+Results saved to: analysis_results.json
+
+📊 SUMMARY:
+
+NABIL:
+  • Error: Could not convert string '69,423.0079,172.0050,014.0047,263.0063,880.0048,703.0044,459.0043,704.0038,427.0072,676.0081,167.0067,932.0064,476.0083,641.0066,938.0042,334.0034,983.0034,096.0040,199.0025,831.0042,962.0016,660.00122,490.0055,373.0059,254.0028,626.0030,997.0048,977.0078,401.0043,284.0065,413.0053,374.0031,168.0038,107.0037,341.0038,379.0032,708.0049,884.0051,578.0037,178.0033,330.0032,079.0027,560.0027,044.0046,224.0039,600.0049,391.0021,898.0029,577.0032,775.00' to numeric

@@ -1,0 +1,10 @@
+# Monday: Weekly full update with retraining 
+python3 weekly_update.py            //Only retrains model older than 7 days
+
+python3 weekly_update.py --retrain-all
+
+# Tuesday-Friday: Daily quick updates
+python3 daily_update.py
+
+# Weekend: Generate website
+python3 generate_website.py
