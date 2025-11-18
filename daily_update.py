@@ -8,7 +8,7 @@ Daily Stock Analysis Update
 import json
 import os
 from datetime import datetime
-from trading_insights import TradingInsightsEngine
+from simple_analysis import analyze_stock
 from stock_tracker import StockTracker
 
 
@@ -43,7 +43,6 @@ def daily_update():
     
     # Initialize
     tracker = StockTracker()
-    insights_engine = TradingInsightsEngine()
     updated_results = {}
     
     # Track statistics
@@ -57,14 +56,8 @@ def daily_update():
         print(f"\n[{i}/{len(stocks_to_update)}] Updating {symbol}...")
         
         try:
-            # Perform update with ML model reuse
-            result = insights_engine.calculate_profitability_probability(
-                symbol=symbol,
-                time_horizon='short',
-                include_broker_analysis=False,
-                use_cache=True,  # Intelligent data caching
-                reuse_ml_model=True  # KEY: Reuse existing ML models
-            )
+            # Perform update using analyze_stock for consistent format
+            result = analyze_stock(symbol, time_horizon='short', tracker=tracker, reuse_ml_model=True)
             
             if result.get('error'):
                 print(f"  ❌ Error: {result['error'][:60]}...")

@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-11-17T17:53:03.198584",
-  "total_processed": 166,
+  "last_updated": "2025-11-18T16:52:44.234950",
+  "total_processed": 242,
   "stocks": {
     "NABIL": {
       "last_analyzed": "2025-11-17T13:01:01.246799",
@@ -27,10 +27,10 @@
       "analysis_count": 2
     },
     "AHPC": {
-      "last_analyzed": "2025-11-17T12:58:51.722892",
+      "last_analyzed": "2025-11-18T10:36:00.402694",
       "status": "success",
       "error": null,
-      "analysis_count": 2
+      "analysis_count": 3
     },
     "SHPC": {
       "last_analyzed": "2025-11-17T13:00:08.173634",
@@ -753,10 +753,10 @@
       "analysis_count": 1
     },
     "SPC": {
-      "last_analyzed": "2025-11-17T10:32:23.975232",
+      "last_analyzed": "2025-11-18T10:22:02.143381",
       "status": "success",
       "error": null,
-      "analysis_count": 1
+      "analysis_count": 2
     },
     "MKHL": {
       "last_analyzed": "2025-11-17T11:17:13.956388",
@@ -994,6 +994,462 @@
     },
     "hrl": {
       "last_analyzed": "2025-11-17T17:53:03.198584",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NIMB": {
+      "last_analyzed": "2025-11-17T21:54:25.913697",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NLIC": {
+      "last_analyzed": "2025-11-17T22:10:42.729218",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NLICL": {
+      "last_analyzed": "2025-11-17T22:21:21.873547",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NMBHF2": {
+      "last_analyzed": "2025-11-17T22:24:28.060977",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NMFBS": {
+      "last_analyzed": "2025-11-17T22:32:20.514977",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NMIC": {
+      "last_analyzed": "2025-11-17T22:33:56.820248",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NMLBBL": {
+      "last_analyzed": "2025-11-17T22:36:01.533580",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NRM": {
+      "last_analyzed": "2025-11-17T22:40:30.990419",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NSIF2": {
+      "last_analyzed": "2025-11-17T22:45:29.085090",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NWCL": {
+      "last_analyzed": "2025-11-17T22:53:21.863499",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NYADI": {
+      "last_analyzed": "2025-11-17T22:56:49.895912",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "OMPL": {
+      "last_analyzed": "2025-11-17T22:59:22.846590",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PBD84": {
+      "last_analyzed": "2025-11-17T23:00:13.325799",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PBD88": {
+      "last_analyzed": "2025-11-17T23:03:29.159300",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PCBLP": {
+      "last_analyzed": "2025-11-17T23:06:57.687442",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PFL": {
+      "last_analyzed": "2025-11-17T23:13:01.294334",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PHCL": {
+      "last_analyzed": "2025-11-17T23:15:54.606040",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PMHPL": {
+      "last_analyzed": "2025-11-17T23:20:40.327149",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PMLI": {
+      "last_analyzed": "2025-11-17T23:22:48.428865",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PPCL": {
+      "last_analyzed": "2025-11-17T23:28:02.308162",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PPL": {
+      "last_analyzed": "2025-11-17T23:30:36.005238",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PRIN": {
+      "last_analyzed": "2025-11-17T23:36:34.842100",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PROFL": {
+      "last_analyzed": "2025-11-17T23:41:56.376304",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PRSF": {
+      "last_analyzed": "2025-11-17T23:44:29.882157",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PSF": {
+      "last_analyzed": "2025-11-17T23:49:19.140088",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PURE": {
+      "last_analyzed": "2025-11-17T23:50:44.142624",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RADHI": {
+      "last_analyzed": "2025-11-17T23:55:41.489947",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RAWA": {
+      "last_analyzed": "2025-11-17T23:58:25.365832",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RBCLPO": {
+      "last_analyzed": "2025-11-18T00:06:06.693880",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RFPL": {
+      "last_analyzed": "2025-11-18T00:09:34.927817",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RHPL": {
+      "last_analyzed": "2025-11-18T00:15:33.664195",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RLFL": {
+      "last_analyzed": "2025-11-18T00:20:39.358941",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RMF1": {
+      "last_analyzed": "2025-11-18T00:23:49.516426",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RMF2": {
+      "last_analyzed": "2025-11-18T00:26:17.491682",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RSDC": {
+      "last_analyzed": "2025-11-18T00:34:29.337147",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RSY": {
+      "last_analyzed": "2025-11-18T00:36:00.814080",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RURU": {
+      "last_analyzed": "2025-11-18T00:40:05.936100",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SADBL": {
+      "last_analyzed": "2025-11-18T00:48:05.376188",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SAGF": {
+      "last_analyzed": "2025-11-18T00:51:22.620140",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SAHAS": {
+      "last_analyzed": "2025-11-18T00:54:50.567273",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SAND2085": {
+      "last_analyzed": "2025-11-18T00:57:49.034216",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SANVI": {
+      "last_analyzed": "2025-11-18T01:02:28.347562",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SAPDBL": {
+      "last_analyzed": "2025-11-18T01:06:41.082825",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SARBTM": {
+      "last_analyzed": "2025-11-18T01:08:52.236740",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SBD87": {
+      "last_analyzed": "2025-11-18T01:12:29.779201",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SBID83": {
+      "last_analyzed": "2025-11-18T01:16:35.579185",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SBLD2082": {
+      "last_analyzed": "2025-11-18T01:19:18.664667",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SEF": {
+      "last_analyzed": "2025-11-18T01:25:41.670257",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SFCL": {
+      "last_analyzed": "2025-11-18T01:30:01.853229",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SFMF": {
+      "last_analyzed": "2025-11-18T01:34:34.470623",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SGIC": {
+      "last_analyzed": "2025-11-18T01:38:39.121713",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SHEL": {
+      "last_analyzed": "2025-11-18T01:42:38.466437",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SHIVM": {
+      "last_analyzed": "2025-11-18T01:52:01.599244",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SHLB": {
+      "last_analyzed": "2025-11-18T01:56:44.941529",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SIFC": {
+      "last_analyzed": "2025-11-18T02:06:56.919376",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SIGS3": {
+      "last_analyzed": "2025-11-18T02:08:57.309728",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SIKLES": {
+      "last_analyzed": "2025-11-18T02:12:04.071714",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SINDU": {
+      "last_analyzed": "2025-11-18T02:19:02.572715",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SJLIC": {
+      "last_analyzed": "2025-11-18T02:23:18.567469",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SLBBL": {
+      "last_analyzed": "2025-11-18T02:34:06.449842",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SLCF": {
+      "last_analyzed": "2025-11-18T02:39:26.441633",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SMB": {
+      "last_analyzed": "2025-11-18T02:45:38.322865",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SMFBS": {
+      "last_analyzed": "2025-11-18T10:59:14.705365",
+      "status": "success",
+      "error": null,
+      "analysis_count": 2
+    },
+    "SMH": {
+      "last_analyzed": "2025-11-18T11:06:17.372188",
+      "status": "success",
+      "error": null,
+      "analysis_count": 2
+    },
+    "SMHL": {
+      "last_analyzed": "2025-11-18T11:09:07.393788",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SMJC": {
+      "last_analyzed": "2025-11-18T11:12:56.184389",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SMPDA": {
+      "last_analyzed": "2025-11-18T11:14:12.465484",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SNLI": {
+      "last_analyzed": "2025-11-18T11:18:21.508245",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SONA": {
+      "last_analyzed": "2025-11-18T11:20:10.780199",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SPDL": {
+      "last_analyzed": "2025-11-18T11:24:25.957183",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SPHL": {
+      "last_analyzed": "2025-11-18T11:27:06.164929",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SPIL": {
+      "last_analyzed": "2025-11-18T11:29:03.126117",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SPL": {
+      "last_analyzed": "2025-11-18T16:42:06.425884",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SRLI": {
+      "last_analyzed": "2025-11-18T16:44:09.878192",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SSHL": {
+      "last_analyzed": "2025-11-18T16:48:14.682033",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "STC": {
+      "last_analyzed": "2025-11-18T16:52:44.234950",
       "status": "success",
       "error": null,
       "analysis_count": 1

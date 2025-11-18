@@ -55,10 +55,14 @@ class TradingInsightsEngine:
         print(f"\n🔍 Analyzing {symbol}...")
         
         # Sync data (only fetch new data if use_cache=True)
+        news_just_synced = False
+        sync_total_articles = 0
         if use_cache:
             print("🔄 Checking for data updates...")
             self.sync_manager.sync_price_history(symbol)
-            self.sync_manager.sync_news(symbol, max_articles=10)
+            sync_result = self.sync_manager.sync_news(symbol, max_articles=10)
+            news_just_synced = True  # Mark that we just synced news
+            sync_total_articles = sync_result.get('total_articles', 0)
         
         # Fetch data
         print("📊 Fetching historical data...")
@@ -84,25 +88,44 @@ class TradingInsightsEngine:
         fundamental_analysis = self.fundamental_analyzer.comprehensive_analysis(fundamental_data)
         
         print("📰 Analyzing market sentiment...")
-        # Combine cached news + fetch new articles
+        # Combine cached news + fetch new articles only if needed
         if use_cache:
-            # Step 1: Get cached news from database
-            cached_news = self.sync_manager.get_cached_news(symbol, days=180)
-            print(f"  → Found {len(cached_news)} cached articles in database")
+            # Step 1: Get cached news from database (after sync if it just happened)
+            # Use a longer lookback or no limit if we just synced to get all articles
+            if news_just_synced and sync_total_articles > 0:
+                # Query without date restriction to get all articles after sync
+                cached_news = self.sync_manager.get_cached_news(symbol, days=365*5, limit=20)
+                print(f"  ℹ️ Found {len(cached_news)} articles in cache (after sync)")
+            else:
+                cached_news = self.sync_manager.get_cached_news(symbol, days=180)
+                print(f"  ℹ️ Found {len(cached_news)} existing articles in cache")
             
-            # Step 2: Fetch latest news (will auto-deduplicate with database)
-            print(f"  → Fetching latest news articles...")
-            fresh_sentiment = self.news_scraper.get_aggregate_sentiment(symbol, max_articles=10)
-            
-            # Step 3: Get updated cached news (includes newly fetched ones)
-            all_cached_news = self.sync_manager.get_cached_news(symbol, days=180)
+            # If we just synced and have enough articles, use them directly
+            if news_just_synced and len(cached_news) >= 5:
+                print(f"  ✓ Using {len(cached_news)} freshly synced articles")
+                all_cached_news = cached_news
+            else:
+                # Check if we have enough articles with sentiment scores
+                articles_with_sentiment = sum(1 for a in cached_news if a.get('sentiment_score') is not None)
+                
+                # Step 2: Only fetch new articles if we don't have enough with sentiment
+                if articles_with_sentiment < 5:
+                    print(f"  → Only {articles_with_sentiment} articles have sentiment scores, fetching latest news...")
+                    # Fetch and store new articles (sentiment returned, but we'll use cache)
+                    self.news_scraper.get_aggregate_sentiment(symbol, max_articles=10)
+                    
+                    # Step 3: Get updated cached news (includes newly fetched ones)
+                    all_cached_news = self.sync_manager.get_cached_news(symbol, days=180)
+                else:
+                    print(f"  ✓ Using {articles_with_sentiment} cached articles with sentiment scores")
+                    all_cached_news = cached_news
             
             if all_cached_news and len(all_cached_news) >= 5:
-                # Check if articles have sentiment scores
+                # Re-check sentiment scores after potential fetch
                 articles_with_sentiment = sum(1 for a in all_cached_news if a.get('sentiment_score') is not None)
                 
                 if articles_with_sentiment >= 5:
-                    print(f"  ✓ Analyzing {len(all_cached_news)} total articles (cached + new)")
+                    print(f"  ✓ Analyzing {len(all_cached_news)} total articles")
                     sentiment_analysis = self._analyze_cached_sentiment(all_cached_news)
                     # Add articles array
                     sentiment_analysis['articles'] = all_cached_news
@@ -127,8 +150,9 @@ class TradingInsightsEngine:
                         'articles': all_cached_news
                     }
             else:
-                # Use fresh sentiment if not enough cached articles
-                sentiment_analysis = fresh_sentiment
+                # Not enough cached articles - fetch fresh
+                print(f"  → Not enough cached articles, fetching latest news...")
+                sentiment_analysis = self.news_scraper.get_aggregate_sentiment(symbol, max_articles=10)
         else:
             # No cache - just fetch fresh
             sentiment_analysis = self.news_scraper.get_aggregate_sentiment(symbol, max_articles=10)
@@ -215,31 +239,7 @@ class TradingInsightsEngine:
             price_data
         )
         
-        # Generate recommendation
-        recommendation = self._generate_recommendation(
-            probability, 
-            risk_reward, 
-            technical_analysis,
-            fundamental_analysis,
-            sentiment_analysis,
-            broker_analysis
-        )
-        
-        # Calculate position size
-        position_size = self._calculate_position_size(
-            probability, 
-            risk_reward,
-            broker_analysis
-        )
-        
-        # Identify entry and exit points
-        entry_exit = self._identify_entry_exit_points(
-            current_price,
-            technical_analysis,
-            risk_reward
-        )
-        
-        # ML price predictions (if available)
+        # ML price predictions (if available) - Generate BEFORE recommendation
         ml_predictions = None
         if ML_AVAILABLE and self.ml_predictor:
             try:
@@ -273,6 +273,31 @@ class TradingInsightsEngine:
             except Exception as e:
                 print(f"  ⚠️ ML prediction failed: {e}")
                 ml_predictions = None
+        
+        # Generate recommendation (now has access to ml_predictions)
+        recommendation = self._generate_recommendation(
+            probability, 
+            risk_reward, 
+            technical_analysis,
+            fundamental_analysis,
+            sentiment_analysis,
+            broker_analysis,
+            ml_predictions  # Pass ML predictions for trend consideration
+        )
+        
+        # Calculate position size
+        position_size = self._calculate_position_size(
+            probability, 
+            risk_reward,
+            broker_analysis
+        )
+        
+        # Identify entry and exit points
+        entry_exit = self._identify_entry_exit_points(
+            current_price,
+            technical_analysis,
+            risk_reward
+        )
         
         return {
             'symbol': symbol,
@@ -418,6 +443,7 @@ class TradingInsightsEngine:
                 real_data['current_assets'] = real_data.get('current_assets') or 50000000
                 real_data['current_liabilities'] = real_data.get('current_liabilities') or 30000000
                 real_data['market_cap'] = real_data.get('market_cap') or (current_price * 10000000)
+                real_data['is_estimated'] = False  # Real data from NepalAlpha
                 
                 return real_data
             else:
@@ -439,7 +465,8 @@ class TradingInsightsEngine:
                 'total_debt': 10000000,
                 'current_assets': 50000000,
                 'current_liabilities': 30000000,
-                'market_cap': current_price * 10000000
+                'market_cap': current_price * 10000000,
+                'is_estimated': True  # Estimated data (fallback)
             }
     
     def _normalize_sentiment_score(self, sentiment_analysis: Dict) -> float:
@@ -528,10 +555,23 @@ class TradingInsightsEngine:
     
     def _generate_recommendation(self, probability: float, risk_reward: Dict,
                                 technical_analysis: Dict, fundamental_analysis: Dict,
-                                sentiment_analysis: Dict, broker_analysis: Dict = None) -> Dict:
+                                sentiment_analysis: Dict, broker_analysis: Dict = None,
+                                ml_predictions: Dict = None) -> Dict:
         """Generate detailed trading recommendation"""
         
         rr_ratio = risk_reward.get('ratio', 0)
+        
+        # Check ML predictions trend if available
+        ml_trend_bearish = False
+        ml_avg_change = 0
+        if ml_predictions and 'trend_analysis' in ml_predictions:
+            trend = ml_predictions['trend_analysis']
+            ml_avg_change = trend.get('avg_predicted_change', 0)
+            overall_trend = trend.get('overall_trend', '')
+            
+            # If ML predicts consistent decline, adjust recommendation
+            if ml_avg_change < -2 or 'DOWN' in overall_trend.upper():
+                ml_trend_bearish = True
         
         # Check broker manipulation risk first
         manipulation_warning = False
@@ -552,28 +592,57 @@ class TradingInsightsEngine:
             elif manip_risk >= 50:
                 manipulation_warning = True
         
-        # Determine action
-        if probability >= 70 and rr_ratio >= 2 and not manipulation_warning:
-            action = 'STRONG BUY'
-            confidence = 'High'
-        elif probability >= 60 and rr_ratio >= 1.5 and not manipulation_warning:
-            action = 'BUY'
-            confidence = 'Medium-High'
-        elif probability >= 50 and rr_ratio >= 1:
-            action = 'HOLD/ACCUMULATE'
-            confidence = 'Medium'
-        elif probability >= 40:
-            action = 'HOLD'
-            confidence = 'Low-Medium'
-        elif probability >= 30:
-            action = 'SELL'
-            confidence = 'Medium-High'
+        # Determine action - adjust for ML trend
+        if ml_trend_bearish:
+            # Downgrade recommendation if ML predicts decline
+            if probability >= 70 and rr_ratio >= 2:
+                action = 'HOLD' if ml_avg_change < -5 else 'BUY'
+                confidence = 'Medium'
+            elif probability >= 60 and rr_ratio >= 1.5:
+                action = 'HOLD'
+                confidence = 'Medium'
+            elif probability >= 50:
+                action = 'SELL'
+                confidence = 'Medium-High'
+            else:
+                action = 'STRONG SELL'
+                confidence = 'High'
         else:
-            action = 'STRONG SELL'
-            confidence = 'High'
+            # Original logic when ML predicts sideways/up or not available
+            if probability >= 70 and rr_ratio >= 2 and not manipulation_warning:
+                action = 'STRONG BUY'
+                confidence = 'High'
+            elif probability >= 60 and rr_ratio >= 1.5 and not manipulation_warning:
+                action = 'BUY'
+                confidence = 'Medium-High'
+            elif probability >= 50 and rr_ratio >= 1:
+                action = 'HOLD/ACCUMULATE'
+                confidence = 'Medium'
+            elif probability >= 40:
+                action = 'HOLD'
+                confidence = 'Low-Medium'
+            elif probability >= 30:
+                action = 'SELL'
+                confidence = 'Medium-High'
+            else:
+                action = 'STRONG SELL'
+                confidence = 'High'
         
         # Generate reasoning
         reasoning = []
+        
+        # Add ML prediction insight first if available
+        if ml_predictions and 'trend_analysis' in ml_predictions:
+            trend = ml_predictions['trend_analysis']
+            ml_trend = trend.get('overall_trend', 'N/A')
+            ml_change = trend.get('avg_predicted_change', 0)
+            
+            if ml_change < -2:
+                reasoning.append(f"⚠️ ML predicts {ml_trend} trend ({ml_change:+.1f}% avg)")
+            elif ml_change > 2:
+                reasoning.append(f"✓ ML predicts {ml_trend} trend ({ml_change:+.1f}% avg)")
+            else:
+                reasoning.append(f"→ ML predicts {ml_trend} trend ({ml_change:+.1f}% avg)")
         
         if technical_analysis.get('technical_score', 0) >= 70:
             reasoning.append("✓ Strong technical indicators")

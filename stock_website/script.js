@@ -368,30 +368,49 @@ function createScoreItem(name, score) {
 function createMLPredictionsSection(mlPredictions) {
     if (!mlPredictions) return '';
     
-    // Handle both old and new prediction formats
+    // Handle both old weekly and new 7-day prediction formats
     let predictions = [];
     const trendAnalysis = mlPredictions.trend_analysis || {};
     
-    // Check for horizons object (newest format)
-    const predObj = mlPredictions.horizons || mlPredictions.predictions || {};
+    // NEW FORMAT: Check for 'days' object (7-day predictions)
+    const daysObj = mlPredictions.days;
     
-    // Convert object to array
-    if (typeof predObj === 'object' && !Array.isArray(predObj)) {
-        ['1_week', '2_week', '4_week', '6_week'].forEach(key => {
-            if (predObj[key]) {
-                const pred = predObj[key];
+    if (daysObj && typeof daysObj === 'object') {
+        // New 7-day format
+        ['day_1', 'day_2', 'day_3', 'day_4', 'day_5', 'day_6', 'day_7'].forEach((key, index) => {
+            if (daysObj[key]) {
+                const pred = daysObj[key];
                 predictions.push({
-                    period: key.replace('_', ' ').toUpperCase(),
+                    period: `Day ${index + 1}`,
                     predicted_price: pred.predicted_price,
                     price_change_pct: pred.price_change_pct,
-                    confidence: pred.confidence_score,
+                    confidence: pred.confidence_score || 85,
                     target_date: pred.target_date,
                     trend: pred.trend
                 });
             }
         });
-    } else if (Array.isArray(predObj)) {
-        predictions = predObj;
+    } else {
+        // OLD FORMAT: Check for horizons/weeks object (weekly predictions)
+        const predObj = mlPredictions.horizons || mlPredictions.predictions || {};
+        
+        if (typeof predObj === 'object' && !Array.isArray(predObj)) {
+            ['1_week', '2_week', '4_week', '6_week'].forEach(key => {
+                if (predObj[key]) {
+                    const pred = predObj[key];
+                    predictions.push({
+                        period: key.replace('_', ' ').toUpperCase(),
+                        predicted_price: pred.predicted_price,
+                        price_change_pct: pred.price_change_pct,
+                        confidence: pred.confidence_score || 85,
+                        target_date: pred.target_date,
+                        trend: pred.trend
+                    });
+                }
+            });
+        } else if (Array.isArray(predObj)) {
+            predictions = predObj;
+        }
     }
     
     if (predictions.length === 0) return '';
@@ -399,9 +418,9 @@ function createMLPredictionsSection(mlPredictions) {
     let predictionCards = predictions.map(pred => {
         const change = pred.price_change_pct || pred.predicted_change_pct || 0;
         const changeClass = change >= 0 ? 'positive' : 'negative';
-        const trendIcon = change >= 0 ? '📈 UP' : '📉 DOWN';
+        const trendIcon = change >= 0 ? '📈' : '📉';
         const price = pred.predicted_price || 0;
-        const confidence = pred.confidence || pred.confidence_score || 0;
+        const confidence = pred.confidence || pred.confidence_score || 85;
         
         return `
             <div class="prediction-card">
@@ -560,34 +579,53 @@ function createTechnicalAnalysisDetails(stock) {
 
 function createFundamentalAnalysisDetails(stock) {
     const fundamentals = stock.fundamentals || {};
+    const ratios = fundamentals.ratios || {};
     const insights = stock.trading_insights || {};
+    const isEstimated = fundamentals.is_estimated === true;
     
-    // Extract from key_insights for additional data
-    const keyInsights = stock.key_insights || [];
-    let peRatio = 0, epsGrowth = 0;
+    // Extract values from ratios (which have {value, score, interpretation} structure)
+    const peRatio = ratios.pe_ratio?.value || 0;
+    const pbRatio = ratios.pb_ratio?.value || 0;
+    const dividendYield = ratios.dividend_yield?.value || 0;
+    const epsGrowth = ratios.eps_growth?.value || 0;
+    const roe = ratios.roe || 0;
+    const debtToEquity = ratios.debt_to_equity || 0;
+    const currentRatio = ratios.current_ratio || 0;
     
-    keyInsights.forEach(insight => {
-        const peMatch = insight.match(/P\/E ratio \(([0-9.]+)\)/);
-        const epsMatch = insight.match(/EPS growth \(([0-9.]+)%\)/);
-        if (peMatch) peRatio = parseFloat(peMatch[1]);
-        if (epsMatch) epsGrowth = parseFloat(epsMatch[1]);
-    });
+    // Get top-level fundamental data
+    const currentPrice = fundamentals.current_price || 0;
+    const marketCap = fundamentals.market_cap || 0;
+    
+    // Calculate EPS from PE ratio if available
+    const eps = peRatio > 0 && currentPrice > 0 ? currentPrice / peRatio : 0;
+    
+    // Calculate book value from PB ratio if available
+    const bookValue = pbRatio > 0 && currentPrice > 0 ? currentPrice / pbRatio : 0;
+    
+    // Warning banner for estimated data
+    const estimatedWarning = isEstimated ? `
+        <div class="estimated-data-warning">
+            <span class="warning-icon">⚠️</span>
+            <span class="warning-text">This fundamental data is estimated. Real data could not be fetched from external sources.</span>
+        </div>
+    ` : '';
     
     return `
         <div class="analysis-details-section">
             <h4 class="analysis-details-title">💼 Fundamental Analysis Details</h4>
+            ${estimatedWarning}
             <div class="analysis-details-grid">
                 <div class="detail-item">
                     <span class="detail-label">P/E Ratio</span>
-                    <span class="detail-value">${(fundamentals.pe_ratio || peRatio || 0).toFixed(2)}</span>
+                    <span class="detail-value">${peRatio.toFixed(2)}</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">P/B Ratio</span>
-                    <span class="detail-value">${(fundamentals.pb_ratio || fundamentals.price_to_book || 0).toFixed(2)}</span>
+                    <span class="detail-value">${pbRatio.toFixed(2)}</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">EPS</span>
-                    <span class="detail-value">NPR ${(fundamentals.eps || 0).toFixed(2)}</span>
+                    <span class="detail-value">NPR ${eps.toFixed(2)}</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">EPS Growth</span>
@@ -595,27 +633,35 @@ function createFundamentalAnalysisDetails(stock) {
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Book Value</span>
-                    <span class="detail-value">NPR ${(fundamentals.book_value || 0).toFixed(2)}</span>
+                    <span class="detail-value">NPR ${bookValue.toFixed(2)}</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">ROE</span>
-                    <span class="detail-value">${(fundamentals.roe || 0).toFixed(2)}%</span>
+                    <span class="detail-value">${roe.toFixed(2)}%</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Dividend Yield</span>
-                    <span class="detail-value">${(fundamentals.dividend_yield || 0).toFixed(2)}%</span>
+                    <span class="detail-value">${dividendYield.toFixed(2)}%</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Debt/Equity</span>
+                    <span class="detail-value">${debtToEquity.toFixed(2)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Current Ratio</span>
+                    <span class="detail-value">${currentRatio.toFixed(2)}</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Market Cap</span>
-                    <span class="detail-value">${fundamentals.market_cap ? formatMarketCap(fundamentals.market_cap) : 'N/A'}</span>
+                    <span class="detail-value">${marketCap ? formatMarketCap(marketCap) : 'N/A'}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Overall Rating</span>
+                    <span class="detail-value">${fundamentals.overall_rating || 'N/A'}</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Fundamental Score</span>
-                    <span class="detail-value">${(stock.scores?.fundamental || 0).toFixed(1)}/100</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Sector</span>
-                    <span class="detail-value">${fundamentals.sector || fundamentals.industry || 'N/A'}</span>
+                    <span class="detail-value">${(stock.scores?.fundamental || fundamentals.overall_score || 0).toFixed(1)}/100</span>
                 </div>
             </div>
         </div>
@@ -629,7 +675,10 @@ function createSentimentAnalysisDetails(stock) {
     // Get sentiment from news object or sentiment_details
     const sentimentLabel = news.sentiment_label || sentiment.sentiment_label || 'NEUTRAL';
     const avgSentiment = news.avg_sentiment || sentiment.overall_sentiment || 0;
-    const totalArticles = news.total_articles || sentiment.articles_analyzed || 0;
+    const totalArticles = news.total_articles || sentiment.total_articles || sentiment.articles_analyzed || 0;
+    
+    // Check if we have any article data
+    const hasArticles = totalArticles > 0;
     
     // Calculate sentiment score (0-100 scale)
     let sentimentScore = 50; // Default neutral
@@ -640,10 +689,12 @@ function createSentimentAnalysisDetails(stock) {
         sentimentScore = 75;
     } else if (avgSentiment === 'negative') {
         sentimentScore = 25;
+    } else if (avgSentiment === 'neutral') {
+        sentimentScore = 50;
     }
     
     // Count article types
-    const articles = news.articles || [];
+    const articles = news.articles || sentiment.articles || [];
     let positiveCount = sentiment.positive_articles || 0;
     let negativeCount = sentiment.negative_articles || 0;
     let neutralCount = sentiment.neutral_articles || 0;
@@ -656,6 +707,19 @@ function createSentimentAnalysisDetails(stock) {
             else if (score < -0.1) negativeCount++;
             else neutralCount++;
         });
+    }
+    
+    // If no articles, show a message
+    if (!hasArticles) {
+        return `
+            <div class="analysis-details-section">
+                <h4 class="analysis-details-title">📰 Sentiment Analysis Details</h4>
+                <div style="padding: 2rem; text-align: center; color: #6b7280;">
+                    <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">ℹ️ No News Articles Available</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Sentiment analysis requires news data. Run a fresh analysis to fetch latest articles.</p>
+                </div>
+            </div>
+        `;
     }
     
     return `
@@ -693,8 +757,8 @@ function createSentimentAnalysisDetails(stock) {
                     <span class="detail-value">${(stock.scores?.sentiment || 0).toFixed(1)}/100</span>
                 </div>
                 <div class="detail-item">
-                    <span class="detail-label">Sentiment Trend</span>
-                    <span class="detail-value">${sentiment.sentiment_trend || 'N/A'}</span>
+                    <span class="detail-label">Data Source</span>
+                    <span class="detail-value">${articles.length} recent articles</span>
                 </div>
             </div>
         </div>

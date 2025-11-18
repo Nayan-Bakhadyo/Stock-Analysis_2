@@ -237,6 +237,7 @@ class FundamentalAnalyzer:
             'symbol': stock_data.get('symbol', 'N/A'),
             'current_price': current_price,
             'market_cap': market_cap,
+            'is_estimated': stock_data.get('is_estimated', False),  # Pass through estimated flag
             'ratios': {
                 'pe_ratio': pe_eval,
                 'pb_ratio': pb_eval,

@@ -12,7 +12,7 @@ from data_fetcher import NepseDataFetcher
 from stock_tracker import StockTracker
 
 
-def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracker = None) -> dict:
+def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracker = None, reuse_ml_model: bool = False) -> dict:
     """Perform complete analysis on a single stock using TradingInsightsEngine"""
     
     print(f"\n{'='*70}")
@@ -28,7 +28,8 @@ def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracke
             symbol=symbol,
             time_horizon=time_horizon,
             include_broker_analysis=False,  # Skip broker analysis for speed
-            use_cache=True  # Use sync manager for intelligent caching
+            use_cache=True,  # Use sync manager for intelligent caching
+            reuse_ml_model=reuse_ml_model  # Reuse ML model if requested
         )
         
         # Check for errors

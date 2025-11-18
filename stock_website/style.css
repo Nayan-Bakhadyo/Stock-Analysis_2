@@ -564,6 +564,29 @@ main {
     margin-bottom: 0;
 }
 
+.estimated-data-warning {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1.25rem;
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 8px;
+    color: #92400e;
+}
+
+.estimated-data-warning .warning-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.estimated-data-warning .warning-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
 .analysis-details-title {
     font-size: 1.1rem;
     font-weight: 600;
