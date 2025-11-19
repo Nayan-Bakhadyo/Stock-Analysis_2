@@ -1,6 +1,6 @@
 {
-  "last_updated": "2025-11-18T16:52:44.234950",
-  "total_processed": 242,
+  "last_updated": "2025-11-19T03:18:22.159089",
+  "total_processed": 270,
   "stocks": {
     "NABIL": {
       "last_analyzed": "2025-11-17T13:01:01.246799",
@@ -1450,6 +1450,174 @@
     },
     "STC": {
       "last_analyzed": "2025-11-18T16:52:44.234950",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "HURJA": {
+      "last_analyzed": "2025-11-19T00:27:00.576905",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "IHL": {
+      "last_analyzed": "2025-11-19T00:29:07.696403",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "ILBS": {
+      "last_analyzed": "2025-11-19T00:33:32.554377",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "KEF": {
+      "last_analyzed": "2025-11-19T00:40:01.843412",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "LBBL": {
+      "last_analyzed": "2025-11-19T00:44:14.486691",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "MEN": {
+      "last_analyzed": "2025-11-19T00:55:23.939691",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "MERO": {
+      "last_analyzed": "2025-11-19T01:00:17.006525",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "MHNL": {
+      "last_analyzed": "2025-11-19T01:06:15.181108",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NIMBPO": {
+      "last_analyzed": "2025-11-19T01:13:36.233659",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NLG": {
+      "last_analyzed": "2025-11-19T01:22:14.558765",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NMB": {
+      "last_analyzed": "2025-11-19T01:32:27.185212",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NMBMF": {
+      "last_analyzed": "2025-11-19T01:39:10.480572",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NRN": {
+      "last_analyzed": "2025-11-19T01:45:25.582744",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "NTC": {
+      "last_analyzed": "2025-11-19T01:54:27.152964",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PBD85": {
+      "last_analyzed": "2025-11-19T01:57:39.154719",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "PRVU": {
+      "last_analyzed": "2025-11-19T02:07:37.434067",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RHGCL": {
+      "last_analyzed": "2025-11-19T02:13:29.360877",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RIDI": {
+      "last_analyzed": "2025-11-19T02:16:46.938618",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "RNLI": {
+      "last_analyzed": "2025-11-19T02:18:45.231026",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SANIMA": {
+      "last_analyzed": "2025-11-19T02:29:57.945697",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SDBD87": {
+      "last_analyzed": "2025-11-19T02:38:25.892023",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SFEF": {
+      "last_analyzed": "2025-11-19T02:41:38.020239",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SGHC": {
+      "last_analyzed": "2025-11-19T02:44:26.097456",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SHL": {
+      "last_analyzed": "2025-11-19T02:55:10.178810",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SJCL": {
+      "last_analyzed": "2025-11-19T03:01:09.142678",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SKBBL": {
+      "last_analyzed": "2025-11-19T03:07:27.932531",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SLBSL": {
+      "last_analyzed": "2025-11-19T03:12:25.315523",
+      "status": "success",
+      "error": null,
+      "analysis_count": 1
+    },
+    "SMATA": {
+      "last_analyzed": "2025-11-19T03:18:22.159089",
       "status": "success",
       "error": null,
       "analysis_count": 1
