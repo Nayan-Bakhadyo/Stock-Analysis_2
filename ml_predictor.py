@@ -203,6 +203,9 @@ class MLStockPredictor:
         feature_cols = [col for col in feature_cols if col in data.columns]
         features = data[feature_cols].values
         
+        # Check for infinity/NaN and replace
+        features = np.nan_to_num(features, nan=0.0, posinf=0.0, neginf=0.0)
+        
         # Scale features
         scaled_features = self.feature_scaler.fit_transform(features)
         
@@ -266,7 +269,7 @@ class MLStockPredictor:
             return
         
         os.makedirs(save_dir, exist_ok=True)
-        model_path = os.path.join(save_dir, f'lstm_{symbol}.h5')
+        model_path = os.path.join(save_dir, f'lstm_{symbol}.keras')
         scaler_path = os.path.join(save_dir, f'scaler_{symbol}.pkl')
         
         self.model.save(model_path)
@@ -284,12 +287,17 @@ class MLStockPredictor:
     def load_model(self, symbol: str, load_dir: str = 'models'):
         """Load trained model for a specific stock symbol"""
         import os
-        model_path = os.path.join(load_dir, f'lstm_{symbol}.h5')
+        model_path = os.path.join(load_dir, f'lstm_{symbol}.keras')
         scaler_path = os.path.join(load_dir, f'scaler_{symbol}.pkl')
         
+        # Try .keras first, fall back to .h5 for old models
         if not os.path.exists(model_path):
-            print(f"  ℹ️ No saved model found for {symbol}")
-            return False
+            model_path_h5 = os.path.join(load_dir, f'lstm_{symbol}.h5')
+            if os.path.exists(model_path_h5):
+                model_path = model_path_h5
+            else:
+                print(f"  ℹ️ No saved model found for {symbol}")
+                return False
         
         self.model = keras.models.load_model(model_path)
         
@@ -335,6 +343,10 @@ class MLStockPredictor:
         
         # Use recent data for prediction
         recent_data = data[feature_cols].iloc[-self.lookback_days:].values
+        
+        # Check for infinity/NaN and replace
+        recent_data = np.nan_to_num(recent_data, nan=0.0, posinf=0.0, neginf=0.0)
+        
         scaled_recent = self.feature_scaler.transform(recent_data)
         
         # Prepare input (1, 60, 11)

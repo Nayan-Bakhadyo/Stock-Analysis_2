@@ -15,6 +15,9 @@ from stock_tracker import StockTracker
 def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracker = None, reuse_ml_model: bool = False) -> dict:
     """Perform complete analysis on a single stock using TradingInsightsEngine"""
     
+    # Clean the symbol (remove trailing commas, whitespace)
+    symbol = symbol.strip().rstrip(',').upper()
+    
     print(f"\n{'='*70}")
     print(f"ANALYZING: {symbol}")
     print('='*70)
@@ -158,7 +161,7 @@ def main():
     
     # Override with command line arguments if provided
     if len(sys.argv) > 1:
-        symbols = sys.argv[1:]
+        symbols = [s.strip().rstrip(',').upper() for s in sys.argv[1:]]
     
     print("\n" + "="*70)
     print("STOCK ANALYSIS FOR WEBSITE GENERATION")
