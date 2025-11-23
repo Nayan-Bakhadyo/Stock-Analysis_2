@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEPSE ML Price Predictions</title>
+    <link rel="stylesheet" href="ml_predictions.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🤖 NEPSE ML Price Predictions</h1>
+            <p class="subtitle">AI-Powered 7-Day Stock Price Forecasts</p>
+            <p class="update-time" id="last-updated"></p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Summary Cards -->
+        <div class="summary-section">
+            <div class="summary-card bullish">
+                <div class="summary-icon">📈</div>
+                <div class="summary-value" id="bullish-count">0</div>
+                <div class="summary-label">Bullish Signals</div>
+            </div>
+            <div class="summary-card bearish">
+                <div class="summary-icon">📉</div>
+                <div class="summary-value" id="bearish-count">0</div>
+                <div class="summary-label">Bearish Signals</div>
+            </div>
+            <div class="summary-card neutral">
+                <div class="summary-icon">↔️</div>
+                <div class="summary-value" id="neutral-count">0</div>
+                <div class="summary-label">Neutral Signals</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-icon">🎯</div>
+                <div class="summary-value" id="avg-accuracy">0%</div>
+                <div class="summary-label">Avg. MAPE</div>
+            </div>
+        </div>
+
+        <!-- Filters and Search -->
+        <div class="filters-section">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="🔍 Search stocks..." />
+            </div>
+            <div class="filter-controls">
+                <select id="filter-signal">
+                    <option value="all">All Signals</option>
+                    <option value="BULLISH">Bullish Only</option>
+                    <option value="BEARISH">Bearish Only</option>
+                    <option value="NEUTRAL">Neutral Only</option>
+                </select>
+                <select id="filter-accuracy">
+                    <option value="all">All Accuracy</option>
+                    <option value="excellent">Excellent (<2% MAPE)</option>
+                    <option value="good">Good (2-5% MAPE)</option>
+                    <option value="fair">Fair (5-10% MAPE)</option>
+                </select>
+                <select id="sort-select">
+                    <option value="confidence-desc">Sort: Confidence (High to Low)</option>
+                    <option value="accuracy-asc">Sort: MAPE (Best to Worst)</option>
+                    <option value="symbol-asc">Sort: Symbol (A-Z)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Stock Predictions Grid -->
+        <div id="predictions-container"></div>
+        
+        <div id="no-results" style="display: none; text-align: center; padding: 3rem; color: #6b7280;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📭</div>
+            <div style="font-size: 1.2rem;">No predictions available</div>
+        </div>
+        
+        <!-- Stock Detail Modal -->
+        <div id="stock-modal" class="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>⚠️ These are ML predictions for informational purposes only. Not financial advice. Past accuracy doesn't guarantee future performance.</p>
+            <p>Model: Bi-LSTM with optimized hyperparameters | Data updated: <span id="footer-timestamp"></span></p>
+        </div>
+    </footer>
+
+    <script src="ml_predictions.js"></script>
+</body>
+</html>

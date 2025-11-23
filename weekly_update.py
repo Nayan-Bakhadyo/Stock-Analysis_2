@@ -139,7 +139,8 @@ def weekly_update(retrain_all=True, max_model_age_days=7, limit=None, resume=Tru
         
         try:
             # Perform update using analyze_stock for consistent format
-            result = analyze_stock(symbol, time_horizon='short', tracker=tracker, reuse_ml_model=not should_retrain)
+            # ML disabled for weekly updates - only updates technical/fundamental/sentiment
+            result = analyze_stock(symbol, time_horizon='short', tracker=tracker, reuse_ml_model=not should_retrain, enable_ml=False)
             
             if result.get('error'):
                 print(f"  ❌ Error: {result['error'][:60]}...")

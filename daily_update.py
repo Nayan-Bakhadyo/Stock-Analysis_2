@@ -57,7 +57,8 @@ def daily_update():
         
         try:
             # Perform update using analyze_stock for consistent format
-            result = analyze_stock(symbol, time_horizon='short', tracker=tracker, reuse_ml_model=True)
+            # ML disabled for daily updates - only updates technical/fundamental/sentiment
+            result = analyze_stock(symbol, time_horizon='short', tracker=tracker, reuse_ml_model=True, enable_ml=False)
             
             if result.get('error'):
                 print(f"  ❌ Error: {result['error'][:60]}...")

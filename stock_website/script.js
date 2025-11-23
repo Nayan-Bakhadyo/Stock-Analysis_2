@@ -22,11 +22,15 @@ function initializeFilters() {
     const sortSelect = document.getElementById('sort-select');
     const filterRecommendation = document.getElementById('filter-recommendation');
     const filterProfitability = document.getElementById('filter-profitability');
+    const filterMlPredictions = document.getElementById('filter-ml-predictions');
+    const filterMlDate = document.getElementById('filter-ml-date');
     
     searchInput.addEventListener('input', applyFilters);
     sortSelect.addEventListener('change', applyFilters);
     filterRecommendation.addEventListener('change', applyFilters);
     filterProfitability.addEventListener('change', applyFilters);
+    filterMlPredictions.addEventListener('change', applyFilters);
+    filterMlDate.addEventListener('change', applyFilters);
 }
 
 function applyFilters() {
@@ -34,6 +38,8 @@ function applyFilters() {
     const sortBy = document.getElementById('sort-select').value;
     const recFilter = document.getElementById('filter-recommendation').value;
     const profFilter = document.getElementById('filter-profitability').value;
+    const mlFilter = document.getElementById('filter-ml-predictions').value;
+    const mlDateFilter = document.getElementById('filter-ml-date').value;
     
     // Start with all stocks
     filteredStocks = [...allStocks];
@@ -61,6 +67,31 @@ function applyFilters() {
             if (profFilter === 'medium') return prob >= 40 && prob <= 70;
             if (profFilter === 'low') return prob < 40;
             return true;
+        });
+    }
+    
+    // Apply ML predictions filter
+    if (mlFilter !== 'all') {
+        filteredStocks = filteredStocks.filter(stock => {
+            const hasMlPredictions = stock.ml_predictions && stock.ml_predictions.predictions && 
+                                    (Array.isArray(stock.ml_predictions.predictions) ? stock.ml_predictions.predictions.length > 0 : 
+                                     (stock.ml_predictions.predictions.dates && stock.ml_predictions.predictions.dates.length > 0));
+            if (mlFilter === 'with-ml') return hasMlPredictions;
+            if (mlFilter === 'without-ml') return !hasMlPredictions;
+            return true;
+        });
+    }
+    
+    // Apply ML date filter
+    if (mlDateFilter && mlDateFilter !== '') {
+        filteredStocks = filteredStocks.filter(stock => {
+            if (!stock.ml_predictions || !stock.ml_predictions.last_updated) return false;
+            
+            const lastUpdated = new Date(stock.ml_predictions.last_updated);
+            const filterDate = new Date(mlDateFilter);
+            
+            // Compare only the date part (ignore time)
+            return lastUpdated.toDateString() === filterDate.toDateString();
         });
     }
     
@@ -150,7 +181,6 @@ function createCompactCard(stock) {
     const currentPrice = insights.current_price || stock.price_data?.latest_price || 0;
     const riskReward = insights.risk_reward_ratio || {};
     const rrRatio = riskReward.ratio || 0;
-    // Use the correct field name from risk_reward_ratio
     const potentialProfit = riskReward.potential_profit_percent || insights.potential_profit_pct || 0;
     const scores = stock.scores || {};
     
@@ -163,33 +193,27 @@ function createCompactCard(stock) {
                 </div>
             </div>
             
-            <div class="probability-section">
-                <div class="probability-value">${probability.toFixed(1)}%</div>
-                <div class="probability-bar">
-                    <div class="probability-fill" style="width: ${probability}%"></div>
+            <div class="stock-body">
+                <div class="probability-section">
+                    <div class="probability-value">${probability.toFixed(1)}%</div>
+                    <div class="probability-bar">
+                        <div class="probability-fill" style="width: ${probability}%"></div>
+                    </div>
+                    <div class="confidence-level">
+                        <span class="recommendation-badge ${action.toLowerCase()}">${action}</span>
+                        • ${confidence}
+                    </div>
                 </div>
-                <div class="confidence-level">
-                    <span class="recommendation-badge ${action.toLowerCase()}">${action}</span>
-                    • ${confidence}
-                </div>
-            </div>
-            
-            <div class="quick-stats">
-                <div class="stat-item">
-                    <div class="stat-label">R:R Ratio</div>
-                    <div class="stat-value">${rrRatio.toFixed(2)}</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Potential</div>
-                    <div class="stat-value positive">+${potentialProfit.toFixed(1)}%</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Technical</div>
-                    <div class="stat-value">${(scores.technical || 0).toFixed(0)}/100</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Sentiment</div>
-                    <div class="stat-value">${(scores.sentiment || 0).toFixed(0)}/100</div>
+                
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">R:R Ratio</div>
+                        <div class="stat-value">${rrRatio.toFixed(2)}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Potential</div>
+                        <div class="stat-value positive">+${potentialProfit.toFixed(1)}%</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -368,82 +392,132 @@ function createScoreItem(name, score) {
 function createMLPredictionsSection(mlPredictions) {
     if (!mlPredictions) return '';
     
-    // Handle both old weekly and new 7-day prediction formats
-    let predictions = [];
-    const trendAnalysis = mlPredictions.trend_analysis || {};
+    const predictions = mlPredictions.predictions;
+    const tradingSignal = mlPredictions.trading_signal || {}; // Add fallback
+    const model = mlPredictions.model || {}; // Add fallback
+    const recentActual = mlPredictions.recent_actual;
     
-    // NEW FORMAT: Check for 'days' object (7-day predictions)
-    const daysObj = mlPredictions.days;
-    
-    if (daysObj && typeof daysObj === 'object') {
-        // New 7-day format
-        ['day_1', 'day_2', 'day_3', 'day_4', 'day_5', 'day_6', 'day_7'].forEach((key, index) => {
-            if (daysObj[key]) {
-                const pred = daysObj[key];
-                predictions.push({
-                    period: `Day ${index + 1}`,
-                    predicted_price: pred.predicted_price,
-                    price_change_pct: pred.price_change_pct,
-                    confidence: pred.confidence_score || 85,
-                    target_date: pred.target_date,
-                    trend: pred.trend
-                });
-            }
-        });
-    } else {
-        // OLD FORMAT: Check for horizons/weeks object (weekly predictions)
-        const predObj = mlPredictions.horizons || mlPredictions.predictions || {};
-        
-        if (typeof predObj === 'object' && !Array.isArray(predObj)) {
-            ['1_week', '2_week', '4_week', '6_week'].forEach(key => {
-                if (predObj[key]) {
-                    const pred = predObj[key];
-                    predictions.push({
-                        period: key.replace('_', ' ').toUpperCase(),
-                        predicted_price: pred.predicted_price,
-                        price_change_pct: pred.price_change_pct,
-                        confidence: pred.confidence_score || 85,
-                        target_date: pred.target_date,
-                        trend: pred.trend
-                    });
-                }
-            });
-        } else if (Array.isArray(predObj)) {
-            predictions = predObj;
-        }
+    if (!predictions || !predictions.dates || !predictions.prices) {
+        return `
+            <div class="ml-predictions">
+                <h3 class="section-title">🤖 AI Predictions</h3>
+                <div class="processing-message">
+                    ⏳ Processing... ML predictions will be available soon.
+                </div>
+            </div>
+        `;
     }
     
-    if (predictions.length === 0) return '';
+    // Handle old format without trading_signal
+    if (!tradingSignal.direction) {
+        return `
+            <div class="ml-predictions">
+                <h3 class="section-title">🤖 AI Predictions</h3>
+                <div class="processing-message">
+                    ⚠️ This stock was trained with an older model version.<br>
+                    Please retrain to see trading signals and performance metrics.
+                </div>
+            </div>
+        `;
+    }
     
-    let predictionCards = predictions.map(pred => {
-        const change = pred.price_change_pct || pred.predicted_change_pct || 0;
-        const changeClass = change >= 0 ? 'positive' : 'negative';
-        const trendIcon = change >= 0 ? '📈' : '📉';
-        const price = pred.predicted_price || 0;
-        const confidence = pred.confidence || pred.confidence_score || 85;
+    // Create prediction cards for 7 days
+    const predictionCards = predictions.dates.map((date, index) => {
+        const price = predictions.prices[index];
+        const lastPrice = model.last_actual_price;
+        const change = price - lastPrice;
+        const changePct = (change / lastPrice) * 100;
+        const changeClass = changePct >= 0 ? 'positive' : 'negative';
+        const trendIcon = changePct >= 0 ? '📈' : '📉';
         
         return `
             <div class="prediction-card">
-                <div class="prediction-horizon">${pred.period || ''}</div>
-                <div style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.5rem;">${pred.target_date || ''}</div>
+                <div class="prediction-horizon">Day ${index + 1}</div>
+                <div style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.5rem;">${date}</div>
                 <div class="prediction-price">NPR ${price.toFixed(2)}</div>
-                <div class="prediction-change ${changeClass}">${change >= 0 ? '+' : ''}${change.toFixed(2)}% ${trendIcon}</div>
-                <div style="font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem;">
-                    Confidence: ${confidence.toFixed(1)}%
-                </div>
+                <div class="prediction-change ${changeClass}">${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}% ${trendIcon}</div>
             </div>
         `;
     }).join('');
     
+    // Performance rating colors
+    const mapeRating = model.performance.mape_rating;
+    const mapeColor = mapeRating === 'Excellent' ? '#10b981' : 
+                      mapeRating === 'Good' ? '#3b82f6' :
+                      mapeRating === 'Fair' ? '#f59e0b' : '#ef4444';
+    
+    const signalStrength = model.performance.signal_strength;
+    const signalColor = signalStrength === 'Strong' ? '#10b981' :
+                       signalStrength === 'Moderate' ? '#f59e0b' : '#ef4444';
+    
+    const direction = tradingSignal.direction;
+    const directionColor = direction === 'BULLISH' ? '#10b981' :
+                          direction === 'BEARISH' ? '#ef4444' : '#6b7280';
+    const directionIcon = direction === 'BULLISH' ? '🟢' :
+                         direction === 'BEARISH' ? '🔴' : '⚪';
+    
     return `
         <div class="ml-predictions">
-            <h3 class="section-title" style="color: white;">🔮 ML Price Predictions</h3>
-            <div style="margin-bottom: 1rem; opacity: 0.9;">
-                Overall Trend: <strong>${trendAnalysis.overall_trend || 'N/A'}</strong>
-                ${trendAnalysis.avg_predicted_change ? ` • Avg Change: <strong>${trendAnalysis.avg_predicted_change >= 0 ? '+' : ''}${trendAnalysis.avg_predicted_change.toFixed(2)}%</strong>` : ''}
+            <h3 class="section-title">🤖 AI Price Predictions (Bi-LSTM Model)</h3>
+            
+            <!-- Trading Signal -->
+            <div class="trading-signal-box" style="background: linear-gradient(135deg, ${directionColor}20, ${directionColor}10); border-left: 4px solid ${directionColor}; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem;">Trading Signal</div>
+                        <div style="font-size: 1.8rem; font-weight: bold; color: ${directionColor};">
+                            ${directionIcon} ${direction}
+                        </div>
+                        <div style="font-size: 1rem; margin-top: 0.5rem;">
+                            <strong>${tradingSignal.recommendation}</strong> • Confidence: ${tradingSignal.confidence.toFixed(1)}%
+                        </div>
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.3rem;">
+                            ${tradingSignal.up_days} up days, ${tradingSignal.down_days} down days
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Model Performance -->
+            <div class="model-performance" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">MAPE (Accuracy)</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: ${mapeColor};">${model.performance.test_mape.toFixed(2)}%</div>
+                    <div style="font-size: 0.8rem; font-weight: 600; color: ${mapeColor};">${mapeRating}</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">±Rs. ${(model.last_actual_price * model.performance.test_mape / 100).toFixed(2)}</div>
+                </div>
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">Direction Accuracy</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: ${signalColor};">${model.performance.direction_accuracy.toFixed(1)}%</div>
+                    <div style="font-size: 0.8rem; font-weight: 600; color: ${signalColor};">${signalStrength}</div>
+                </div>
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">Model Type</div>
+                    <div style="font-size: 1rem; font-weight: bold; margin-top: 0.5rem; color: #1f2937;">${model.architecture.toUpperCase()}</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7; color: #6b7280;">${model.lookback_days} days lookback</div>
+                </div>
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">Last Known Price</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #1f2937;">NPR ${model.last_actual_price.toFixed(2)}</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7; color: #6b7280;">Base for predictions</div>
+                </div>
+            </div>
+            
+            <!-- Predictions Grid -->
             <div class="prediction-grid">
                 ${predictionCards}
+            </div>
+            
+            <!-- Model Info -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(59, 130, 246, 0.05); border-radius: 8px; font-size: 0.85rem; opacity: 0.9;">
+                <div><strong>Model Details:</strong></div>
+                <div>• Architecture: ${model.architecture.toUpperCase()} with ${model.layers} layers</div>
+                <div>• Training Samples: ${model.training_samples.toLocaleString()} data points</div>
+                <div>• MAE: ${model.performance.test_mae.toFixed(2)} Rs | RMSE: ${model.performance.test_rmse.toFixed(2)} Rs</div>
+                <div style="margin-top: 0.5rem; opacity: 0.7;">
+                    <strong>Note:</strong> MAPE < 2% = Excellent, 2-5% = Good, 5-10% = Fair, >10% = Poor<br>
+                    Direction Accuracy > 70% = Strong signal, 50-70% = Moderate, < 50% = Weak
+                </div>
             </div>
         </div>
     `;
@@ -472,7 +546,22 @@ function createCandlestickPatternsSection(patterns) {
 }
 
 function createInsightsSection(insights) {
-    const items = insights.map(insight => 
+    // Filter out placeholder metrics (EPS growth 11.11% and ROE 20.00% appear to be placeholder data)
+    const filteredInsights = insights.filter(insight => {
+        const lowerInsight = insight.toLowerCase();
+        // Remove if it's a generic/placeholder EPS growth or ROE message
+        if (lowerInsight.includes('eps growth') && lowerInsight.includes('11.11')) {
+            return false;
+        }
+        if (lowerInsight.includes('roe') && lowerInsight.includes('20.')) {
+            return false;
+        }
+        return true;
+    });
+    
+    if (filteredInsights.length === 0) return '';
+    
+    const items = filteredInsights.map(insight => 
         `<div class="insight-item">${insight}</div>`
     ).join('');
     
@@ -587,7 +676,9 @@ function createFundamentalAnalysisDetails(stock) {
     const peRatio = ratios.pe_ratio?.value || 0;
     const pbRatio = ratios.pb_ratio?.value || 0;
     const dividendYield = ratios.dividend_yield?.value || 0;
-    const epsGrowth = ratios.eps_growth?.value || 0;
+    const epsGrowth = ratios.eps_growth?.value;
+    // Don't show EPS Growth if it's the placeholder value (11.11%) or invalid
+    const hasEpsGrowth = epsGrowth !== undefined && epsGrowth !== null && epsGrowth !== 0 && Math.abs(epsGrowth - 11.11) > 0.01;
     const roe = ratios.roe || 0;
     const debtToEquity = ratios.debt_to_equity || 0;
     const currentRatio = ratios.current_ratio || 0;
@@ -627,17 +718,15 @@ function createFundamentalAnalysisDetails(stock) {
                     <span class="detail-label">EPS</span>
                     <span class="detail-value">NPR ${eps.toFixed(2)}</span>
                 </div>
+                ${hasEpsGrowth ? `
                 <div class="detail-item">
                     <span class="detail-label">EPS Growth</span>
                     <span class="detail-value ${epsGrowth > 0 ? 'positive' : epsGrowth < 0 ? 'negative' : ''}">${epsGrowth > 0 ? '+' : ''}${epsGrowth.toFixed(2)}%</span>
                 </div>
+                ` : ''}
                 <div class="detail-item">
                     <span class="detail-label">Book Value</span>
                     <span class="detail-value">NPR ${bookValue.toFixed(2)}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">ROE</span>
-                    <span class="detail-value">${roe.toFixed(2)}%</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Dividend Yield</span>

@@ -1,0 +1,23 @@
+{
+  "symbol": "SPC",
+  "best_config": {
+    "architecture": "bidirectional",
+    "lookback": 180,
+    "layers": 2,
+    "units_1": 64,
+    "units_2": 64,
+    "dropout_1": 0.2,
+    "dropout_2": 0.2,
+    "learning_rate": 0.001,
+    "batch_size": 64,
+    "patience": 10,
+    "dense_units": 32
+  },
+  "performance": {
+    "test_mape": 1.85,
+    "test_mae": 8.45,
+    "test_rmse": 10.23,
+    "direction_accuracy": 71.4
+  },
+  "timestamp": "2025-11-22T10:30:00.000000"
+}

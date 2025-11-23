@@ -1,0 +1,18 @@
+{
+  "name": "tcn_lb120_l3_u128_d0.3_lr0.001_bs64",
+  "lookback": 120,
+  "layers": 3,
+  "units_1": 128,
+  "units_2": 64,
+  "units_3": 32,
+  "dropout_1": 0.3,
+  "dropout_2": 0.3,
+  "dropout_3": 0.15,
+  "dense_units": 32,
+  "architecture": "tcn",
+  "optimizer": "adam",
+  "learning_rate": 0.001,
+  "batch_size": 64,
+  "epochs": 100,
+  "patience": 10
+}

@@ -24,14 +24,15 @@ except ImportError:
 class TradingInsightsEngine:
     """Generate trading insights and profitability probability"""
     
-    def __init__(self):
+    def __init__(self, enable_ml: bool = True):
         self.data_fetcher = NepseDataFetcher()
         self.news_scraper = ShareSansarNewsScraper(headless=True)
         self.fundamental_scraper = NepalAlphaScraper(headless=True)
         self.fundamental_analyzer = FundamentalAnalyzer()
         self.technical_analyzer = TechnicalAnalyzer()
         self.broker_analyzer = BrokerAnalyzer()
-        self.ml_predictor = MLStockPredictor(lookback_days=60) if ML_AVAILABLE else None
+        self.enable_ml = enable_ml  # Flag to enable/disable ML
+        self.ml_predictor = MLStockPredictor(lookback_days=60) if (ML_AVAILABLE and enable_ml) else None
         self.sync_manager = SyncManager()  # Add sync manager
         self.weights = config.SIGNAL_WEIGHTS
         self.risk_config = config.RISK_CONFIG
@@ -241,7 +242,7 @@ class TradingInsightsEngine:
         
         # ML price predictions (if available) - Generate BEFORE recommendation
         ml_predictions = None
-        if ML_AVAILABLE and self.ml_predictor:
+        if self.enable_ml and ML_AVAILABLE and self.ml_predictor:
             try:
                 print("🔮 Generating ML price predictions...")
                 

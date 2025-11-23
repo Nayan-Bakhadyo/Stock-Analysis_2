@@ -1,0 +1,26 @@
+{
+  "symbol": "HRL",
+  "best_config": {
+    "architecture": "bidirectional",
+    "lookback": 120,
+    "layers": 3,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "patience": 10,
+    "optimizer": "adam",
+    "units_1": 64,
+    "units_2": 32,
+    "units_3": 16,
+    "dropout_1": 0.3,
+    "dropout_2": 0.3,
+    "dropout_3": 0.15,
+    "dense_units": 32
+  },
+  "performance": {
+    "test_mape": 0.938637747502503,
+    "test_mae": 7.451726070472124,
+    "test_rmse": 9.916707479154722,
+    "direction_accuracy": 57.14285714285714
+  },
+  "timestamp": "2025-11-22T21:26:00.188020"
+}

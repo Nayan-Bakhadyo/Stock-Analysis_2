@@ -1,0 +1,35 @@
+{
+  "created": "2025-11-20T11:01:00.385901",
+  "total_stocks_tested": 1,
+  "stocks": {
+    "IGI": {
+      "last_tested": "2025-11-20T11:01:00.383581",
+      "best_config": {
+        "name": "deeper",
+        "lookback": 60,
+        "layers": 3,
+        "units_1": 256,
+        "units_2": 128,
+        "units_3": 64,
+        "dropout_1": 0.3,
+        "dropout_2": 0.3,
+        "dropout_3": 0.2,
+        "dense_units": 64,
+        "architecture": "bidirectional",
+        "optimizer": "adam",
+        "learning_rate": 0.001,
+        "batch_size": 32,
+        "epochs": 50,
+        "patience": 10
+      },
+      "best_metrics": {
+        "test_mae": 40.183719005116394,
+        "test_rmse": 41.588324186091484,
+        "test_mape": 9.858172482677693,
+        "direction_accuracy": 0.0
+      },
+      "total_configs_tested": 4
+    }
+  },
+  "last_updated": "2025-11-20T11:01:00.385910"
+}

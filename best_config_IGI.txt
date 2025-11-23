@@ -1,0 +1,37 @@
+BEST HYPERPARAMETERS FOR IGI
+============================================================
+Tested on: 2025-11-20 11:01:00
+Test MAE: 40.1837
+Test RMSE: 41.5883
+Test MAPE: 9.86%
+Direction Accuracy: 0.0%
+
+CONFIGURATION:
+------------------------------------------------------------
+name                : deeper
+lookback            : 60
+layers              : 3
+units_1             : 256
+units_2             : 128
+units_3             : 64
+dropout_1           : 0.3
+dropout_2           : 0.3
+dropout_3           : 0.2
+dense_units         : 64
+architecture        : bidirectional
+optimizer           : adam
+learning_rate       : 0.001
+batch_size          : 32
+epochs              : 50
+patience            : 10
+
+============================================================
+PREDICTIONS vs ACTUAL:
+------------------------------------------------------------
+Day 1: Pred= 433.29, Actual= 412.00, Error= +21.29 (  +5.2%)
+Day 2: Pred= 444.49, Actual= 409.00, Error= +35.49 (  +8.7%)
+Day 3: Pred= 442.42, Actual= 406.00, Error= +36.42 (  +9.0%)
+Day 4: Pred= 445.96, Actual= 407.00, Error= +38.96 (  +9.6%)
+Day 5: Pred= 460.42, Actual= 410.00, Error= +50.42 ( +12.3%)
+Day 6: Pred= 448.08, Actual= 407.00, Error= +41.08 ( +10.1%)
+Day 7: Pred= 462.61, Actual= 405.00, Error= +57.61 ( +14.2%)

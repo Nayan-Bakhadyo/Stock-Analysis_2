@@ -12,7 +12,7 @@ from data_fetcher import NepseDataFetcher
 from stock_tracker import StockTracker
 
 
-def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracker = None, reuse_ml_model: bool = False) -> dict:
+def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracker = None, reuse_ml_model: bool = False, enable_ml: bool = False) -> dict:
     """Perform complete analysis on a single stock using TradingInsightsEngine"""
     
     # Clean the symbol (remove trailing commas, whitespace)
@@ -24,7 +24,7 @@ def analyze_stock(symbol: str, time_horizon: str = 'short', tracker: StockTracke
     
     try:
         # Use TradingInsightsEngine for comprehensive analysis
-        insights_engine = TradingInsightsEngine()
+        insights_engine = TradingInsightsEngine(enable_ml=enable_ml)
         
         # Get comprehensive analysis (includes all data: technical, fundamental, sentiment, ML)
         result = insights_engine.calculate_profitability_probability(
@@ -185,7 +185,7 @@ def main():
     
     # Analyze new stocks and save after each one
     for symbol in symbols:
-        result = analyze_stock(symbol, time_horizon='short', tracker=tracker)
+        result = analyze_stock(symbol, time_horizon='short', tracker=tracker, enable_ml=False)  # ML disabled by default
         
         # Update or add to existing results
         existing_results[symbol] = result

@@ -1,0 +1,24 @@
+{
+  "symbol": "API",
+  "best_config": {
+    "architecture": "bidirectional",
+    "lookback": 60,
+    "layers": 2,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "patience": 10,
+    "optimizer": "adam",
+    "units_1": 128,
+    "units_2": 64,
+    "dropout_1": 0.2,
+    "dropout_2": 0.2,
+    "dense_units": 32
+  },
+  "performance": {
+    "test_mape": 0.7125350802712465,
+    "test_mae": 1.988124545982909,
+    "test_rmse": 2.8876051355098666,
+    "direction_accuracy": 85.71428571428571
+  },
+  "timestamp": "2025-11-22T19:42:30.455149"
+}

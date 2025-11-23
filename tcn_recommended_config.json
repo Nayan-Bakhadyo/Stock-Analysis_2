@@ -1,0 +1,14 @@
+{
+  "lookback": 60,
+  "layers": 2,
+  "units_1": 128,
+  "units_2": 64,
+  "units_3": 32,
+  "dropout_1": 0.2,
+  "dropout_2": 0.2,
+  "dropout_3": 0.1,
+  "dense_units": 32,
+  "learning_rate": 0.0005,
+  "batch_size": 32,
+  "patience": 10
+}

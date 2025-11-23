@@ -9,15 +9,32 @@ from datetime import datetime
 
 
 class StockWebsiteGenerator:
-    def __init__(self, json_file='analysis_results.json', output_dir='stock_website'):
+    def __init__(self, json_file='analysis_results.json', ml_file='stock_predictions.json', output_dir='stock_website'):
         self.json_file = json_file
+        self.ml_file = ml_file
         self.output_dir = output_dir
         self.data = []
+        self.ml_data = {}
     
     def load_data(self):
         """Load analysis results from JSON"""
         with open(self.json_file, 'r') as f:
             self.data = json.load(f)
+        
+        # Load ML predictions if available
+        if os.path.exists(self.ml_file):
+            with open(self.ml_file, 'r') as f:
+                ml_json = json.load(f)
+                self.ml_data = ml_json.get('stocks', {})
+            print(f"✓ Loaded ML predictions for {len(self.ml_data)} stocks from {self.ml_file}")
+        else:
+            print(f"⚠ No ML predictions file found at {self.ml_file}")
+        
+        # Merge ML predictions into stock data
+        for stock in self.data:
+            symbol = stock['symbol']
+            if symbol in self.ml_data:
+                stock['ml_predictions'] = self.ml_data[symbol]
         
         # Sort by profitability probability
         for stock in self.data:
@@ -41,6 +58,11 @@ class StockWebsiteGenerator:
         """Copy JSON data to website folder"""
         with open(os.path.join(self.output_dir, 'data.json'), 'w') as f:
             json.dump(self.data, f, indent=2)
+        
+        # Copy ML predictions separately for direct access if needed
+        if self.ml_data:
+            with open(os.path.join(self.output_dir, 'ml_predictions.json'), 'w') as f:
+                json.dump({'stocks': self.ml_data, 'last_updated': datetime.now().isoformat()}, f, indent=2)
     
     def _generate_html(self):
         """Generate index.html with embedded data"""
@@ -114,6 +136,12 @@ class StockWebsiteGenerator:
                     <option value="medium">Medium (40-70%)</option>
                     <option value="low">Low (<40%)</option>
                 </select>
+                <select id="filter-ml-predictions">
+                    <option value="all">All Stocks</option>
+                    <option value="with-ml">With ML Predictions</option>
+                    <option value="without-ml">Without ML Predictions</option>
+                </select>
+                <input type="date" id="filter-ml-date" placeholder="Filter by ML update date" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--card-bg); color: var(--text-primary); font-size: 0.875rem;">
             </div>
         </div>
 
@@ -153,48 +181,113 @@ class StockWebsiteGenerator:
     
     def _generate_css(self):
         """Generate style.css"""
-        css = """* {
+        css = """@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --danger-gradient: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #2c3e50;
-    background: #f8fafc;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(245, 87, 108, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Animated Background */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
-    padding: 3rem 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 40%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to right, #fff, #f0f0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    opacity: 0.9;
+    font-size: 1.3rem;
+    opacity: 0.95;
     margin-bottom: 0.5rem;
+    font-weight: 400;
 }
 
 .update-time {
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 0.95rem;
+    opacity: 0.85;
 }
 
 /* Main Content */
@@ -204,222 +297,411 @@ main {
 
 #stock-cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2rem;
     margin-top: 2rem;
 }
 
 /* Summary Section */
 .summary-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
 }
 
 .summary-card {
-    background: white;
+    background: var(--card-bg);
     padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
     text-align: center;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary-gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.summary-card:hover::before {
+    transform: scaleX(1);
 }
 
 .summary-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(102, 126, 234, 0.2);
+}
+
+.summary-card h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.summary-card .number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
 }
 
 .summary-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    display: none;
 }
 
 .summary-value {
     font-size: 2.5rem;
-    font-weight: 700;
-    color: #667eea;
-    margin-bottom: 0.3rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
 }
 
 .summary-label {
-    font-size: 0.9rem;
-    color: #6b7280;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 1.2px;
+    font-weight: 500;
 }
 
-/* Stock Card - Compact Version */
+/* Stock Card */
 .stock-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    position: relative;
+    animation: fadeIn 0.6s ease-out backwards;
+    box-shadow: var(--shadow-sm);
+}
+
+.stock-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+    transition: left 0.5s;
+}
+
+.stock-card:hover::before {
+    left: 100%;
 }
 
 .stock-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(102, 126, 234, 0.3);
 }
 
 .stock-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
-    padding: 1.5rem;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stock-header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 150%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    animation: glow 4s ease-in-out infinite;
 }
 
 .stock-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .stock-symbol {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.stock-price {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-.stock-price {
+.stock-body {
+    padding: 2rem;
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    background: rgba(102, 126, 234, 0.05);
+    border-color: rgba(102, 126, 234, 0.2);
+    transform: scale(1.02);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.4rem;
+}
+
+.stat-value {
     font-size: 1.3rem;
     font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stat-value.positive {
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-value.negative {
+    background: var(--danger-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .recommendation-badge {
     display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.2);
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.recommendation-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
 }
 
 .recommendation-badge.buy {
-    background: #10b981;
+    background: var(--success-gradient);
+    box-shadow: 0 4px 15px rgba(17, 153, 142, 0.3);
 }
 
 .recommendation-badge.sell {
-    background: #ef4444;
+    background: var(--danger-gradient);
+    box-shadow: 0 4px 15px rgba(235, 51, 73, 0.3);
 }
 
 .recommendation-badge.hold {
-    background: #f59e0b;
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
 
 /* Filters Section */
 .filters-section {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 2rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 3rem;
     display: grid;
-    gap: 1rem;
+    gap: 1.5rem;
+    animation: slideUp 0.5s ease-out;
+    box-shadow: var(--shadow-sm);
 }
 
 .search-box input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    border-radius: 12px;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
 }
 
 .search-box input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: rgba(102, 126, 234, 0.5);
+    background: var(--card-bg);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.search-box input::placeholder {
+    color: var(--text-secondary);
 }
 
 .filter-controls {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 1rem;
 }
 
 .filter-controls select {
-    padding: 0.75rem 1rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    border-radius: 12px;
     font-size: 0.95rem;
-    background: white;
+    color: var(--text-primary);
     cursor: pointer;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease;
 }
 
 .filter-controls select:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: rgba(102, 126, 234, 0.5);
+    background: var(--card-bg);
 }
 
-/* Probability Section - Compact */
+.filter-controls select option {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+/* Probability Section */
 .probability-section {
     padding: 1.5rem;
-    background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    margin-bottom: 1.5rem;
+}
+
+/* Probability Section */
+.probability-section {
+    padding: 1.5rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(102, 126, 234, 0.15);
+    margin-bottom: 1.5rem;
 }
 
 .probability-value {
     font-size: 2rem;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 0.5rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.75rem;
 }
 
 .probability-bar {
-    height: 8px;
-    background: #d1d5db;
-    border-radius: 4px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
     overflow: hidden;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    position: relative;
 }
 
 .probability-fill {
     height: 100%;
-    background: linear-gradient(to right, #ef4444, #f59e0b, #10b981);
+    background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
     border-radius: 6px;
-    transition: width 1s ease;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }
 
 .confidence-level {
     font-size: 0.85rem;
-    color: #4b5563;
-}
-
-/* Quick Stats - Compact */
-.quick-stats {
-    padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-    background: #f9fafb;
-}
-
-.stat-item {
-    text-align: center;
-    padding: 0.75rem;
-    background: white;
-    border-radius: 8px;
-}
-
-.stat-label {
-    font-size: 0.75rem;
-    color: #6b7280;
-    margin-bottom: 0.25rem;
-}
-
-.stat-value {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #111827;
-}
-
-.stat-value.positive {
-    color: #10b981;
-}
-
-.stat-value.negative {
-    color: #ef4444;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 /* Modal */
@@ -432,8 +714,9 @@ main {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease-out;
 }
 
 .modal.active {
@@ -441,19 +724,22 @@ main {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     margin: 2% auto;
     padding: 0;
-    border-radius: 16px;
+    border-radius: 20px;
     width: 90%;
     max-width: 1200px;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.4s ease-out;
 }
 
 .modal-close {
-    color: #aaa;
+    color: var(--text-secondary);
+
     position: absolute;
     right: 1rem;
     top: 1rem;
@@ -474,151 +760,236 @@ main {
     position: relative;
 }
 
-.modal-close:hover,
-.modal-close:focus {
-    color: #000;
+.modal-close {
+    color: var(--text-secondary);
+    float: right;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
 }
 
-/* Risk Reward Section */
+.modal-close:hover,
+.modal-close:focus {
+    color: var(--text-primary);
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+/* Modal Sections */
 .risk-reward {
-    padding: 2rem;
+    padding: 2.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
 }
 
 .metric-box {
-    padding: 1.5rem;
-    background: #f9fafb;
-    border-radius: 12px;
-    border-left: 4px solid #667eea;
+    padding: 2rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-left: 4px solid;
+    border-left-color: var(--primary-gradient);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.metric-box:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
 }
 
 .metric-label {
-    font-size: 0.85rem;
-    color: #6b7280;
-    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 1.5px;
+    font-weight: 600;
 }
 
 .metric-value {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #111827;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
 }
 
 .metric-value.positive {
-    color: #10b981;
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .metric-value.negative {
-    color: #ef4444;
+    background: var(--danger-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Entry/Exit Section */
 .entry-exit {
-    padding: 2rem;
-    background: #f9fafb;
+    padding: 2.5rem;
+    background: var(--bg-secondary);
 }
 
 .section-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .entry-exit-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
 }
 
 .entry-exit-item {
-    padding: 1rem;
-    background: white;
-    border-radius: 8px;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
     text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.entry-exit-item:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
 }
 
 .entry-exit-label {
     font-size: 0.8rem;
-    color: #6b7280;
-    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .entry-exit-value {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #667eea;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* Scores Section */
 .scores-section {
-    padding: 2rem;
+    padding: 2.5rem;
 }
 
 .scores-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .score-item {
-    background: #f9fafb;
-    padding: 1.5rem;
-    border-radius: 12px;
+    background: rgba(102, 126, 234, 0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+}
+
+.score-item:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-3px);
 }
 
 .score-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
 }
 
 .score-name {
     font-weight: 600;
-    color: #374151;
+    color: var(--text-primary);
+    font-size: 1.1rem;
 }
 
 .score-number {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #667eea;
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .score-bar-container {
-    height: 8px;
-    background: #e5e7eb;
-    border-radius: 4px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
     overflow: hidden;
+    position: relative;
 }
+
 
 .score-bar-fill {
     height: 100%;
-    background: linear-gradient(to right, #ef4444, #f59e0b, #10b981);
-    border-radius: 4px;
-    transition: width 1s ease;
+    background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+    border-radius: 6px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
 }
 
 /* ML Predictions */
 .ml-predictions {
-    padding: 2rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 2.5rem;
+    background: var(--primary-gradient);
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.ml-predictions::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 150%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: float 8s ease-in-out infinite;
+}
+
+.processing-message {
+    padding: 2.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    opacity: 0.95;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
 }
 
 .prediction-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
 }
+
 
 .prediction-card {
     background: rgba(255,255,255,0.15);
@@ -655,39 +1026,46 @@ main {
 
 /* Insights & Warnings */
 .insights-warnings {
-    padding: 2rem;
+    padding: 2.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
 }
 
 .insights-box, .warnings-box {
-    padding: 1.5rem;
-    border-radius: 12px;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid;
+    box-shadow: var(--shadow-sm);
 }
 
 .insights-box {
-    background: #ecfdf5;
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.2);
     border-left: 4px solid #10b981;
 }
 
 .warnings-box {
-    background: #fef2f2;
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.2);
     border-left: 4px solid #ef4444;
 }
 
 .box-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    color: var(--text-primary);
 }
 
 .insight-item, .warning-item {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    font-size: 0.95rem;
 }
 
 .insight-item:last-child, .warning-item:last-child {
@@ -696,23 +1074,23 @@ main {
 
 /* Candlestick Patterns */
 .candlestick-patterns {
-    padding: 2rem;
-    background: #f9fafb;
+    padding: 2.5rem;
+    background: var(--bg-secondary);
 }
 
 /* Detailed Analysis Sections */
 .detailed-analysis {
-    padding: 2rem;
-    background: #f8fafc;
-    border-top: 1px solid #e5e7eb;
+    padding: 2.5rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
 }
 
 .analysis-details-section {
     margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
 }
 
 .analysis-details-section:last-child {
@@ -723,17 +1101,18 @@ main {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.875rem 1rem;
-    margin-bottom: 1.25rem;
-    background: #fef3c7;
-    border: 1px solid #f59e0b;
-    border-radius: 8px;
-    color: #92400e;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+    color: #f59e0b;
 }
 
 .estimated-data-warning .warning-icon {
     font-size: 1.25rem;
     flex-shrink: 0;
+    display: none;
 }
 
 .estimated-data-warning .warning-text {
@@ -743,110 +1122,123 @@ main {
 }
 
 .analysis-details-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #1f2937;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .analysis-details-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
 }
 
 .detail-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem;
-    background: #f9fafb;
-    border-radius: 6px;
-    border-left: 3px solid #667eea;
+    padding: 1rem;
+    background: rgba(102, 126, 234, 0.05);
+    border-radius: 12px;
+    border-left: 3px solid;
+    border-left-color: var(--primary-gradient);
+    transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: translateX(3px);
 }
 
 .detail-label {
     font-size: 0.85rem;
-    color: #6b7280;
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
 .detail-value {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #1f2937;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 .detail-value.positive {
-    color: #10b981;
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .detail-value.negative {
-    color: #ef4444;
+    background: var(--danger-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .detail-value.trend-bullish {
     color: #10b981;
-    background: #ecfdf5;
-    padding: 0.25rem 0.75rem;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.4rem 1rem;
     border-radius: 12px;
 }
 
 .detail-value.trend-bearish {
     color: #ef4444;
-    background: #fef2f2;
-    padding: 0.25rem 0.75rem;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.4rem 1rem;
     border-radius: 12px;
 }
 
 .detail-value.trend-neutral {
     color: #f59e0b;
-    background: #fef3c7;
-    padding: 0.25rem 0.75rem;
+    background: rgba(245, 158, 11, 0.1);
+    padding: 0.4rem 1rem;
     border-radius: 12px;
 }
 
 .detail-value.sentiment-positive {
     color: #10b981;
-    background: #ecfdf5;
-    padding: 0.25rem 0.75rem;
+    background: rgba(16, 185, 129, 0.15);
+    padding: 0.4rem 1rem;
     border-radius: 12px;
     font-weight: 700;
 }
 
 .detail-value.sentiment-negative {
     color: #ef4444;
-    background: #fef2f2;
-    padding: 0.25rem 0.75rem;
+    background: rgba(239, 68, 68, 0.15);
+    padding: 0.4rem 1rem;
     border-radius: 12px;
     font-weight: 700;
 }
 
 .detail-value.sentiment-neutral {
-    color: #6b7280;
-    background: #f3f4f6;
-    padding: 0.25rem 0.75rem;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.15);
+    padding: 0.4rem 1rem;
     border-radius: 12px;
     font-weight: 700;
 }
 
 /* Last Updated Section */
 .last-updated-section {
-    padding: 1rem 2rem;
-    background: #f3f4f6;
-    border-top: 1px solid #e5e7eb;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: 0.5rem;
     font-size: 0.85rem;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .last-updated-icon {
-    font-size: 1.2rem;
+    display: none;
 }
 
 .last-updated-text {
@@ -855,27 +1247,36 @@ main {
 
 .patterns-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 }
 
 .pattern-card {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    border-left: 4px solid #667eea;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid;
+    border-left-color: var(--primary-gradient);
+    transition: all 0.3s ease;
+}
+
+.pattern-card:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+    transform: translateY(-3px);
 }
 
 .pattern-name {
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 0.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
 .pattern-type {
     font-size: 0.85rem;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .pattern-type.bullish {
@@ -888,32 +1289,130 @@ main {
 
 /* Footer */
 footer {
-    background: #1f2937;
-    color: white;
-    padding: 2rem 0;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 2rem 1rem;
     text-align: center;
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 footer p {
     margin: 0.5rem 0;
-    opacity: 0.8;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+}
+
+footer .container {
+    max-width: 100%;
+    padding: 0 1rem;
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    #stock-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
-    .stock-symbol, .stock-price {
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    #stock-cards-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .summary-section {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    
+    .stock-symbol {
         font-size: 1.5rem;
     }
     
+    .stock-price {
+        font-size: 1.3rem;
+    }
+    
     .probability-value {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+    
+    .quick-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+    
+    .risk-reward, .entry-exit, .scores-section {
+        padding: 1.5rem;
+    }
+    
+    footer p {
+        font-size: 0.85rem;
+        padding: 0 1rem;
     }
 }
+
+@media (max-width: 480px) {
+    header {
+        padding: 2.5rem 0;
+    }
+    
+    header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .summary-card .number {
+        font-size: 2rem;
+    }
+    
+    .filter-controls {
+        grid-template-columns: 1fr;
+    }
+    
+    footer p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+}
+
+/* Animations on scroll */
+.stock-card {
+    animation-delay: calc(var(--card-index, 0) * 0.05s);
+}
+
+/* Loading animation */
+@keyframes loading {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+}
+
 """
         with open(os.path.join(self.output_dir, 'style.css'), 'w') as f:
             f.write(css)
@@ -944,11 +1443,15 @@ function initializeFilters() {
     const sortSelect = document.getElementById('sort-select');
     const filterRecommendation = document.getElementById('filter-recommendation');
     const filterProfitability = document.getElementById('filter-profitability');
+    const filterMlPredictions = document.getElementById('filter-ml-predictions');
+    const filterMlDate = document.getElementById('filter-ml-date');
     
     searchInput.addEventListener('input', applyFilters);
     sortSelect.addEventListener('change', applyFilters);
     filterRecommendation.addEventListener('change', applyFilters);
     filterProfitability.addEventListener('change', applyFilters);
+    filterMlPredictions.addEventListener('change', applyFilters);
+    filterMlDate.addEventListener('change', applyFilters);
 }
 
 function applyFilters() {
@@ -956,6 +1459,8 @@ function applyFilters() {
     const sortBy = document.getElementById('sort-select').value;
     const recFilter = document.getElementById('filter-recommendation').value;
     const profFilter = document.getElementById('filter-profitability').value;
+    const mlFilter = document.getElementById('filter-ml-predictions').value;
+    const mlDateFilter = document.getElementById('filter-ml-date').value;
     
     // Start with all stocks
     filteredStocks = [...allStocks];
@@ -983,6 +1488,31 @@ function applyFilters() {
             if (profFilter === 'medium') return prob >= 40 && prob <= 70;
             if (profFilter === 'low') return prob < 40;
             return true;
+        });
+    }
+    
+    // Apply ML predictions filter
+    if (mlFilter !== 'all') {
+        filteredStocks = filteredStocks.filter(stock => {
+            const hasMlPredictions = stock.ml_predictions && stock.ml_predictions.predictions && 
+                                    (Array.isArray(stock.ml_predictions.predictions) ? stock.ml_predictions.predictions.length > 0 : 
+                                     (stock.ml_predictions.predictions.dates && stock.ml_predictions.predictions.dates.length > 0));
+            if (mlFilter === 'with-ml') return hasMlPredictions;
+            if (mlFilter === 'without-ml') return !hasMlPredictions;
+            return true;
+        });
+    }
+    
+    // Apply ML date filter
+    if (mlDateFilter && mlDateFilter !== '') {
+        filteredStocks = filteredStocks.filter(stock => {
+            if (!stock.ml_predictions || !stock.ml_predictions.last_updated) return false;
+            
+            const lastUpdated = new Date(stock.ml_predictions.last_updated);
+            const filterDate = new Date(mlDateFilter);
+            
+            // Compare only the date part (ignore time)
+            return lastUpdated.toDateString() === filterDate.toDateString();
         });
     }
     
@@ -1072,7 +1602,6 @@ function createCompactCard(stock) {
     const currentPrice = insights.current_price || stock.price_data?.latest_price || 0;
     const riskReward = insights.risk_reward_ratio || {};
     const rrRatio = riskReward.ratio || 0;
-    // Use the correct field name from risk_reward_ratio
     const potentialProfit = riskReward.potential_profit_percent || insights.potential_profit_pct || 0;
     const scores = stock.scores || {};
     
@@ -1085,33 +1614,27 @@ function createCompactCard(stock) {
                 </div>
             </div>
             
-            <div class="probability-section">
-                <div class="probability-value">${probability.toFixed(1)}%</div>
-                <div class="probability-bar">
-                    <div class="probability-fill" style="width: ${probability}%"></div>
+            <div class="stock-body">
+                <div class="probability-section">
+                    <div class="probability-value">${probability.toFixed(1)}%</div>
+                    <div class="probability-bar">
+                        <div class="probability-fill" style="width: ${probability}%"></div>
+                    </div>
+                    <div class="confidence-level">
+                        <span class="recommendation-badge ${action.toLowerCase()}">${action}</span>
+                        • ${confidence}
+                    </div>
                 </div>
-                <div class="confidence-level">
-                    <span class="recommendation-badge ${action.toLowerCase()}">${action}</span>
-                    • ${confidence}
-                </div>
-            </div>
-            
-            <div class="quick-stats">
-                <div class="stat-item">
-                    <div class="stat-label">R:R Ratio</div>
-                    <div class="stat-value">${rrRatio.toFixed(2)}</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Potential</div>
-                    <div class="stat-value positive">+${potentialProfit.toFixed(1)}%</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Technical</div>
-                    <div class="stat-value">${(scores.technical || 0).toFixed(0)}/100</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-label">Sentiment</div>
-                    <div class="stat-value">${(scores.sentiment || 0).toFixed(0)}/100</div>
+                
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">R:R Ratio</div>
+                        <div class="stat-value">${rrRatio.toFixed(2)}</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Potential</div>
+                        <div class="stat-value positive">+${potentialProfit.toFixed(1)}%</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1290,82 +1813,132 @@ function createScoreItem(name, score) {
 function createMLPredictionsSection(mlPredictions) {
     if (!mlPredictions) return '';
     
-    // Handle both old weekly and new 7-day prediction formats
-    let predictions = [];
-    const trendAnalysis = mlPredictions.trend_analysis || {};
+    const predictions = mlPredictions.predictions;
+    const tradingSignal = mlPredictions.trading_signal || {}; // Add fallback
+    const model = mlPredictions.model || {}; // Add fallback
+    const recentActual = mlPredictions.recent_actual;
     
-    // NEW FORMAT: Check for 'days' object (7-day predictions)
-    const daysObj = mlPredictions.days;
-    
-    if (daysObj && typeof daysObj === 'object') {
-        // New 7-day format
-        ['day_1', 'day_2', 'day_3', 'day_4', 'day_5', 'day_6', 'day_7'].forEach((key, index) => {
-            if (daysObj[key]) {
-                const pred = daysObj[key];
-                predictions.push({
-                    period: `Day ${index + 1}`,
-                    predicted_price: pred.predicted_price,
-                    price_change_pct: pred.price_change_pct,
-                    confidence: pred.confidence_score || 85,
-                    target_date: pred.target_date,
-                    trend: pred.trend
-                });
-            }
-        });
-    } else {
-        // OLD FORMAT: Check for horizons/weeks object (weekly predictions)
-        const predObj = mlPredictions.horizons || mlPredictions.predictions || {};
-        
-        if (typeof predObj === 'object' && !Array.isArray(predObj)) {
-            ['1_week', '2_week', '4_week', '6_week'].forEach(key => {
-                if (predObj[key]) {
-                    const pred = predObj[key];
-                    predictions.push({
-                        period: key.replace('_', ' ').toUpperCase(),
-                        predicted_price: pred.predicted_price,
-                        price_change_pct: pred.price_change_pct,
-                        confidence: pred.confidence_score || 85,
-                        target_date: pred.target_date,
-                        trend: pred.trend
-                    });
-                }
-            });
-        } else if (Array.isArray(predObj)) {
-            predictions = predObj;
-        }
+    if (!predictions || !predictions.dates || !predictions.prices) {
+        return `
+            <div class="ml-predictions">
+                <h3 class="section-title">🤖 AI Predictions</h3>
+                <div class="processing-message">
+                    ⏳ Processing... ML predictions will be available soon.
+                </div>
+            </div>
+        `;
     }
     
-    if (predictions.length === 0) return '';
+    // Handle old format without trading_signal
+    if (!tradingSignal.direction) {
+        return `
+            <div class="ml-predictions">
+                <h3 class="section-title">🤖 AI Predictions</h3>
+                <div class="processing-message">
+                    ⚠️ This stock was trained with an older model version.<br>
+                    Please retrain to see trading signals and performance metrics.
+                </div>
+            </div>
+        `;
+    }
     
-    let predictionCards = predictions.map(pred => {
-        const change = pred.price_change_pct || pred.predicted_change_pct || 0;
-        const changeClass = change >= 0 ? 'positive' : 'negative';
-        const trendIcon = change >= 0 ? '📈' : '📉';
-        const price = pred.predicted_price || 0;
-        const confidence = pred.confidence || pred.confidence_score || 85;
+    // Create prediction cards for 7 days
+    const predictionCards = predictions.dates.map((date, index) => {
+        const price = predictions.prices[index];
+        const lastPrice = model.last_actual_price;
+        const change = price - lastPrice;
+        const changePct = (change / lastPrice) * 100;
+        const changeClass = changePct >= 0 ? 'positive' : 'negative';
+        const trendIcon = changePct >= 0 ? '📈' : '📉';
         
         return `
             <div class="prediction-card">
-                <div class="prediction-horizon">${pred.period || ''}</div>
-                <div style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.5rem;">${pred.target_date || ''}</div>
+                <div class="prediction-horizon">Day ${index + 1}</div>
+                <div style="font-size: 0.8rem; opacity: 0.8; margin-bottom: 0.5rem;">${date}</div>
                 <div class="prediction-price">NPR ${price.toFixed(2)}</div>
-                <div class="prediction-change ${changeClass}">${change >= 0 ? '+' : ''}${change.toFixed(2)}% ${trendIcon}</div>
-                <div style="font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem;">
-                    Confidence: ${confidence.toFixed(1)}%
-                </div>
+                <div class="prediction-change ${changeClass}">${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}% ${trendIcon}</div>
             </div>
         `;
     }).join('');
     
+    // Performance rating colors
+    const mapeRating = model.performance.mape_rating;
+    const mapeColor = mapeRating === 'Excellent' ? '#10b981' : 
+                      mapeRating === 'Good' ? '#3b82f6' :
+                      mapeRating === 'Fair' ? '#f59e0b' : '#ef4444';
+    
+    const signalStrength = model.performance.signal_strength;
+    const signalColor = signalStrength === 'Strong' ? '#10b981' :
+                       signalStrength === 'Moderate' ? '#f59e0b' : '#ef4444';
+    
+    const direction = tradingSignal.direction;
+    const directionColor = direction === 'BULLISH' ? '#10b981' :
+                          direction === 'BEARISH' ? '#ef4444' : '#6b7280';
+    const directionIcon = direction === 'BULLISH' ? '🟢' :
+                         direction === 'BEARISH' ? '🔴' : '⚪';
+    
     return `
         <div class="ml-predictions">
-            <h3 class="section-title" style="color: white;">🔮 ML Price Predictions</h3>
-            <div style="margin-bottom: 1rem; opacity: 0.9;">
-                Overall Trend: <strong>${trendAnalysis.overall_trend || 'N/A'}</strong>
-                ${trendAnalysis.avg_predicted_change ? ` • Avg Change: <strong>${trendAnalysis.avg_predicted_change >= 0 ? '+' : ''}${trendAnalysis.avg_predicted_change.toFixed(2)}%</strong>` : ''}
+            <h3 class="section-title">🤖 AI Price Predictions (Bi-LSTM Model)</h3>
+            
+            <!-- Trading Signal -->
+            <div class="trading-signal-box" style="background: linear-gradient(135deg, ${directionColor}20, ${directionColor}10); border-left: 4px solid ${directionColor}; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem;">Trading Signal</div>
+                        <div style="font-size: 1.8rem; font-weight: bold; color: ${directionColor};">
+                            ${directionIcon} ${direction}
+                        </div>
+                        <div style="font-size: 1rem; margin-top: 0.5rem;">
+                            <strong>${tradingSignal.recommendation}</strong> • Confidence: ${tradingSignal.confidence.toFixed(1)}%
+                        </div>
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.3rem;">
+                            ${tradingSignal.up_days} up days, ${tradingSignal.down_days} down days
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- Model Performance -->
+            <div class="model-performance" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">MAPE (Accuracy)</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: ${mapeColor};">${model.performance.test_mape.toFixed(2)}%</div>
+                    <div style="font-size: 0.8rem; font-weight: 600; color: ${mapeColor};">${mapeRating}</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">±Rs. ${(model.last_actual_price * model.performance.test_mape / 100).toFixed(2)}</div>
+                </div>
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">Direction Accuracy</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: ${signalColor};">${model.performance.direction_accuracy.toFixed(1)}%</div>
+                    <div style="font-size: 0.8rem; font-weight: 600; color: ${signalColor};">${signalStrength}</div>
+                </div>
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">Model Type</div>
+                    <div style="font-size: 1rem; font-weight: bold; margin-top: 0.5rem; color: #1f2937;">${model.architecture.toUpperCase()}</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7; color: #6b7280;">${model.lookback_days} days lookback</div>
+                </div>
+                <div class="performance-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">Last Known Price</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #1f2937;">NPR ${model.last_actual_price.toFixed(2)}</div>
+                    <div style="font-size: 0.8rem; opacity: 0.7; color: #6b7280;">Base for predictions</div>
+                </div>
+            </div>
+            
+            <!-- Predictions Grid -->
             <div class="prediction-grid">
                 ${predictionCards}
+            </div>
+            
+            <!-- Model Info -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(59, 130, 246, 0.05); border-radius: 8px; font-size: 0.85rem; opacity: 0.9;">
+                <div><strong>Model Details:</strong></div>
+                <div>• Architecture: ${model.architecture.toUpperCase()} with ${model.layers} layers</div>
+                <div>• Training Samples: ${model.training_samples.toLocaleString()} data points</div>
+                <div>• MAE: ${model.performance.test_mae.toFixed(2)} Rs | RMSE: ${model.performance.test_rmse.toFixed(2)} Rs</div>
+                <div style="margin-top: 0.5rem; opacity: 0.7;">
+                    <strong>Note:</strong> MAPE < 2% = Excellent, 2-5% = Good, 5-10% = Fair, >10% = Poor<br>
+                    Direction Accuracy > 70% = Strong signal, 50-70% = Moderate, < 50% = Weak
+                </div>
             </div>
         </div>
     `;
@@ -1394,7 +1967,22 @@ function createCandlestickPatternsSection(patterns) {
 }
 
 function createInsightsSection(insights) {
-    const items = insights.map(insight => 
+    // Filter out placeholder metrics (EPS growth 11.11% and ROE 20.00% appear to be placeholder data)
+    const filteredInsights = insights.filter(insight => {
+        const lowerInsight = insight.toLowerCase();
+        // Remove if it's a generic/placeholder EPS growth or ROE message
+        if (lowerInsight.includes('eps growth') && lowerInsight.includes('11.11')) {
+            return false;
+        }
+        if (lowerInsight.includes('roe') && lowerInsight.includes('20.')) {
+            return false;
+        }
+        return true;
+    });
+    
+    if (filteredInsights.length === 0) return '';
+    
+    const items = filteredInsights.map(insight => 
         `<div class="insight-item">${insight}</div>`
     ).join('');
     
@@ -1509,7 +2097,9 @@ function createFundamentalAnalysisDetails(stock) {
     const peRatio = ratios.pe_ratio?.value || 0;
     const pbRatio = ratios.pb_ratio?.value || 0;
     const dividendYield = ratios.dividend_yield?.value || 0;
-    const epsGrowth = ratios.eps_growth?.value || 0;
+    const epsGrowth = ratios.eps_growth?.value;
+    // Don't show EPS Growth if it's the placeholder value (11.11%) or invalid
+    const hasEpsGrowth = epsGrowth !== undefined && epsGrowth !== null && epsGrowth !== 0 && Math.abs(epsGrowth - 11.11) > 0.01;
     const roe = ratios.roe || 0;
     const debtToEquity = ratios.debt_to_equity || 0;
     const currentRatio = ratios.current_ratio || 0;
@@ -1549,17 +2139,15 @@ function createFundamentalAnalysisDetails(stock) {
                     <span class="detail-label">EPS</span>
                     <span class="detail-value">NPR ${eps.toFixed(2)}</span>
                 </div>
+                ${hasEpsGrowth ? `
                 <div class="detail-item">
                     <span class="detail-label">EPS Growth</span>
                     <span class="detail-value ${epsGrowth > 0 ? 'positive' : epsGrowth < 0 ? 'negative' : ''}">${epsGrowth > 0 ? '+' : ''}${epsGrowth.toFixed(2)}%</span>
                 </div>
+                ` : ''}
                 <div class="detail-item">
                     <span class="detail-label">Book Value</span>
                     <span class="detail-value">NPR ${bookValue.toFixed(2)}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">ROE</span>
-                    <span class="detail-value">${roe.toFixed(2)}%</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Dividend Yield</span>

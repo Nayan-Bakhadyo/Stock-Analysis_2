@@ -1,0 +1,24 @@
+{
+  "symbol": "SHPC",
+  "best_config": {
+    "architecture": "bidirectional",
+    "lookback": 60,
+    "layers": 2,
+    "learning_rate": 0.001,
+    "batch_size": 64,
+    "patience": 10,
+    "optimizer": "adam",
+    "units_1": 128,
+    "units_2": 64,
+    "dropout_1": 0.2,
+    "dropout_2": 0.2,
+    "dense_units": 32
+  },
+  "performance": {
+    "test_mape": 1.3550585521360075,
+    "test_mae": 6.772454197917658,
+    "test_rmse": 7.6646234836742515,
+    "direction_accuracy": 71.42857142857143
+  },
+  "timestamp": "2025-11-22T19:21:32.128791"
+}
