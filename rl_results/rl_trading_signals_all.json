@@ -1,0 +1,257 @@
+{
+  "last_updated": "2025-11-25T08:35:21.887951",
+  "multi_stock_training": true,
+  "stocks": {
+    "SPC": {
+      "current_signal": {
+        "recommendation": "SELL",
+        "date": "2025-08-17",
+        "price": 541.23,
+        "confidence": 0.3564453125,
+        "action_probabilities": {
+          "HOLD": 0.33642578125,
+          "BUY": 0.306884765625,
+          "SELL": 0.3564453125
+        },
+        "uncertainty": 0.0011186599731445312,
+        "ensemble_enabled": true,
+        "recent_signals": {
+          "buy": 0,
+          "sell": 10,
+          "hold": 0
+        }
+      },
+      "test_performance": {
+        "total_return": 0.0,
+        "buy_and_hold_return": -10.145035606427792,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "volatility": 0.0,
+        "total_trades": 0,
+        "outperformance": 10.145035606427792,
+        "avg_holding_period": 134.0,
+        "win_rate": 0.0
+      },
+      "diagnostics": {
+        "algorithm": "Double DQN + Dueling + Prioritized Replay",
+        "n_step_returns": 3,
+        "state_features": 20,
+        "includes_stock_embedding": true
+      },
+      "timestamp": "2025-11-24T02:02:13.893582"
+    },
+    "AHPC": {
+      "current_signal": {
+        "recommendation": "SELL",
+        "date": "2025-08-17",
+        "price": 295.43,
+        "confidence": 0.3564453125,
+        "action_probabilities": {
+          "HOLD": 0.33642578125,
+          "BUY": 0.306884765625,
+          "SELL": 0.3564453125
+        },
+        "uncertainty": 0.0011186599731445312,
+        "ensemble_enabled": true,
+        "recent_signals": {
+          "buy": 0,
+          "sell": 10,
+          "hold": 0
+        }
+      },
+      "test_performance": {
+        "total_return": 0.0,
+        "buy_and_hold_return": 1.3196480938416295,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "volatility": 0.0,
+        "total_trades": 0,
+        "outperformance": -1.3196480938416295,
+        "avg_holding_period": 662.0,
+        "win_rate": 0.0
+      },
+      "diagnostics": {
+        "algorithm": "Double DQN + Dueling + Prioritized Replay",
+        "n_step_returns": 3,
+        "state_features": 20,
+        "includes_stock_embedding": true
+      },
+      "timestamp": "2025-11-24T02:03:12.618997"
+    },
+    "IGI": {
+      "current_signal": {
+        "recommendation": "SELL",
+        "date": "2025-08-17",
+        "price": 526.59,
+        "confidence": 0.3564453125,
+        "action_probabilities": {
+          "HOLD": 0.33642578125,
+          "BUY": 0.306884765625,
+          "SELL": 0.3564453125
+        },
+        "uncertainty": 0.0011186599731445312,
+        "ensemble_enabled": true,
+        "recent_signals": {
+          "buy": 0,
+          "sell": 10,
+          "hold": 0
+        }
+      },
+      "test_performance": {
+        "total_return": 0.0,
+        "buy_and_hold_return": -30.207310138034426,
+        "sharpe_ratio": 0.0,
+        "max_drawdown": 0.0,
+        "volatility": 0.0,
+        "total_trades": 0,
+        "outperformance": 30.207310138034426,
+        "avg_holding_period": 63.0,
+        "win_rate": 0.0
+      },
+      "diagnostics": {
+        "algorithm": "Double DQN + Dueling + Prioritized Replay",
+        "n_step_returns": 3,
+        "state_features": 20,
+        "includes_stock_embedding": true
+      },
+      "timestamp": "2025-11-24T02:03:21.846454"
+    }
+  },
+  "training_pool": [
+    "SPC",
+    "AHPC",
+    "IGI"
+  ],
+  "signals": {
+    "IGI": {
+      "recommendation": "HOLD",
+      "confidence": 0.50341796875,
+      "date": "2025-11-24",
+      "price": 432.0,
+      "action_probabilities": {
+        "HOLD": 0.50341796875,
+        "BUY": 0.0760498046875,
+        "SELL": 0.420654296875
+      },
+      "holding_period": "Continue monitoring (neutral position)",
+      "signal_strength": {
+        "buy": 0.0,
+        "hold": 100.0
+      },
+      "signal_quality": "HIGH",
+      "timestamp": "2025-11-24T17:20:40.410617",
+      "q_values": {
+        "HOLD": -0.08837890625,
+        "BUY": -1.978515625,
+        "SELL": -0.26806640625
+      },
+      "q_value_range": 1.890625,
+      "estimated_return_pct": 0.0008984375,
+      "average_holding_days": 7
+    },
+    "SPC": {
+      "recommendation": "HOLD",
+      "confidence": 0.53466796875,
+      "date": "2025-06-08",
+      "price": 501.76,
+      "action_probabilities": {
+        "HOLD": 0.53466796875,
+        "BUY": 0.061431884765625,
+        "SELL": 0.403564453125
+      },
+      "holding_period": "Continue monitoring (neutral position)",
+      "signal_strength": {
+        "buy": 0.0,
+        "hold": 100.0
+      },
+      "signal_quality": "HIGH",
+      "timestamp": "2025-11-24T12:01:09.472451",
+      "q_values": {
+        "HOLD": 0.00732421875,
+        "BUY": -2.15625,
+        "SELL": -0.27392578125
+      },
+      "q_value_range": 2.1640625,
+      "estimated_return_pct": 3.0,
+      "average_holding_days": 30
+    },
+    "AHPC": {
+      "recommendation": "HOLD",
+      "confidence": 0.53466796875,
+      "date": "2025-06-10",
+      "price": 305.66,
+      "action_probabilities": {
+        "HOLD": 0.53466796875,
+        "BUY": 0.061431884765625,
+        "SELL": 0.403564453125
+      },
+      "holding_period": "Continue monitoring (neutral position)",
+      "signal_strength": {
+        "buy": 0.0,
+        "hold": 100.0
+      },
+      "signal_quality": "HIGH",
+      "timestamp": "2025-11-24T12:01:13.162465",
+      "q_values": {
+        "HOLD": -0.10986328125,
+        "BUY": -2.2734375,
+        "SELL": -0.39111328125
+      },
+      "q_value_range": 2.1640625,
+      "estimated_return_pct": 3.0,
+      "average_holding_days": 30
+    },
+    "TVCL": {
+      "recommendation": "HOLD",
+      "confidence": 1.0,
+      "date": "2025-11-24",
+      "price": 424.9,
+      "action_probabilities": {
+        "HOLD": 1.0,
+        "BUY": 0.0,
+        "SELL": 0.0
+      },
+      "holding_period": "Continue monitoring (neutral position)",
+      "signal_strength": {
+        "buy": 54.345703125,
+        "hold": 100.0
+      },
+      "signal_quality": "HIGH",
+      "timestamp": "2025-11-24T17:19:21.709826",
+      "q_values": {
+        "HOLD": 1048.0,
+        "BUY": -8584.0,
+        "SELL": -20064.0
+      },
+      "q_value_range": 21120.0,
+      "estimated_return_pct": 2.0,
+      "average_holding_days": 159
+    },
+    "PFL": {
+      "recommendation": "BUY",
+      "confidence": 1.0,
+      "date": "2025-11-24",
+      "price": 388.0,
+      "action_probabilities": {
+        "HOLD": 0.0,
+        "BUY": 1.0,
+        "SELL": 0.0
+      },
+      "holding_period": "3-7 days (strong signal)",
+      "signal_strength": {
+        "buy": 100.0,
+        "hold": 86.5234375
+      },
+      "signal_quality": "HIGH",
+      "timestamp": "2025-11-25T08:35:21.887941",
+      "q_values": {
+        "HOLD": 1846.0,
+        "BUY": 2334.0,
+        "SELL": -1288.0
+      },
+      "q_value_range": 3622.0,
+      "estimated_return_pct": 4.88,
+      "average_holding_days": 5
+    }
+  }
+}

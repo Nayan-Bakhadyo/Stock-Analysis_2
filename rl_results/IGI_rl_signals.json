@@ -1,0 +1,40 @@
+{
+  "symbol": "IGI",
+  "timestamp": "2025-11-24T17:20:40.410189",
+  "model": "SPC_IGI_AHPC_rl_model.keras",
+  "trained_symbols": [
+    "SPC",
+    "IGI",
+    "AHPC"
+  ],
+  "current_signal": {
+    "recommendation": "HOLD",
+    "date": "2025-11-24",
+    "price": 432.0,
+    "confidence": 0.50341796875,
+    "action_probabilities": {
+      "HOLD": 0.50341796875,
+      "BUY": 0.0760498046875,
+      "SELL": 0.420654296875
+    },
+    "q_values": {
+      "HOLD": -0.08837890625,
+      "BUY": -1.978515625,
+      "SELL": -0.26806640625
+    },
+    "holding_period": "Continue monitoring (neutral position)",
+    "signal_strength": {
+      "buy": 0.0,
+      "hold": 100.0
+    },
+    "signal_quality": "HIGH",
+    "q_value_range": 1.890625,
+    "estimated_return_pct": 0.0008984375,
+    "average_holding_days": 7
+  },
+  "diagnostics": {
+    "algorithm": "Double DQN + Dueling + Prioritized Replay",
+    "state_features": 20,
+    "multi_stock_training": true
+  }
+}

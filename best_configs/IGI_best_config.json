@@ -2,25 +2,23 @@
   "symbol": "IGI",
   "best_config": {
     "architecture": "bidirectional",
-    "lookback": 365,
-    "layers": 3,
-    "learning_rate": 0.001,
+    "lookback": 60,
+    "layers": 2,
+    "learning_rate": 0.0005,
     "batch_size": 64,
     "patience": 10,
     "optimizer": "adam",
-    "units_1": 64,
-    "units_2": 32,
-    "units_3": 16,
+    "units_1": 128,
+    "units_2": 64,
     "dropout_1": 0.2,
     "dropout_2": 0.2,
-    "dropout_3": 0.1,
     "dense_units": 32
   },
   "performance": {
-    "test_mape": 3.217252002761749,
-    "test_mae": 13.13308238381786,
-    "test_rmse": 18.9873031619608,
-    "direction_accuracy": 85.71428571428571
+    "test_mape": 13.050433809400777,
+    "test_mae": 55.49936243453194,
+    "test_rmse": 67.20392049268166,
+    "direction_accuracy": 57.14285714285714
   },
-  "timestamp": "2025-11-22T18:26:54.144905"
+  "timestamp": "2025-11-23T19:43:55.917221"
 }

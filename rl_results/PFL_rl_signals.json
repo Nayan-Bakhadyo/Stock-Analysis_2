@@ -1,0 +1,38 @@
+{
+  "symbol": "PFL",
+  "timestamp": "2025-11-25T08:35:21.887346",
+  "model": "PFL_rl_model.keras",
+  "trained_symbols": [
+    "PFL"
+  ],
+  "current_signal": {
+    "recommendation": "BUY",
+    "date": "2025-11-24",
+    "price": 388.0,
+    "confidence": 1.0,
+    "action_probabilities": {
+      "HOLD": 0.0,
+      "BUY": 1.0,
+      "SELL": 0.0
+    },
+    "q_values": {
+      "HOLD": 1846.0,
+      "BUY": 2334.0,
+      "SELL": -1288.0
+    },
+    "holding_period": "3-7 days (strong signal)",
+    "signal_strength": {
+      "buy": 100.0,
+      "hold": 86.5234375
+    },
+    "signal_quality": "HIGH",
+    "q_value_range": 3622.0,
+    "estimated_return_pct": 4.88,
+    "average_holding_days": 5
+  },
+  "diagnostics": {
+    "algorithm": "Double DQN + Dueling + Prioritized Replay",
+    "state_features": 18,
+    "multi_stock_training": true
+  }
+}

@@ -56,6 +56,9 @@ all_nepse_stocks_*.json
 all_nepse_stocks_*.csv
 all_stocks_*.json
 
+# Exclude the entire models folder
+models/
+
 # Jupyter Notebooks
 .ipynb_checkpoints
 *.ipynb

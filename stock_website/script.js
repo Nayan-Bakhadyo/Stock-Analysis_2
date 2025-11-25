@@ -364,6 +364,8 @@ function createDetailedView(stock) {
             
             ${mlPredictions ? createMLPredictionsSection(mlPredictions) : ''}
             
+            ${stock.rl_signal ? createRLSignalSection(stock.rl_signal) : ''}
+            
             ${patterns.length > 0 ? createCandlestickPatternsSection(patterns) : ''}
             
             <!-- Insights & Warnings -->
@@ -540,6 +542,133 @@ function createCandlestickPatternsSection(patterns) {
             <h3 class="section-title">🕯️ Candlestick Patterns (Last 10 Days)</h3>
             <div class="patterns-grid">
                 ${patternCards}
+            </div>
+        </div>
+    `;
+}
+
+function createRLSignalSection(rlSignal) {
+    if (!rlSignal) return '';
+    
+    const recommendation = rlSignal.recommendation || 'HOLD';
+    const confidence = rlSignal.confidence || 0;
+    const actionProbs = rlSignal.action_probabilities || {};
+    const holdingPeriod = rlSignal.holding_period || 'N/A';
+    const signalStrength = rlSignal.signal_strength || {};
+    const signalQuality = rlSignal.signal_quality || 'MEDIUM';
+    const qValues = rlSignal.q_values || {};
+    const qValueRange = rlSignal.q_value_range || 0;
+    const estimatedReturn = rlSignal.estimated_return_pct || 0;
+    const avgHoldingDays = rlSignal.average_holding_days || 0;
+    
+    // Color based on recommendation
+    const recColor = recommendation === 'BUY' ? '#10b981' :
+                     recommendation === 'SELL' ? '#ef4444' : '#6b7280';
+    const recIcon = recommendation === 'BUY' ? '🟢' :
+                    recommendation === 'SELL' ? '🔴' : '⚪';
+    
+    // Quality color
+    const qualityColor = signalQuality === 'HIGH' ? '#10b981' :
+                         signalQuality === 'MEDIUM' ? '#f59e0b' : '#6b7280';
+    
+    // Return color
+    const returnColor = estimatedReturn > 0 ? '#10b981' : estimatedReturn < 0 ? '#ef4444' : '#6b7280';
+    
+    return `
+        <div class="rl-signal-section" style="margin: 2rem 1.5rem;">
+            <h3 class="section-title">🤖 Reinforcement Learning Signal (DQN Agent)</h3>
+            
+            <!-- Main Signal -->
+            <div class="rl-signal-box" style="background: linear-gradient(135deg, ${recColor}20, ${recColor}10); border-left: 4px solid ${recColor}; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem;">RL Recommendation</div>
+                        <div style="font-size: 1.8rem; font-weight: bold; color: ${recColor};">
+                            ${recIcon} ${recommendation}
+                        </div>
+                        <div style="font-size: 1rem; margin-top: 0.5rem;">
+                            Confidence: <strong>${(confidence * 100).toFixed(1)}%</strong>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem;">Signal Quality</div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: ${qualityColor};">
+                            ${signalQuality}
+                        </div>
+                        <div style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.3rem;">
+                            Q-range: ${qValueRange.toFixed(4)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expected Return & Holding Period -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 0.5rem;">💰 Estimated Return</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: ${returnColor};">
+                        ${estimatedReturn >= 0 ? '+' : ''}${estimatedReturn.toFixed(2)}%
+                    </div>
+                    <div style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.3rem;">Based on Q-value analysis</div>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 0.5rem;">📅 Average Holding</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #1f2937;">
+                        ${avgHoldingDays} days
+                    </div>
+                    <div style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.3rem;">${holdingPeriod}</div>
+                </div>
+            </div>
+            
+            <!-- Action Probabilities -->
+            <div class="rl-probabilities" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                <div class="prob-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">BUY Probability</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #10b981;">${(actionProbs.BUY * 100).toFixed(1)}%</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">Q: ${(qValues.BUY || 0).toFixed(4)}</div>
+                </div>
+                <div class="prob-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(107, 114, 128, 0.3);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">HOLD Probability</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #6b7280;">${(actionProbs.HOLD * 100).toFixed(1)}%</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">Q: ${(qValues.HOLD || 0).toFixed(4)}</div>
+                </div>
+                <div class="prob-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">SELL Probability</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #ef4444;">${(actionProbs.SELL * 100).toFixed(1)}%</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">Q: ${(qValues.SELL || 0).toFixed(4)}</div>
+                </div>
+            </div>
+            
+            <!-- Signal Strength Indicators -->
+            <div class="signal-strength" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">BUY Signal Strength</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;">${signalStrength.buy ? signalStrength.buy.toFixed(1) : '0.0'}/100</div>
+                    <div class="signal-bar" style="width: 100%; height: 8px; background: rgba(16, 185, 129, 0.2); border-radius: 4px; margin-top: 0.5rem; overflow: hidden;">
+                        <div style="width: ${signalStrength.buy || 0}%; height: 100%; background: #10b981; border-radius: 4px;"></div>
+                    </div>
+                </div>
+                <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">HOLD Signal Strength</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #6b7280;">${signalStrength.hold ? signalStrength.hold.toFixed(1) : '0.0'}/100</div>
+                    <div class="signal-bar" style="width: 100%; height: 8px; background: rgba(107, 114, 128, 0.2); border-radius: 4px; margin-top: 0.5rem; overflow: hidden;">
+                        <div style="width: ${signalStrength.hold || 0}%; height: 100%; background: #6b7280; border-radius: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Model Info -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(139, 92, 246, 0.05); border-radius: 8px; font-size: 0.85rem; opacity: 0.9;">
+                <div><strong>🧠 RL Model Details:</strong></div>
+                <div>• Algorithm: Double DQN with Dueling Architecture + Prioritized Replay</div>
+                <div>• Trained on: SPC, IGI, AHPC (Multi-stock training for better generalization)</div>
+                <div>• State Features: 20 features (price momentum, volume patterns, technical indicators)</div>
+                <div>• Actions: BUY (enter position), HOLD (maintain), SELL (exit position)</div>
+                <div style="margin-top: 0.5rem; opacity: 0.7;">
+                    <strong>Note:</strong> Q-values represent expected cumulative returns for each action.<br>
+                    Higher Q-value range indicates stronger conviction in the recommendation.<br>
+                    Signal quality HIGH (Q-range > 1.0) = Strong conviction, MEDIUM (0.5-1.0) = Moderate, LOW (< 0.5) = Weak
+                </div>
             </div>
         </div>
     `;

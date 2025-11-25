@@ -1,0 +1,24 @@
+{
+  "symbol": "PFL",
+  "best_config": {
+    "architecture": "bidirectional",
+    "lookback": 180,
+    "layers": 2,
+    "learning_rate": 0.001,
+    "batch_size": 32,
+    "patience": 10,
+    "optimizer": "adam",
+    "units_1": 64,
+    "units_2": 32,
+    "dropout_1": 0.3,
+    "dropout_2": 0.3,
+    "dense_units": 32
+  },
+  "performance": {
+    "test_mape": 1.26,
+    "test_mae": 0,
+    "test_rmse": 0,
+    "direction_accuracy": 100.0
+  },
+  "timestamp": "2025-11-25T00:00:00"
+}

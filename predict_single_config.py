@@ -14,8 +14,10 @@ warnings.filterwarnings('ignore', category=UserWarning, module='tensorflow')
 
 # Configure TensorFlow for M1 optimization
 import tensorflow as tf
-tf.keras.mixed_precision.set_global_policy('mixed_float16')
-tf.config.optimizer.set_jit(True)
+# Disable mixed precision and XLA for prediction script (causes XLA errors on Metal)
+# Mixed precision is only used during grid search in subprocesses
+# tf.keras.mixed_precision.set_global_policy('mixed_float16')
+# tf.config.optimizer.set_jit(True)
 
 from tune_hyperparameters import HyperparameterTuner
 import pandas as pd

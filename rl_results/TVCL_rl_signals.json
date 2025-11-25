@@ -1,0 +1,38 @@
+{
+  "symbol": "TVCL",
+  "timestamp": "2025-11-24T17:19:21.709254",
+  "model": "TVCL_rl_model.keras",
+  "trained_symbols": [
+    "TVCL"
+  ],
+  "current_signal": {
+    "recommendation": "HOLD",
+    "date": "2025-11-24",
+    "price": 424.9,
+    "confidence": 1.0,
+    "action_probabilities": {
+      "HOLD": 1.0,
+      "BUY": 0.0,
+      "SELL": 0.0
+    },
+    "q_values": {
+      "HOLD": 1048.0,
+      "BUY": -8584.0,
+      "SELL": -20064.0
+    },
+    "holding_period": "Continue monitoring (neutral position)",
+    "signal_strength": {
+      "buy": 54.345703125,
+      "hold": 100.0
+    },
+    "signal_quality": "HIGH",
+    "q_value_range": 21120.0,
+    "estimated_return_pct": 2.0,
+    "average_holding_days": 159
+  },
+  "diagnostics": {
+    "algorithm": "Double DQN + Dueling + Prioritized Replay",
+    "state_features": 18,
+    "multi_stock_training": true
+  }
+}

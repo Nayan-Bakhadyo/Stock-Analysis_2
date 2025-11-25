@@ -2,23 +2,23 @@
   "symbol": "AHPC",
   "best_config": {
     "architecture": "bidirectional",
-    "lookback": 60,
+    "lookback": 365,
     "layers": 2,
-    "learning_rate": 0.0005,
-    "batch_size": 32,
+    "learning_rate": 0.001,
+    "batch_size": 64,
     "patience": 10,
     "optimizer": "adam",
-    "units_1": 64,
-    "units_2": 32,
-    "dropout_1": 0.2,
-    "dropout_2": 0.2,
+    "units_1": 128,
+    "units_2": 64,
+    "dropout_1": 0.3,
+    "dropout_2": 0.3,
     "dense_units": 32
   },
   "performance": {
-    "test_mape": 0.9879552448706755,
-    "test_mae": 2.749539620535724,
-    "test_rmse": 3.069147382816968,
-    "direction_accuracy": 57.14285714285714
+    "test_mape": 6.488621188857696,
+    "test_mae": 18.590802076884675,
+    "test_rmse": 21.909035743184223,
+    "direction_accuracy": 85.71428571428571
   },
-  "timestamp": "2025-11-22T19:17:59.516085"
+  "timestamp": "2025-11-23T22:29:54.018847"
 }

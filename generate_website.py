@@ -5,19 +5,112 @@ Displays comprehensive trading insights including profitability probability, ris
 
 import json
 import os
+import sqlite3
 from datetime import datetime
 
 
 class StockWebsiteGenerator:
-    def __init__(self, json_file='analysis_results.json', ml_file='stock_predictions.json', output_dir='stock_website'):
+    def __init__(self, json_file='analysis_results.json', ml_file='stock_predictions.json', 
+                 rl_signals_file='rl_results/rl_trading_signals_all.json', output_dir='stock_website'):
         self.json_file = json_file
         self.ml_file = ml_file
+        self.rl_signals_file = rl_signals_file
         self.output_dir = output_dir
         self.data = []
         self.ml_data = {}
+        self.rl_signals = {}
+    
+    def _refresh_prices_from_db(self):
+        """Fetch latest prices from database and update analysis_results.json"""
+        db_path = 'data/nepse_stocks.db'
+        
+        if not os.path.exists(db_path):
+            print(f"⚠ Database not found at {db_path}, skipping price refresh")
+            return
+        
+        if not os.path.exists(self.json_file):
+            print(f"⚠ {self.json_file} not found, skipping price refresh")
+            return
+        
+        try:
+            # Load existing results
+            with open(self.json_file, 'r') as f:
+                results = json.load(f)
+            
+            # Get symbols
+            symbols = [stock['symbol'] for stock in results if not stock.get('error')]
+            if not symbols:
+                return
+            
+            # Fetch latest prices from database
+            conn = sqlite3.connect(db_path)
+            placeholders = ','.join(['?' for _ in symbols])
+            query = f"""
+                SELECT symbol, date, close 
+                FROM (
+                    SELECT symbol, date, close,
+                           ROW_NUMBER() OVER (PARTITION BY symbol ORDER BY date DESC) as rn
+                    FROM price_history
+                    WHERE symbol IN ({placeholders})
+                )
+                WHERE rn = 1
+            """
+            cursor = conn.execute(query, symbols)
+            latest_prices = {row[0]: {'date': row[1], 'price': row[2]} for row in cursor.fetchall()}
+            conn.close()
+            
+            # Update prices in results
+            updated_count = 0
+            for stock in results:
+                if stock.get('error'):
+                    continue
+                
+                symbol = stock['symbol']
+                if symbol in latest_prices:
+                    new_price = latest_prices[symbol]['price']
+                    new_date = latest_prices[symbol]['date']
+                    
+                    # Update price_data
+                    if 'price_data' not in stock:
+                        stock['price_data'] = {}
+                    stock['price_data']['latest_price'] = new_price
+                    stock['price_data']['latest_date'] = new_date
+                    
+                    # Update fundamentals
+                    if 'fundamentals' in stock:
+                        stock['fundamentals']['current_price'] = new_price
+                    
+                    # Update insights
+                    if 'insights' in stock:
+                        stock['insights']['current_price'] = new_price
+                    
+                    # Update trading_insights
+                    if 'trading_insights' in stock:
+                        stock['trading_insights']['current_price'] = new_price
+                    
+                    # Update recommendations
+                    if 'recommendations' in stock:
+                        for rec_type in ['short_term', 'medium_term', 'long_term']:
+                            if rec_type in stock['recommendations']:
+                                stock['recommendations'][rec_type]['current_price'] = new_price
+                    
+                    updated_count += 1
+            
+            # Save updated results
+            with open(self.json_file, 'w') as f:
+                json.dump(results, f, indent=2)
+            
+            print(f"✓ Refreshed prices for {updated_count} stocks from database")
+            
+        except Exception as e:
+            print(f"⚠ Failed to refresh prices from database: {e}")
     
     def load_data(self):
-        """Load analysis results from JSON"""
+        """Load analysis results from JSON and refresh prices from database"""
+        # First, refresh prices from database
+        self._refresh_prices_from_db()
+        
+        # Then load the updated data
         with open(self.json_file, 'r') as f:
             self.data = json.load(f)
         
@@ -30,11 +123,61 @@ class StockWebsiteGenerator:
         else:
             print(f"⚠ No ML predictions file found at {self.ml_file}")
         
-        # Merge ML predictions into stock data
+        # Load RL signals if available (NEW!)
+        if os.path.exists(self.rl_signals_file):
+            with open(self.rl_signals_file, 'r') as f:
+                rl_json = json.load(f)
+                self.rl_signals = rl_json.get('signals', {})
+            print(f"✓ Loaded RL trading signals for {len(self.rl_signals)} stocks from {self.rl_signals_file}")
+        else:
+            print(f"⚠ No RL signals file found at {self.rl_signals_file}")
+            print(f"   Run: python3 inference_rl_model.py SYMBOL to generate RL signals")
+        
+        # Merge ML predictions and RL signals into stock data
         for stock in self.data:
             symbol = stock['symbol']
+            
+            # Add ML predictions
             if symbol in self.ml_data:
                 stock['ml_predictions'] = self.ml_data[symbol]
+            
+            # Add RL signals and update recommendation (NEW!)
+            if symbol in self.rl_signals:
+                rl_data = self.rl_signals[symbol]
+                stock['rl_signal'] = rl_data
+                
+                # Override recommendation with RL signal
+                current_signal = rl_data.get('current_signal', {})
+                performance = rl_data.get('performance_metrics', {})
+                
+                confidence = current_signal.get('confidence', 0)
+                uncertainty = current_signal.get('ensemble_uncertainty', 1)
+                action = current_signal.get('action', 'HOLD')
+                
+                # Determine strength
+                if confidence > 0.75 and uncertainty < 0.15:
+                    strength = 'STRONG'
+                elif confidence > 0.6 and uncertainty < 0.25:
+                    strength = 'MODERATE'
+                else:
+                    strength = 'WEAK'
+                
+                # Update trading insights with RL data
+                if 'trading_insights' not in stock:
+                    stock['trading_insights'] = {}
+                
+                stock['trading_insights']['recommendation'] = action
+                stock['trading_insights']['recommendation_strength'] = strength
+                stock['trading_insights']['recommendation_confidence'] = confidence
+                stock['trading_insights']['recommendation_source'] = 'RL Agent'
+                stock['trading_insights']['rl_uncertainty'] = uncertainty
+                
+                # Update profitability based on RL performance
+                if performance.get('test_return', 0) > 0:
+                    # Boost profitability for good RL performance
+                    rl_boost = min(30, performance.get('test_return', 0))
+                    old_prob = stock['trading_insights'].get('profitability_probability', 50)
+                    stock['trading_insights']['profitability_probability'] = min(95, old_prob + rl_boost)
         
         # Sort by profitability probability
         for stock in self.data:
@@ -1785,6 +1928,8 @@ function createDetailedView(stock) {
             
             ${mlPredictions ? createMLPredictionsSection(mlPredictions) : ''}
             
+            ${stock.rl_signal ? createRLSignalSection(stock.rl_signal) : ''}
+            
             ${patterns.length > 0 ? createCandlestickPatternsSection(patterns) : ''}
             
             <!-- Insights & Warnings -->
@@ -1961,6 +2106,133 @@ function createCandlestickPatternsSection(patterns) {
             <h3 class="section-title">🕯️ Candlestick Patterns (Last 10 Days)</h3>
             <div class="patterns-grid">
                 ${patternCards}
+            </div>
+        </div>
+    `;
+}
+
+function createRLSignalSection(rlSignal) {
+    if (!rlSignal) return '';
+    
+    const recommendation = rlSignal.recommendation || 'HOLD';
+    const confidence = rlSignal.confidence || 0;
+    const actionProbs = rlSignal.action_probabilities || {};
+    const holdingPeriod = rlSignal.holding_period || 'N/A';
+    const signalStrength = rlSignal.signal_strength || {};
+    const signalQuality = rlSignal.signal_quality || 'MEDIUM';
+    const qValues = rlSignal.q_values || {};
+    const qValueRange = rlSignal.q_value_range || 0;
+    const estimatedReturn = rlSignal.estimated_return_pct || 0;
+    const avgHoldingDays = rlSignal.average_holding_days || 0;
+    
+    // Color based on recommendation
+    const recColor = recommendation === 'BUY' ? '#10b981' :
+                     recommendation === 'SELL' ? '#ef4444' : '#6b7280';
+    const recIcon = recommendation === 'BUY' ? '🟢' :
+                    recommendation === 'SELL' ? '🔴' : '⚪';
+    
+    // Quality color
+    const qualityColor = signalQuality === 'HIGH' ? '#10b981' :
+                         signalQuality === 'MEDIUM' ? '#f59e0b' : '#6b7280';
+    
+    // Return color
+    const returnColor = estimatedReturn > 0 ? '#10b981' : estimatedReturn < 0 ? '#ef4444' : '#6b7280';
+    
+    return `
+        <div class="rl-signal-section" style="margin: 2rem 1.5rem;">
+            <h3 class="section-title">🤖 Reinforcement Learning Signal (DQN Agent)</h3>
+            
+            <!-- Main Signal -->
+            <div class="rl-signal-box" style="background: linear-gradient(135deg, ${recColor}20, ${recColor}10); border-left: 4px solid ${recColor}; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem;">RL Recommendation</div>
+                        <div style="font-size: 1.8rem; font-weight: bold; color: ${recColor};">
+                            ${recIcon} ${recommendation}
+                        </div>
+                        <div style="font-size: 1rem; margin-top: 0.5rem;">
+                            Confidence: <strong>${(confidence * 100).toFixed(1)}%</strong>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.5rem;">Signal Quality</div>
+                        <div style="font-size: 1.3rem; font-weight: bold; color: ${qualityColor};">
+                            ${signalQuality}
+                        </div>
+                        <div style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.3rem;">
+                            Q-range: ${qValueRange.toFixed(4)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expected Return & Holding Period -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 0.5rem;">💰 Estimated Return</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: ${returnColor};">
+                        ${estimatedReturn >= 0 ? '+' : ''}${estimatedReturn.toFixed(2)}%
+                    </div>
+                    <div style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.3rem;">Based on Q-value analysis</div>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.9rem; opacity: 0.7; margin-bottom: 0.5rem;">📅 Average Holding</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #1f2937;">
+                        ${avgHoldingDays} days
+                    </div>
+                    <div style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.3rem;">${holdingPeriod}</div>
+                </div>
+            </div>
+            
+            <!-- Action Probabilities -->
+            <div class="rl-probabilities" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                <div class="prob-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">BUY Probability</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #10b981;">${(actionProbs.BUY * 100).toFixed(1)}%</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">Q: ${(qValues.BUY || 0).toFixed(4)}</div>
+                </div>
+                <div class="prob-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(107, 114, 128, 0.3);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">HOLD Probability</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #6b7280;">${(actionProbs.HOLD * 100).toFixed(1)}%</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">Q: ${(qValues.HOLD || 0).toFixed(4)}</div>
+                </div>
+                <div class="prob-metric" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">SELL Probability</div>
+                    <div style="font-size: 1.8rem; font-weight: bold; color: #ef4444;">${(actionProbs.SELL * 100).toFixed(1)}%</div>
+                    <div style="font-size: 0.75rem; opacity: 0.7; color: #6b7280; margin-top: 0.25rem;">Q: ${(qValues.SELL || 0).toFixed(4)}</div>
+                </div>
+            </div>
+            
+            <!-- Signal Strength Indicators -->
+            <div class="signal-strength" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">BUY Signal Strength</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #10b981;">${signalStrength.buy ? signalStrength.buy.toFixed(1) : '0.0'}/100</div>
+                    <div class="signal-bar" style="width: 100%; height: 8px; background: rgba(16, 185, 129, 0.2); border-radius: 4px; margin-top: 0.5rem; overflow: hidden;">
+                        <div style="width: ${signalStrength.buy || 0}%; height: 100%; background: #10b981; border-radius: 4px;"></div>
+                    </div>
+                </div>
+                <div style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2);">
+                    <div style="font-size: 0.85rem; opacity: 0.7; color: #6b7280;">HOLD Signal Strength</div>
+                    <div style="font-size: 1.5rem; font-weight: bold; color: #6b7280;">${signalStrength.hold ? signalStrength.hold.toFixed(1) : '0.0'}/100</div>
+                    <div class="signal-bar" style="width: 100%; height: 8px; background: rgba(107, 114, 128, 0.2); border-radius: 4px; margin-top: 0.5rem; overflow: hidden;">
+                        <div style="width: ${signalStrength.hold || 0}%; height: 100%; background: #6b7280; border-radius: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Model Info -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(139, 92, 246, 0.05); border-radius: 8px; font-size: 0.85rem; opacity: 0.9;">
+                <div><strong>🧠 RL Model Details:</strong></div>
+                <div>• Algorithm: Double DQN with Dueling Architecture + Prioritized Replay</div>
+                <div>• Trained on: SPC, IGI, AHPC (Multi-stock training for better generalization)</div>
+                <div>• State Features: 20 features (price momentum, volume patterns, technical indicators)</div>
+                <div>• Actions: BUY (enter position), HOLD (maintain), SELL (exit position)</div>
+                <div style="margin-top: 0.5rem; opacity: 0.7;">
+                    <strong>Note:</strong> Q-values represent expected cumulative returns for each action.<br>
+                    Higher Q-value range indicates stronger conviction in the recommendation.<br>
+                    Signal quality HIGH (Q-range > 1.0) = Strong conviction, MEDIUM (0.5-1.0) = Moderate, LOW (< 0.5) = Weak
+                </div>
             </div>
         </div>
     `;

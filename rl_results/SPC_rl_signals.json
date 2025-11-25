@@ -1,0 +1,40 @@
+{
+  "symbol": "SPC",
+  "timestamp": "2025-11-24T12:01:09.471842",
+  "model": "SPC_IGI_AHPC_rl_model",
+  "trained_symbols": [
+    "SPC",
+    "IGI",
+    "AHPC"
+  ],
+  "current_signal": {
+    "recommendation": "HOLD",
+    "date": "2025-06-08",
+    "price": 501.76,
+    "confidence": 0.53466796875,
+    "action_probabilities": {
+      "HOLD": 0.53466796875,
+      "BUY": 0.061431884765625,
+      "SELL": 0.403564453125
+    },
+    "q_values": {
+      "HOLD": 0.00732421875,
+      "BUY": -2.15625,
+      "SELL": -0.27392578125
+    },
+    "holding_period": "Continue monitoring (neutral position)",
+    "signal_strength": {
+      "buy": 0.0,
+      "hold": 100.0
+    },
+    "signal_quality": "HIGH",
+    "q_value_range": 2.1640625,
+    "estimated_return_pct": 3.0,
+    "average_holding_days": 30
+  },
+  "diagnostics": {
+    "algorithm": "Double DQN + Dueling + Prioritized Replay",
+    "state_features": 20,
+    "multi_stock_training": true
+  }
+}

@@ -167,7 +167,7 @@ class MLStockPredictor:
         ])
         
         model.compile(
-            optimizer=keras.optimizers.Adam(learning_rate=0.001),
+            optimizer=keras.optimizers.legacy.Adam(learning_rate=0.001),  # Legacy for M1/M2 performance
             loss='mean_squared_error',
             metrics=['mae']
         )
