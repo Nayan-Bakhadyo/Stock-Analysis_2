@@ -1,0 +1,18 @@
+{
+  "lstm": {
+    "model_type": "LSTM",
+    "framework": "TensorFlow",
+    "mape": 0.0,
+    "mae": 0.07161061508368481,
+    "direction_accuracy": 0.0,
+    "training_time": 48.03434181213379,
+    "predictions": 0,
+    "metrics": {
+      "train_mae": 0.06346279829946719,
+      "val_mae": 0.07161061508368481,
+      "train_samples": 1748,
+      "val_samples": 437,
+      "epochs_trained": 11
+    }
+  }
+}

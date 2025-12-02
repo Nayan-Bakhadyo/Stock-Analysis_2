@@ -67,6 +67,27 @@ model_path = available_models[symbol]
 print(f"Loading model from {model_path}...")
 model = tf.keras.models.load_model(model_path, custom_objects={'MeanSubtraction': MeanSubtraction})
 
+# Quick validation check - predict with zeros to detect NaN model
+try:
+    test_input = np.zeros((1, model.input_shape[1]))
+    test_output = model.predict(test_input, verbose=0)[0]
+    if not np.isfinite(test_output).all():
+        raise ValueError("Model produces NaN/inf outputs")
+except Exception as e:
+    # Model is corrupted, try to load checkpoint
+    checkpoint_path = model_path.replace('_rl_model.keras', '_rl_best.keras')
+    if os.path.exists(checkpoint_path):
+        print(f"\n⚠️ Main model appears corrupted, loading checkpoint instead...")
+        print(f"   Checkpoint: {checkpoint_path}")
+        model = tf.keras.models.load_model(checkpoint_path, custom_objects={'MeanSubtraction': MeanSubtraction})
+        model_path = checkpoint_path
+        print(f"✓ Checkpoint loaded successfully")
+    else:
+        print(f"\n❌ ERROR: Model is corrupted and no checkpoint found!")
+        print(f"  Recommendation: Retrain the model with:")
+        print(f"    conda run -n Stock_Prediction python3 train_rl_model.py {symbol}")
+        sys.exit(1)
+
 print(f"✓ Model loaded successfully")
 print(f"  Input shape: {model.input_shape}")
 print(f"  Output shape: {model.output_shape}")
@@ -156,6 +177,18 @@ feature_columns = ['returns', 'log_returns', 'sma_5', 'sma_10', 'sma_20', 'sma_5
 # Get most recent state (market features)
 market_features = data[feature_columns].iloc[-1].values.astype(np.float32)
 
+# Check for NaN/inf in features BEFORE feeding to model
+if not np.isfinite(market_features).all():
+    print(f"\n❌ ERROR: Invalid feature values detected!")
+    print(f"\nFeature values:")
+    for i, col in enumerate(feature_columns):
+        value = market_features[i]
+        status = "✓" if np.isfinite(value) else "❌"
+        print(f"  {status} {col:15s}: {value}")
+    print(f"\n⚠️ Check your data quality for {symbol}")
+    print(f"   Some features contain NaN or infinity values")
+    sys.exit(1)
+
 # Portfolio features (for inference, assume we're evaluating from neutral position)
 current_price = data['close'].iloc[-1]
 initial_balance = 100000  # Same as training
@@ -208,6 +241,17 @@ print(f"Expected by model: {expected_features} features")
 # Get prediction
 print("\nGetting model prediction...")
 q_values = model.predict(state, verbose=0)[0]
+
+# Check for NaN/inf values
+if not np.isfinite(q_values).all():
+    print(f"\n❌ ERROR: Model still produced invalid Q-values (NaN or inf)!")
+    print(f"  Q-Values: {q_values}")
+    print(f"  Model used: {model_path}")
+    print(f"\n⚠️ Both the main model and checkpoint appear corrupted.")
+    print(f"  This can happen if training was unstable throughout.")
+    print(f"  Recommendation: Retrain with the improved stability fixes:")
+    print(f"    conda run -n Stock_Prediction python3 train_rl_model.py {symbol}")
+    sys.exit(1)
 
 print(f"\nQ-Values:")
 print(f"  HOLD: {q_values[0]:.4f}")

@@ -209,6 +209,14 @@ class MLStockPredictor:
         # Scale features
         scaled_features = self.feature_scaler.fit_transform(features)
         
+        # CRITICAL FIX: Scale target prices separately (first column is 'close')
+        # This ensures model learns patterns in 0-1 range, preventing it from outputting mean
+        self.price_scaler = MinMaxScaler()
+        scaled_prices = self.price_scaler.fit_transform(features[:, 0].reshape(-1, 1)).flatten()
+        
+        # Replace close prices in scaled_features with properly scaled prices
+        scaled_features[:, 0] = scaled_prices
+        
         # Create sequences (multi-output: 7 days)
         print(f"🔄 Creating sequences (lookback={self.lookback_days}, forecast=7 days)...")
         X, y = self.create_sequences(scaled_features, self.lookback_days, forecast_days=7)
@@ -276,11 +284,16 @@ class MLStockPredictor:
         
         # Save scalers
         import pickle
+        scalers_to_save = {
+            'scaler': self.scaler,
+            'feature_scaler': self.feature_scaler
+        }
+        # Include price_scaler if it exists (new models)
+        if hasattr(self, 'price_scaler'):
+            scalers_to_save['price_scaler'] = self.price_scaler
+            
         with open(scaler_path, 'wb') as f:
-            pickle.dump({
-                'scaler': self.scaler,
-                'feature_scaler': self.feature_scaler
-            }, f)
+            pickle.dump(scalers_to_save, f)
         
         print(f"  ✓ Model saved: {model_path}")
     
@@ -306,6 +319,9 @@ class MLStockPredictor:
             scalers = pickle.load(f)
             self.scaler = scalers['scaler']
             self.feature_scaler = scalers['feature_scaler']
+            # Load price_scaler if it exists (new models)
+            if 'price_scaler' in scalers:
+                self.price_scaler = scalers['price_scaler']
         
         print(f"  ✓ Model loaded: {model_path}")
         return True
@@ -347,7 +363,13 @@ class MLStockPredictor:
         # Check for infinity/NaN and replace
         recent_data = np.nan_to_num(recent_data, nan=0.0, posinf=0.0, neginf=0.0)
         
+        # CRITICAL FIX: Scale features the same way as training
         scaled_recent = self.feature_scaler.transform(recent_data)
+        
+        # Also scale prices separately if price_scaler exists (from training)
+        if hasattr(self, 'price_scaler'):
+            scaled_prices = self.price_scaler.transform(recent_data[:, 0].reshape(-1, 1)).flatten()
+            scaled_recent[:, 0] = scaled_prices
         
         # Prepare input (1, 60, 11)
         X_pred = scaled_recent.reshape(1, self.lookback_days, len(feature_cols))
@@ -355,12 +377,18 @@ class MLStockPredictor:
         # Get all 7 predictions in ONE forward pass (no error accumulation!)
         predictions_scaled = self.model.predict(X_pred, verbose=0)[0]  # Shape: (7,)
         
-        # Convert predictions back to original scale
-        # Create dummy array with same shape as feature set for inverse transform
-        dummy = np.zeros((7, len(feature_cols)))
-        dummy[:, 0] = predictions_scaled
-        unscaled = self.feature_scaler.inverse_transform(dummy)
-        predicted_prices = unscaled[:, 0]
+        # CRITICAL FIX: Inverse transform using price_scaler (not feature_scaler)
+        if hasattr(self, 'price_scaler'):
+            predicted_prices = self.price_scaler.inverse_transform(
+                predictions_scaled.reshape(-1, 1)
+            ).flatten()
+        else:
+            # Fallback to old method if price_scaler not available (backward compatibility)
+            dummy = np.zeros((7, len(feature_cols)))
+            dummy[:, 0] = predictions_scaled
+            unscaled = self.feature_scaler.inverse_transform(dummy)
+            predicted_prices = unscaled[:, 0]
+
         
         # Build results
         if days is None:

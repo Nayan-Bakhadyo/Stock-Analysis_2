@@ -2,10 +2,10 @@
   "symbol": "SHPC",
   "best_config": {
     "architecture": "bidirectional",
-    "lookback": 60,
+    "lookback": 120,
     "layers": 2,
-    "learning_rate": 0.001,
-    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "batch_size": 32,
     "patience": 10,
     "optimizer": "adam",
     "units_1": 128,
@@ -15,10 +15,10 @@
     "dense_units": 32
   },
   "performance": {
-    "test_mape": 1.3550585521360075,
-    "test_mae": 6.772454197917658,
-    "test_rmse": 7.6646234836742515,
-    "direction_accuracy": 71.42857142857143
+    "test_mape": 18.394765789347108,
+    "test_mae": 90.25432479839239,
+    "test_rmse": 113.13611837968716,
+    "direction_accuracy": 100.0
   },
-  "timestamp": "2025-11-22T19:21:32.128791"
+  "timestamp": "2025-11-30T16:56:07.070343"
 }

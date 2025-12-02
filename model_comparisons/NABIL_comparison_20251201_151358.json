@@ -1,0 +1,133 @@
+{
+  "symbol": "NABIL",
+  "comparison_date": "2025-12-01T15:13:58.943388",
+  "horizons": [
+    1,
+    3,
+    5,
+    10,
+    15,
+    21
+  ],
+  "lstm": {
+    "symbol": "NABIL",
+    "horizons": {
+      "1": {
+        "predicted_price": 516.5,
+        "predicted_return": 0.31073994950476264,
+        "mape": 0.31073994950476264,
+        "mae": 0.07311934390130084,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      },
+      "3": {
+        "predicted_price": 476.64,
+        "predicted_return": -7.43056904253253,
+        "mape": 7.43056904253253,
+        "mae": 0.13139992322275668,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      },
+      "5": {
+        "predicted_price": 510.46,
+        "predicted_return": -0.8623033598757036,
+        "mape": 0.8623033598757036,
+        "mae": 0.10580996938526013,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      },
+      "10": {
+        "predicted_price": 523.4799999999999,
+        "predicted_return": 1.6663429792192517,
+        "mape": 1.6663429792192517,
+        "mae": 0.060448914646341556,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      },
+      "15": {
+        "predicted_price": 424.3166666666666,
+        "predicted_return": -17.592412766232933,
+        "mape": 17.592412766232933,
+        "mae": 0.09113019510426235,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      },
+      "21": {
+        "predicted_price": 577.9633333333334,
+        "predicted_return": 12.247685634751097,
+        "mape": 12.247685634751097,
+        "mae": 0.12195388994386047,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      }
+    },
+    "training_time": 553.0889909267426
+  },
+  "xlstm": {
+    "symbol": "NABIL",
+    "training_time": 224.63756680488586,
+    "n_models": 3,
+    "horizons": {
+      "1": {
+        "mae": 4.002668112449572,
+        "mape": 0.7723521586409667,
+        "r2": -0.13988831371163957,
+        "direction_accuracy": 56.32911392405063,
+        "uncertainty": 0.0003266264102421701,
+        "confidence": "HIGH",
+        "predicted_price": 512.8518676757812
+      },
+      "3": {
+        "mae": 6.482457450011556,
+        "mape": 1.2428574700502464,
+        "r2": -0.07409379757785572,
+        "direction_accuracy": 56.32911392405063,
+        "uncertainty": 0.00020044980919919908,
+        "confidence": "HIGH",
+        "predicted_price": 512.5747680664062
+      },
+      "5": {
+        "mae": 8.625624666401402,
+        "mape": 1.6517128251411697,
+        "r2": -0.07477899945541289,
+        "direction_accuracy": 53.79746835443038,
+        "uncertainty": 0.00024315282644238323,
+        "confidence": "HIGH",
+        "predicted_price": 512.4791259765625
+      },
+      "10": {
+        "mae": 11.850640798516933,
+        "mape": 2.2500629097568736,
+        "r2": -0.06224558172657346,
+        "direction_accuracy": 50.0,
+        "uncertainty": 0.00045501560089178383,
+        "confidence": "HIGH",
+        "predicted_price": 511.8221740722656
+      },
+      "15": {
+        "mae": 13.40283746412623,
+        "mape": 2.5170409333688584,
+        "r2": -0.06468626979730296,
+        "direction_accuracy": 58.86075949367089,
+        "uncertainty": 0.0006781045813113451,
+        "confidence": "HIGH",
+        "predicted_price": 510.3941345214844
+      },
+      "21": {
+        "mae": 15.551489675619042,
+        "mape": 2.9042313324139144,
+        "r2": -0.14575748131849076,
+        "direction_accuracy": 53.79746835443038,
+        "uncertainty": 0.0008052061311900616,
+        "confidence": "HIGH",
+        "predicted_price": 507.8530578613281
+      }
+    }
+  }
+}

@@ -132,32 +132,47 @@ class PrioritizedReplayBuffer:
             return [], [], []
         
         # Calculate sampling probabilities
-        priorities = np.array(self.priorities[:len(self.buffer)])
+        priorities = np.array(self.priorities[:len(self.buffer)], dtype=np.float64)
         
-        # Clip priorities to avoid numerical issues
-        priorities = np.clip(priorities, 1e-6, 1e6)
+        # More aggressive clipping to prevent overflow
+        priorities = np.clip(priorities, 1e-5, 100.0)
         
-        probs = priorities ** self.alpha
+        # Use log-space computation to avoid overflow
+        # Instead of priorities^alpha, compute exp(alpha * log(priorities))
+        log_probs = self.alpha * np.log(priorities)
+        
+        # Subtract max for numerical stability (log-sum-exp trick)
+        log_probs_max = np.max(log_probs)
+        probs = np.exp(log_probs - log_probs_max)
         
         # Check for NaN/inf and fix
-        if not np.isfinite(probs).all():
-            print("⚠️ Warning: Invalid probabilities detected, resetting to uniform")
-            probs = np.ones(len(self.buffer))
+        if not np.isfinite(probs).all() or probs.sum() == 0:
+            print("⚠️ Warning: Invalid probabilities detected, using uniform distribution")
+            probs = np.ones(len(self.buffer), dtype=np.float64)
         
-        probs /= probs.sum()
+        # Normalize
+        probs = probs / probs.sum()
         
         # Final safety check
         if not np.isfinite(probs).all() or probs.sum() == 0:
-            print("⚠️ Warning: Probabilities still invalid, using uniform distribution")
-            probs = np.ones(len(self.buffer)) / len(self.buffer)
+            print("⚠️ Warning: Probabilities still invalid after normalization, using uniform")
+            probs = np.ones(len(self.buffer), dtype=np.float64) / len(self.buffer)
         
         # Sample indices
         indices = np.random.choice(len(self.buffer), batch_size, p=probs, replace=False)
         
-        # Calculate importance sampling weights
+        # Calculate importance sampling weights with safety checks
         total = len(self.buffer)
-        weights = (total * probs[indices]) ** (-self.beta)
-        weights /= weights.max()  # Normalize
+        sample_probs = probs[indices]
+        
+        # Clip before exponentiation to avoid overflow
+        weights = np.clip(total * sample_probs, 1e-8, 1e8) ** (-self.beta)
+        
+        # Check for invalid weights
+        if not np.isfinite(weights).all():
+            weights = np.ones_like(weights, dtype=np.float64)
+        
+        weights /= (weights.max() + 1e-8)  # Normalize with safety
         
         # Increment beta
         self.beta = min(1.0, self.beta + self.beta_increment)
@@ -167,11 +182,16 @@ class PrioritizedReplayBuffer:
         return samples, indices, weights
     
     def update_priorities(self, indices, td_errors):
-        """Update priorities based on TD errors"""
+        """Update priorities based on TD errors with robust error handling"""
         for idx, td_error in zip(indices, td_errors):
-            # Clip TD error to prevent extreme priorities
-            priority = abs(td_error) + 1e-6
-            priority = np.clip(priority, 1e-6, 1e6)  # Prevent extreme values
+            # Check for NaN/inf in TD error
+            if not np.isfinite(td_error):
+                td_error = 1.0  # Default to moderate priority
+            
+            # More conservative clipping for priorities
+            priority = abs(float(td_error)) + 1e-5
+            priority = np.clip(priority, 1e-5, 100.0)  # Much tighter bounds
+            
             self.priorities[idx] = priority
     
     def __len__(self):
@@ -586,7 +606,7 @@ class DQNAgent:
             ])
         
         model.compile(
-            optimizer=Adam(learning_rate=self.learning_rate),
+            optimizer=Adam(learning_rate=self.learning_rate, clipnorm=1.0),  # Add gradient clipping
             loss='huber'  # Huber loss is more stable than MSE for RL
         )
         
@@ -739,8 +759,15 @@ class DQNAgent:
                 # N-step return with discounting
                 target_q = rewards[i] + (self.gamma ** self.n_step) * next_q_values[i]
             
+            # Clip target Q to prevent extreme values
+            target_q = np.clip(target_q, -1000.0, 1000.0)
+            
             target_q_values[i][actions[i]] = target_q
-            td_errors.append(abs(target_q - old_q))
+            
+            # Calculate TD error with clipping
+            td_error = abs(target_q - old_q)
+            td_error = np.clip(td_error, 0.0, 100.0)  # Prevent extreme TD errors
+            td_errors.append(td_error)
         
         # Train model with importance sampling weights
         self.model.fit(states, target_q_values, sample_weight=weights.flatten(), 

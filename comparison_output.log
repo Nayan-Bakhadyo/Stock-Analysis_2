@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/Users/Nayan/Documents/Business/Stock_Analysis/compare_lstm_xlstm.py", line 527, in <module>
+    comparison = compare_models(
+                 ^^^^^^^^^^^^^^^
+  File "/Users/Nayan/Documents/Business/Stock_Analysis/compare_lstm_xlstm.py", line 328, in compare_models
+    xlstm_results = train_xlstm_multi_horizon(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nayan/Documents/Business/Stock_Analysis/compare_lstm_xlstm.py", line 187, in train_xlstm_multi_horizon
+    X_train, y_train_dict, X_test, y_test_dict, scaler = prepare_multi_horizon_data(
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: prepare_multi_horizon_data() got an unexpected keyword argument 'lookback_days'
+
+ERROR conda.cli.main_run:execute(49): `conda run python3 compare_lstm_xlstm.py PFL --horizons 1 3 5 10 15 21 --lstm-epochs 50 --xlstm-epochs 100 --xlstm-hidden 512 --xlstm-blocks 7` failed. (See above for error)
+
+================================================================================
+COMPARING LSTM vs xLSTM - PFL
+================================================================================
+Horizons: [1, 3, 5, 10, 15, 21]
+LSTM epochs: 50
+xLSTM epochs: 100, hidden: 512, blocks: 7
+================================================================================
+
+================================================================================
+TRAINING LSTM (TensorFlow) - Multi-Horizon
+================================================================================
+✓ Loaded 2000 days of data
+  Date range: 2017-01-15 to 2025-11-27
+
+--- Training LSTM for 1-day forecast ---
+  ✗ Error: MLStockPredictor.train_model() got an unexpected keyword argument 'forecast_days'
+
+--- Training LSTM for 3-day forecast ---
+  ✗ Error: MLStockPredictor.train_model() got an unexpected keyword argument 'forecast_days'
+
+--- Training LSTM for 5-day forecast ---
+  ✗ Error: MLStockPredictor.train_model() got an unexpected keyword argument 'forecast_days'
+
+--- Training LSTM for 10-day forecast ---
+  ✗ Error: MLStockPredictor.train_model() got an unexpected keyword argument 'forecast_days'
+
+--- Training LSTM for 15-day forecast ---
+  ✗ Error: MLStockPredictor.train_model() got an unexpected keyword argument 'forecast_days'
+
+--- Training LSTM for 21-day forecast ---
+  ✗ Error: MLStockPredictor.train_model() got an unexpected keyword argument 'forecast_days'
+
+✓ LSTM training completed in 0.08s
+
+================================================================================
+TRAINING xLSTM (PyTorch) - Multi-Horizon
+================================================================================
+✓ Loaded 2000 days of data
+  Date range: 2017-01-15 to 2025-11-27
+

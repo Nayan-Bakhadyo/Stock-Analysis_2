@@ -1,0 +1,38 @@
+{
+  "symbol": "BNHC",
+  "timestamp": "2025-11-27T13:02:02.909061",
+  "model": "BNHC_rl_model.keras",
+  "trained_symbols": [
+    "BNHC"
+  ],
+  "current_signal": {
+    "recommendation": "BUY",
+    "date": "2025-11-26",
+    "price": 450.0,
+    "confidence": 0.5234375,
+    "action_probabilities": {
+      "HOLD": 0.0,
+      "BUY": 0.5234375,
+      "SELL": 0.476806640625
+    },
+    "q_values": {
+      "HOLD": -19.703125,
+      "BUY": 21.515625,
+      "SELL": 21.421875
+    },
+    "holding_period": "7-14 days (moderate signal)",
+    "signal_strength": {
+      "buy": 100.0,
+      "hold": 0.0
+    },
+    "signal_quality": "HIGH",
+    "q_value_range": 41.21875,
+    "estimated_return_pct": 0.4121875,
+    "average_holding_days": 10
+  },
+  "diagnostics": {
+    "algorithm": "Double DQN + Dueling + Prioritized Replay",
+    "state_features": 18,
+    "multi_stock_training": true
+  }
+}

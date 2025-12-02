@@ -1,0 +1,38 @@
+{
+  "symbol": "ALBSL",
+  "timestamp": "2025-11-29T17:25:00.544590",
+  "model": "ALBSL_rl_best.keras",
+  "trained_symbols": [
+    "ALBSL"
+  ],
+  "current_signal": {
+    "recommendation": "HOLD",
+    "date": "2025-11-27",
+    "price": 1120.0,
+    "confidence": 1.0,
+    "action_probabilities": {
+      "HOLD": 1.0,
+      "BUY": 0.0,
+      "SELL": 0.0
+    },
+    "q_values": {
+      "HOLD": 11584.0,
+      "BUY": 4708.0,
+      "SELL": 8084.0
+    },
+    "holding_period": "Continue monitoring (neutral position)",
+    "signal_strength": {
+      "buy": 0.0,
+      "hold": 100.0
+    },
+    "signal_quality": "HIGH",
+    "q_value_range": 6876.0,
+    "estimated_return_pct": 2.0,
+    "average_holding_days": 159
+  },
+  "diagnostics": {
+    "algorithm": "Double DQN + Dueling + Prioritized Replay",
+    "state_features": 18,
+    "multi_stock_training": true
+  }
+}

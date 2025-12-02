@@ -1,0 +1,113 @@
+{
+  "symbol": "NABIL",
+  "timestamp": "2025-12-01T22:12:33.214443",
+  "n_trials": 2,
+  "trials": [
+    {
+      "trial": 1,
+      "hyperparams": {
+        "hidden_size": 217,
+        "num_layers": 1,
+        "lookback": 100,
+        "dropout": 0.27905504738394615,
+        "lr": 0.0007792297153882995,
+        "batch_size": 32
+      },
+      "results": {
+        "1": {
+          "mape": 0.96,
+          "direction_acc": 41.66666666666667,
+          "correct": 25,
+          "total": 60
+        },
+        "3": {
+          "mape": 1.7,
+          "direction_acc": 38.333333333333336,
+          "correct": 23,
+          "total": 60
+        },
+        "5": {
+          "mape": 1.89,
+          "direction_acc": 50.0,
+          "correct": 30,
+          "total": 60
+        },
+        "10": {
+          "mape": 2.79,
+          "direction_acc": 58.333333333333336,
+          "correct": 35,
+          "total": 60
+        },
+        "15": {
+          "mape": 2.96,
+          "direction_acc": 30.0,
+          "correct": 18,
+          "total": 60
+        },
+        "20": {
+          "mape": 3.04,
+          "direction_acc": 55.00000000000001,
+          "correct": 33,
+          "total": 60
+        }
+      },
+      "avg_mape": 2.223333333333333,
+      "avg_direction_acc": 45.555555555555564,
+      "criteria_met": "False",
+      "is_best": true
+    },
+    {
+      "trial": 2,
+      "hyperparams": {
+        "hidden_size": 152,
+        "num_layers": 2,
+        "lookback": 43,
+        "dropout": 0.29526654188465595,
+        "lr": 0.00012966511753760403,
+        "batch_size": 128
+      },
+      "results": {
+        "1": {
+          "mape": 1.39,
+          "direction_acc": 36.666666666666664,
+          "correct": 22,
+          "total": 60
+        },
+        "3": {
+          "mape": 2.65,
+          "direction_acc": 35.0,
+          "correct": 21,
+          "total": 60
+        },
+        "5": {
+          "mape": 2.57,
+          "direction_acc": 33.33333333333333,
+          "correct": 20,
+          "total": 60
+        },
+        "10": {
+          "mape": 4.37,
+          "direction_acc": 35.0,
+          "correct": 21,
+          "total": 60
+        },
+        "15": {
+          "mape": 5.43,
+          "direction_acc": 15.0,
+          "correct": 9,
+          "total": 60
+        },
+        "20": {
+          "mape": 5.4,
+          "direction_acc": 25.0,
+          "correct": 15,
+          "total": 60
+        }
+      },
+      "avg_mape": 3.6350000000000002,
+      "avg_direction_acc": 30.0,
+      "criteria_met": "False",
+      "is_best": false
+    }
+  ]
+}

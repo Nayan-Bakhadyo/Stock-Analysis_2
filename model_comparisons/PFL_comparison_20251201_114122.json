@@ -1,0 +1,73 @@
+{
+  "symbol": "PFL",
+  "comparison_date": "2025-12-01T11:41:22.173421",
+  "horizons": [
+    1,
+    3,
+    5
+  ],
+  "lstm": {
+    "symbol": "PFL",
+    "horizons": {
+      "1": {
+        "predicted_price": 384.0,
+        "predicted_return": 0.0,
+        "mape": 0.022497794455226063,
+        "mae": 0.08639153070806808,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      },
+      "3": {
+        "predicted_price": 384.0,
+        "predicted_return": 0.0,
+        "mape": 0.029409652887947463,
+        "mae": 0.11293306708971826,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      },
+      "5": {
+        "predicted_price": 384.0,
+        "predicted_return": 0.0,
+        "mape": 0.05846902936645036,
+        "mae": 0.2245210727671694,
+        "direction_accuracy": 0.0,
+        "rmse": 0.0,
+        "r2": 0.0
+      }
+    },
+    "training_time": 35.403610944747925
+  },
+  "xlstm": {
+    "symbol": "PFL",
+    "training_time": 19.04183793067932,
+    "parameters": 378547,
+    "horizons": {
+      "1": {
+        "mae": 0.0718920635800626,
+        "mape": 33.98897202003515,
+        "rmse": 0.08111780572509554,
+        "r2": -1.8465149180384537,
+        "predicted_price": 117.33314895629883,
+        "predicted_return": -69.44449245929718
+      },
+      "3": {
+        "mae": 0.07005221802442049,
+        "mape": 33.482512470695184,
+        "rmse": 0.07951156125318658,
+        "r2": -2.058838093562696,
+        "predicted_price": 116.39845275878906,
+        "predicted_return": -69.68790292739868
+      },
+      "5": {
+        "mae": 0.07014853187229325,
+        "mape": 33.76741727000956,
+        "rmse": 0.07970849878552112,
+        "r2": -2.3472688051990684,
+        "predicted_price": 116.10010528564453,
+        "predicted_return": -69.7655975818634
+      }
+    }
+  }
+}

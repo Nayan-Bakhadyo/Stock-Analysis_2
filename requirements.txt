@@ -17,6 +17,9 @@ ta>=0.11.0
 # Sentiment analysis
 transformers>=4.30.0
 torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+xlstm>=2.0.5  # Extended LSTM (Hochreiter et al. 2024)
 nltk>=3.8.0
 textblob>=0.17.0
 vaderSentiment>=3.3.2

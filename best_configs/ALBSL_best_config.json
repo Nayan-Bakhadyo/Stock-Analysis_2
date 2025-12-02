@@ -1,0 +1,26 @@
+{
+  "symbol": "ALBSL",
+  "best_config": {
+    "architecture": "bidirectional",
+    "lookback": 180,
+    "layers": 3,
+    "learning_rate": 0.0005,
+    "batch_size": 32,
+    "patience": 10,
+    "optimizer": "adam",
+    "units_1": 128,
+    "units_2": 64,
+    "units_3": 32,
+    "dropout_1": 0.1,
+    "dropout_2": 0.1,
+    "dropout_3": 0.05,
+    "dense_units": 32
+  },
+  "performance": {
+    "test_mape": 7.255128103679562,
+    "test_mae": 70.36011591468545,
+    "test_rmse": 83.07097450880238,
+    "direction_accuracy": 100.0
+  },
+  "timestamp": "2025-11-29T09:56:34.899083"
+}

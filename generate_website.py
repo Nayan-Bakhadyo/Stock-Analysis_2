@@ -258,33 +258,17 @@ class StockWebsiteGenerator:
             </div>
             <div class="filter-controls">
                 <select id="sort-select">
-                    <option value="profitability-desc">Sort: Profitability (High to Low)</option>
-                    <option value="profitability-asc">Sort: Profitability (Low to High)</option>
-                    <option value="profit-potential-desc">Sort: Profit Potential (High to Low)</option>
-                    <option value="profit-potential-asc">Sort: Profit Potential (Low to High)</option>
-                    <option value="symbol-asc">Sort: Symbol (A-Z)</option>
-                    <option value="symbol-desc">Sort: Symbol (Z-A)</option>
-                    <option value="price-desc">Sort: Price (High to Low)</option>
-                    <option value="price-asc">Sort: Price (Low to High)</option>
+                    <option value="risk-reward-desc">Sort: Risk/Reward Ratio (High to Low)</option>
+                    <option value="risk-reward-asc">Sort: Risk/Reward Ratio (Low to High)</option>
                 </select>
-                <select id="filter-recommendation">
-                    <option value="all">All Recommendations</option>
-                    <option value="buy">Buy Only</option>
-                    <option value="sell">Sell Only</option>
-                    <option value="hold">Hold Only</option>
-                </select>
-                <select id="filter-profitability">
-                    <option value="all">All Profitability</option>
-                    <option value="high">High (>70%)</option>
-                    <option value="medium">Medium (40-70%)</option>
-                    <option value="low">Low (<40%)</option>
-                </select>
-                <select id="filter-ml-predictions">
-                    <option value="all">All Stocks</option>
-                    <option value="with-ml">With ML Predictions</option>
-                    <option value="without-ml">Without ML Predictions</option>
-                </select>
-                <input type="date" id="filter-ml-date" placeholder="Filter by ML update date" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--card-bg); color: var(--text-primary); font-size: 0.875rem;">
+                <label style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" id="filter-has-rl" style="cursor: pointer;">
+                    <span style="color: var(--text-primary); font-size: 0.875rem;">Has RL Predictions</span>
+                </label>
+                <label style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" id="filter-has-ml" style="cursor: pointer;">
+                    <span style="color: var(--text-primary); font-size: 0.875rem;">Has ML Predictions</span>
+                </label>
             </div>
         </div>
 
@@ -1584,26 +1568,20 @@ function loadData() {
 function initializeFilters() {
     const searchInput = document.getElementById('search-input');
     const sortSelect = document.getElementById('sort-select');
-    const filterRecommendation = document.getElementById('filter-recommendation');
-    const filterProfitability = document.getElementById('filter-profitability');
-    const filterMlPredictions = document.getElementById('filter-ml-predictions');
-    const filterMlDate = document.getElementById('filter-ml-date');
+    const filterHasRl = document.getElementById('filter-has-rl');
+    const filterHasMl = document.getElementById('filter-has-ml');
     
     searchInput.addEventListener('input', applyFilters);
     sortSelect.addEventListener('change', applyFilters);
-    filterRecommendation.addEventListener('change', applyFilters);
-    filterProfitability.addEventListener('change', applyFilters);
-    filterMlPredictions.addEventListener('change', applyFilters);
-    filterMlDate.addEventListener('change', applyFilters);
+    filterHasRl.addEventListener('change', applyFilters);
+    filterHasMl.addEventListener('change', applyFilters);
 }
 
 function applyFilters() {
     const searchTerm = document.getElementById('search-input').value.toLowerCase();
     const sortBy = document.getElementById('sort-select').value;
-    const recFilter = document.getElementById('filter-recommendation').value;
-    const profFilter = document.getElementById('filter-profitability').value;
-    const mlFilter = document.getElementById('filter-ml-predictions').value;
-    const mlDateFilter = document.getElementById('filter-ml-date').value;
+    const filterRl = document.getElementById('filter-has-rl').checked;
+    const filterMl = document.getElementById('filter-has-ml').checked;
     
     // Start with all stocks
     filteredStocks = [...allStocks];
@@ -1615,82 +1593,36 @@ function applyFilters() {
         );
     }
     
-    // Apply recommendation filter
-    if (recFilter !== 'all') {
+    // Apply RL predictions filter
+    if (filterRl) {
         filteredStocks = filteredStocks.filter(stock => {
-            const action = stock.trading_insights?.recommendation?.action || '';
-            return action.toLowerCase().includes(recFilter);
-        });
-    }
-    
-    // Apply profitability filter
-    if (profFilter !== 'all') {
-        filteredStocks = filteredStocks.filter(stock => {
-            const prob = stock.trading_insights?.profitability_probability || 0;
-            if (profFilter === 'high') return prob > 70;
-            if (profFilter === 'medium') return prob >= 40 && prob <= 70;
-            if (profFilter === 'low') return prob < 40;
-            return true;
+            // Check if stock has RL signal data
+            return stock.rl_signal && (stock.rl_signal.recommendation || stock.rl_signal.action_probabilities);
         });
     }
     
     // Apply ML predictions filter
-    if (mlFilter !== 'all') {
+    if (filterMl) {
         filteredStocks = filteredStocks.filter(stock => {
+            // Check if stock has ML predictions
             const hasMlPredictions = stock.ml_predictions && stock.ml_predictions.predictions && 
                                     (Array.isArray(stock.ml_predictions.predictions) ? stock.ml_predictions.predictions.length > 0 : 
                                      (stock.ml_predictions.predictions.dates && stock.ml_predictions.predictions.dates.length > 0));
-            if (mlFilter === 'with-ml') return hasMlPredictions;
-            if (mlFilter === 'without-ml') return !hasMlPredictions;
-            return true;
+            return hasMlPredictions;
         });
     }
     
-    // Apply ML date filter
-    if (mlDateFilter && mlDateFilter !== '') {
-        filteredStocks = filteredStocks.filter(stock => {
-            if (!stock.ml_predictions || !stock.ml_predictions.last_updated) return false;
-            
-            const lastUpdated = new Date(stock.ml_predictions.last_updated);
-            const filterDate = new Date(mlDateFilter);
-            
-            // Compare only the date part (ignore time)
-            return lastUpdated.toDateString() === filterDate.toDateString();
-        });
-    }
-    
-    // Apply sorting
+    // Apply sorting by Risk/Reward Ratio
     filteredStocks.sort((a, b) => {
         const aInsights = a.trading_insights || {};
         const bInsights = b.trading_insights || {};
+        const aRatio = aInsights.risk_reward_ratio?.ratio || 0;
+        const bRatio = bInsights.risk_reward_ratio?.ratio || 0;
         
-        switch(sortBy) {
-            case 'profitability-desc':
-                return (bInsights.profitability_probability || 0) - (aInsights.profitability_probability || 0);
-            case 'profitability-asc':
-                return (aInsights.profitability_probability || 0) - (bInsights.profitability_probability || 0);
-            case 'profit-potential-desc':
-                const bProfit = bInsights.risk_reward_ratio?.potential_profit_percent || 0;
-                const aProfit = aInsights.risk_reward_ratio?.potential_profit_percent || 0;
-                return bProfit - aProfit;
-            case 'profit-potential-asc':
-                const aProfitAsc = aInsights.risk_reward_ratio?.potential_profit_percent || 0;
-                const bProfitAsc = bInsights.risk_reward_ratio?.potential_profit_percent || 0;
-                return aProfitAsc - bProfitAsc;
-            case 'symbol-asc':
-                return a.symbol.localeCompare(b.symbol);
-            case 'symbol-desc':
-                return b.symbol.localeCompare(a.symbol);
-            case 'price-desc':
-                const bPrice = bInsights.current_price || b.price_data?.latest_price || 0;
-                const aPrice = aInsights.current_price || a.price_data?.latest_price || 0;
-                return bPrice - aPrice;
-            case 'price-asc':
-                const aPriceAsc = aInsights.current_price || a.price_data?.latest_price || 0;
-                const bPriceAsc = bInsights.current_price || b.price_data?.latest_price || 0;
-                return aPriceAsc - bPriceAsc;
-            default:
-                return 0;
+        if (sortBy === 'risk-reward-desc') {
+            return bRatio - aRatio;  // High to Low
+        } else {
+            return aRatio - bRatio;  // Low to High
         }
     });
     
@@ -1748,6 +1680,24 @@ function createCompactCard(stock) {
     const potentialProfit = riskReward.potential_profit_percent || insights.potential_profit_pct || 0;
     const scores = stock.scores || {};
     
+    // Get prediction dates
+    let predictionDateStr = '';
+    const mlDate = stock.ml_predictions?.last_updated;
+    const rlDate = stock.rl_signal?.timestamp;
+    
+    if (mlDate || rlDate) {
+        const dates = [];
+        if (mlDate) {
+            const mlDateFormatted = new Date(mlDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            dates.push(`ML: ${mlDateFormatted}`);
+        }
+        if (rlDate) {
+            const rlDateFormatted = new Date(rlDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            dates.push(`RL: ${rlDateFormatted}`);
+        }
+        predictionDateStr = `<div class="prediction-date" style="font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem;">📅 ${dates.join(' • ')}</div>`;
+    }
+    
     return `
         <div class="stock-card" data-symbol="${stock.symbol}">
             <div class="stock-header">
@@ -1779,6 +1729,7 @@ function createCompactCard(stock) {
                         <div class="stat-value positive">+${potentialProfit.toFixed(1)}%</div>
                     </div>
                 </div>
+                ${predictionDateStr}
             </div>
         </div>
     `;

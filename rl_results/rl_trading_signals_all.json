@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-11-25T08:35:21.887951",
+  "last_updated": "2025-11-29T17:25:00.545361",
   "multi_stock_training": true,
   "stocks": {
     "SPC": {
@@ -252,6 +252,58 @@
       "q_value_range": 3622.0,
       "estimated_return_pct": 4.88,
       "average_holding_days": 5
+    },
+    "BNHC": {
+      "recommendation": "BUY",
+      "confidence": 0.5234375,
+      "date": "2025-11-26",
+      "price": 450.0,
+      "action_probabilities": {
+        "HOLD": 0.0,
+        "BUY": 0.5234375,
+        "SELL": 0.476806640625
+      },
+      "holding_period": "7-14 days (moderate signal)",
+      "signal_strength": {
+        "buy": 100.0,
+        "hold": 0.0
+      },
+      "signal_quality": "HIGH",
+      "timestamp": "2025-11-27T13:02:02.909722",
+      "q_values": {
+        "HOLD": -19.703125,
+        "BUY": 21.515625,
+        "SELL": 21.421875
+      },
+      "q_value_range": 41.21875,
+      "estimated_return_pct": 0.4121875,
+      "average_holding_days": 10
+    },
+    "ALBSL": {
+      "recommendation": "HOLD",
+      "confidence": 1.0,
+      "date": "2025-11-27",
+      "price": 1120.0,
+      "action_probabilities": {
+        "HOLD": 1.0,
+        "BUY": 0.0,
+        "SELL": 0.0
+      },
+      "holding_period": "Continue monitoring (neutral position)",
+      "signal_strength": {
+        "buy": 0.0,
+        "hold": 100.0
+      },
+      "signal_quality": "HIGH",
+      "timestamp": "2025-11-29T17:25:00.545351",
+      "q_values": {
+        "HOLD": 11584.0,
+        "BUY": 4708.0,
+        "SELL": 8084.0
+      },
+      "q_value_range": 6876.0,
+      "estimated_return_pct": 2.0,
+      "average_holding_days": 159
     }
   }
 }

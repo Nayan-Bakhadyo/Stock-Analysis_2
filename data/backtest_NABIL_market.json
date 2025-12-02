@@ -1,0 +1,723 @@
+{
+  "symbol": "NABIL",
+  "test_days": 30,
+  "use_market": true,
+  "predictions": [
+    {
+      "date": "2025-10-13",
+      "actual_price": 510.0,
+      "base_price": 510.5,
+      "horizons": {
+        "1": {
+          "predicted": 443.8813836276531,
+          "actual": 510.0
+        },
+        "3": {
+          "predicted": 390.37665481865406,
+          "actual": null
+        },
+        "5": {
+          "predicted": 398.62089394032955,
+          "actual": null
+        },
+        "10": {
+          "predicted": 391.5670505166054,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-14",
+      "actual_price": 510.0,
+      "base_price": 510.0,
+      "horizons": {
+        "1": {
+          "predicted": 445.9418061375618,
+          "actual": 510.0
+        },
+        "3": {
+          "predicted": 390.3859904408455,
+          "actual": null
+        },
+        "5": {
+          "predicted": 393.83368223905563,
+          "actual": null
+        },
+        "10": {
+          "predicted": 392.192010730505,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-15",
+      "actual_price": 508.7,
+      "base_price": 510.0,
+      "horizons": {
+        "1": {
+          "predicted": 450.5677007138729,
+          "actual": 508.7
+        },
+        "3": {
+          "predicted": 392.5027048587799,
+          "actual": null
+        },
+        "5": {
+          "predicted": 394.01506930589676,
+          "actual": null
+        },
+        "10": {
+          "predicted": 392.2125296294689,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-16",
+      "actual_price": 509.0,
+      "base_price": 508.7,
+      "horizons": {
+        "1": {
+          "predicted": 450.2525491133332,
+          "actual": 509.0
+        },
+        "3": {
+          "predicted": 388.5952992528677,
+          "actual": null
+        },
+        "5": {
+          "predicted": 392.6009531781077,
+          "actual": null
+        },
+        "10": {
+          "predicted": 392.18384395390746,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-19",
+      "actual_price": 507.9,
+      "base_price": 509.0,
+      "horizons": {
+        "1": {
+          "predicted": 449.2990574762225,
+          "actual": 507.9
+        },
+        "3": {
+          "predicted": 387.2632284909487,
+          "actual": null
+        },
+        "5": {
+          "predicted": 394.6228438317776,
+          "actual": null
+        },
+        "10": {
+          "predicted": 392.9096896648407,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-26",
+      "actual_price": 505.3,
+      "base_price": 507.9,
+      "horizons": {
+        "1": {
+          "predicted": 448.9542139872908,
+          "actual": 505.3
+        },
+        "3": {
+          "predicted": 386.2031398281455,
+          "actual": null
+        },
+        "5": {
+          "predicted": 393.8731197059154,
+          "actual": null
+        },
+        "10": {
+          "predicted": 392.2893243178725,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-28",
+      "actual_price": 509.0,
+      "base_price": 505.3,
+      "horizons": {
+        "1": {
+          "predicted": 448.2005588658154,
+          "actual": 509.0
+        },
+        "3": {
+          "predicted": 385.04544159621,
+          "actual": null
+        },
+        "5": {
+          "predicted": 391.6623708918691,
+          "actual": null
+        },
+        "10": {
+          "predicted": 389.9807272166014,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-29",
+      "actual_price": 507.0,
+      "base_price": 509.0,
+      "horizons": {
+        "1": {
+          "predicted": 448.82886730879545,
+          "actual": 507.0
+        },
+        "3": {
+          "predicted": 388.1189636737108,
+          "actual": null
+        },
+        "5": {
+          "predicted": 395.5275230258703,
+          "actual": null
+        },
+        "10": {
+          "predicted": 393.7729640305042,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-10-30",
+      "actual_price": 506.0,
+      "base_price": 507.0,
+      "horizons": {
+        "1": {
+          "predicted": 447.32609843462706,
+          "actual": 506.0
+        },
+        "3": {
+          "predicted": 386.0060923844576,
+          "actual": null
+        },
+        "5": {
+          "predicted": 393.0115518271923,
+          "actual": null
+        },
+        "10": {
+          "predicted": 391.14032676815987,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-02",
+      "actual_price": 511.1,
+      "base_price": 506.0,
+      "horizons": {
+        "1": {
+          "predicted": 449.22704158723354,
+          "actual": 511.1
+        },
+        "3": {
+          "predicted": 385.8044701218605,
+          "actual": null
+        },
+        "5": {
+          "predicted": 392.2518380880356,
+          "actual": null
+        },
+        "10": {
+          "predicted": 390.70406714081764,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-03",
+      "actual_price": 513.1,
+      "base_price": 511.1,
+      "horizons": {
+        "1": {
+          "predicted": 452.5842625923455,
+          "actual": 513.1
+        },
+        "3": {
+          "predicted": 391.74589393287897,
+          "actual": null
+        },
+        "5": {
+          "predicted": 401.22074097245934,
+          "actual": null
+        },
+        "10": {
+          "predicted": 395.0594255641103,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-04",
+      "actual_price": 511.1,
+      "base_price": 513.1,
+      "horizons": {
+        "1": {
+          "predicted": 454.80271437540654,
+          "actual": 511.1
+        },
+        "3": {
+          "predicted": 395.1978235244751,
+          "actual": null
+        },
+        "5": {
+          "predicted": 402.6786667957902,
+          "actual": null
+        },
+        "10": {
+          "predicted": 393.86522422432904,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-05",
+      "actual_price": 513.1,
+      "base_price": 511.1,
+      "horizons": {
+        "1": {
+          "predicted": 456.32333730086685,
+          "actual": 513.1
+        },
+        "3": {
+          "predicted": 397.2412905931473,
+          "actual": null
+        },
+        "5": {
+          "predicted": 404.80912583172324,
+          "actual": null
+        },
+        "10": {
+          "predicted": 397.10545191168785,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-06",
+      "actual_price": 507.3,
+      "base_price": 513.1,
+      "horizons": {
+        "1": {
+          "predicted": 458.3470674797893,
+          "actual": 507.3
+        },
+        "3": {
+          "predicted": 401.75217340886593,
+          "actual": null
+        },
+        "5": {
+          "predicted": 409.02531126290563,
+          "actual": null
+        },
+        "10": {
+          "predicted": 397.18479504883294,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-09",
+      "actual_price": 508.5,
+      "base_price": 507.3,
+      "horizons": {
+        "1": {
+          "predicted": 450.9745654374361,
+          "actual": 508.5
+        },
+        "3": {
+          "predicted": 397.33943873494866,
+          "actual": null
+        },
+        "5": {
+          "predicted": 403.22022700756787,
+          "actual": null
+        },
+        "10": {
+          "predicted": 394.58474025428296,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-10",
+      "actual_price": 509.0,
+      "base_price": 508.5,
+      "horizons": {
+        "1": {
+          "predicted": 454.03803100436926,
+          "actual": 509.0
+        },
+        "3": {
+          "predicted": 400.3849854692817,
+          "actual": null
+        },
+        "5": {
+          "predicted": 404.79474999010563,
+          "actual": null
+        },
+        "10": {
+          "predicted": 395.2271351516247,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-11",
+      "actual_price": 507.9,
+      "base_price": 509.0,
+      "horizons": {
+        "1": {
+          "predicted": 454.22387701272964,
+          "actual": 507.9
+        },
+        "3": {
+          "predicted": 403.11285877227783,
+          "actual": null
+        },
+        "5": {
+          "predicted": 407.075283408165,
+          "actual": null
+        },
+        "10": {
+          "predicted": 396.11463879048824,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-12",
+      "actual_price": 504.0,
+      "base_price": 507.9,
+      "horizons": {
+        "1": {
+          "predicted": 462.3318233527243,
+          "actual": 504.0
+        },
+        "3": {
+          "predicted": 408.7110362961888,
+          "actual": null
+        },
+        "5": {
+          "predicted": 412.7857710510492,
+          "actual": null
+        },
+        "10": {
+          "predicted": 401.9956612050533,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-13",
+      "actual_price": 503.0,
+      "base_price": 504.0,
+      "horizons": {
+        "1": {
+          "predicted": 461.8005545139313,
+          "actual": 503.0
+        },
+        "3": {
+          "predicted": 408.7288091182709,
+          "actual": null
+        },
+        "5": {
+          "predicted": 413.56001365184784,
+          "actual": null
+        },
+        "10": {
+          "predicted": 402.6160064935684,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-16",
+      "actual_price": 503.5,
+      "base_price": 503.0,
+      "horizons": {
+        "1": {
+          "predicted": 461.03184697777033,
+          "actual": 503.5
+        },
+        "3": {
+          "predicted": 408.2592569440603,
+          "actual": null
+        },
+        "5": {
+          "predicted": 410.4068132340908,
+          "actual": null
+        },
+        "10": {
+          "predicted": 400.5579799711704,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-17",
+      "actual_price": 508.0,
+      "base_price": 503.5,
+      "horizons": {
+        "1": {
+          "predicted": 465.77530102804303,
+          "actual": 508.0
+        },
+        "3": {
+          "predicted": 414.93741995096207,
+          "actual": null
+        },
+        "5": {
+          "predicted": 416.9502686113119,
+          "actual": null
+        },
+        "10": {
+          "predicted": 405.70354180783033,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-18",
+      "actual_price": 507.1,
+      "base_price": 508.0,
+      "horizons": {
+        "1": {
+          "predicted": 470.2137397825718,
+          "actual": 507.1
+        },
+        "3": {
+          "predicted": 420.5007230043411,
+          "actual": null
+        },
+        "5": {
+          "predicted": 422.024150788784,
+          "actual": null
+        },
+        "10": {
+          "predicted": 407.2917424440384,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-19",
+      "actual_price": 507.0,
+      "base_price": 507.1,
+      "horizons": {
+        "1": {
+          "predicted": 469.9186338886619,
+          "actual": 507.0
+        },
+        "3": {
+          "predicted": 419.4479852110148,
+          "actual": null
+        },
+        "5": {
+          "predicted": 421.7317420318723,
+          "actual": null
+        },
+        "10": {
+          "predicted": 406.506447198987,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-20",
+      "actual_price": 506.0,
+      "base_price": 507.0,
+      "horizons": {
+        "1": {
+          "predicted": 470.8453509584069,
+          "actual": 506.0
+        },
+        "3": {
+          "predicted": 420.7917162626982,
+          "actual": null
+        },
+        "5": {
+          "predicted": 422.37780471146107,
+          "actual": null
+        },
+        "10": {
+          "predicted": 406.09738969802856,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-23",
+      "actual_price": 509.5,
+      "base_price": 506.0,
+      "horizons": {
+        "1": {
+          "predicted": 469.1166541427374,
+          "actual": 509.5
+        },
+        "3": {
+          "predicted": 419.27660873532295,
+          "actual": null
+        },
+        "5": {
+          "predicted": 420.58303222060204,
+          "actual": null
+        },
+        "10": {
+          "predicted": 404.7045045495033,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-24",
+      "actual_price": 513.0,
+      "base_price": 509.5,
+      "horizons": {
+        "1": {
+          "predicted": 470.7856769002974,
+          "actual": 513.0
+        },
+        "3": {
+          "predicted": 424.87527142465115,
+          "actual": null
+        },
+        "5": {
+          "predicted": 424.52323900163174,
+          "actual": null
+        },
+        "10": {
+          "predicted": 407.07326328754425,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-25",
+      "actual_price": 510.5,
+      "base_price": 513.0,
+      "horizons": {
+        "1": {
+          "predicted": 476.86357963085175,
+          "actual": 510.5
+        },
+        "3": {
+          "predicted": 428.7610539793968,
+          "actual": null
+        },
+        "5": {
+          "predicted": 429.0157236903906,
+          "actual": null
+        },
+        "10": {
+          "predicted": 408.1079481393099,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-26",
+      "actual_price": 511.0,
+      "base_price": 510.5,
+      "horizons": {
+        "1": {
+          "predicted": 473.0726344138384,
+          "actual": 511.0
+        },
+        "3": {
+          "predicted": 424.5514695122838,
+          "actual": null
+        },
+        "5": {
+          "predicted": 424.76080011576414,
+          "actual": null
+        },
+        "10": {
+          "predicted": 404.0530071258545,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-11-27",
+      "actual_price": 514.9,
+      "base_price": 511.0,
+      "horizons": {
+        "1": {
+          "predicted": 472.73942851275206,
+          "actual": 514.9
+        },
+        "3": {
+          "predicted": 424.7376813441515,
+          "actual": null
+        },
+        "5": {
+          "predicted": 425.1508056819439,
+          "actual": null
+        },
+        "10": {
+          "predicted": 403.2727824151516,
+          "actual": null
+        }
+      }
+    },
+    {
+      "date": "2025-12-01",
+      "actual_price": 512.0,
+      "base_price": 514.9,
+      "horizons": {
+        "1": {
+          "predicted": 475.3948774755001,
+          "actual": 512.0
+        },
+        "3": {
+          "predicted": 429.1804890096187,
+          "actual": null
+        },
+        "5": {
+          "predicted": 428.30648689866064,
+          "actual": null
+        },
+        "10": {
+          "predicted": 404.01927626132965,
+          "actual": null
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "1-day": {
+      "mape": 9.930248424273673,
+      "max_error": 12.964434582813114,
+      "min_error": 6.680317097680676,
+      "direction_accuracy": 58.620689655172406
+    },
+    "3-day": {
+      "mape": 21.06738716421676,
+      "max_error": 24.809107362724518,
+      "min_error": 16.25760664464906,
+      "direction_accuracy": 48.148148148148145
+    },
+    "5-day": {
+      "mape": 20.479733013028525,
+      "max_error": 23.36873979810818,
+      "min_error": 17.331214341080504,
+      "direction_accuracy": 48.0
+    },
+    "10-day": {
+      "mape": 22.457930901216113,
+      "max_error": 23.68601627039459,
+      "min_error": 21.33157314969603,
+      "direction_accuracy": 45.0
+    }
+  }
+}

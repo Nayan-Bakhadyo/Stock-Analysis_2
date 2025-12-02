@@ -1,0 +1,46 @@
+{
+  "symbol": "PFL",
+  "current_price": 384.0,
+  "current_date": "2025-11-27",
+  "predictions": {
+    "1": {
+      "target_date": "2025-11-28",
+      "predicted_price": 389.1471657752991,
+      "change": 5.147165775299072,
+      "pct_change": 1.3404077539841333
+    },
+    "3": {
+      "target_date": "2025-12-02",
+      "predicted_price": 385.41008046269417,
+      "change": 1.410080462694168,
+      "pct_change": 0.3672084538266063
+    },
+    "5": {
+      "target_date": "2025-12-04",
+      "predicted_price": 377.9649887084961,
+      "change": -6.035011291503906,
+      "pct_change": -1.5716175238291423
+    },
+    "10": {
+      "target_date": "2025-12-11",
+      "predicted_price": 380.43512216210365,
+      "change": -3.564877837896347,
+      "pct_change": -0.9283536036188403
+    },
+    "15": {
+      "target_date": "2025-12-18",
+      "predicted_price": 373.9882279038429,
+      "change": -10.011772096157074,
+      "pct_change": -2.607232316707571
+    },
+    "21": {
+      "target_date": "2025-12-26",
+      "predicted_price": 379.8477474451065,
+      "change": -4.152252554893494,
+      "pct_change": -1.0813157695035138
+    }
+  },
+  "training_time": 289.7667660713196,
+  "model_params": 2387542,
+  "model_path": "xlstm_models/PFL_xlstm_multihorizon.pt"
+}

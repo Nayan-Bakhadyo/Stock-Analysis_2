@@ -771,30 +771,26 @@
       "symbol": "BNHC",
       "predictions": {
         "dates": [
-          "2025-11-21",
-          "2025-11-22",
-          "2025-11-23",
-          "2025-11-24",
-          "2025-11-25",
-          "2025-11-26",
-          "2025-11-27"
+          "2025-11-27",
+          "2025-11-28",
+          "2025-11-29",
+          "2025-11-30",
+          "2025-12-01",
+          "2025-12-02",
+          "2025-12-03"
         ],
         "prices": [
-          438.04,
-          434.85,
-          432.91,
-          433.02,
-          442.83,
-          436.67,
-          437.13
+          503.56,
+          421.22,
+          468.53,
+          471.56,
+          474.84,
+          463.66,
+          471.25
         ]
       },
       "recent_actual": {
         "dates": [
-          "2025-09-25",
-          "2025-09-28",
-          "2025-10-07",
-          "2025-10-08",
           "2025-10-09",
           "2025-10-12",
           "2025-10-13",
@@ -820,13 +816,13 @@
           "2025-11-17",
           "2025-11-18",
           "2025-11-19",
-          "2025-11-20"
+          "2025-11-20",
+          "2025-11-23",
+          "2025-11-24",
+          "2025-11-25",
+          "2025-11-26"
         ],
         "prices": [
-          487.9,
-          487.0,
-          482.4,
-          468.0,
           465.0,
           437.0,
           444.7,
@@ -852,48 +848,54 @@
           424.0,
           432.0,
           425.3,
-          429.9
+          429.9,
+          442.0,
+          446.0,
+          442.0,
+          450.0
         ]
       },
       "trading_signal": {
         "direction": "BULLISH",
-        "confidence": 100.0,
-        "up_days": 7,
-        "down_days": 0,
+        "confidence": 85.7,
+        "up_days": 6,
+        "down_days": 1,
         "recommendation": "BUY"
       },
       "model": {
         "model_path": "models/BNHC_model.keras",
         "architecture": "bidirectional",
-        "lookback_days": 60,
-        "layers": 2,
-        "training_samples": 887,
-        "last_actual_price": 429.9,
+        "lookback_days": 240,
+        "layers": 3,
+        "training_samples": 891,
+        "last_actual_price": 450.0,
         "performance": {
-          "test_mape": 0.6076092170270344,
-          "test_mae": 2.578381466865543,
-          "test_rmse": 2.760564945355164,
+          "test_mape": 2.9505034557191965,
+          "test_mae": 12.888515466451647,
+          "test_rmse": 15.200371953964044,
           "direction_accuracy": 85.71428571428571,
-          "mape_rating": "Excellent",
+          "mape_rating": "Good",
           "signal_strength": "Strong"
         }
       },
       "config": {
         "architecture": "bidirectional",
-        "lookback": 60,
-        "layers": 2,
-        "learning_rate": 0.001,
+        "lookback": 240,
+        "layers": 3,
+        "learning_rate": 0.0005,
         "batch_size": 32,
         "patience": 10,
         "optimizer": "adam",
-        "units_1": 128,
-        "units_2": 64,
-        "dropout_1": 0.2,
-        "dropout_2": 0.2,
+        "units_1": 64,
+        "units_2": 32,
+        "units_3": 16,
+        "dropout_1": 0.3,
+        "dropout_2": 0.3,
+        "dropout_3": 0.15,
         "dense_units": 32
       },
-      "analysis_date": "2025-11-22T21:35:09.208462",
-      "timestamp": "2025-11-22 21:35:09"
+      "analysis_date": "2025-11-26T21:39:33.031557",
+      "timestamp": "2025-11-26 21:39:33"
     },
     "TVCL": {
       "symbol": "TVCL",
@@ -1150,7 +1152,137 @@
       },
       "analysis_date": "2025-11-25T08:27:31.351755",
       "timestamp": "2025-11-25 08:27:31"
+    },
+    "ALBSL": {
+      "symbol": "ALBSL",
+      "predictions": {
+        "dates": [
+          "2025-11-28",
+          "2025-11-29",
+          "2025-11-30",
+          "2025-12-01",
+          "2025-12-02",
+          "2025-12-03",
+          "2025-12-04"
+        ],
+        "prices": [
+          1155.29,
+          1206.94,
+          1126.95,
+          1182.64,
+          1131.37,
+          1164.5,
+          1175.49
+        ]
+      },
+      "recent_actual": {
+        "dates": [
+          "2025-10-12",
+          "2025-10-13",
+          "2025-10-14",
+          "2025-10-15",
+          "2025-10-16",
+          "2025-10-19",
+          "2025-10-26",
+          "2025-10-28",
+          "2025-10-29",
+          "2025-10-30",
+          "2025-11-02",
+          "2025-11-03",
+          "2025-11-04",
+          "2025-11-05",
+          "2025-11-06",
+          "2025-11-09",
+          "2025-11-10",
+          "2025-11-11",
+          "2025-11-12",
+          "2025-11-13",
+          "2025-11-16",
+          "2025-11-17",
+          "2025-11-18",
+          "2025-11-19",
+          "2025-11-20",
+          "2025-11-23",
+          "2025-11-24",
+          "2025-11-25",
+          "2025-11-26",
+          "2025-11-27"
+        ],
+        "prices": [
+          985.0,
+          989.0,
+          949.4,
+          955.0,
+          956.0,
+          939.3,
+          961.0,
+          989.0,
+          1065.0,
+          1014.0,
+          985.3,
+          970.0,
+          971.0,
+          982.0,
+          962.0,
+          974.0,
+          976.0,
+          984.9,
+          986.0,
+          993.0,
+          975.0,
+          1012.9,
+          1039.0,
+          1038.9,
+          1054.0,
+          1060.0,
+          1088.9,
+          1099.9,
+          1108.0,
+          1120.0
+        ]
+      },
+      "trading_signal": {
+        "direction": "BULLISH",
+        "confidence": 100.0,
+        "up_days": 7,
+        "down_days": 0,
+        "recommendation": "BUY"
+      },
+      "model": {
+        "model_path": "models/ALBSL_model.keras",
+        "architecture": "bidirectional",
+        "lookback_days": 180,
+        "layers": 3,
+        "training_samples": 1523,
+        "last_actual_price": 1120.0,
+        "performance": {
+          "test_mape": 7.255128103679562,
+          "test_mae": 70.36011591468545,
+          "test_rmse": 83.07097450880238,
+          "direction_accuracy": 100.0,
+          "mape_rating": "Fair",
+          "signal_strength": "Strong"
+        }
+      },
+      "config": {
+        "architecture": "bidirectional",
+        "lookback": 180,
+        "layers": 3,
+        "learning_rate": 0.0005,
+        "batch_size": 32,
+        "patience": 10,
+        "optimizer": "adam",
+        "units_1": 128,
+        "units_2": 64,
+        "units_3": 32,
+        "dropout_1": 0.1,
+        "dropout_2": 0.1,
+        "dropout_3": 0.05,
+        "dense_units": 32
+      },
+      "analysis_date": "2025-11-29T09:57:50.967234",
+      "timestamp": "2025-11-29 09:57:50"
     }
   },
-  "last_updated": "2025-11-25T08:38:45.804128"
+  "last_updated": "2025-12-01T20:16:49.639222"
 }
