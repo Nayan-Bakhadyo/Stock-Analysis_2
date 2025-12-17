@@ -59,6 +59,10 @@ all_stocks_*.json
 # Exclude the entire models folder
 models/
 
+# xLSTM Models
+xlstm_models/
+*.pt
+
 # Jupyter Notebooks
 .ipynb_checkpoints
 *.ipynb
