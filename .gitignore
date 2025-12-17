@@ -63,6 +63,14 @@ models/
 xlstm_models/
 *.pt
 
+# RL Models
+rl_models/
+*.keras
+*.h5
+
+# Virtual Environments
+Stock_Prediction/
+
 # Jupyter Notebooks
 .ipynb_checkpoints
 *.ipynb
