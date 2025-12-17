@@ -52,9 +52,28 @@ models/*.pkl
 *.db
 *.csv
 analysis_results.json
+analysis_results.json.backup
 all_nepse_stocks_*.json
 all_nepse_stocks_*.csv
 all_stocks_*.json
+optimization_results_*.json
+hyperparameter_tuning_master_log.json
+lstm_grid_search_master_log.csv
+
+# Sector data files (generated)
+MANUFACTURING
+NONLIFEINSURANCE
+LIFEINSURANCE
+INVESTMENT
+HOTELS
+HYDROPOWER
+FINANCE
+DEVBANK
+MUTUAL
+SENSITIVEFLOAT
+OTHERS
+TRADING
+MICROFINANCE
 
 # Exclude the entire models folder
 models/
