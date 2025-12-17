@@ -1,0 +1,116 @@
+{
+  "symbol": "HIDCL",
+  "timestamp": "2025-12-07T14:40:25.830346",
+  "n_trials": 1,
+  "best_trial": 1,
+  "best_results": {
+    "trial": 1,
+    "hyperparams": {
+      "hidden_size": 64,
+      "num_layers": 2,
+      "lookback": 30,
+      "dropout": 0.2,
+      "lr": 0.0005,
+      "batch_size": 64,
+      "dir_loss_weight": 0.7
+    },
+    "results": {
+      "1": {
+        "mape": 1.52,
+        "direction_acc": 56.666666666666664,
+        "correct": 34,
+        "total": 60
+      },
+      "3": {
+        "mape": 2.42,
+        "direction_acc": 63.33333333333333,
+        "correct": 38,
+        "total": 60
+      },
+      "5": {
+        "mape": 2.88,
+        "direction_acc": 71.66666666666667,
+        "correct": 43,
+        "total": 60
+      },
+      "10": {
+        "mape": 3.45,
+        "direction_acc": 91.66666666666666,
+        "correct": 55,
+        "total": 60
+      },
+      "15": {
+        "mape": 2.89,
+        "direction_acc": 75.0,
+        "correct": 45,
+        "total": 60
+      },
+      "20": {
+        "mape": 3.26,
+        "direction_acc": 76.66666666666667,
+        "correct": 46,
+        "total": 60
+      }
+    },
+    "avg_mape": 2.736666666666667,
+    "avg_direction_acc": 72.50000000000001,
+    "criteria_met": true,
+    "is_best": true
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "results": {
+        "1": {
+          "mape": 1.52,
+          "direction_acc": 56.666666666666664,
+          "correct": 34,
+          "total": 60
+        },
+        "3": {
+          "mape": 2.42,
+          "direction_acc": 63.33333333333333,
+          "correct": 38,
+          "total": 60
+        },
+        "5": {
+          "mape": 2.88,
+          "direction_acc": 71.66666666666667,
+          "correct": 43,
+          "total": 60
+        },
+        "10": {
+          "mape": 3.45,
+          "direction_acc": 91.66666666666666,
+          "correct": 55,
+          "total": 60
+        },
+        "15": {
+          "mape": 2.89,
+          "direction_acc": 75.0,
+          "correct": 45,
+          "total": 60
+        },
+        "20": {
+          "mape": 3.26,
+          "direction_acc": 76.66666666666667,
+          "correct": 46,
+          "total": 60
+        }
+      },
+      "avg_mape": 2.736666666666667,
+      "avg_direction_acc": 72.50000000000001,
+      "criteria_met": true,
+      "is_best": true
+    }
+  ]
+}

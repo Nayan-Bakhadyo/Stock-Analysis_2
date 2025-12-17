@@ -1,0 +1,1628 @@
+{
+  "IGI": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:00:36.594804"
+  },
+  "AHPC": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:01:05.144755"
+  },
+  "SHPC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:01:33.985066"
+  },
+  "NABIL": {
+    "sentiment_score": 0.19047619047619047,
+    "sentiment_label": "Neutral",
+    "total_articles": 21,
+    "timestamp": "2025-12-16T04:02:02.498298"
+  },
+  "NICA": {
+    "sentiment_score": 0.06666666666666667,
+    "sentiment_label": "Neutral",
+    "total_articles": 15,
+    "timestamp": "2025-12-16T04:02:30.854810"
+  },
+  "SCB": {
+    "sentiment_score": 0.42857142857142855,
+    "sentiment_label": "Positive",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T04:02:59.729911"
+  },
+  "ACLBSL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:03:28.580041"
+  },
+  "ADBL": {
+    "sentiment_score": 0.6666666666666666,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:03:57.631193"
+  },
+  "AHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:04:26.160860"
+  },
+  "AKJCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:04:54.312037"
+  },
+  "AKPL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:05:22.714349"
+  },
+  "ALBSL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:05:50.972943"
+  },
+  "ALICL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 10,
+    "timestamp": "2025-12-16T04:06:20.431233"
+  },
+  "ANLB": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:06:49.164220"
+  },
+  "API": {
+    "sentiment_score": -0.6666666666666666,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:07:17.922942"
+  },
+  "AVYAN": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:07:47.940447"
+  },
+  "BARUN": {
+    "sentiment_score": -0.8888888888888888,
+    "sentiment_label": "Negative",
+    "total_articles": 9,
+    "timestamp": "2025-12-16T04:08:16.810670"
+  },
+  "BBC": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:08:47.686375"
+  },
+  "BEDC": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:09:17.195696"
+  },
+  "BFC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:09:45.761522"
+  },
+  "BGWT": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:10:14.137775"
+  },
+  "BHDC": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:10:43.249049"
+  },
+  "BHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:11:12.209609"
+  },
+  "BHPL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:11:40.714168"
+  },
+  "BNHC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:12:09.406684"
+  },
+  "BNT": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:12:38.044519"
+  },
+  "BOKD86": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:12:56.045313"
+  },
+  "BPCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:13:26.779865"
+  },
+  "CBBL": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:13:56.141880"
+  },
+  "CFCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:14:25.292320"
+  },
+  "CGH": {
+    "sentiment_score": -0.3333333333333333,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:14:53.980150"
+  },
+  "CHCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:15:22.413799"
+  },
+  "CHDC": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:15:52.404343"
+  },
+  "CHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 9,
+    "timestamp": "2025-12-16T04:16:22.678783"
+  },
+  "CIT": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:16:50.856539"
+  },
+  "CITY": {
+    "sentiment_score": -0.3076923076923077,
+    "sentiment_label": "Negative",
+    "total_articles": 13,
+    "timestamp": "2025-12-16T04:17:19.248110"
+  },
+  "CKHL": {
+    "sentiment_score": -0.5,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:17:47.995694"
+  },
+  "CLI": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:18:17.014776"
+  },
+  "CMF2": {
+    "sentiment_score": 0.25,
+    "sentiment_label": "Positive",
+    "total_articles": 12,
+    "timestamp": "2025-12-16T04:18:46.958077"
+  },
+  "CORBL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:19:16.405816"
+  },
+  "CREST": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:19:44.834295"
+  },
+  "CYCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:20:13.672199"
+  },
+  "CZBIL": {
+    "sentiment_score": 0.3,
+    "sentiment_label": "Positive",
+    "total_articles": 10,
+    "timestamp": "2025-12-16T04:20:42.588524"
+  },
+  "DDBL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:21:11.123124"
+  },
+  "DHPL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:21:39.787622"
+  },
+  "DLBS": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:22:08.749826"
+  },
+  "DOLTI": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:22:37.177871"
+  },
+  "DORDI": {
+    "sentiment_score": -0.6,
+    "sentiment_label": "Negative",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T04:23:05.674044"
+  },
+  "EBL": {
+    "sentiment_score": 0.7333333333333334,
+    "sentiment_label": "Positive",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T04:23:35.125999"
+  },
+  "EBLD85": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:23:56.587993"
+  },
+  "EBLD86": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:24:18.200671"
+  },
+  "EBLD91": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:24:41.369357"
+  },
+  "EBLEB89": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:25:00.441974"
+  },
+  "EDBL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:25:30.157663"
+  },
+  "EHPL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:26:01.329382"
+  },
+  "ENL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:26:33.256402"
+  },
+  "FMDBL": {
+    "sentiment_score": 0.22222222222222224,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:27:02.201815"
+  },
+  "FOWAD": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:27:30.666913"
+  },
+  "GBBD85": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:27:50.212732"
+  },
+  "GBBL": {
+    "sentiment_score": 0.3939393939393939,
+    "sentiment_label": "Positive",
+    "total_articles": 11,
+    "timestamp": "2025-12-16T04:28:18.774949"
+  },
+  "GBILD86/87": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:28:41.869796"
+  },
+  "GBIME": {
+    "sentiment_score": 0.5555555555555556,
+    "sentiment_label": "Positive",
+    "total_articles": 9,
+    "timestamp": "2025-12-16T04:29:10.608278"
+  },
+  "GCIL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:29:38.914971"
+  },
+  "GFCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:30:08.327382"
+  },
+  "GHL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:30:36.804212"
+  },
+  "GIBF1": {
+    "sentiment_score": 0.75,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:31:06.679419"
+  },
+  "GILB": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:31:35.611440"
+  },
+  "GLBSL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:32:04.407291"
+  },
+  "GLH": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:32:36.667032"
+  },
+  "GMFBS": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:33:05.062113"
+  },
+  "GMFIL": {
+    "sentiment_score": 0.6666666666666666,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:33:33.933239"
+  },
+  "GMLI": {
+    "sentiment_score": -0.3333333333333333,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:34:02.521051"
+  },
+  "GRDBL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:34:31.245045"
+  },
+  "GSY": {
+    "sentiment_score": -0.16666666666666666,
+    "sentiment_label": "Neutral",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T04:35:00.760404"
+  },
+  "GUFL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:35:30.251794"
+  },
+  "GVL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:35:58.784963"
+  },
+  "H8020": {
+    "sentiment_score": 0.14285714285714285,
+    "sentiment_label": "Neutral",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T04:36:28.478497"
+  },
+  "HATHY": {
+    "sentiment_score": 0.75,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:36:57.275890"
+  },
+  "HBL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:37:25.778138"
+  },
+  "HBLD83": {
+    "sentiment_score": -0.6,
+    "sentiment_label": "Negative",
+    "total_articles": 10,
+    "timestamp": "2025-12-16T04:37:54.884678"
+  },
+  "HDHPC": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:38:23.861205"
+  },
+  "HDL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:38:52.859642"
+  },
+  "HEI": {
+    "sentiment_score": 0.2222222222222222,
+    "sentiment_label": "Positive",
+    "total_articles": 9,
+    "timestamp": "2025-12-16T04:39:21.168010"
+  },
+  "HEIP": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:39:31.901943"
+  },
+  "HHL": {
+    "sentiment_score": -0.6666666666666666,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:40:00.313719"
+  },
+  "HIDCL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:40:29.415084"
+  },
+  "HIDCLP": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:40:58.326684"
+  },
+  "HLBSL": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:41:27.094300"
+  },
+  "HLI": {
+    "sentiment_score": -0.25,
+    "sentiment_label": "Negative",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:41:55.510892"
+  },
+  "HPPL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:42:23.570595"
+  },
+  "HRL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:42:52.163287"
+  },
+  "HURJA": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:43:20.836324"
+  },
+  "ICFC": {
+    "sentiment_score": 0.25,
+    "sentiment_label": "Positive",
+    "total_articles": 8,
+    "timestamp": "2025-12-16T04:43:49.611129"
+  },
+  "IHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:44:18.310993"
+  },
+  "ILBS": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:44:47.276025"
+  },
+  "ILI": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:45:16.015085"
+  },
+  "JBBL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:45:45.361642"
+  },
+  "JBLB": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:46:13.811449"
+  },
+  "JOSHI": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 11,
+    "timestamp": "2025-12-16T04:46:42.608526"
+  },
+  "JSLBB": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:47:11.487420"
+  },
+  "KBL": {
+    "sentiment_score": -0.08333333333333333,
+    "sentiment_label": "Neutral",
+    "total_articles": 12,
+    "timestamp": "2025-12-16T04:47:40.517558"
+  },
+  "KBSH": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:48:09.090271"
+  },
+  "KDBY": {
+    "sentiment_score": 0.2857142857142857,
+    "sentiment_label": "Positive",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T04:48:39.092709"
+  },
+  "KDL": {
+    "sentiment_score": 0.75,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:49:07.833950"
+  },
+  "KEF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:49:37.607808"
+  },
+  "KKHC": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 10,
+    "timestamp": "2025-12-16T04:50:06.123052"
+  },
+  "KMCDB": {
+    "sentiment_score": 0.4,
+    "sentiment_label": "Positive",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T04:50:38.101387"
+  },
+  "KPCL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:51:09.372563"
+  },
+  "KSBBL": {
+    "sentiment_score": 0.1875,
+    "sentiment_label": "Neutral",
+    "total_articles": 16,
+    "timestamp": "2025-12-16T04:51:37.819360"
+  },
+  "KSBBLD87": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:51:48.527599"
+  },
+  "KSY": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:52:17.815540"
+  },
+  "LBBL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:52:47.236516"
+  },
+  "LEC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:53:15.993932"
+  },
+  "LICN": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:53:44.646983"
+  },
+  "LSL": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:54:13.435448"
+  },
+  "LVF2": {
+    "sentiment_score": 0.75,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T04:54:43.305777"
+  },
+  "MAKAR": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:55:12.025569"
+  },
+  "MANDU": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:55:40.161390"
+  },
+  "MATRI": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:56:01.666720"
+  },
+  "MBJC": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T04:56:29.674496"
+  },
+  "MBLEF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T04:56:58.975997"
+  },
+  "MCHL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:57:27.609730"
+  },
+  "MEHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T04:57:55.899866"
+  },
+  "MEL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:58:24.745861"
+  },
+  "MEN": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T04:58:53.735581"
+  },
+  "MERO": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T04:59:22.018610"
+  },
+  "MFIL": {
+    "sentiment_score": 0.5714285714285714,
+    "sentiment_label": "Positive",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T04:59:50.515323"
+  },
+  "MFLD85": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:00:13.077103"
+  },
+  "MHCL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:00:42.563236"
+  },
+  "MHL": {
+    "sentiment_score": -0.7777777777777777,
+    "sentiment_label": "Negative",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T05:01:10.833869"
+  },
+  "MHNL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:01:42.987878"
+  },
+  "MKCL": {
+    "sentiment_score": 0.6666666666666666,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:02:14.134119"
+  },
+  "MKHC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:02:43.748192"
+  },
+  "SPC": {
+    "sentiment_score": -0.6666666666666666,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:03:12.485294"
+  },
+  "MKHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:03:41.291593"
+  },
+  "MKJC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:04:10.416399"
+  },
+  "MLBBL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:04:39.833711"
+  },
+  "MLBL": {
+    "sentiment_score": 0.07692307692307693,
+    "sentiment_label": "Neutral",
+    "total_articles": 13,
+    "timestamp": "2025-12-16T05:05:08.689262"
+  },
+  "MLBS": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:05:38.182161"
+  },
+  "MLBSL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:06:07.310982"
+  },
+  "MMF1": {
+    "sentiment_score": 0.2,
+    "sentiment_label": "Neutral",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T05:06:37.808064"
+  },
+  "MMKJL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:07:06.577642"
+  },
+  "MNBBL": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 10,
+    "timestamp": "2025-12-16T05:07:35.211230"
+  },
+  "MND84/85": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:07:53.094806"
+  },
+  "MNMF1": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T05:08:22.677689"
+  },
+  "MPFL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:08:51.859099"
+  },
+  "MSHL": {
+    "sentiment_score": 0.16666666666666666,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:09:20.669038"
+  },
+  "MSLB": {
+    "sentiment_score": 0.6666666666666666,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:09:49.714123"
+  },
+  "NABBC": {
+    "sentiment_score": -0.3333333333333333,
+    "sentiment_label": "Negative",
+    "total_articles": 9,
+    "timestamp": "2025-12-16T05:10:19.146191"
+  },
+  "NADEP": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:10:50.331243"
+  },
+  "NBF2": {
+    "sentiment_score": 0.42857142857142855,
+    "sentiment_label": "Positive",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T05:11:20.209238"
+  },
+  "NBF3": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:11:50.385857"
+  },
+  "NBL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T05:12:19.164558"
+  },
+  "NBLD82": {
+    "sentiment_score": -0.42857142857142855,
+    "sentiment_label": "Negative",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T05:12:46.696212"
+  },
+  "NBLD87": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:12:57.346276"
+  },
+  "NCCD86": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:13:15.726595"
+  },
+  "NESDO": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:13:44.813299"
+  },
+  "NFS": {
+    "sentiment_score": 0.2,
+    "sentiment_label": "Neutral",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T05:14:14.164895"
+  },
+  "NGPL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:14:43.128135"
+  },
+  "NHDL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:15:12.436429"
+  },
+  "NHPC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:15:42.373467"
+  },
+  "NIBD84": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:16:06.094618"
+  },
+  "NIBLGF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:16:36.366485"
+  },
+  "NIBLSTF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:17:07.094105"
+  },
+  "NIBSF2": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:17:37.282751"
+  },
+  "NICAD85/86": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:17:47.782586"
+  },
+  "NICFC": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T05:18:17.789481"
+  },
+  "NICGF2": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:18:48.409458"
+  },
+  "NICL": {
+    "sentiment_score": -0.09090909090909091,
+    "sentiment_label": "Neutral",
+    "total_articles": 11,
+    "timestamp": "2025-12-16T05:19:17.768397"
+  },
+  "NICLBSL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:19:50.062651"
+  },
+  "NICSF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:20:20.514266"
+  },
+  "NIFRA": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:20:48.726390"
+  },
+  "NIFRAGED": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:21:13.274119"
+  },
+  "NIMB": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:21:42.284049"
+  },
+  "NIMBPO": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:22:09.557339"
+  },
+  "NLG": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:22:38.372045"
+  },
+  "NLIC": {
+    "sentiment_score": 0.21428571428571427,
+    "sentiment_label": "Positive",
+    "total_articles": 14,
+    "timestamp": "2025-12-16T05:23:07.516661"
+  },
+  "NLICL": {
+    "sentiment_score": 0.4444444444444444,
+    "sentiment_label": "Positive",
+    "total_articles": 9,
+    "timestamp": "2025-12-16T05:23:36.221921"
+  },
+  "NMB": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:24:05.212925"
+  },
+  "NMBHF2": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T05:24:35.341059"
+  },
+  "NMBMF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:25:04.028162"
+  },
+  "NMFBS": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:25:33.001905"
+  },
+  "NMIC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:26:02.570797"
+  },
+  "NMLBBL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:26:31.431078"
+  },
+  "NRM": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:27:01.316977"
+  },
+  "NRN": {
+    "sentiment_score": 0.8,
+    "sentiment_label": "Positive",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T05:27:30.327614"
+  },
+  "NSIF2": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:28:00.644621"
+  },
+  "NTC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:28:29.704969"
+  },
+  "NWCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:28:59.329966"
+  },
+  "NYADI": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:29:29.069371"
+  },
+  "OMPL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:29:57.250412"
+  },
+  "PBD84": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:30:08.301737"
+  },
+  "PBD85": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:30:33.268456"
+  },
+  "PBD88": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:30:54.863078"
+  },
+  "PCBLP": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:31:24.164171"
+  },
+  "PFL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:31:57.440481"
+  },
+  "PHCL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:32:26.958808"
+  },
+  "PMHPL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:32:56.132239"
+  },
+  "PMLI": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:33:25.941460"
+  },
+  "PPCL": {
+    "sentiment_score": -0.3333333333333333,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:33:55.069526"
+  },
+  "PPL": {
+    "sentiment_score": -0.2,
+    "sentiment_label": "Neutral",
+    "total_articles": 10,
+    "timestamp": "2025-12-16T05:34:24.144815"
+  },
+  "PRIN": {
+    "sentiment_score": 0.75,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:34:52.465676"
+  },
+  "PROFL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:35:21.738034"
+  },
+  "PRSF": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T05:35:51.833535"
+  },
+  "PRVU": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:36:21.099156"
+  },
+  "PSF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:36:50.998661"
+  },
+  "PURE": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:37:19.398872"
+  },
+  "RADHI": {
+    "sentiment_score": -0.6666666666666666,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:37:49.086276"
+  },
+  "RAWA": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:38:17.660520"
+  },
+  "RBCLPO": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:38:33.632332"
+  },
+  "RFPL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 11,
+    "timestamp": "2025-12-16T05:39:02.138580"
+  },
+  "RHGCL": {
+    "sentiment_score": -0.125,
+    "sentiment_label": "Neutral",
+    "total_articles": 8,
+    "timestamp": "2025-12-16T05:39:31.661361"
+  },
+  "RHPL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:40:00.460432"
+  },
+  "RIDI": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:40:29.334285"
+  },
+  "RLFL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:40:58.674080"
+  },
+  "RMF1": {
+    "sentiment_score": -0.16666666666666666,
+    "sentiment_label": "Neutral",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T05:41:28.589685"
+  },
+  "RMF2": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:41:58.579707"
+  },
+  "RNLI": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:42:27.465752"
+  },
+  "RSDC": {
+    "sentiment_score": 0.6,
+    "sentiment_label": "Positive",
+    "total_articles": 5,
+    "timestamp": "2025-12-16T05:42:56.515274"
+  },
+  "RSY": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T05:43:26.962005"
+  },
+  "RURU": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:43:56.155217"
+  },
+  "SADBL": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 12,
+    "timestamp": "2025-12-16T05:44:25.276728"
+  },
+  "SAGF": {
+    "sentiment_score": 0.2857142857142857,
+    "sentiment_label": "Positive",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T05:44:55.134603"
+  },
+  "SAHAS": {
+    "sentiment_score": 0.5833333333333334,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:45:23.793663"
+  },
+  "SAND2085": {
+    "sentiment_score": -0.7142857142857143,
+    "sentiment_label": "Negative",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T05:45:47.328661"
+  },
+  "SANIMA": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T05:46:16.651564"
+  },
+  "SANVI": {
+    "sentiment_score": -0.5,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:46:46.267529"
+  },
+  "SAPDBL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:47:24.575889"
+  },
+  "SARBTM": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:47:53.942540"
+  },
+  "SBD87": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:48:16.564718"
+  },
+  "SBID83": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:48:40.988260"
+  },
+  "SBLD2082": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:49:02.660107"
+  },
+  "SDBD87": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:49:20.370597"
+  },
+  "SEF": {
+    "sentiment_score": 0.2857142857142857,
+    "sentiment_label": "Positive",
+    "total_articles": 7,
+    "timestamp": "2025-12-16T05:49:50.177509"
+  },
+  "SFCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:50:19.605251"
+  },
+  "SFEF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:50:49.809789"
+  },
+  "SFMF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:51:19.787758"
+  },
+  "SGHC": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:51:48.729317"
+  },
+  "SGIC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:52:17.922335"
+  },
+  "SHEL": {
+    "sentiment_score": 0.75,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:52:47.281129"
+  },
+  "SHIVM": {
+    "sentiment_score": 0.4444444444444444,
+    "sentiment_label": "Positive",
+    "total_articles": 9,
+    "timestamp": "2025-12-16T05:53:15.852873"
+  },
+  "SHL": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T05:53:43.879802"
+  },
+  "SHLB": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:54:12.969804"
+  },
+  "SIFC": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:54:42.657538"
+  },
+  "SIGS3": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:55:12.499475"
+  },
+  "SIKLES": {
+    "sentiment_score": -0.3333333333333333,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:55:41.524004"
+  },
+  "SINDU": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:56:11.447703"
+  },
+  "SJCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:56:40.566063"
+  },
+  "SJLIC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:57:09.409534"
+  },
+  "SKBBL": {
+    "sentiment_score": 0.6666666666666666,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:57:38.626096"
+  },
+  "SLBBL": {
+    "sentiment_score": 0.6666666666666666,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T05:58:06.945260"
+  },
+  "SLBSL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T05:58:36.243191"
+  },
+  "SLCF": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T05:59:05.464700"
+  },
+  "SMATA": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-16T05:59:34.634758"
+  },
+  "SMB": {
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T06:00:03.874588"
+  },
+  "SMFBS": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T06:00:33.436904"
+  },
+  "SMH": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T06:01:02.560772"
+  },
+  "SMHL": {
+    "sentiment_score": -0.2777777777777778,
+    "sentiment_label": "Negative",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T06:01:32.944392"
+  },
+  "SMJC": {
+    "sentiment_score": -0.3333333333333333,
+    "sentiment_label": "Negative",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T06:02:01.943866"
+  },
+  "SMPDA": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T06:02:27.463610"
+  },
+  "SNLI": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 10,
+    "timestamp": "2025-12-16T06:02:58.613953"
+  },
+  "SONA": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T06:03:27.116108"
+  },
+  "SPDL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T06:03:56.042599"
+  },
+  "SPHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 3,
+    "timestamp": "2025-12-16T06:04:24.266205"
+  },
+  "SPIL": {
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-16T06:04:53.154034"
+  },
+  "SPL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T06:05:21.875137"
+  },
+  "SRLI": {
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 6,
+    "timestamp": "2025-12-16T06:05:52.200132"
+  },
+  "SSHL": {
+    "sentiment_score": -1.0,
+    "sentiment_label": "Negative",
+    "total_articles": 8,
+    "timestamp": "2025-12-16T06:06:21.292650"
+  },
+  "STC": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T06:06:49.876869"
+  },
+  "UPPER": {
+    "sentiment_score": -0.5,
+    "sentiment_label": "Negative",
+    "total_articles": 1,
+    "timestamp": "2025-12-16T06:07:18.177322"
+  },
+  "TVCL": {
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 0,
+    "timestamp": "2025-12-16T06:07:47.050466"
+  }
+}

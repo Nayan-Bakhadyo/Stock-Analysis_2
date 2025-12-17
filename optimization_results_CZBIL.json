@@ -1,0 +1,278 @@
+{
+  "symbol": "CZBIL",
+  "timestamp": "2025-12-07T14:57:33.550828",
+  "n_trials": 4,
+  "best_trial": 4,
+  "best_results": {
+    "trial": 4,
+    "hyperparams": {
+      "hidden_size": 512,
+      "num_layers": 1,
+      "lookback": 90,
+      "dropout": 0.3,
+      "lr": 0.0005,
+      "batch_size": 64,
+      "dir_loss_weight": 0.7
+    },
+    "results": {
+      "1": {
+        "mape": 1.22,
+        "direction_acc": 58.333333333333336,
+        "correct": 35,
+        "total": 60
+      },
+      "3": {
+        "mape": 1.85,
+        "direction_acc": 66.66666666666666,
+        "correct": 40,
+        "total": 60
+      },
+      "5": {
+        "mape": 2.49,
+        "direction_acc": 71.66666666666667,
+        "correct": 43,
+        "total": 60
+      },
+      "10": {
+        "mape": 3.09,
+        "direction_acc": 86.66666666666667,
+        "correct": 52,
+        "total": 60
+      },
+      "15": {
+        "mape": 3.79,
+        "direction_acc": 78.33333333333333,
+        "correct": 47,
+        "total": 60
+      },
+      "20": {
+        "mape": 4.23,
+        "direction_acc": 83.33333333333334,
+        "correct": 50,
+        "total": 60
+      }
+    },
+    "avg_mape": 2.7783333333333338,
+    "avg_direction_acc": 74.16666666666667,
+    "criteria_met": true,
+    "is_best": true
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "results": {
+        "1": {
+          "mape": 1.34,
+          "direction_acc": 46.666666666666664,
+          "correct": 28,
+          "total": 60
+        },
+        "3": {
+          "mape": 2.37,
+          "direction_acc": 43.333333333333336,
+          "correct": 26,
+          "total": 60
+        },
+        "5": {
+          "mape": 2.91,
+          "direction_acc": 46.666666666666664,
+          "correct": 28,
+          "total": 60
+        },
+        "10": {
+          "mape": 4.46,
+          "direction_acc": 51.66666666666667,
+          "correct": 31,
+          "total": 60
+        },
+        "15": {
+          "mape": 4.38,
+          "direction_acc": 78.33333333333333,
+          "correct": 47,
+          "total": 60
+        },
+        "20": {
+          "mape": 4.15,
+          "direction_acc": 90.0,
+          "correct": 54,
+          "total": 60
+        }
+      },
+      "avg_mape": 3.268333333333333,
+      "avg_direction_acc": 59.444444444444436,
+      "criteria_met": false,
+      "is_best": true
+    },
+    {
+      "trial": 2,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.9
+      },
+      "results": {
+        "1": {
+          "mape": 1.29,
+          "direction_acc": 48.333333333333336,
+          "correct": 29,
+          "total": 60
+        },
+        "3": {
+          "mape": 2.19,
+          "direction_acc": 43.333333333333336,
+          "correct": 26,
+          "total": 60
+        },
+        "5": {
+          "mape": 3.1,
+          "direction_acc": 36.666666666666664,
+          "correct": 22,
+          "total": 60
+        },
+        "10": {
+          "mape": 4.14,
+          "direction_acc": 61.66666666666667,
+          "correct": 37,
+          "total": 60
+        },
+        "15": {
+          "mape": 4.96,
+          "direction_acc": 63.33333333333333,
+          "correct": 38,
+          "total": 60
+        },
+        "20": {
+          "mape": 4.57,
+          "direction_acc": 86.66666666666667,
+          "correct": 52,
+          "total": 60
+        }
+      },
+      "avg_mape": 3.375,
+      "avg_direction_acc": 56.666666666666664,
+      "criteria_met": false,
+      "is_best": false
+    },
+    {
+      "trial": 3,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "results": {
+        "1": {
+          "mape": 1.28,
+          "direction_acc": 51.66666666666667,
+          "correct": 31,
+          "total": 60
+        },
+        "3": {
+          "mape": 2.11,
+          "direction_acc": 50.0,
+          "correct": 30,
+          "total": 60
+        },
+        "5": {
+          "mape": 2.77,
+          "direction_acc": 56.666666666666664,
+          "correct": 34,
+          "total": 60
+        },
+        "10": {
+          "mape": 3.82,
+          "direction_acc": 76.66666666666667,
+          "correct": 46,
+          "total": 60
+        },
+        "15": {
+          "mape": 4.38,
+          "direction_acc": 80.0,
+          "correct": 48,
+          "total": 60
+        },
+        "20": {
+          "mape": 4.39,
+          "direction_acc": 86.66666666666667,
+          "correct": 52,
+          "total": 60
+        }
+      },
+      "avg_mape": 3.125,
+      "avg_direction_acc": 66.94444444444444,
+      "criteria_met": false,
+      "is_best": true
+    },
+    {
+      "trial": 4,
+      "hyperparams": {
+        "hidden_size": 512,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "results": {
+        "1": {
+          "mape": 1.22,
+          "direction_acc": 58.333333333333336,
+          "correct": 35,
+          "total": 60
+        },
+        "3": {
+          "mape": 1.85,
+          "direction_acc": 66.66666666666666,
+          "correct": 40,
+          "total": 60
+        },
+        "5": {
+          "mape": 2.49,
+          "direction_acc": 71.66666666666667,
+          "correct": 43,
+          "total": 60
+        },
+        "10": {
+          "mape": 3.09,
+          "direction_acc": 86.66666666666667,
+          "correct": 52,
+          "total": 60
+        },
+        "15": {
+          "mape": 3.79,
+          "direction_acc": 78.33333333333333,
+          "correct": 47,
+          "total": 60
+        },
+        "20": {
+          "mape": 4.23,
+          "direction_acc": 83.33333333333334,
+          "correct": 50,
+          "total": 60
+        }
+      },
+      "avg_mape": 2.7783333333333338,
+      "avg_direction_acc": 74.16666666666667,
+      "criteria_met": true,
+      "is_best": true
+    }
+  ]
+}

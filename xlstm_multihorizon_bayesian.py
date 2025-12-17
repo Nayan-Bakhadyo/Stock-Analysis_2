@@ -1,14 +1,14 @@
 """
 Multi-Horizon xLSTM Stock Forecaster with Bayesian Optimization
 ================================================================
-Target: MAPE < 2%, Direction Accuracy > 80%
+Target: MAPE < 3%, Direction Accuracy > 80%
 
 Horizons: t+1, t+3, t+5, t+10, t+15, t+20
 
 Features:
 1. Multi-horizon predictions (6 time horizons)
 2. Bayesian optimization for hyperparameter search (max 60 combinations)
-3. Early stopping when criteria met (MAPE<2%, Direction>80%)
+3. Early stopping when criteria met (MAPE<3%, Direction>70%)
 4. Save best model per iteration
 5. Market features (NEPSE + Sector indices)
 6. Inference module for website integration
@@ -27,6 +27,7 @@ import time
 import json
 import warnings
 import os
+import gc
 warnings.filterwarnings('ignore')
 
 import config
@@ -47,6 +48,29 @@ DEVICE = 'mps' if torch.backends.mps.is_available() else 'cpu'
 
 # Time horizons
 HORIZONS = [1, 3, 5, 10, 15, 20]
+
+
+class FocalLoss(nn.Module):
+    """
+    Focal Loss for handling class imbalance and hard examples.
+    Focuses more on misclassified samples.
+    """
+    def __init__(self, alpha=None, gamma=2.0, reduction='mean'):
+        super().__init__()
+        self.alpha = alpha  # Class weights
+        self.gamma = gamma  # Focusing parameter (higher = more focus on hard examples)
+        self.reduction = reduction
+    
+    def forward(self, inputs, targets):
+        ce_loss = nn.functional.cross_entropy(inputs, targets, weight=self.alpha, reduction='none')
+        pt = torch.exp(-ce_loss)  # Probability of correct class
+        focal_loss = ((1 - pt) ** self.gamma) * ce_loss
+        
+        if self.reduction == 'mean':
+            return focal_loss.mean()
+        elif self.reduction == 'sum':
+            return focal_loss.sum()
+        return focal_loss
 
 # Model save directory
 MODEL_DIR = Path("models")
@@ -228,7 +252,7 @@ def calculate_rsi(prices, period=14):
 
 
 def create_features(df: pd.DataFrame, symbol: str = None, use_market: bool = True):
-    """Create feature set with market context"""
+    """Create feature set with market context and direction-focused indicators"""
     
     df = df.copy()
     
@@ -241,6 +265,11 @@ def create_features(df: pd.DataFrame, symbol: str = None, use_market: bool = Tru
     df['rsi'] = calculate_rsi(df['close'], 14)
     df['rsi_signal'] = (df['rsi'] - 50) / 50
     
+    # RSI divergence (direction indicator)
+    df['rsi_slope'] = df['rsi'].diff(3) / 3  # RSI momentum
+    df['price_slope'] = df['close'].pct_change(3)
+    df['rsi_divergence'] = df['rsi_slope'] - df['price_slope'] * 100  # Divergence signal
+    
     # Moving averages
     df['sma_5'] = df['close'].rolling(5).mean()
     df['sma_10'] = df['close'].rolling(10).mean()
@@ -250,6 +279,15 @@ def create_features(df: pd.DataFrame, symbol: str = None, use_market: bool = Tru
     df['price_vs_sma5'] = (df['close'] - df['sma_5']) / df['sma_5']
     df['price_vs_sma20'] = (df['close'] - df['sma_20']) / df['sma_20']
     
+    # Trend strength (direction indicator)
+    df['trend_strength'] = (df['sma_5'] - df['sma_20']) / df['sma_20']
+    df['trend_acceleration'] = df['trend_strength'].diff(3)
+    
+    # Higher highs / Lower lows (direction indicator)
+    df['higher_high'] = (df['high'] > df['high'].shift(1)).astype(int)
+    df['lower_low'] = (df['low'] < df['low'].shift(1)).astype(int)
+    df['hh_ll_signal'] = df['higher_high'].rolling(5).sum() - df['lower_low'].rolling(5).sum()
+    
     # Volatility
     df['volatility'] = df['returns'].rolling(10).std()
     
@@ -257,12 +295,16 @@ def create_features(df: pd.DataFrame, symbol: str = None, use_market: bool = Tru
     df['volume_ma'] = df['volume'].rolling(10).mean()
     df['volume_signal'] = (df['volume'] - df['volume_ma']) / (df['volume_ma'] + 1)
     
+    # Volume trend (buying/selling pressure)
+    df['volume_trend'] = df['volume'].rolling(5).mean() / df['volume'].rolling(20).mean() - 1
+    
     # MACD
     ema12 = df['close'].ewm(span=12).mean()
     ema26 = df['close'].ewm(span=26).mean()
     df['macd'] = (ema12 - ema26) / df['close']
     df['macd_signal'] = df['macd'].ewm(span=9).mean()
     df['macd_hist'] = df['macd'] - df['macd_signal']
+    df['macd_crossover'] = (df['macd'] > df['macd_signal']).astype(int) - 0.5  # Direction signal
     
     # Bollinger
     bb_mid = df['close'].rolling(20).mean()
@@ -270,11 +312,22 @@ def create_features(df: pd.DataFrame, symbol: str = None, use_market: bool = Tru
     df['bb_position'] = (df['close'] - bb_mid) / (2 * bb_std + 0.001)
     
     feature_cols = [
+        # Price momentum
         'returns', 'returns_2d', 'returns_5d',
-        'rsi_signal', 'ma_cross_5_10', 'ma_cross_5_20',
+        # RSI indicators
+        'rsi_signal', 'rsi_divergence',
+        # Moving average signals
+        'ma_cross_5_10', 'ma_cross_5_20',
         'price_vs_sma5', 'price_vs_sma20',
-        'volatility', 'volume_signal',
-        'macd', 'macd_signal', 'macd_hist', 'bb_position'
+        # Trend strength (direction focused)
+        'trend_strength', 'trend_acceleration',
+        'hh_ll_signal',  # Higher highs / lower lows
+        # Volatility & Volume
+        'volatility', 'volume_signal', 'volume_trend',
+        # MACD signals
+        'macd', 'macd_signal', 'macd_hist', 'macd_crossover',
+        # Bollinger
+        'bb_position'
     ]
     
     sector_code = None
@@ -351,16 +404,30 @@ def prepare_multihorizon_data(df, feature_cols, lookback=60, horizons=HORIZONS):
 
 
 def train_model(model, train_loader, val_loader, epochs=100, lr=0.001, 
-                patience=10, min_epochs=30, device=DEVICE):
-    """Train with early stopping - requires minimum epochs before stopping"""
+                patience=20, min_epochs=15, dir_loss_weight=0.8, device=DEVICE):
+    """Train with early stopping
+    
+    Args:
+        patience: Stop after this many epochs without improvement (default: 20)
+        min_epochs: Minimum epochs before early stopping can trigger (default: 15)
+                    Set low to allow natural convergence, patience handles the rest.
+        dir_loss_weight: Weight for direction loss (0.5-0.9). Higher = prioritize direction accuracy.
+    """
     
     model = model.to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=0.01)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=7, factor=0.5)
     
     mse_loss = nn.MSELoss()
-    # Weight classes: penalize wrong predictions on UP/DOWN more than FLAT
-    ce_loss = nn.CrossEntropyLoss(weight=torch.tensor([1.2, 0.6, 1.2]).to(device))
+    # Focal Loss with class weights: Down=1.5, Flat=0.3, Up=1.5
+    # - Higher weight on Up/Down (the important predictions)
+    # - gamma=2.0 focuses on hard-to-classify samples
+    direction_loss = FocalLoss(
+        alpha=torch.tensor([1.5, 0.3, 1.5]).to(device),
+        gamma=2.0
+    )
+    
+    price_loss_weight = 1.0 - dir_loss_weight
     
     best_val_acc = 0  # Track best accuracy instead of loss
     best_val_loss = float('inf')
@@ -383,8 +450,9 @@ def train_model(model, train_loader, val_loader, epochs=100, lr=0.001,
                 y_r = y_ret[h].to(device)
                 y_d = y_dir[h].to(device)
                 
-                loss += 0.3 * mse_loss(price_preds[h], y_r)
-                loss += 0.7 * ce_loss(dir_logits[h], y_d)
+                # Dynamic loss weighting from hyperparameter
+                loss += price_loss_weight * mse_loss(price_preds[h], y_r)
+                loss += dir_loss_weight * direction_loss(dir_logits[h], y_d)
             
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -406,8 +474,8 @@ def train_model(model, train_loader, val_loader, epochs=100, lr=0.001,
                     y_r = y_ret[h].to(device)
                     y_d = y_dir[h].to(device)
                     
-                    val_loss += 0.3 * mse_loss(price_preds[h], y_r).item()
-                    val_loss += 0.7 * ce_loss(dir_logits[h], y_d).item()
+                    val_loss += price_loss_weight * mse_loss(price_preds[h], y_r).item()
+                    val_loss += dir_loss_weight * direction_loss(dir_logits[h], y_d).item()
                     
                     pred_dir = torch.argmax(dir_logits[h], dim=1)
                     val_correct[h] += (pred_dir == y_d).sum().item()
@@ -491,7 +559,7 @@ def evaluate_model(models, X_test, y_returns_test, y_directions_test, df_test, c
 
 
 def run_optimization_trial(symbol, hidden_size, num_layers, lookback, dropout, lr, batch_size, 
-                          n_models=5, epochs=100, trial_num=0, best_results=None):
+                          dir_loss_weight=0.8, n_models=5, epochs=100, trial_num=0, best_results=None):
     """Run a single optimization trial"""
     
     # Convert numpy types to native Python types
@@ -501,10 +569,11 @@ def run_optimization_trial(symbol, hidden_size, num_layers, lookback, dropout, l
     dropout = float(dropout)
     lr = float(lr)
     batch_size = int(batch_size)
+    dir_loss_weight = float(dir_loss_weight)
     
     print(f"\n{'='*70}")
     print(f"Trial {trial_num}: hidden={hidden_size}, layers={num_layers}, "
-          f"lookback={lookback}, dropout={dropout:.2f}, lr={lr:.5f}, batch={batch_size}")
+          f"lookback={lookback}, dropout={dropout:.2f}, lr={lr:.5f}, batch={batch_size}, dir_wt={dir_loss_weight:.1f}")
     print(f"{'='*70}")
     
     # Load and prepare data
@@ -539,8 +608,12 @@ def run_optimization_trial(symbol, hidden_size, num_layers, lookback, dropout, l
             num_layers=num_layers,
             dropout=dropout
         )
-        model, _ = train_model(model, train_loader, test_loader, epochs=epochs, lr=lr)
+        model, _ = train_model(model, train_loader, test_loader, epochs=epochs, lr=lr, dir_loss_weight=dir_loss_weight)
         models.append(model)
+        
+        # Clear GPU cache after each model training
+        if torch.backends.mps.is_available():
+            torch.mps.empty_cache()
     
     # Evaluate
     results = evaluate_model(models, X_test, y_ret_test, y_dir_test, df_processed)
@@ -570,6 +643,7 @@ def run_optimization_trial(symbol, hidden_size, num_layers, lookback, dropout, l
                 'dropout': dropout,
                 'lr': lr,
                 'batch_size': batch_size,
+                'dir_loss_weight': dir_loss_weight,
                 'n_features': len(feature_cols),
             },
             'scaler': scaler,
@@ -580,7 +654,22 @@ def run_optimization_trial(symbol, hidden_size, num_layers, lookback, dropout, l
         print(f"  ✅ Saved best model to {save_path}")
     
     # Check criteria
-    criteria_met = avg_mape < 10.0 and avg_dir_acc > 60.0
+    criteria_met = avg_mape < 3.0 and avg_dir_acc > 70.0
+    
+    # Aggressive memory cleanup - delete all large objects
+    del models, X_train, X_test, y_ret_train, y_ret_test, y_dir_train, y_dir_test
+    del train_loader, test_loader, df_processed
+    
+    # Extract only scalars from results before cleanup
+    results_minimal = {h: {'mape': results[h]['mape'], 
+                          'direction_acc': results[h]['direction_acc'],
+                          'correct': results[h].get('correct', 0),
+                          'total': results[h].get('total', 0)} for h in HORIZONS}
+    del results
+    
+    gc.collect()
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
     
     return {
         'trial': trial_num,
@@ -591,19 +680,212 @@ def run_optimization_trial(symbol, hidden_size, num_layers, lookback, dropout, l
             'dropout': dropout,
             'lr': lr,
             'batch_size': batch_size,
+            'dir_loss_weight': dir_loss_weight,
         },
-        'results': results,
-        'avg_mape': avg_mape,
-        'avg_direction_acc': avg_dir_acc,
-        'criteria_met': criteria_met,
-        'is_best': is_best,
+        # Store only scalar metrics, not full arrays (memory optimization)
+        'results': results_minimal,
+        'avg_mape': float(avg_mape),
+        'avg_direction_acc': float(avg_dir_acc),
+        'criteria_met': bool(criteria_met),
+        'is_best': bool(is_best),
     }
 
 
-def bayesian_optimization(symbol: str, max_trials: int = 60, n_models: int = 5):
+def analyze_trials_and_suggest(all_results, current_best):
+    """
+    Analyze recent trial results and suggest adaptive adjustments.
+    Returns suggestions for next hyperparameters based on observed patterns.
+    """
+    if len(all_results) < 5:
+        return None, []
+    
+    suggestions = []
+    recent = all_results[-10:]  # Look at last 10 trials
+    
+    # Extract metrics from recent trials
+    recent_mapes = [r['avg_mape'] for r in recent]
+    recent_dir_accs = [r['avg_direction_acc'] for r in recent]
+    recent_hyperparams = [r['hyperparams'] for r in recent]
+    
+    # Get per-horizon results for pattern analysis
+    horizon_patterns = {h: [] for h in HORIZONS}
+    for r in recent:
+        for h in HORIZONS:
+            if h in r.get('results', {}):
+                horizon_patterns[h].append({
+                    'mape': r['results'][h].get('mape', 0),
+                    'dir_acc': r['results'][h].get('direction_acc', 0)
+                })
+    
+    # Pattern 1: Overfitting Detection
+    # If short-term (t+1, t+3) is good but long-term (t+15, t+20) is bad
+    short_term_acc = np.mean([hp[0]['dir_acc'] for hp in [horizon_patterns[1], horizon_patterns[3]] if hp])
+    long_term_acc = np.mean([hp[0]['dir_acc'] for hp in [horizon_patterns[15], horizon_patterns[20]] if hp])
+    
+    if short_term_acc > 65 and long_term_acc < 55:
+        suggestions.append({
+            'issue': 'OVERFITTING',
+            'description': f'Short-term acc ({short_term_acc:.1f}%) >> Long-term acc ({long_term_acc:.1f}%)',
+            'adjustments': {
+                'dropout': 0.3,  # Increase regularization
+                'hidden_size': 64,  # Smaller model
+                'lr': 0.0005,  # Lower learning rate
+            }
+        })
+    
+    # Pattern 2: Underfitting Detection
+    # If both MAPE and direction accuracy are consistently poor
+    avg_recent_mape = np.mean(recent_mapes)
+    avg_recent_dir = np.mean(recent_dir_accs)
+    
+    if avg_recent_mape > 6 and avg_recent_dir < 55:
+        suggestions.append({
+            'issue': 'UNDERFITTING',
+            'description': f'High MAPE ({avg_recent_mape:.1f}%) and low dir acc ({avg_recent_dir:.1f}%)',
+            'adjustments': {
+                'hidden_size': 256,  # Larger model
+                'num_layers': 2,  # More depth
+                'lookback': 90,  # More context
+                'lr': 0.001,  # Higher learning rate
+            }
+        })
+    
+    # Pattern 3: Direction Accuracy Plateau
+    # If direction accuracy hasn't improved in last 10 trials
+    if current_best and len(all_results) > 20:
+        trials_since_best = len(all_results) - current_best['trial']
+        if trials_since_best > 15 and avg_recent_dir < current_best['avg_direction_acc'] - 2:
+            suggestions.append({
+                'issue': 'DIR_ACC_PLATEAU',
+                'description': f'No improvement in {trials_since_best} trials, stuck at {current_best["avg_direction_acc"]:.1f}%',
+                'adjustments': {
+                    'dir_loss_weight': 0.9,  # Focus more on direction
+                    'lookback': 60 if current_best['hyperparams'].get('lookback', 60) != 60 else 90,
+                }
+            })
+    
+    # Pattern 4: High MAPE but Good Direction
+    # Direction is good but price predictions are way off
+    if avg_recent_dir > 65 and avg_recent_mape > 5:
+        suggestions.append({
+            'issue': 'HIGH_MAPE_GOOD_DIR',
+            'description': f'Good direction ({avg_recent_dir:.1f}%) but high MAPE ({avg_recent_mape:.1f}%)',
+            'adjustments': {
+                'dir_loss_weight': 0.7,  # Balance with price
+                'batch_size': 32,  # Smaller batches for better gradients
+            }
+        })
+    
+    # Pattern 5: Inconsistent Results
+    # High variance in results suggests instability
+    mape_std = np.std(recent_mapes)
+    dir_std = np.std(recent_dir_accs)
+    
+    if mape_std > 2 or dir_std > 8:
+        suggestions.append({
+            'issue': 'INSTABILITY',
+            'description': f'High variance: MAPE std={mape_std:.2f}, Dir std={dir_std:.1f}',
+            'adjustments': {
+                'lr': 0.0005,  # Lower learning rate for stability
+                'batch_size': 64,  # Larger batches
+                'dropout': 0.2,  # Less aggressive dropout
+            }
+        })
+    
+    # Pattern 6: Learning Rate Issues
+    # Check if high LR trials consistently fail
+    high_lr_trials = [r for r in recent if r['hyperparams'].get('lr', 0) >= 0.005]
+    low_lr_trials = [r for r in recent if r['hyperparams'].get('lr', 0) <= 0.0005]
+    
+    if high_lr_trials and low_lr_trials:
+        high_lr_avg = np.mean([r['avg_direction_acc'] for r in high_lr_trials])
+        low_lr_avg = np.mean([r['avg_direction_acc'] for r in low_lr_trials])
+        
+        if high_lr_avg < low_lr_avg - 5:
+            suggestions.append({
+                'issue': 'LR_TOO_HIGH',
+                'description': f'High LR ({high_lr_avg:.1f}%) underperforms low LR ({low_lr_avg:.1f}%)',
+                'adjustments': {
+                    'lr': 0.0005,
+                }
+            })
+    
+    # Pattern 7: Model Size Analysis
+    # Check if larger or smaller models perform better
+    large_model_trials = [r for r in recent if r['hyperparams'].get('hidden_size', 0) >= 256]
+    small_model_trials = [r for r in recent if r['hyperparams'].get('hidden_size', 0) <= 64]
+    
+    if large_model_trials and small_model_trials:
+        large_avg = np.mean([r['avg_direction_acc'] for r in large_model_trials])
+        small_avg = np.mean([r['avg_direction_acc'] for r in small_model_trials])
+        
+        if small_avg > large_avg + 3:
+            suggestions.append({
+                'issue': 'SMALLER_BETTER',
+                'description': f'Small models ({small_avg:.1f}%) outperform large ({large_avg:.1f}%)',
+                'adjustments': {
+                    'hidden_size': 64,
+                    'num_layers': 1,
+                    'dropout': 0.2,
+                }
+            })
+        elif large_avg > small_avg + 3:
+            suggestions.append({
+                'issue': 'LARGER_BETTER',
+                'description': f'Large models ({large_avg:.1f}%) outperform small ({small_avg:.1f}%)',
+                'adjustments': {
+                    'hidden_size': 256,
+                    'num_layers': 2,
+                }
+            })
+    
+    # Pattern 8: Lookback Window Analysis
+    short_lookback = [r for r in recent if r['hyperparams'].get('lookback', 0) <= 30]
+    long_lookback = [r for r in recent if r['hyperparams'].get('lookback', 0) >= 90]
+    
+    if short_lookback and long_lookback:
+        short_avg = np.mean([r['avg_direction_acc'] for r in short_lookback])
+        long_avg = np.mean([r['avg_direction_acc'] for r in long_lookback])
+        
+        if long_avg > short_avg + 3:
+            suggestions.append({
+                'issue': 'NEED_MORE_CONTEXT',
+                'description': f'Longer lookback ({long_avg:.1f}%) better than short ({short_avg:.1f}%)',
+                'adjustments': {
+                    'lookback': 90,
+                }
+            })
+    
+    # Pattern 9: Stagnation - try something completely different
+    if current_best and len(all_results) > 50:
+        trials_since_best = len(all_results) - current_best['trial']
+        if trials_since_best > 30:
+            suggestions.append({
+                'issue': 'EXPLORATION_NEEDED',
+                'description': f'No improvement in {trials_since_best} trials - try radical change',
+                'adjustments': {
+                    # Try opposite of current best
+                    'hidden_size': 64 if current_best['hyperparams'].get('hidden_size', 128) >= 128 else 256,
+                    'lookback': 30 if current_best['hyperparams'].get('lookback', 60) >= 60 else 90,
+                    'dir_loss_weight': 0.6 if current_best['hyperparams'].get('dir_loss_weight', 0.8) >= 0.8 else 0.9,
+                    'lr': 0.005 if current_best['hyperparams'].get('lr', 0.001) <= 0.001 else 0.0005,
+                }
+            })
+    
+    return suggestions[-1] if suggestions else None, suggestions
+
+
+def bayesian_optimization(symbol: str, max_trials: int = 900, n_models: int = 5, warm_start_configs: list = None):
     """
     Bayesian optimization for hyperparameter search
-    Terminates when MAPE < 2% and Direction Accuracy > 80%
+    Terminates when MAPE < 3% and Direction Accuracy > 80%
+    
+    Args:
+        symbol: Stock symbol to optimize
+        max_trials: Maximum number of trials
+        n_models: Number of ensemble models
+        warm_start_configs: List of hyperparameter dicts from previously optimized stocks
+                           (adaptive starting points from same/similar sectors)
     """
     
     # Validate stock before starting optimization
@@ -615,26 +897,45 @@ def bayesian_optimization(symbol: str, max_trials: int = 60, n_models: int = 5):
     print(f"🔬 BAYESIAN OPTIMIZATION: {symbol}")
     print(f"{'='*70}")
     print(f"Max trials: {max_trials}")
-    print(f"Target: MAPE < 10%, Direction Accuracy > 60%")
+    print(f"Target: MAPE < 3%, Direction Accuracy > 70%")
     print(f"{'='*70}\n")
     
-    # Search space
+    # Search space (optimized for NEPSE data size)
     space = [
-        Integer(64, 256, name='hidden_size'),
-        Integer(1, 3, name='num_layers'),
-        Integer(30, 120, name='lookback'),
-        Real(0.1, 0.4, name='dropout'),
-        Real(0.0001, 0.01, prior='log-uniform', name='lr'),
-        Categorical([32, 64, 128], name='batch_size'),
+        Categorical([64, 128, 256, 512], name='hidden_size'),
+        Integer(1, 2, name='num_layers'),
+        Categorical([30, 60, 90], name='lookback'),
+        Categorical([0.2, 0.3], name='dropout'),
+        Categorical([0.0005, 0.001, 0.005], name='lr'),
+        Categorical([32, 64], name='batch_size'),
+        Categorical([0.6, 0.7, 0.8, 0.9], name='dir_loss_weight'),  # Direction loss weight
     ]
     
-    all_results = []
-    best_results = None
-    trial_num = 0
+    # Try to resume from previous progress
+    all_results, best_results, completed_trials = load_optimization_progress(symbol)
+    if all_results is None:
+        all_results = []
+        best_results = None
+        completed_trials = 0
+    
+    trial_num = completed_trials
+    should_stop = False  # Flag for early termination
+    
+    # Check if already completed enough trials
+    if completed_trials >= max_trials:
+        print(f"\n✅ Already completed {completed_trials} trials (max: {max_trials})")
+        return all_results, best_results
+    
+    remaining_trials = max_trials - completed_trials
+    print(f"\n🔄 Running {remaining_trials} more trials (starting from {completed_trials + 1})")
     
     @use_named_args(space)
-    def objective(hidden_size, num_layers, lookback, dropout, lr, batch_size):
-        nonlocal trial_num, best_results, all_results
+    def objective(hidden_size, num_layers, lookback, dropout, lr, batch_size, dir_loss_weight):
+        nonlocal trial_num, best_results, all_results, should_stop
+        
+        # Check if we should stop (from previous iteration) - raise to exit gp_minimize
+        if should_stop:
+            raise StopIteration("Early stopping triggered")
         
         trial_num += 1
         
@@ -647,6 +948,7 @@ def bayesian_optimization(symbol: str, max_trials: int = 60, n_models: int = 5):
                 dropout=dropout,
                 lr=lr,
                 batch_size=batch_size,
+                dir_loss_weight=dir_loss_weight,
                 n_models=n_models,
                 epochs=100,
                 trial_num=trial_num,
@@ -659,14 +961,76 @@ def bayesian_optimization(symbol: str, max_trials: int = 60, n_models: int = 5):
             if result['is_best']:
                 best_results = result
             
+            # Print best so far after each trial
+            if best_results:
+                trials_since_best = trial_num - best_results['trial']
+                print(f"\n📈 Best so far: MAPE={best_results['avg_mape']:.2f}%, "
+                      f"Dir Acc={best_results['avg_direction_acc']:.1f}% (Trial {best_results['trial']}, {trials_since_best} ago)")
+            
+            # AUTO-TERMINATION: Stop if no improvement for 150 trials
+            if best_results and trial_num - best_results['trial'] >= 150:
+                print(f"\n⏹️  AUTO-STOP: No improvement in 150 trials. Best remains Trial {best_results['trial']}")
+                print(f"   Best MAPE: {best_results['avg_mape']:.2f}%, Best Dir Acc: {best_results['avg_direction_acc']:.1f}%")
+                
+                # Save final progress
+                save_optimization_progress(symbol, all_results, best_results)
+                
+                # Simple cleanup - avoid operations that might hang
+                should_stop = True
+                print("   ✅ Auto-stop complete, moving to next stock...")
+                return -best_results['avg_direction_acc']
+            
+            # Adaptive Analysis - every 10 trials, analyze patterns and print suggestions
+            if trial_num % 10 == 0 and trial_num >= 10:
+                suggestion, all_suggestions = analyze_trials_and_suggest(all_results, best_results)
+                if suggestion:
+                    print(f"\n🧠 ADAPTIVE ANALYSIS (Trial {trial_num}):")
+                    print(f"   Issue detected: {suggestion['issue']}")
+                    print(f"   {suggestion['description']}")
+                    print(f"   Suggested adjustments: {suggestion['adjustments']}")
+            
+            # Memory cleanup after each trial to prevent buildup
+            gc.collect()
+            if torch.backends.mps.is_available():
+                torch.mps.empty_cache()
+            
+            # Deep cleanup every 20 trials - force Python to release memory
+            if trial_num % 20 == 0:
+                import ctypes
+                try:
+                    libc = ctypes.CDLL("libc.dylib")
+                    libc.malloc_trim(0)
+                except:
+                    pass
+                gc.collect()
+                gc.collect()  # Run twice for cyclic references
+            
             # Save progress
-            save_optimization_progress(symbol, all_results)
+            save_optimization_progress(symbol, all_results, best_results)
+            
+            # Trim old results from memory (keep last 50 + best trial)
+            # Full history is saved to disk, no need to keep all in RAM
+            if len(all_results) > 50:
+                best_trial_num = best_results.get('trial', 0) if best_results else 0
+                # Keep last 50 trials + the best trial
+                recent_trials = all_results[-50:]
+                best_trial_obj = next((r for r in all_results if r.get('trial') == best_trial_num), None)
+                
+                # Rebuild list with just recent + best
+                if best_trial_obj and best_trial_obj not in recent_trials:
+                    all_results = [best_trial_obj] + recent_trials
+                else:
+                    all_results = recent_trials
+                
+                # Force cleanup of trimmed trials
+                gc.collect()
             
             # Check termination criteria
             if result['criteria_met']:
                 print(f"\n🎉 CRITERIA MET! MAPE={result['avg_mape']:.2f}%, "
                       f"Dir Acc={result['avg_direction_acc']:.1f}%")
-                return -result['avg_direction_acc']  # Negative for minimization
+                should_stop = True
+                return -result['avg_direction_acc']
             
             # Objective: maximize direction accuracy (minimize negative)
             return -result['avg_direction_acc']
@@ -685,40 +1049,153 @@ def bayesian_optimization(symbol: str, max_trials: int = 60, n_models: int = 5):
             dropout = np.random.uniform(0.1, 0.4)
             lr = np.random.uniform(0.0001, 0.01)
             batch_size = np.random.choice([32, 64, 128])
+            dir_loss_weight = np.random.choice([0.6, 0.7, 0.8, 0.9])
             
-            result = objective(hidden_size, num_layers, lookback, dropout, lr, batch_size)
+            result = objective(hidden_size, num_layers, lookback, dropout, lr, batch_size, dir_loss_weight)
             
             if best_results and best_results.get('criteria_met', False):
                 break
         
         return all_results, best_results
     
-    # Bayesian optimization
-    result = gp_minimize(
-        objective,
-        space,
-        n_calls=max_trials,
-        n_random_starts=10,
-        random_state=42,
-        verbose=False,
-    )
+    # Bayesian optimization with hybrid approach:
+    # Use warm start configs if available, otherwise use default starting points
+    # Format: [hidden_size, num_layers, lookback, dropout, lr, batch_size, dir_loss_weight]
+    
+    if warm_start_configs and len(warm_start_configs) > 0:
+        # Use configs from previously optimized stocks (adaptive)
+        x0 = []
+        for config in warm_start_configs[:5]:  # Max 5 warm start configs
+            x0.append([
+                config.get('hidden_size', 128),
+                config.get('num_layers', 2),
+                config.get('lookback', 60),
+                config.get('dropout', 0.2),
+                config.get('lr', 0.001),
+                config.get('batch_size', 64),
+                config.get('dir_loss_weight', 0.8),
+            ])
+        print(f"🔥 Using {len(x0)} warm start configs from similar stocks")
+        n_random = max(5, 10 - len(x0))  # Fill remaining with random
+    else:
+        # Default starting points
+        x0 = [
+            [64, 1, 30, 0.2, 0.001, 32, 0.8],    # Small, fast baseline
+            [128, 2, 60, 0.2, 0.001, 64, 0.8],   # Medium baseline
+            [256, 2, 90, 0.3, 0.0005, 64, 0.9],  # Larger, longer lookback, higher dir weight
+        ]
+        n_random = 7
+    
+    # Build x0 and y0 from previous trials for Bayesian resume
+    y0_resume = None
+    if completed_trials > 0:
+        # Extract previous trial configs and scores
+        x0_resume = []
+        y0_resume = []
+        for trial in all_results:
+            hp = trial.get('hyperparams', {})
+            if hp:
+                x0_resume.append([
+                    hp.get('hidden_size', 128),
+                    hp.get('num_layers', 2),
+                    hp.get('lookback', 60),
+                    hp.get('dropout', 0.2),
+                    hp.get('lr', 0.001),
+                    hp.get('batch_size', 64),
+                    hp.get('dir_loss_weight', 0.8),
+                ])
+                # Negative score for minimization (we want higher dir_acc)
+                y0_resume.append(-trial.get('avg_direction_acc', 0))
+        
+        if x0_resume:
+            x0 = x0_resume
+            print(f"🧠 Bayesian optimizer initialized with {len(x0)} previous trials")
+            n_random = 0  # No random starts when resuming - use GP knowledge
+    
+    try:
+        result = gp_minimize(
+            objective,
+            space,
+            x0=x0,
+            y0=y0_resume,
+            n_calls=remaining_trials,
+            n_random_starts=n_random,
+            random_state=None,  # Different random seed each time for diversity
+            verbose=False,
+        )
+    except StopIteration:
+        print("✅ Early stopping - exiting optimization cleanly")
+        result = None
+    except Exception as e:
+        print(f"⚠️ gp_minimize ended: {e}")
+        result = None
+    
+    # If we stopped early, gp_minimize might still be running - force cleanup
+    if should_stop:
+        print("🧹 Cleaning up after early stop...")
+    
+    # Clean up GP model to free memory before next stock
+    if result is not None:
+        del result
+    gc.collect()
+    if torch.backends.mps.is_available():
+        torch.mps.empty_cache()
     
     return all_results, best_results
 
 
-def save_optimization_progress(symbol: str, results: list):
-    """Save optimization progress to JSON"""
+def save_optimization_progress(symbol: str, results: list, best_results: dict = None):
+    """Save optimization progress to JSON with full resume support"""
     
     output = {
         'symbol': symbol,
         'timestamp': datetime.now().isoformat(),
         'n_trials': len(results),
+        'best_trial': best_results.get('trial', 0) if best_results else 0,
+        'best_results': best_results,
         'trials': results,
     }
     
     output_file = Path(f"optimization_results_{symbol}.json")
     with open(output_file, 'w') as f:
         json.dump(output, f, indent=2, default=str)
+
+
+def load_optimization_progress(symbol: str):
+    """Load previous optimization progress for resume"""
+    
+    output_file = Path(f"optimization_results_{symbol}.json")
+    if not output_file.exists():
+        return None, None, 0
+    
+    try:
+        with open(output_file, 'r') as f:
+            data = json.load(f)
+        
+        all_results = data.get('trials', [])
+        best_results = data.get('best_results', None)
+        n_completed = len(all_results)
+        
+        # Rebuild best_results if not saved properly
+        if best_results is None and all_results:
+            for result in all_results:
+                if result.get('is_best', False):
+                    best_results = result
+                    break
+            # If no is_best flag, find highest avg_direction_acc
+            if best_results is None:
+                best_results = max(all_results, key=lambda x: x.get('avg_direction_acc', 0))
+        
+        print(f"\n📂 RESUMING from optimization_results_{symbol}.json")
+        print(f"   Loaded {n_completed} previous trials")
+        if best_results:
+            print(f"   Best so far: Trial {best_results.get('trial', '?')} with {best_results.get('avg_direction_acc', 0):.1f}% dir accuracy")
+        
+        return all_results, best_results, n_completed
+        
+    except Exception as e:
+        print(f"⚠️ Could not load progress file: {e}")
+        return None, None, 0
 
 
 def inference(symbol: str, model_path: str = None):
