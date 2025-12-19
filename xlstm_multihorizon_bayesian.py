@@ -967,9 +967,12 @@ def bayesian_optimization(symbol: str, max_trials: int = 900, n_models: int = 5,
                 print(f"\n📈 Best so far: MAPE={best_results['avg_mape']:.2f}%, "
                       f"Dir Acc={best_results['avg_direction_acc']:.1f}% (Trial {best_results['trial']}, {trials_since_best} ago)")
             
-            # AUTO-TERMINATION: Stop if no improvement for 150 trials
-            if best_results and trial_num - best_results['trial'] >= 150:
-                print(f"\n⏹️  AUTO-STOP: No improvement in 150 trials. Best remains Trial {best_results['trial']}")
+            # AUTO-TERMINATION: Stop if no improvement for 100 trials
+            # Use result['trial'] (absolute trial number) instead of trial_num for proper resume behavior
+            current_trial = result['trial']
+            if best_results and current_trial - best_results['trial'] >= 100:
+                print(f"\n⏹️  AUTO-STOP: No improvement in 100 trials. Best remains Trial {best_results['trial']}")
+                print(f"   Current trial: {current_trial}, trials since best: {current_trial - best_results['trial']}")
                 print(f"   Best MAPE: {best_results['avg_mape']:.2f}%, Best Dir Acc: {best_results['avg_direction_acc']:.1f}%")
                 
                 # Save final progress

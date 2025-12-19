@@ -1,6 +1,6 @@
 {
   "started_at": "2025-12-02T12:41:25.133886",
-  "last_updated": "2025-12-16T20:47:47.318995",
+  "last_updated": "2025-12-19T15:25:28.913453",
   "completed": [
     "IGI",
     "AHPC",
@@ -28,19 +28,27 @@
     "CBBL",
     "CFCL",
     "GFCL",
-    "GLBSL"
+    "GLBSL",
+    "GMFBS",
+    "GUFL",
+    "AHL",
+    "ALICL",
+    "AVYAN",
+    "RAWA",
+    "BARUN",
+    "BEDC",
+    "BFC",
+    "BHPL",
+    "ICFC",
+    "ILBS"
   ],
   "failed": [
     "IGI",
-    "MNBBL"
+    "MNBBL",
+    "GMFIL"
   ],
-  "in_progress": "GMFBS",
+  "in_progress": "KMCDB",
   "pending": [
-    "GMFIL",
-    "GUFL",
-    "ICFC",
-    "ILBS",
-    "KMCDB",
     "MFIL",
     "MSLB",
     "NADEP",
@@ -75,7 +83,6 @@
     "MLBL",
     "NABBC",
     "SINDU",
-    "BFC",
     "CYCL",
     "PROFL",
     "RLFL",
@@ -87,7 +94,6 @@
     "CITY",
     "KDL",
     "SHL",
-    "BEDC",
     "DORDI",
     "GVL",
     "HPPL",
@@ -97,7 +103,6 @@
     "MKHC",
     "MSHL",
     "NHDL",
-    "RAWA",
     "SMH",
     "SMHL",
     "SPHL",
@@ -107,7 +112,6 @@
     "HATHY",
     "NIFRA",
     "NRN",
-    "ALICL",
     "CREST",
     "GMLI",
     "HEI",
@@ -187,7 +191,6 @@
     "MERO",
     "MPFL",
     "NFS",
-    "AHL",
     "BGWT",
     "EHPL",
     "GLH",
@@ -202,7 +205,6 @@
     "SIGS3",
     "BOKD86",
     "KSBBLD87",
-    "BHPL",
     "CKHL",
     "MAKAR",
     "MANDU",
@@ -212,8 +214,6 @@
     "NICFC",
     "MFLD85",
     "SBLD2082",
-    "AVYAN",
-    "BARUN",
     "KKHC",
     "MMKJL",
     "NBF3",
@@ -238,7 +238,11 @@
     "MEN",
     "RSY",
     "PBD85",
-    "SLBBL"
+    "SLBBL",
+    "BPCL",
+    "GHL",
+    "PMHPL",
+    "RADHI"
   ],
   "results": {
     "IGI": {
@@ -579,6 +583,182 @@
         "dir_loss_weight": 0.7
       },
       "sector": "Finance"
+    },
+    "GMFBS": {
+      "completed_at": "2025-12-16T23:16:00.929905",
+      "best_mape": 3.4766666666666666,
+      "best_direction_acc": 65.83333333333333,
+      "trials_run": 17,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.9
+      },
+      "sector": "Finance"
+    },
+    "AHL": {
+      "completed_at": "2025-12-17T19:00:22.474324",
+      "best_mape": 3.098333333333334,
+      "best_direction_acc": 64.72222222222221,
+      "trials_run": 252,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.9
+      },
+      "sector": "Hydropower"
+    },
+    "ALICL": {
+      "completed_at": "2025-12-17T20:23:09.139010",
+      "best_mape": 2.6166666666666667,
+      "best_direction_acc": 70.27777777777777,
+      "trials_run": 13,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Life Insurance"
+    },
+    "AVYAN": {
+      "completed_at": "2025-12-18T00:23:18.177163",
+      "best_mape": 2.476666666666667,
+      "best_direction_acc": 67.77777777777779,
+      "trials_run": 16,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "RAWA": {
+      "completed_at": "2025-12-18T02:31:23.364518",
+      "best_mape": 2.2116666666666664,
+      "best_direction_acc": 70.55555555555556,
+      "trials_run": 108,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Hydropower"
+    },
+    "BARUN": {
+      "completed_at": "2025-12-18T06:42:24.751950",
+      "best_mape": 3.875,
+      "best_direction_acc": 77.50000000000001,
+      "trials_run": 94,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Hydropower"
+    },
+    "BEDC": {
+      "completed_at": "2025-12-18T11:32:19.506023",
+      "best_mape": 8.405,
+      "best_direction_acc": 64.72222222222223,
+      "trials_run": 79,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Hydropower"
+    },
+    "BFC": {
+      "completed_at": "2025-12-18T13:27:32.954369",
+      "best_mape": 2.9883333333333333,
+      "best_direction_acc": 71.94444444444444,
+      "trials_run": 31,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Finance"
+    },
+    "BHPL": {
+      "completed_at": "2025-12-18T21:00:13.412578",
+      "best_mape": 3.4916666666666667,
+      "best_direction_acc": 75.0,
+      "trials_run": 155,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 512,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Hydropower"
+    },
+    "ICFC": {
+      "completed_at": "2025-12-19T02:03:53.084454",
+      "best_mape": 2.3699999999999997,
+      "best_direction_acc": 72.77777777777777,
+      "trials_run": 42,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "ILBS": {
+      "best_trial": 72,
+      "avg_direction_acc": 61.94444444444445,
+      "avg_mape": 3.658333333333333,
+      "status": "completed"
     }
   },
   "sector_best": {
@@ -593,6 +773,17 @@
         "lr": 0.0005,
         "batch_size": 64,
         "dir_loss_weight": 0.7
+      },
+      {
+        "symbol": "ALICL",
+        "direction_acc": 70.27777777777777,
+        "hidden_size": 128,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.8
       }
     ],
     "Finance": [
@@ -619,15 +810,15 @@
         "dir_loss_weight": 0.7
       },
       {
-        "symbol": "CBBL",
-        "direction_acc": 71.11111111111111,
-        "hidden_size": 64,
+        "symbol": "ICFC",
+        "direction_acc": 72.77777777777777,
+        "hidden_size": 128,
         "num_layers": 1,
-        "lookback": 30,
-        "dropout": 0.3,
-        "lr": 0.005,
-        "batch_size": 64,
-        "dir_loss_weight": 0.6
+        "lookback": 90,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
       }
     ],
     "Investment": [
@@ -699,6 +890,41 @@
         "dropout": 0.2,
         "lr": 0.0005,
         "batch_size": 64,
+        "dir_loss_weight": 0.6
+      }
+    ],
+    "Hydropower": [
+      {
+        "symbol": "BARUN",
+        "direction_acc": 77.50000000000001,
+        "hidden_size": 128,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      {
+        "symbol": "BHPL",
+        "direction_acc": 75.0,
+        "hidden_size": 512,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      {
+        "symbol": "RAWA",
+        "direction_acc": 70.55555555555556,
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.001,
+        "batch_size": 32,
         "dir_loss_weight": 0.6
       }
     ]

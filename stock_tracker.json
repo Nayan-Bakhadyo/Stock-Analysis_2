@@ -1,996 +1,996 @@
 {
-  "last_updated": "2025-12-16T06:07:47.050477",
+  "last_updated": "2025-12-19T06:14:26.105403",
   "total_processed": 272,
   "stocks": {
     "NABIL": {
-      "last_analyzed": "2025-12-16T04:02:02.498313",
+      "last_analyzed": "2025-12-19T04:02:12.984341",
+      "status": "success",
+      "error": null,
+      "analysis_count": 32
+    },
+    "NICA": {
+      "last_analyzed": "2025-12-19T04:02:41.506086",
+      "status": "success",
+      "error": null,
+      "analysis_count": 31
+    },
+    "SCB": {
+      "last_analyzed": "2025-12-19T04:03:10.553142",
+      "status": "success",
+      "error": null,
+      "analysis_count": 30
+    },
+    "IGI": {
+      "last_analyzed": "2025-12-19T04:00:37.936999",
+      "status": "success",
+      "error": null,
+      "analysis_count": 32
+    },
+    "AHPC": {
+      "last_analyzed": "2025-12-19T04:01:09.840971",
+      "status": "success",
+      "error": null,
+      "analysis_count": 32
+    },
+    "SHPC": {
+      "last_analyzed": "2025-12-19T04:01:41.403789",
+      "status": "success",
+      "error": null,
+      "analysis_count": 30
+    },
+    "ACLBSL": {
+      "last_analyzed": "2025-12-19T04:03:39.777793",
       "status": "success",
       "error": null,
       "analysis_count": 29
     },
-    "NICA": {
-      "last_analyzed": "2025-12-16T04:02:30.854819",
+    "AHL": {
+      "last_analyzed": "2025-12-19T04:04:37.394702",
       "status": "success",
       "error": null,
       "analysis_count": 28
     },
-    "SCB": {
-      "last_analyzed": "2025-12-16T04:02:59.729921",
-      "status": "success",
-      "error": null,
-      "analysis_count": 27
-    },
-    "IGI": {
-      "last_analyzed": "2025-12-16T04:00:36.594812",
-      "status": "success",
-      "error": null,
-      "analysis_count": 29
-    },
-    "AHPC": {
-      "last_analyzed": "2025-12-16T04:01:05.144764",
-      "status": "success",
-      "error": null,
-      "analysis_count": 29
-    },
-    "SHPC": {
-      "last_analyzed": "2025-12-16T04:01:33.985075",
-      "status": "success",
-      "error": null,
-      "analysis_count": 27
-    },
-    "ACLBSL": {
-      "last_analyzed": "2025-12-16T04:03:28.580050",
+    "AKPL": {
+      "last_analyzed": "2025-12-19T04:05:35.671189",
       "status": "success",
       "error": null,
       "analysis_count": 26
     },
-    "AHL": {
-      "last_analyzed": "2025-12-16T04:04:26.160872",
-      "status": "success",
-      "error": null,
-      "analysis_count": 25
-    },
-    "AKPL": {
-      "last_analyzed": "2025-12-16T04:05:22.714358",
-      "status": "success",
-      "error": null,
-      "analysis_count": 23
-    },
     "ALBSL": {
-      "last_analyzed": "2025-12-16T04:05:50.972953",
+      "last_analyzed": "2025-12-19T04:06:04.901612",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "ANLB": {
-      "last_analyzed": "2025-12-16T04:06:49.164232",
+      "last_analyzed": "2025-12-19T04:07:03.082607",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "AVYAN": {
-      "last_analyzed": "2025-12-16T04:07:47.940457",
+      "last_analyzed": "2025-12-19T04:08:03.622586",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BARUN": {
-      "last_analyzed": "2025-12-16T04:08:16.810678",
+      "last_analyzed": "2025-12-19T04:08:32.288503",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BBC": {
-      "last_analyzed": "2025-12-16T04:08:47.686385",
+      "last_analyzed": "2025-12-19T04:09:02.848535",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BEDC": {
-      "last_analyzed": "2025-12-16T04:09:17.195704",
+      "last_analyzed": "2025-12-19T04:09:31.713631",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BGWT": {
-      "last_analyzed": "2025-12-16T04:10:14.137784",
+      "last_analyzed": "2025-12-19T04:10:28.587791",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BHDC": {
-      "last_analyzed": "2025-12-16T04:10:43.249058",
+      "last_analyzed": "2025-12-19T04:10:57.704537",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BHL": {
-      "last_analyzed": "2025-12-16T04:11:12.209620",
+      "last_analyzed": "2025-12-19T04:11:26.634416",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BNHC": {
-      "last_analyzed": "2025-12-16T04:12:09.406697",
+      "last_analyzed": "2025-12-19T04:12:24.129583",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BNT": {
-      "last_analyzed": "2025-12-16T04:12:38.044530",
+      "last_analyzed": "2025-12-19T04:12:52.395777",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BOKD86": {
-      "last_analyzed": "2025-12-16T04:12:56.045326",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "BPCL": {
-      "last_analyzed": "2025-12-16T04:13:26.779875",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CBBL": {
-      "last_analyzed": "2025-12-16T04:13:56.141889",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CGH": {
-      "last_analyzed": "2025-12-16T04:14:53.980160",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CHDC": {
-      "last_analyzed": "2025-12-16T04:15:52.404354",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CHL": {
-      "last_analyzed": "2025-12-16T04:16:22.678792",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CITY": {
-      "last_analyzed": "2025-12-16T04:17:19.248119",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CKHL": {
-      "last_analyzed": "2025-12-16T04:17:47.995704",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CLI": {
-      "last_analyzed": "2025-12-16T04:18:17.014785",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CMF2": {
-      "last_analyzed": "2025-12-16T04:18:46.958090",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CORBL": {
-      "last_analyzed": "2025-12-16T04:19:16.405826",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CREST": {
-      "last_analyzed": "2025-12-16T04:19:44.834305",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CYCL": {
-      "last_analyzed": "2025-12-16T04:20:13.672210",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "CZBIL": {
-      "last_analyzed": "2025-12-16T04:20:42.588538",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "DHPL": {
-      "last_analyzed": "2025-12-16T04:21:39.787654",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "DLBS": {
-      "last_analyzed": "2025-12-16T04:22:08.749846",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "DORDI": {
-      "last_analyzed": "2025-12-16T04:23:05.674054",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "EBLD85": {
-      "last_analyzed": "2025-12-16T04:23:56.588007",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "EBLD86": {
-      "last_analyzed": "2025-12-16T04:24:18.200680",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "EBLD91": {
-      "last_analyzed": "2025-12-16T04:24:41.369368",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "EBLEB89": {
-      "last_analyzed": "2025-12-16T04:25:00.441989",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "EDBL": {
-      "last_analyzed": "2025-12-16T04:25:30.157672",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "EHPL": {
-      "last_analyzed": "2025-12-16T04:26:01.329400",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "ENL": {
-      "last_analyzed": "2025-12-16T04:26:33.256412",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "FOWAD": {
-      "last_analyzed": "2025-12-16T04:27:30.666922",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "GBBD85": {
-      "last_analyzed": "2025-12-16T04:27:50.212741",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "GBBL": {
-      "last_analyzed": "2025-12-16T04:28:18.774958",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "GBILD86/87": {
-      "last_analyzed": "2025-12-16T04:28:41.869810",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "ADBL": {
-      "last_analyzed": "2025-12-16T04:03:57.631207",
+      "last_analyzed": "2025-12-19T04:13:10.374185",
       "status": "success",
       "error": null,
       "analysis_count": 25
     },
-    "AKJCL": {
-      "last_analyzed": "2025-12-16T04:04:54.312045",
+    "BPCL": {
+      "last_analyzed": "2025-12-19T04:13:38.896657",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 25
+    },
+    "CBBL": {
+      "last_analyzed": "2025-12-19T04:14:08.136288",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CGH": {
+      "last_analyzed": "2025-12-19T04:15:06.728042",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CHDC": {
+      "last_analyzed": "2025-12-19T04:16:05.304333",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CHL": {
+      "last_analyzed": "2025-12-19T04:16:33.754628",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CITY": {
+      "last_analyzed": "2025-12-19T04:17:32.708261",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CKHL": {
+      "last_analyzed": "2025-12-19T04:18:01.501385",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CLI": {
+      "last_analyzed": "2025-12-19T04:18:31.658923",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CMF2": {
+      "last_analyzed": "2025-12-19T04:19:01.625143",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CORBL": {
+      "last_analyzed": "2025-12-19T04:19:31.235034",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CREST": {
+      "last_analyzed": "2025-12-19T04:19:59.490937",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CYCL": {
+      "last_analyzed": "2025-12-19T04:20:28.156878",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "CZBIL": {
+      "last_analyzed": "2025-12-19T04:20:56.975976",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "DHPL": {
+      "last_analyzed": "2025-12-19T04:21:54.044501",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "DLBS": {
+      "last_analyzed": "2025-12-19T04:22:22.653624",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "DORDI": {
+      "last_analyzed": "2025-12-19T04:23:19.584652",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "EBLD85": {
+      "last_analyzed": "2025-12-19T04:24:10.566244",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "EBLD86": {
+      "last_analyzed": "2025-12-19T04:24:31.727528",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "EBLD91": {
+      "last_analyzed": "2025-12-19T04:24:54.584769",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "EBLEB89": {
+      "last_analyzed": "2025-12-19T04:25:14.324965",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "EDBL": {
+      "last_analyzed": "2025-12-19T04:25:43.375851",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "EHPL": {
+      "last_analyzed": "2025-12-19T04:26:12.237510",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "ENL": {
+      "last_analyzed": "2025-12-19T04:26:40.805736",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "FOWAD": {
+      "last_analyzed": "2025-12-19T04:27:37.999087",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "GBBD85": {
+      "last_analyzed": "2025-12-19T04:27:57.647858",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "GBBL": {
+      "last_analyzed": "2025-12-19T04:28:29.964391",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "GBILD86/87": {
+      "last_analyzed": "2025-12-19T04:28:55.759157",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "ADBL": {
+      "last_analyzed": "2025-12-19T04:04:08.900270",
+      "status": "success",
+      "error": null,
+      "analysis_count": 28
+    },
+    "AKJCL": {
+      "last_analyzed": "2025-12-19T04:05:06.304020",
+      "status": "success",
+      "error": null,
+      "analysis_count": 26
     },
     "ALICL": {
-      "last_analyzed": "2025-12-16T04:06:20.431245",
+      "last_analyzed": "2025-12-19T04:06:33.871697",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "API": {
-      "last_analyzed": "2025-12-16T04:07:17.922954",
+      "last_analyzed": "2025-12-19T04:07:32.953391",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BFC": {
-      "last_analyzed": "2025-12-16T04:09:45.761531",
+      "last_analyzed": "2025-12-19T04:10:00.267084",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "BHPL": {
-      "last_analyzed": "2025-12-16T04:11:40.714177",
+      "last_analyzed": "2025-12-19T04:11:55.480172",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "CFCL": {
-      "last_analyzed": "2025-12-16T04:14:25.292345",
+      "last_analyzed": "2025-12-19T04:14:37.634130",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "CHCL": {
-      "last_analyzed": "2025-12-16T04:15:22.413810",
+      "last_analyzed": "2025-12-19T04:15:36.018179",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "CIT": {
-      "last_analyzed": "2025-12-16T04:16:50.856562",
+      "last_analyzed": "2025-12-19T04:17:03.054054",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "DDBL": {
-      "last_analyzed": "2025-12-16T04:21:11.123134",
+      "last_analyzed": "2025-12-19T04:21:25.502552",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "DOLTI": {
-      "last_analyzed": "2025-12-16T04:22:37.177882",
+      "last_analyzed": "2025-12-19T04:22:51.109489",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "EBL": {
-      "last_analyzed": "2025-12-16T04:23:35.126009",
+      "last_analyzed": "2025-12-19T04:23:48.931077",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "FMDBL": {
-      "last_analyzed": "2025-12-16T04:27:02.201825",
+      "last_analyzed": "2025-12-19T04:27:09.321338",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GBIME": {
-      "last_analyzed": "2025-12-16T04:29:10.608289",
+      "last_analyzed": "2025-12-19T04:29:24.606263",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GCIL": {
-      "last_analyzed": "2025-12-16T04:29:38.914983",
+      "last_analyzed": "2025-12-19T04:29:53.696205",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GFCL": {
-      "last_analyzed": "2025-12-16T04:30:08.327397",
+      "last_analyzed": "2025-12-19T04:30:22.343643",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GHL": {
-      "last_analyzed": "2025-12-16T04:30:36.804223",
+      "last_analyzed": "2025-12-19T04:30:51.517350",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GIBF1": {
-      "last_analyzed": "2025-12-16T04:31:06.679428",
+      "last_analyzed": "2025-12-19T04:31:21.008583",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GILB": {
-      "last_analyzed": "2025-12-16T04:31:35.611465",
+      "last_analyzed": "2025-12-19T04:31:50.346046",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GLBSL": {
-      "last_analyzed": "2025-12-16T04:32:04.407303",
+      "last_analyzed": "2025-12-19T04:32:49.567844",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GLH": {
-      "last_analyzed": "2025-12-16T04:32:36.667041",
+      "last_analyzed": "2025-12-19T04:33:20.913058",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GMFBS": {
-      "last_analyzed": "2025-12-16T04:33:05.062122",
+      "last_analyzed": "2025-12-19T04:33:49.513116",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GMFIL": {
-      "last_analyzed": "2025-12-16T04:33:33.933248",
+      "last_analyzed": "2025-12-19T04:34:18.130271",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GMLI": {
-      "last_analyzed": "2025-12-16T04:34:02.521061",
+      "last_analyzed": "2025-12-19T04:34:47.547161",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GRDBL": {
-      "last_analyzed": "2025-12-16T04:34:31.245056",
+      "last_analyzed": "2025-12-19T04:35:16.591067",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GSY": {
-      "last_analyzed": "2025-12-16T04:35:00.760414",
+      "last_analyzed": "2025-12-19T04:35:45.688646",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GUFL": {
-      "last_analyzed": "2025-12-16T04:35:30.251805",
+      "last_analyzed": "2025-12-19T04:36:14.436881",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "GVL": {
-      "last_analyzed": "2025-12-16T04:35:58.784973",
+      "last_analyzed": "2025-12-19T04:36:43.125020",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "H8020": {
-      "last_analyzed": "2025-12-16T04:36:28.478506",
+      "last_analyzed": "2025-12-19T04:37:12.544613",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HATHY": {
-      "last_analyzed": "2025-12-16T04:36:57.275901",
+      "last_analyzed": "2025-12-19T04:37:41.631960",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HBL": {
-      "last_analyzed": "2025-12-16T04:37:25.778148",
+      "last_analyzed": "2025-12-19T04:38:10.777080",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HBLD83": {
-      "last_analyzed": "2025-12-16T04:37:54.884686",
+      "last_analyzed": "2025-12-19T04:38:56.546985",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HDHPC": {
-      "last_analyzed": "2025-12-16T04:38:23.861224",
+      "last_analyzed": "2025-12-19T04:40:02.784939",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HDL": {
-      "last_analyzed": "2025-12-16T04:38:52.859651",
+      "last_analyzed": "2025-12-19T04:40:31.621870",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HEI": {
-      "last_analyzed": "2025-12-16T04:39:21.168021",
+      "last_analyzed": "2025-12-19T04:41:14.288480",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HEIP": {
-      "last_analyzed": "2025-12-16T04:39:31.901954",
+      "last_analyzed": "2025-12-19T04:41:24.858183",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HHL": {
-      "last_analyzed": "2025-12-16T04:40:00.313729",
+      "last_analyzed": "2025-12-19T04:41:52.775981",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HIDCL": {
-      "last_analyzed": "2025-12-16T04:40:29.415099",
+      "last_analyzed": "2025-12-19T04:42:21.302706",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HIDCLP": {
-      "last_analyzed": "2025-12-16T04:40:58.326696",
+      "last_analyzed": "2025-12-19T04:42:49.790907",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HLBSL": {
-      "last_analyzed": "2025-12-16T04:41:27.094308",
+      "last_analyzed": "2025-12-19T04:43:18.941573",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HLI": {
-      "last_analyzed": "2025-12-16T04:41:55.510903",
+      "last_analyzed": "2025-12-19T04:43:47.387579",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HPPL": {
-      "last_analyzed": "2025-12-16T04:42:23.570605",
+      "last_analyzed": "2025-12-19T04:44:16.621670",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "HRL": {
-      "last_analyzed": "2025-12-16T04:42:52.163297",
+      "last_analyzed": "2025-12-19T04:44:45.395441",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "ICFC": {
-      "last_analyzed": "2025-12-16T04:43:49.611141",
+      "last_analyzed": "2025-12-19T04:45:42.978615",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "ILI": {
-      "last_analyzed": "2025-12-16T04:45:16.015100",
+      "last_analyzed": "2025-12-19T04:47:10.593990",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "JBBL": {
-      "last_analyzed": "2025-12-16T04:45:45.361653",
+      "last_analyzed": "2025-12-19T04:47:40.267556",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "JBLB": {
-      "last_analyzed": "2025-12-16T04:46:13.811462",
+      "last_analyzed": "2025-12-19T04:48:08.589136",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "JOSHI": {
-      "last_analyzed": "2025-12-16T04:46:42.608534",
+      "last_analyzed": "2025-12-19T04:48:36.849668",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "JSLBB": {
-      "last_analyzed": "2025-12-16T04:47:11.487433",
+      "last_analyzed": "2025-12-19T04:49:06.393214",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KBL": {
-      "last_analyzed": "2025-12-16T04:47:40.517569",
+      "last_analyzed": "2025-12-19T04:49:35.486988",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KBSH": {
-      "last_analyzed": "2025-12-16T04:48:09.090284",
+      "last_analyzed": "2025-12-19T04:50:04.617360",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KDBY": {
-      "last_analyzed": "2025-12-16T04:48:39.092720",
+      "last_analyzed": "2025-12-19T04:50:34.170467",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KDL": {
-      "last_analyzed": "2025-12-16T04:49:07.833961",
+      "last_analyzed": "2025-12-19T04:51:03.204381",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KKHC": {
-      "last_analyzed": "2025-12-16T04:50:06.123061",
+      "last_analyzed": "2025-12-19T04:52:01.197865",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KMCDB": {
-      "last_analyzed": "2025-12-16T04:50:38.101396",
+      "last_analyzed": "2025-12-19T04:52:29.386931",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KPCL": {
-      "last_analyzed": "2025-12-16T04:51:09.372587",
+      "last_analyzed": "2025-12-19T04:52:58.167967",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KSBBL": {
-      "last_analyzed": "2025-12-16T04:51:37.819369",
+      "last_analyzed": "2025-12-19T04:53:26.428058",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KSBBLD87": {
-      "last_analyzed": "2025-12-16T04:51:48.527608",
+      "last_analyzed": "2025-12-19T04:53:37.307098",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "KSY": {
-      "last_analyzed": "2025-12-16T04:52:17.815558",
+      "last_analyzed": "2025-12-19T04:54:06.748503",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "LEC": {
-      "last_analyzed": "2025-12-16T04:53:15.993941",
+      "last_analyzed": "2025-12-19T04:55:04.564613",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "LICN": {
-      "last_analyzed": "2025-12-16T04:53:44.646995",
+      "last_analyzed": "2025-12-19T04:55:33.299091",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "LSL": {
-      "last_analyzed": "2025-12-16T04:54:13.435461",
+      "last_analyzed": "2025-12-19T04:56:01.340349",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "LVF2": {
-      "last_analyzed": "2025-12-16T04:54:43.305786",
+      "last_analyzed": "2025-12-19T04:56:30.909125",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MAKAR": {
-      "last_analyzed": "2025-12-16T04:55:12.025580",
+      "last_analyzed": "2025-12-19T04:56:59.591208",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MANDU": {
-      "last_analyzed": "2025-12-16T04:55:40.161399",
+      "last_analyzed": "2025-12-19T04:57:27.784656",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MATRI": {
-      "last_analyzed": "2025-12-16T04:56:01.666730",
+      "last_analyzed": "2025-12-19T04:57:49.899432",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MBJC": {
-      "last_analyzed": "2025-12-16T04:56:29.674509",
+      "last_analyzed": "2025-12-19T04:58:20.045089",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MBLEF": {
-      "last_analyzed": "2025-12-16T04:56:58.976012",
+      "last_analyzed": "2025-12-19T04:58:49.847823",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MCHL": {
-      "last_analyzed": "2025-12-16T04:57:27.609739",
+      "last_analyzed": "2025-12-19T04:59:18.395146",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MEHL": {
-      "last_analyzed": "2025-12-16T04:57:55.899874",
+      "last_analyzed": "2025-12-19T04:59:46.611160",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MEL": {
-      "last_analyzed": "2025-12-16T04:58:24.745888",
+      "last_analyzed": "2025-12-19T05:00:15.066455",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MFIL": {
-      "last_analyzed": "2025-12-16T04:59:50.515334",
+      "last_analyzed": "2025-12-19T05:01:42.906367",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MFLD85": {
-      "last_analyzed": "2025-12-16T05:00:13.077114",
+      "last_analyzed": "2025-12-19T05:02:04.885781",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MHCL": {
-      "last_analyzed": "2025-12-16T05:00:42.563246",
+      "last_analyzed": "2025-12-19T05:02:42.651434",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MHL": {
-      "last_analyzed": "2025-12-16T05:01:10.833878",
+      "last_analyzed": "2025-12-19T05:04:49.617392",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MKCL": {
-      "last_analyzed": "2025-12-16T05:02:14.134127",
+      "last_analyzed": "2025-12-19T05:06:01.735750",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MKHC": {
-      "last_analyzed": "2025-12-16T05:02:43.748202",
+      "last_analyzed": "2025-12-19T05:06:30.734158",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SPC": {
-      "last_analyzed": "2025-12-16T05:03:12.485308",
+      "last_analyzed": "2025-12-19T05:06:59.281422",
       "status": "success",
       "error": null,
-      "analysis_count": 24
+      "analysis_count": 27
     },
     "MKHL": {
-      "last_analyzed": "2025-12-16T05:03:41.291602",
+      "last_analyzed": "2025-12-19T05:07:27.858635",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MKJC": {
-      "last_analyzed": "2025-12-16T05:04:10.416412",
+      "last_analyzed": "2025-12-19T05:07:56.388727",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MLBBL": {
-      "last_analyzed": "2025-12-16T05:04:39.833721",
+      "last_analyzed": "2025-12-19T05:08:25.769478",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MLBL": {
-      "last_analyzed": "2025-12-16T05:05:08.689271",
+      "last_analyzed": "2025-12-19T05:08:54.070265",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MLBS": {
-      "last_analyzed": "2025-12-16T05:05:38.182171",
+      "last_analyzed": "2025-12-19T05:09:23.385018",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MLBSL": {
-      "last_analyzed": "2025-12-16T05:06:07.310995",
+      "last_analyzed": "2025-12-19T05:09:51.487194",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MMF1": {
-      "last_analyzed": "2025-12-16T05:06:37.808075",
+      "last_analyzed": "2025-12-19T05:10:20.973323",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MMKJL": {
-      "last_analyzed": "2025-12-16T05:07:06.577660",
+      "last_analyzed": "2025-12-19T05:10:49.630115",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MNBBL": {
-      "last_analyzed": "2025-12-16T05:07:35.211243",
+      "last_analyzed": "2025-12-19T05:11:18.407038",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MND84/85": {
-      "last_analyzed": "2025-12-16T05:07:53.094817",
+      "last_analyzed": "2025-12-19T05:11:36.172908",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MNMF1": {
-      "last_analyzed": "2025-12-16T05:08:22.677701",
+      "last_analyzed": "2025-12-19T05:12:05.537675",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MPFL": {
-      "last_analyzed": "2025-12-16T05:08:51.859115",
+      "last_analyzed": "2025-12-19T05:12:34.339531",
       "status": "success",
       "error": null,
-      "analysis_count": 24
+      "analysis_count": 27
     },
     "MSHL": {
-      "last_analyzed": "2025-12-16T05:09:20.669048",
+      "last_analyzed": "2025-12-19T05:13:03.459626",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "MSLB": {
-      "last_analyzed": "2025-12-16T05:09:49.714132",
+      "last_analyzed": "2025-12-19T05:13:32.137265",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NABBC": {
-      "last_analyzed": "2025-12-16T05:10:19.146201",
+      "last_analyzed": "2025-12-19T05:14:01.328836",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NADEP": {
-      "last_analyzed": "2025-12-16T05:10:50.331272",
+      "last_analyzed": "2025-12-19T05:14:31.649831",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NBF2": {
-      "last_analyzed": "2025-12-16T05:11:20.209252",
+      "last_analyzed": "2025-12-19T05:15:01.915843",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NBF3": {
-      "last_analyzed": "2025-12-16T05:11:50.385867",
+      "last_analyzed": "2025-12-19T05:15:32.462473",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NBL": {
-      "last_analyzed": "2025-12-16T05:12:19.164568",
+      "last_analyzed": "2025-12-19T05:16:01.639138",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NBLD82": {
-      "last_analyzed": "2025-12-16T05:12:46.696222",
+      "last_analyzed": "2025-12-19T05:16:28.732952",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NBLD87": {
-      "last_analyzed": "2025-12-16T05:12:57.346286",
+      "last_analyzed": "2025-12-19T05:16:39.580999",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NCCD86": {
-      "last_analyzed": "2025-12-16T05:13:15.726607",
+      "last_analyzed": "2025-12-19T05:16:57.787835",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NESDO": {
-      "last_analyzed": "2025-12-16T05:13:44.813313",
+      "last_analyzed": "2025-12-19T05:17:26.650958",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NFS": {
-      "last_analyzed": "2025-12-16T05:14:14.164908",
+      "last_analyzed": "2025-12-19T05:17:55.958904",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NGPL": {
-      "last_analyzed": "2025-12-16T05:14:43.128144",
+      "last_analyzed": "2025-12-19T05:18:25.838416",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NHDL": {
-      "last_analyzed": "2025-12-16T05:15:12.436440",
+      "last_analyzed": "2025-12-19T05:18:54.877472",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NHPC": {
-      "last_analyzed": "2025-12-16T05:15:42.373477",
+      "last_analyzed": "2025-12-19T05:19:23.620372",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NIBD84": {
-      "last_analyzed": "2025-12-16T05:16:06.094630",
+      "last_analyzed": "2025-12-19T05:19:47.640134",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NIBLGF": {
-      "last_analyzed": "2025-12-16T05:16:36.366494",
+      "last_analyzed": "2025-12-19T05:20:17.462494",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NIBLSTF": {
-      "last_analyzed": "2025-12-16T05:17:07.094117",
+      "last_analyzed": "2025-12-19T05:20:47.824773",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NIBSF2": {
-      "last_analyzed": "2025-12-16T05:17:37.282760",
+      "last_analyzed": "2025-12-19T05:21:17.753225",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NICAD85/86": {
-      "last_analyzed": "2025-12-16T05:17:47.782597",
+      "last_analyzed": "2025-12-19T05:21:28.405167",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NICFC": {
-      "last_analyzed": "2025-12-16T05:18:17.789492",
+      "last_analyzed": "2025-12-19T05:21:57.958269",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NICGF2": {
-      "last_analyzed": "2025-12-16T05:18:48.409469",
+      "last_analyzed": "2025-12-19T05:22:28.058208",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "NICL": {
-      "last_analyzed": "2025-12-16T05:19:17.768405",
+      "last_analyzed": "2025-12-19T05:22:56.806905",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NICLBSL": {
-      "last_analyzed": "2025-12-16T05:19:50.062662",
+      "last_analyzed": "2025-12-19T05:23:25.473829",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NICSF": {
-      "last_analyzed": "2025-12-16T05:20:20.514282",
+      "last_analyzed": "2025-12-19T05:23:56.340914",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NIFRA": {
-      "last_analyzed": "2025-12-16T05:20:48.726400",
+      "last_analyzed": "2025-12-19T05:24:25.957599",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NIFRAGED": {
-      "last_analyzed": "2025-12-16T05:21:13.274128",
+      "last_analyzed": "2025-12-19T05:24:52.014693",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "hrl": {
       "last_analyzed": "2025-11-17T17:53:03.198584",
@@ -999,640 +999,640 @@
       "analysis_count": 1
     },
     "NIMB": {
-      "last_analyzed": "2025-12-16T05:21:42.284059",
+      "last_analyzed": "2025-12-19T05:25:21.561251",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NLIC": {
-      "last_analyzed": "2025-12-16T05:23:07.516675",
+      "last_analyzed": "2025-12-19T05:26:47.801257",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NLICL": {
-      "last_analyzed": "2025-12-16T05:23:36.221933",
+      "last_analyzed": "2025-12-19T05:27:17.540402",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NMBHF2": {
-      "last_analyzed": "2025-12-16T05:24:35.341068",
+      "last_analyzed": "2025-12-19T05:28:17.863712",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NMFBS": {
-      "last_analyzed": "2025-12-16T05:25:33.001915",
+      "last_analyzed": "2025-12-19T05:29:15.507756",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NMIC": {
-      "last_analyzed": "2025-12-16T05:26:02.570810",
+      "last_analyzed": "2025-12-19T05:29:44.710135",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NMLBBL": {
-      "last_analyzed": "2025-12-16T05:26:31.431089",
+      "last_analyzed": "2025-12-19T05:30:13.709394",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NRM": {
-      "last_analyzed": "2025-12-16T05:27:01.316987",
+      "last_analyzed": "2025-12-19T05:30:42.459026",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NSIF2": {
-      "last_analyzed": "2025-12-16T05:28:00.644634",
+      "last_analyzed": "2025-12-19T05:31:40.908004",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NWCL": {
-      "last_analyzed": "2025-12-16T05:28:59.329975",
+      "last_analyzed": "2025-12-19T05:32:39.175787",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "NYADI": {
-      "last_analyzed": "2025-12-16T05:29:29.069384",
+      "last_analyzed": "2025-12-19T05:33:07.986275",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "OMPL": {
-      "last_analyzed": "2025-12-16T05:29:57.250423",
+      "last_analyzed": "2025-12-19T05:33:37.327384",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PBD84": {
-      "last_analyzed": "2025-12-16T05:30:08.301747",
+      "last_analyzed": "2025-12-19T05:33:48.084195",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PBD88": {
-      "last_analyzed": "2025-12-16T05:30:54.863091",
+      "last_analyzed": "2025-12-19T05:34:35.068321",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PCBLP": {
-      "last_analyzed": "2025-12-16T05:31:24.164184",
+      "last_analyzed": "2025-12-19T05:35:04.034281",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PFL": {
-      "last_analyzed": "2025-12-16T05:31:57.440491",
+      "last_analyzed": "2025-12-19T05:35:33.383594",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PHCL": {
-      "last_analyzed": "2025-12-16T05:32:26.958818",
+      "last_analyzed": "2025-12-19T05:36:03.126382",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PMHPL": {
-      "last_analyzed": "2025-12-16T05:32:56.132250",
+      "last_analyzed": "2025-12-19T05:36:32.960810",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PMLI": {
-      "last_analyzed": "2025-12-16T05:33:25.941473",
+      "last_analyzed": "2025-12-19T05:37:03.521959",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PPCL": {
-      "last_analyzed": "2025-12-16T05:33:55.069536",
+      "last_analyzed": "2025-12-19T05:37:33.856607",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PPL": {
-      "last_analyzed": "2025-12-16T05:34:24.144837",
+      "last_analyzed": "2025-12-19T05:38:04.367332",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PRIN": {
-      "last_analyzed": "2025-12-16T05:34:52.465686",
+      "last_analyzed": "2025-12-19T05:38:34.733851",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PROFL": {
-      "last_analyzed": "2025-12-16T05:35:21.738043",
+      "last_analyzed": "2025-12-19T05:39:05.515025",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PRSF": {
-      "last_analyzed": "2025-12-16T05:35:51.833554",
+      "last_analyzed": "2025-12-19T05:39:37.133760",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PSF": {
-      "last_analyzed": "2025-12-16T05:36:50.998675",
+      "last_analyzed": "2025-12-19T05:40:38.881051",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "PURE": {
-      "last_analyzed": "2025-12-16T05:37:19.398885",
+      "last_analyzed": "2025-12-19T05:41:09.533427",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RADHI": {
-      "last_analyzed": "2025-12-16T05:37:49.086285",
+      "last_analyzed": "2025-12-19T05:41:39.496685",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RAWA": {
-      "last_analyzed": "2025-12-16T05:38:17.660533",
+      "last_analyzed": "2025-12-19T05:42:09.387023",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RBCLPO": {
-      "last_analyzed": "2025-12-16T05:38:33.632342",
+      "last_analyzed": "2025-12-19T05:42:26.170666",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RFPL": {
-      "last_analyzed": "2025-12-16T05:39:02.138589",
+      "last_analyzed": "2025-12-19T05:42:56.297418",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RHPL": {
-      "last_analyzed": "2025-12-16T05:40:00.460442",
+      "last_analyzed": "2025-12-19T05:43:54.543220",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RLFL": {
-      "last_analyzed": "2025-12-16T05:40:58.674090",
+      "last_analyzed": "2025-12-19T05:44:53.737343",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "RMF1": {
-      "last_analyzed": "2025-12-16T05:41:28.589696",
+      "last_analyzed": "2025-12-19T05:45:23.736578",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RMF2": {
-      "last_analyzed": "2025-12-16T05:41:58.579717",
+      "last_analyzed": "2025-12-19T05:45:54.390029",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RSDC": {
-      "last_analyzed": "2025-12-16T05:42:56.515285",
+      "last_analyzed": "2025-12-19T05:46:53.606004",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RSY": {
-      "last_analyzed": "2025-12-16T05:43:26.962014",
+      "last_analyzed": "2025-12-19T05:47:25.694828",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "RURU": {
-      "last_analyzed": "2025-12-16T05:43:56.155227",
+      "last_analyzed": "2025-12-19T05:47:56.533326",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SADBL": {
-      "last_analyzed": "2025-12-16T05:44:25.276738",
+      "last_analyzed": "2025-12-19T05:49:15.022475",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SAGF": {
-      "last_analyzed": "2025-12-16T05:44:55.134612",
+      "last_analyzed": "2025-12-19T05:49:45.705918",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SAHAS": {
-      "last_analyzed": "2025-12-16T05:45:23.793677",
+      "last_analyzed": "2025-12-19T05:50:14.616309",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SAND2085": {
-      "last_analyzed": "2025-12-16T05:45:47.328671",
+      "last_analyzed": "2025-12-19T05:50:38.430659",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SANVI": {
-      "last_analyzed": "2025-12-16T05:46:46.267539",
+      "last_analyzed": "2025-12-19T05:51:37.980327",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SAPDBL": {
-      "last_analyzed": "2025-12-16T05:47:24.575901",
+      "last_analyzed": "2025-12-19T05:52:08.857734",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SARBTM": {
-      "last_analyzed": "2025-12-16T05:47:53.942549",
+      "last_analyzed": "2025-12-19T05:52:38.089365",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SBD87": {
-      "last_analyzed": "2025-12-16T05:48:16.564730",
+      "last_analyzed": "2025-12-19T05:52:58.647841",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SBID83": {
-      "last_analyzed": "2025-12-16T05:48:40.988269",
+      "last_analyzed": "2025-12-19T05:53:22.093618",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SBLD2082": {
-      "last_analyzed": "2025-12-16T05:49:02.660119",
+      "last_analyzed": "2025-12-19T05:53:44.438156",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SEF": {
-      "last_analyzed": "2025-12-16T05:49:50.177520",
+      "last_analyzed": "2025-12-19T05:55:12.867497",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SFCL": {
-      "last_analyzed": "2025-12-16T05:50:19.605261",
+      "last_analyzed": "2025-12-19T05:56:38.300679",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SFMF": {
-      "last_analyzed": "2025-12-16T05:51:19.787767",
+      "last_analyzed": "2025-12-19T05:57:38.776202",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SGIC": {
-      "last_analyzed": "2025-12-16T05:52:17.922346",
+      "last_analyzed": "2025-12-19T05:58:38.121452",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SHEL": {
-      "last_analyzed": "2025-12-16T05:52:47.281140",
+      "last_analyzed": "2025-12-19T05:59:06.785210",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SHIVM": {
-      "last_analyzed": "2025-12-16T05:53:15.852882",
+      "last_analyzed": "2025-12-19T05:59:35.361149",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SHLB": {
-      "last_analyzed": "2025-12-16T05:54:12.969814",
+      "last_analyzed": "2025-12-19T06:00:33.509914",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SIFC": {
-      "last_analyzed": "2025-12-16T05:54:42.657548",
+      "last_analyzed": "2025-12-19T06:01:04.690204",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SIGS3": {
-      "last_analyzed": "2025-12-16T05:55:12.499487",
+      "last_analyzed": "2025-12-19T06:01:34.388155",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SIKLES": {
-      "last_analyzed": "2025-12-16T05:55:41.524021",
+      "last_analyzed": "2025-12-19T06:02:03.508123",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SINDU": {
-      "last_analyzed": "2025-12-16T05:56:11.447715",
+      "last_analyzed": "2025-12-19T06:02:34.185782",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SJLIC": {
-      "last_analyzed": "2025-12-16T05:57:09.409543",
+      "last_analyzed": "2025-12-19T06:03:33.319904",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SLBBL": {
-      "last_analyzed": "2025-12-16T05:58:06.945270",
+      "last_analyzed": "2025-12-19T06:04:32.188001",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SLCF": {
-      "last_analyzed": "2025-12-16T05:59:05.464709",
+      "last_analyzed": "2025-12-19T06:05:32.188370",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SMB": {
-      "last_analyzed": "2025-12-16T06:00:03.874598",
+      "last_analyzed": "2025-12-19T06:06:31.814076",
       "status": "success",
       "error": null,
-      "analysis_count": 22
+      "analysis_count": 25
     },
     "SMFBS": {
-      "last_analyzed": "2025-12-16T06:00:33.436917",
+      "last_analyzed": "2025-12-19T06:07:01.537760",
       "status": "success",
       "error": null,
-      "analysis_count": 23
+      "analysis_count": 26
     },
     "SMH": {
-      "last_analyzed": "2025-12-16T06:01:02.560783",
+      "last_analyzed": "2025-12-19T06:07:31.007373",
+      "status": "success",
+      "error": null,
+      "analysis_count": 26
+    },
+    "SMHL": {
+      "last_analyzed": "2025-12-19T06:08:00.368504",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SMJC": {
+      "last_analyzed": "2025-12-19T06:08:30.048975",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SMPDA": {
+      "last_analyzed": "2025-12-19T06:08:55.831534",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SNLI": {
+      "last_analyzed": "2025-12-19T06:09:25.513012",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SONA": {
+      "last_analyzed": "2025-12-19T06:09:58.181403",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SPDL": {
+      "last_analyzed": "2025-12-19T06:10:27.813019",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SPHL": {
+      "last_analyzed": "2025-12-19T06:10:57.387707",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SPIL": {
+      "last_analyzed": "2025-12-19T06:11:27.406726",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SPL": {
+      "last_analyzed": "2025-12-19T06:11:56.454908",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SRLI": {
+      "last_analyzed": "2025-12-19T06:12:27.155540",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SSHL": {
+      "last_analyzed": "2025-12-19T06:12:56.618392",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "STC": {
+      "last_analyzed": "2025-12-19T06:13:26.055349",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "HURJA": {
+      "last_analyzed": "2025-12-19T04:45:14.279402",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "IHL": {
+      "last_analyzed": "2025-12-19T04:46:12.951271",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "ILBS": {
+      "last_analyzed": "2025-12-19T04:46:41.735804",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "KEF": {
+      "last_analyzed": "2025-12-19T04:51:32.551917",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "LBBL": {
+      "last_analyzed": "2025-12-19T04:54:35.708329",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "MEN": {
+      "last_analyzed": "2025-12-19T05:00:44.062700",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "MERO": {
+      "last_analyzed": "2025-12-19T05:01:13.585222",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "MHNL": {
+      "last_analyzed": "2025-12-19T05:05:32.463255",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "NIMBPO": {
+      "last_analyzed": "2025-12-19T05:25:49.065219",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "NLG": {
+      "last_analyzed": "2025-12-19T05:26:18.939872",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "NMB": {
+      "last_analyzed": "2025-12-19T05:27:47.189556",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "NMBMF": {
+      "last_analyzed": "2025-12-19T05:28:46.201253",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "NRN": {
+      "last_analyzed": "2025-12-19T05:31:11.564250",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "NTC": {
+      "last_analyzed": "2025-12-19T05:32:10.111695",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "PBD85": {
+      "last_analyzed": "2025-12-19T05:34:13.382872",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "PRVU": {
+      "last_analyzed": "2025-12-19T05:40:07.570361",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "RHGCL": {
+      "last_analyzed": "2025-12-19T05:43:25.775849",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "RIDI": {
+      "last_analyzed": "2025-12-19T05:44:24.049113",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "RNLI": {
+      "last_analyzed": "2025-12-19T05:46:23.819584",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SANIMA": {
+      "last_analyzed": "2025-12-19T05:51:08.014487",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SDBD87": {
+      "last_analyzed": "2025-12-19T05:54:12.040513",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SFEF": {
+      "last_analyzed": "2025-12-19T05:57:08.598069",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SGHC": {
+      "last_analyzed": "2025-12-19T05:58:08.731323",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SHL": {
+      "last_analyzed": "2025-12-19T06:00:04.661936",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SJCL": {
+      "last_analyzed": "2025-12-19T06:03:03.725746",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SKBBL": {
+      "last_analyzed": "2025-12-19T06:04:02.855446",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SLBSL": {
+      "last_analyzed": "2025-12-19T06:05:01.760222",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "SMATA": {
+      "last_analyzed": "2025-12-19T06:06:02.055856",
+      "status": "success",
+      "error": null,
+      "analysis_count": 25
+    },
+    "UPPER": {
+      "last_analyzed": "2025-12-19T06:13:56.176869",
       "status": "success",
       "error": null,
       "analysis_count": 23
     },
-    "SMHL": {
-      "last_analyzed": "2025-12-16T06:01:32.944404",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SMJC": {
-      "last_analyzed": "2025-12-16T06:02:01.943876",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SMPDA": {
-      "last_analyzed": "2025-12-16T06:02:27.463618",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SNLI": {
-      "last_analyzed": "2025-12-16T06:02:58.613967",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SONA": {
-      "last_analyzed": "2025-12-16T06:03:27.116118",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SPDL": {
-      "last_analyzed": "2025-12-16T06:03:56.042612",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SPHL": {
-      "last_analyzed": "2025-12-16T06:04:24.266216",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SPIL": {
-      "last_analyzed": "2025-12-16T06:04:53.154047",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SPL": {
-      "last_analyzed": "2025-12-16T06:05:21.875149",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SRLI": {
-      "last_analyzed": "2025-12-16T06:05:52.200144",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SSHL": {
-      "last_analyzed": "2025-12-16T06:06:21.292665",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "STC": {
-      "last_analyzed": "2025-12-16T06:06:49.876882",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "HURJA": {
-      "last_analyzed": "2025-12-16T04:43:20.836343",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "IHL": {
-      "last_analyzed": "2025-12-16T04:44:18.311003",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "ILBS": {
-      "last_analyzed": "2025-12-16T04:44:47.276037",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "KEF": {
-      "last_analyzed": "2025-12-16T04:49:37.607822",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "LBBL": {
-      "last_analyzed": "2025-12-16T04:52:47.236524",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "MEN": {
-      "last_analyzed": "2025-12-16T04:58:53.735591",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "MERO": {
-      "last_analyzed": "2025-12-16T04:59:22.018625",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "MHNL": {
-      "last_analyzed": "2025-12-16T05:01:42.987889",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "NIMBPO": {
-      "last_analyzed": "2025-12-16T05:22:09.557352",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "NLG": {
-      "last_analyzed": "2025-12-16T05:22:38.372056",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "NMB": {
-      "last_analyzed": "2025-12-16T05:24:05.212934",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "NMBMF": {
-      "last_analyzed": "2025-12-16T05:25:04.028172",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "NRN": {
-      "last_analyzed": "2025-12-16T05:27:30.327622",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "NTC": {
-      "last_analyzed": "2025-12-16T05:28:29.704981",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "PBD85": {
-      "last_analyzed": "2025-12-16T05:30:33.268466",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "PRVU": {
-      "last_analyzed": "2025-12-16T05:36:21.099168",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "RHGCL": {
-      "last_analyzed": "2025-12-16T05:39:31.661372",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "RIDI": {
-      "last_analyzed": "2025-12-16T05:40:29.334297",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "RNLI": {
-      "last_analyzed": "2025-12-16T05:42:27.465762",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SANIMA": {
-      "last_analyzed": "2025-12-16T05:46:16.651574",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SDBD87": {
-      "last_analyzed": "2025-12-16T05:49:20.370608",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SFEF": {
-      "last_analyzed": "2025-12-16T05:50:49.809799",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SGHC": {
-      "last_analyzed": "2025-12-16T05:51:48.729326",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SHL": {
-      "last_analyzed": "2025-12-16T05:53:43.879811",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SJCL": {
-      "last_analyzed": "2025-12-16T05:56:40.566072",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SKBBL": {
-      "last_analyzed": "2025-12-16T05:57:38.626107",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SLBSL": {
-      "last_analyzed": "2025-12-16T05:58:36.243200",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "SMATA": {
-      "last_analyzed": "2025-12-16T05:59:34.634768",
-      "status": "success",
-      "error": null,
-      "analysis_count": 22
-    },
-    "UPPER": {
-      "last_analyzed": "2025-12-16T06:07:18.177333",
-      "status": "success",
-      "error": null,
-      "analysis_count": 20
-    },
     "TVCL": {
-      "last_analyzed": "2025-12-16T06:07:47.050477",
+      "last_analyzed": "2025-12-19T06:14:26.105403",
       "status": "success",
       "error": null,
-      "analysis_count": 19
+      "analysis_count": 22
     }
   }
 }
