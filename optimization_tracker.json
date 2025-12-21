@@ -1,6 +1,6 @@
 {
   "started_at": "2025-12-02T12:41:25.133886",
-  "last_updated": "2025-12-19T15:25:28.913453",
+  "last_updated": "2025-12-21T11:49:27.995223",
   "completed": [
     "IGI",
     "AHPC",
@@ -40,23 +40,23 @@
     "BFC",
     "BHPL",
     "ICFC",
-    "ILBS"
-  ],
-  "failed": [
-    "IGI",
-    "MNBBL",
-    "GMFIL"
-  ],
-  "in_progress": "KMCDB",
-  "pending": [
+    "ILBS",
+    "KMCDB",
     "MFIL",
     "MSLB",
     "NADEP",
     "NICLBSL",
     "NMBMF",
     "NMLBBL",
-    "SMB",
-    "DDBL",
+    "SMB"
+  ],
+  "failed": [
+    "IGI",
+    "MNBBL",
+    "GMFIL"
+  ],
+  "in_progress": "DDBL",
+  "pending": [
     "GILB",
     "HLBSL",
     "MLBBL",
@@ -242,7 +242,13 @@
     "BPCL",
     "GHL",
     "PMHPL",
-    "RADHI"
+    "RADHI",
+    "AKJCL",
+    "MKJC",
+    "RURU",
+    "SAHAS",
+    "SSHL",
+    "NMBHF2"
   ],
   "results": {
     "IGI": {
@@ -759,6 +765,131 @@
       "avg_direction_acc": 61.94444444444445,
       "avg_mape": 3.658333333333333,
       "status": "completed"
+    },
+    "KMCDB": {
+      "completed_at": "2025-12-19T21:15:54.517947",
+      "best_mape": 2.75,
+      "best_direction_acc": 70.83333333333333,
+      "trials_run": 22,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Finance"
+    },
+    "MFIL": {
+      "completed_at": "2025-12-20T10:13:49.834588",
+      "best_mape": 3.2549999999999994,
+      "best_direction_acc": 77.22222222222223,
+      "trials_run": 56,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Finance"
+    },
+    "MSLB": {
+      "best_trial": 19,
+      "avg_direction_acc": 78.88888888888889,
+      "avg_mape": 3.6016666666666666,
+      "status": "completed"
+    },
+    "NADEP": {
+      "completed_at": "2025-12-20T16:04:29.769412",
+      "best_mape": 3.185,
+      "best_direction_acc": 75.27777777777777,
+      "trials_run": 7,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Finance"
+    },
+    "NICLBSL": {
+      "completed_at": "2025-12-20T16:39:00.255042",
+      "best_mape": 2.7449999999999997,
+      "best_direction_acc": 71.11111111111111,
+      "trials_run": 13,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "NMBMF": {
+      "completed_at": "2025-12-21T01:37:54.036311",
+      "best_mape": 2.5900000000000003,
+      "best_direction_acc": 75.83333333333333,
+      "trials_run": 1,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Finance"
+    },
+    "NMLBBL": {
+      "completed_at": "2025-12-21T04:02:21.471609",
+      "best_mape": 3.2916666666666665,
+      "best_direction_acc": 67.22222222222221,
+      "trials_run": 119,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "SMB": {
+      "completed_at": "2025-12-21T06:14:33.384577",
+      "best_mape": 2.618333333333333,
+      "best_direction_acc": 70.55555555555556,
+      "trials_run": 39,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Finance"
     }
   },
   "sector_best": {
@@ -788,6 +919,17 @@
     ],
     "Finance": [
       {
+        "symbol": "MFIL",
+        "direction_acc": 77.22222222222223,
+        "hidden_size": 256,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      {
         "symbol": "GLBSL",
         "direction_acc": 76.3888888888889,
         "hidden_size": 64,
@@ -799,26 +941,15 @@
         "dir_loss_weight": 0.7
       },
       {
-        "symbol": "GFCL",
-        "direction_acc": 74.44444444444444,
-        "hidden_size": 512,
-        "num_layers": 1,
-        "lookback": 90,
-        "dropout": 0.3,
-        "lr": 0.0005,
-        "batch_size": 64,
-        "dir_loss_weight": 0.7
-      },
-      {
-        "symbol": "ICFC",
-        "direction_acc": 72.77777777777777,
-        "hidden_size": 128,
-        "num_layers": 1,
-        "lookback": 90,
+        "symbol": "NMBMF",
+        "direction_acc": 75.83333333333333,
+        "hidden_size": 256,
+        "num_layers": 2,
+        "lookback": 30,
         "dropout": 0.2,
         "lr": 0.001,
-        "batch_size": 32,
-        "dir_loss_weight": 0.7
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
       }
     ],
     "Investment": [
