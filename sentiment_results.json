@@ -1,1628 +1,1628 @@
 {
   "IGI": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.6,
     "sentiment_label": "Positive",
-    "total_articles": 4,
-    "timestamp": "2025-12-21T04:00:31.921790"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T04:00:32.859562"
   },
   "AHPC": {
     "sentiment_score": 0.3333333333333333,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:01:00.577222"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:01:00.377576"
   },
   "SHPC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:01:27.894872"
+    "timestamp": "2025-12-29T04:01:28.579156"
   },
   "NABIL": {
-    "sentiment_score": 0.17391304347826086,
+    "sentiment_score": 0.2,
     "sentiment_label": "Neutral",
-    "total_articles": 23,
-    "timestamp": "2025-12-21T04:01:55.357060"
+    "total_articles": 25,
+    "timestamp": "2025-12-29T04:01:55.981873"
   },
   "NICA": {
-    "sentiment_score": 0.0625,
+    "sentiment_score": 0.05555555555555555,
     "sentiment_label": "Neutral",
-    "total_articles": 16,
-    "timestamp": "2025-12-21T04:02:22.678483"
+    "total_articles": 18,
+    "timestamp": "2025-12-29T04:02:23.191065"
   },
   "SCB": {
     "sentiment_score": 0.42857142857142855,
     "sentiment_label": "Positive",
     "total_articles": 7,
-    "timestamp": "2025-12-21T04:02:50.255812"
+    "timestamp": "2025-12-29T04:02:51.324064"
   },
   "ACLBSL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:03:17.581113"
+    "timestamp": "2025-12-29T04:03:18.864641"
   },
   "ADBL": {
     "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
     "total_articles": 3,
-    "timestamp": "2025-12-21T04:03:45.688351"
+    "timestamp": "2025-12-29T04:03:46.673231"
   },
   "AHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:04:13.711703"
+    "timestamp": "2025-12-29T04:04:14.412815"
   },
   "AKJCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:04:41.308040"
+    "timestamp": "2025-12-29T04:04:41.067923"
   },
   "AKPL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:05:08.801962"
+    "timestamp": "2025-12-29T04:05:07.937084"
   },
   "ALBSL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T04:05:36.203883"
+    "timestamp": "2025-12-29T04:05:35.793900"
   },
   "ALICL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 10,
-    "timestamp": "2025-12-21T04:06:03.918095"
+    "timestamp": "2025-12-29T04:06:03.533726"
   },
   "ANLB": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:06:32.610289"
+    "timestamp": "2025-12-29T04:06:32.060526"
   },
   "API": {
-    "sentiment_score": -0.6666666666666666,
+    "sentiment_score": -0.5,
     "sentiment_label": "Negative",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T04:07:02.178379"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T04:06:59.031445"
   },
   "AVYAN": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:07:30.813890"
+    "timestamp": "2025-12-29T04:07:27.664435"
   },
   "BARUN": {
-    "sentiment_score": -0.8888888888888888,
+    "sentiment_score": -0.875,
     "sentiment_label": "Negative",
-    "total_articles": 9,
-    "timestamp": "2025-12-21T04:07:58.275206"
+    "total_articles": 8,
+    "timestamp": "2025-12-29T04:07:56.414282"
   },
   "BBC": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:08:29.120832"
+    "timestamp": "2025-12-29T04:08:29.895543"
   },
   "BEDC": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:08:56.880882"
+    "timestamp": "2025-12-29T04:08:57.735866"
   },
   "BFC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:09:24.590417"
+    "timestamp": "2025-12-29T04:09:25.828356"
   },
   "BGWT": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:09:52.009106"
+    "timestamp": "2025-12-29T04:09:53.190949"
   },
   "BHDC": {
-    "sentiment_score": -1.0,
+    "sentiment_score": -0.5,
     "sentiment_label": "Negative",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T04:10:19.669451"
+    "total_articles": 2,
+    "timestamp": "2025-12-29T04:10:20.782358"
   },
   "BHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:10:47.661559"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:10:47.979307"
   },
   "BHPL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:11:16.141446"
+    "timestamp": "2025-12-29T04:11:15.452550"
   },
   "BNHC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:11:45.070347"
+    "timestamp": "2025-12-29T04:11:42.764953"
   },
   "BNT": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:12:12.004152"
+    "timestamp": "2025-12-29T04:12:10.181169"
   },
   "BOKD86": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:12:28.713508"
+    "timestamp": "2025-12-29T04:12:28.115232"
   },
   "BPCL": {
     "sentiment_score": 0.5,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:12:56.480839"
+    "timestamp": "2025-12-29T04:12:55.686166"
   },
   "CBBL": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.4,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:13:23.851573"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T04:13:23.422676"
   },
   "CFCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:13:53.171694"
+    "timestamp": "2025-12-29T04:13:52.075749"
   },
   "CGH": {
-    "sentiment_score": -0.3333333333333333,
-    "sentiment_label": "Negative",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T04:14:20.347452"
+    "sentiment_score": 0.0,
+    "sentiment_label": "Neutral",
+    "total_articles": 4,
+    "timestamp": "2025-12-29T04:14:19.675309"
   },
   "CHCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
-    "total_articles": 0,
-    "timestamp": "2025-12-21T04:14:48.975196"
+    "total_articles": 1,
+    "timestamp": "2025-12-29T04:14:47.126632"
   },
   "CHDC": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:15:17.042598"
+    "timestamp": "2025-12-29T04:15:14.079946"
   },
   "CHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
-    "total_articles": 9,
-    "timestamp": "2025-12-21T04:15:45.204680"
+    "total_articles": 8,
+    "timestamp": "2025-12-29T04:15:41.612563"
   },
   "CIT": {
-    "sentiment_score": 0.0,
-    "sentiment_label": "Neutral",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T04:16:15.254387"
+    "sentiment_score": 0.4,
+    "sentiment_label": "Positive",
+    "total_articles": 5,
+    "timestamp": "2025-12-29T04:16:08.869478"
   },
   "CITY": {
     "sentiment_score": -0.3076923076923077,
     "sentiment_label": "Negative",
     "total_articles": 13,
-    "timestamp": "2025-12-21T04:16:44.536928"
+    "timestamp": "2025-12-29T04:16:36.557868"
   },
   "CKHL": {
     "sentiment_score": -0.5,
     "sentiment_label": "Negative",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:17:12.582302"
+    "timestamp": "2025-12-29T04:17:04.257405"
   },
   "CLI": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T04:17:40.704823"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T04:17:31.558425"
   },
   "CMF2": {
     "sentiment_score": 0.25,
     "sentiment_label": "Positive",
     "total_articles": 12,
-    "timestamp": "2025-12-21T04:18:10.863151"
+    "timestamp": "2025-12-29T04:17:59.752287"
   },
   "CORBL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:18:40.611295"
+    "timestamp": "2025-12-29T04:18:29.457537"
   },
   "CREST": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 3,
-    "timestamp": "2025-12-21T04:19:08.150270"
+    "timestamp": "2025-12-29T04:18:58.134308"
   },
   "CYCL": {
-    "sentiment_score": 0.3333333333333333,
+    "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T04:19:36.475946"
+    "total_articles": 2,
+    "timestamp": "2025-12-29T04:19:27.089127"
   },
   "CZBIL": {
     "sentiment_score": 0.3,
     "sentiment_label": "Positive",
     "total_articles": 10,
-    "timestamp": "2025-12-21T04:20:04.461725"
+    "timestamp": "2025-12-29T04:19:54.511519"
   },
   "DDBL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:20:32.159744"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:20:21.946304"
   },
   "DHPL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:20:59.396645"
+    "timestamp": "2025-12-29T04:20:49.587792"
   },
   "DLBS": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:21:27.547312"
+    "timestamp": "2025-12-29T04:21:17.463000"
   },
   "DOLTI": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:21:56.767136"
+    "timestamp": "2025-12-29T04:21:45.475280"
   },
   "DORDI": {
     "sentiment_score": -0.75,
     "sentiment_label": "Negative",
     "total_articles": 4,
-    "timestamp": "2025-12-21T04:22:25.589059"
+    "timestamp": "2025-12-29T04:22:12.836652"
   },
   "EBL": {
     "sentiment_score": 0.7777777777777778,
     "sentiment_label": "Positive",
     "total_articles": 6,
-    "timestamp": "2025-12-21T04:22:53.753133"
+    "timestamp": "2025-12-29T04:22:40.370851"
   },
   "EBLD85": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:23:14.935498"
+    "timestamp": "2025-12-29T04:23:00.641490"
   },
   "EBLD86": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:23:34.969514"
+    "timestamp": "2025-12-29T04:23:21.199053"
   },
   "EBLD91": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:23:56.712712"
+    "timestamp": "2025-12-29T04:23:43.133058"
   },
   "EBLEB89": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:24:16.032352"
+    "timestamp": "2025-12-29T04:24:01.434743"
   },
   "EDBL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:24:44.689625"
+    "timestamp": "2025-12-29T04:24:29.466981"
   },
   "EHPL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:25:12.865446"
+    "timestamp": "2025-12-29T04:24:57.200890"
   },
   "ENL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:25:39.832149"
+    "timestamp": "2025-12-29T04:25:24.420038"
   },
   "FMDBL": {
-    "sentiment_score": 0.22222222222222224,
+    "sentiment_score": 0.4166666666666667,
     "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T04:26:07.593172"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T04:25:52.596738"
   },
   "FOWAD": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:26:35.219962"
+    "timestamp": "2025-12-29T04:26:20.391416"
   },
   "GBBD85": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:26:54.060760"
+    "timestamp": "2025-12-29T04:26:38.415907"
   },
   "GBBL": {
-    "sentiment_score": 0.3939393939393939,
+    "sentiment_score": 0.3611111111111111,
     "sentiment_label": "Positive",
-    "total_articles": 11,
-    "timestamp": "2025-12-21T04:27:21.528997"
+    "total_articles": 12,
+    "timestamp": "2025-12-29T04:27:05.765037"
   },
   "GBILD86/87": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:27:43.656272"
+    "timestamp": "2025-12-29T04:27:28.109837"
   },
   "GBIME": {
-    "sentiment_score": 0.5555555555555556,
+    "sentiment_score": 0.45454545454545453,
     "sentiment_label": "Positive",
-    "total_articles": 9,
-    "timestamp": "2025-12-21T04:28:14.018338"
+    "total_articles": 11,
+    "timestamp": "2025-12-29T04:27:55.434488"
   },
   "GCIL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:28:42.843948"
+    "timestamp": "2025-12-29T04:28:23.669190"
   },
   "GFCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:29:11.093028"
+    "timestamp": "2025-12-29T04:28:53.152089"
   },
   "GHL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:29:38.924052"
+    "timestamp": "2025-12-29T04:29:21.661533"
   },
   "GIBF1": {
-    "sentiment_score": 0.75,
+    "sentiment_score": 0.6,
     "sentiment_label": "Positive",
-    "total_articles": 4,
-    "timestamp": "2025-12-21T04:30:08.382078"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T04:29:49.948159"
   },
   "GILB": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T04:30:36.714397"
+    "total_articles": 2,
+    "timestamp": "2025-12-29T04:30:18.243484"
   },
   "GLBSL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T04:31:04.757356"
+    "timestamp": "2025-12-29T04:30:46.023533"
   },
   "GLH": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:31:39.929714"
+    "timestamp": "2025-12-29T04:31:19.380518"
   },
   "GMFBS": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:32:07.439565"
+    "timestamp": "2025-12-29T04:31:47.994237"
   },
   "GMFIL": {
     "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
     "total_articles": 3,
-    "timestamp": "2025-12-21T04:32:34.840996"
+    "timestamp": "2025-12-29T04:32:15.600098"
   },
   "GMLI": {
-    "sentiment_score": -0.5,
+    "sentiment_score": -1.0,
     "sentiment_label": "Negative",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:33:02.823209"
+    "total_articles": 1,
+    "timestamp": "2025-12-29T04:32:42.945819"
   },
   "GRDBL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:33:31.898163"
+    "timestamp": "2025-12-29T04:33:10.986523"
   },
   "GSY": {
-    "sentiment_score": -0.16666666666666666,
+    "sentiment_score": -0.14285714285714285,
     "sentiment_label": "Neutral",
-    "total_articles": 6,
-    "timestamp": "2025-12-21T04:34:01.057038"
+    "total_articles": 7,
+    "timestamp": "2025-12-29T04:33:39.208752"
   },
   "GUFL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:34:31.940976"
+    "timestamp": "2025-12-29T04:34:07.730495"
   },
   "GVL": {
-    "sentiment_score": -1.0,
+    "sentiment_score": -0.5,
     "sentiment_label": "Negative",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T04:35:00.996582"
+    "total_articles": 2,
+    "timestamp": "2025-12-29T04:34:34.881008"
   },
   "H8020": {
-    "sentiment_score": 0.14285714285714285,
+    "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 7,
-    "timestamp": "2025-12-21T04:35:29.760599"
+    "timestamp": "2025-12-29T04:35:03.531444"
   },
   "HATHY": {
     "sentiment_score": 0.75,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T04:35:57.145419"
+    "timestamp": "2025-12-29T04:35:34.086496"
   },
   "HBL": {
-    "sentiment_score": 0.0,
-    "sentiment_label": "Neutral",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:36:25.392320"
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:36:01.931771"
   },
   "HBLD83": {
     "sentiment_score": -0.6,
     "sentiment_label": "Negative",
     "total_articles": 10,
-    "timestamp": "2025-12-21T04:36:53.748244"
+    "timestamp": "2025-12-29T04:36:31.197212"
   },
   "HDHPC": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:37:21.190015"
+    "timestamp": "2025-12-29T04:36:59.927442"
   },
   "HDL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T04:37:48.566381"
+    "timestamp": "2025-12-29T04:37:28.475214"
   },
   "HEI": {
-    "sentiment_score": 0.2857142857142857,
+    "sentiment_score": 0.375,
     "sentiment_label": "Positive",
-    "total_articles": 7,
-    "timestamp": "2025-12-21T04:38:16.319931"
+    "total_articles": 8,
+    "timestamp": "2025-12-29T04:37:56.556607"
   },
   "HEIP": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:38:25.888851"
+    "timestamp": "2025-12-29T04:38:06.362745"
   },
   "HHL": {
     "sentiment_score": -0.6666666666666666,
     "sentiment_label": "Negative",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:38:53.173351"
+    "timestamp": "2025-12-29T04:38:33.498494"
   },
   "HIDCL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:39:20.806579"
+    "timestamp": "2025-12-29T04:39:01.818445"
   },
   "HIDCLP": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:39:48.722499"
+    "timestamp": "2025-12-29T04:39:30.198614"
   },
   "HLBSL": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:40:16.114247"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:39:58.916803"
   },
   "HLI": {
-    "sentiment_score": -0.25,
+    "sentiment_score": -0.6666666666666666,
     "sentiment_label": "Negative",
-    "total_articles": 4,
-    "timestamp": "2025-12-21T04:40:43.620932"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:40:27.180142"
   },
   "HPPL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:41:12.641560"
+    "timestamp": "2025-12-29T04:40:57.449552"
   },
   "HRL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:41:40.105067"
+    "timestamp": "2025-12-29T04:41:26.565230"
   },
   "HURJA": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:42:07.590318"
+    "timestamp": "2025-12-29T04:41:54.506317"
   },
   "ICFC": {
     "sentiment_score": 0.25,
     "sentiment_label": "Positive",
     "total_articles": 8,
-    "timestamp": "2025-12-21T04:42:35.028055"
+    "timestamp": "2025-12-29T04:42:22.566268"
   },
   "IHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:43:02.390460"
+    "timestamp": "2025-12-29T04:42:51.121024"
   },
   "ILBS": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:43:30.404183"
+    "timestamp": "2025-12-29T04:43:19.659496"
   },
   "ILI": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:43:57.787680"
+    "timestamp": "2025-12-29T04:43:48.057337"
   },
   "JBBL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:44:26.346362"
+    "timestamp": "2025-12-29T04:44:17.849761"
   },
   "JBLB": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:44:55.735517"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:44:46.502029"
   },
   "JOSHI": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 11,
-    "timestamp": "2025-12-21T04:45:24.076540"
+    "timestamp": "2025-12-29T04:45:14.584778"
   },
   "JSLBB": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:45:51.906681"
+    "timestamp": "2025-12-29T04:45:42.841904"
   },
   "KBL": {
     "sentiment_score": -0.07692307692307693,
     "sentiment_label": "Neutral",
     "total_articles": 13,
-    "timestamp": "2025-12-21T04:46:18.841062"
+    "timestamp": "2025-12-29T04:46:10.630350"
   },
   "KBSH": {
-    "sentiment_score": 0.0,
-    "sentiment_label": "Neutral",
-    "total_articles": 0,
-    "timestamp": "2025-12-21T04:46:46.231505"
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-29T04:46:38.300013"
   },
   "KDBY": {
-    "sentiment_score": 0.2857142857142857,
+    "sentiment_score": 0.25,
     "sentiment_label": "Positive",
-    "total_articles": 7,
-    "timestamp": "2025-12-21T04:47:15.067346"
+    "total_articles": 8,
+    "timestamp": "2025-12-29T04:47:07.309557"
   },
   "KDL": {
-    "sentiment_score": 0.75,
+    "sentiment_score": 0.6,
     "sentiment_label": "Positive",
-    "total_articles": 4,
-    "timestamp": "2025-12-21T04:47:42.747465"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T04:47:34.973963"
   },
   "KEF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:48:11.075975"
+    "timestamp": "2025-12-29T04:48:04.457817"
   },
   "KKHC": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 10,
-    "timestamp": "2025-12-21T04:48:38.279317"
+    "timestamp": "2025-12-29T04:48:32.014146"
   },
   "KMCDB": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.5714285714285714,
     "sentiment_label": "Positive",
-    "total_articles": 6,
-    "timestamp": "2025-12-21T04:49:06.086690"
+    "total_articles": 7,
+    "timestamp": "2025-12-29T04:48:59.934727"
   },
   "KPCL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T04:49:34.007233"
+    "total_articles": 2,
+    "timestamp": "2025-12-29T04:49:28.301450"
   },
   "KSBBL": {
     "sentiment_score": 0.16666666666666666,
     "sentiment_label": "Neutral",
     "total_articles": 18,
-    "timestamp": "2025-12-21T04:50:02.120208"
+    "timestamp": "2025-12-29T04:49:55.609524"
   },
   "KSBBLD87": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:50:12.437959"
+    "timestamp": "2025-12-29T04:50:04.970045"
   },
   "KSY": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:50:41.590956"
+    "timestamp": "2025-12-29T04:50:33.559165"
   },
   "LBBL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:51:09.440831"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:51:01.477076"
   },
   "LEC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:51:37.033345"
+    "timestamp": "2025-12-29T04:51:29.000884"
   },
   "LICN": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T04:52:04.486375"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T04:51:56.455271"
   },
   "LSL": {
-    "sentiment_score": 0.3333333333333333,
-    "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T04:52:32.435572"
-  },
-  "LVF2": {
-    "sentiment_score": 0.75,
+    "sentiment_score": 0.25,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T04:53:01.275155"
+    "timestamp": "2025-12-29T04:52:24.606370"
+  },
+  "LVF2": {
+    "sentiment_score": 0.6,
+    "sentiment_label": "Positive",
+    "total_articles": 5,
+    "timestamp": "2025-12-29T04:52:53.733268"
   },
   "MAKAR": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:53:28.343119"
+    "timestamp": "2025-12-29T04:53:23.841343"
   },
   "MANDU": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:53:55.143922"
+    "timestamp": "2025-12-29T04:53:51.577170"
   },
   "MATRI": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:54:15.696246"
+    "timestamp": "2025-12-29T04:54:12.316120"
   },
   "MBJC": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 2,
-    "timestamp": "2025-12-21T04:54:42.983792"
+    "timestamp": "2025-12-29T04:54:40.397201"
   },
   "MBLEF": {
-    "sentiment_score": 0.0,
+    "sentiment_score": 0.16666666666666666,
     "sentiment_label": "Neutral",
     "total_articles": 6,
-    "timestamp": "2025-12-21T04:55:10.981691"
+    "timestamp": "2025-12-29T04:55:08.643289"
   },
   "MCHL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:55:40.223302"
+    "timestamp": "2025-12-29T04:55:36.623038"
   },
   "MEHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:56:09.053704"
+    "timestamp": "2025-12-29T04:56:03.892343"
   },
   "MEL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:56:36.525176"
+    "timestamp": "2025-12-29T04:56:32.995356"
   },
   "MEN": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T04:57:03.987881"
+    "timestamp": "2025-12-29T04:57:00.544610"
   },
   "MERO": {
-    "sentiment_score": 0.0,
-    "sentiment_label": "Neutral",
-    "total_articles": 0,
-    "timestamp": "2025-12-21T04:57:31.718572"
+    "sentiment_score": 1.0,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-29T04:57:28.450623"
   },
   "MFIL": {
     "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
     "total_articles": 6,
-    "timestamp": "2025-12-21T04:57:58.823176"
+    "timestamp": "2025-12-29T04:57:56.541655"
   },
   "MFLD85": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:58:19.121777"
+    "timestamp": "2025-12-29T04:58:16.938567"
   },
   "MHCL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T04:58:46.986238"
+    "timestamp": "2025-12-29T04:58:45.801179"
   },
   "MHL": {
-    "sentiment_score": -0.7777777777777777,
+    "sentiment_score": -0.7333333333333333,
     "sentiment_label": "Negative",
-    "total_articles": 6,
-    "timestamp": "2025-12-21T04:59:14.291344"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T04:59:13.995358"
   },
   "MHNL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T04:59:47.941569"
+    "timestamp": "2025-12-29T04:59:48.532422"
   },
   "MKCL": {
-    "sentiment_score": 0.11111111111111109,
-    "sentiment_label": "Neutral",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T05:00:15.365108"
+    "sentiment_score": 0.3333333333333333,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:00:15.867439"
   },
   "MKHC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:00:43.533516"
+    "timestamp": "2025-12-29T05:00:45.062553"
   },
   "SPC": {
-    "sentiment_score": -0.75,
+    "sentiment_score": -0.8,
     "sentiment_label": "Negative",
-    "total_articles": 4,
-    "timestamp": "2025-12-21T05:01:11.247846"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T05:01:12.994014"
   },
   "MKHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:01:38.516845"
+    "timestamp": "2025-12-29T05:01:40.806196"
   },
   "MKJC": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:02:05.988379"
+    "timestamp": "2025-12-29T05:02:08.899224"
   },
   "MLBBL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T05:02:33.663497"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T05:02:36.716911"
   },
   "MLBL": {
-    "sentiment_score": 0.14285714285714285,
+    "sentiment_score": 0.13333333333333333,
     "sentiment_label": "Neutral",
-    "total_articles": 14,
-    "timestamp": "2025-12-21T05:03:01.099884"
+    "total_articles": 15,
+    "timestamp": "2025-12-29T05:03:04.537477"
   },
   "MLBS": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:03:29.250852"
+    "timestamp": "2025-12-29T05:03:31.736456"
   },
   "MLBSL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:03:56.513691"
+    "timestamp": "2025-12-29T05:03:59.747187"
   },
   "MMF1": {
-    "sentiment_score": 0.2,
+    "sentiment_score": 0.16666666666666666,
     "sentiment_label": "Neutral",
-    "total_articles": 5,
-    "timestamp": "2025-12-21T05:04:25.989052"
+    "total_articles": 6,
+    "timestamp": "2025-12-29T05:04:29.385850"
   },
   "MMKJL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:04:54.010093"
+    "timestamp": "2025-12-29T05:04:58.041338"
   },
   "MNBBL": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.6,
     "sentiment_label": "Positive",
     "total_articles": 10,
-    "timestamp": "2025-12-21T05:05:21.534525"
+    "timestamp": "2025-12-29T05:05:25.568838"
   },
   "MND84/85": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:05:38.494138"
+    "timestamp": "2025-12-29T05:05:42.063109"
   },
   "MNMF1": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
-    "total_articles": 7,
-    "timestamp": "2025-12-21T05:06:08.452431"
+    "total_articles": 8,
+    "timestamp": "2025-12-29T05:06:10.413035"
   },
   "MPFL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:06:37.467937"
+    "timestamp": "2025-12-29T05:06:39.222962"
   },
   "MSHL": {
     "sentiment_score": 0.16666666666666666,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:07:06.891758"
+    "timestamp": "2025-12-29T05:07:06.713877"
   },
   "MSLB": {
-    "sentiment_score": 0.7777777777777777,
+    "sentiment_score": 0.8333333333333334,
     "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T05:07:36.181453"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:07:34.498721"
   },
   "NABBC": {
     "sentiment_score": -0.3333333333333333,
     "sentiment_label": "Negative",
     "total_articles": 9,
-    "timestamp": "2025-12-21T05:08:05.431936"
+    "timestamp": "2025-12-29T05:08:02.160566"
   },
   "NADEP": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:08:36.555762"
+    "timestamp": "2025-12-29T05:08:31.788832"
   },
   "NBF2": {
     "sentiment_score": 0.42857142857142855,
     "sentiment_label": "Positive",
     "total_articles": 7,
-    "timestamp": "2025-12-21T05:09:07.119894"
+    "timestamp": "2025-12-29T05:09:00.706778"
   },
   "NBF3": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:09:38.317692"
+    "timestamp": "2025-12-29T05:09:29.264663"
   },
   "NBL": {
     "sentiment_score": 0.2222222222222222,
     "sentiment_label": "Positive",
     "total_articles": 9,
-    "timestamp": "2025-12-21T05:10:07.541895"
+    "timestamp": "2025-12-29T05:09:56.522700"
   },
   "NBLD82": {
     "sentiment_score": -0.42857142857142855,
     "sentiment_label": "Negative",
     "total_articles": 7,
-    "timestamp": "2025-12-21T05:10:34.534326"
+    "timestamp": "2025-12-29T05:10:22.386718"
   },
   "NBLD87": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:10:45.226066"
+    "timestamp": "2025-12-29T05:10:31.948821"
   },
   "NCCD86": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:11:02.903635"
+    "timestamp": "2025-12-29T05:10:48.384045"
   },
   "NESDO": {
-    "sentiment_score": 0.0,
-    "sentiment_label": "Neutral",
-    "total_articles": 0,
-    "timestamp": "2025-12-21T05:11:31.817655"
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 2,
+    "timestamp": "2025-12-29T05:11:16.846123"
   },
   "NFS": {
     "sentiment_score": 0.2,
     "sentiment_label": "Neutral",
     "total_articles": 5,
-    "timestamp": "2025-12-21T05:12:01.804683"
+    "timestamp": "2025-12-29T05:11:45.758459"
   },
   "NGPL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:12:31.172356"
+    "timestamp": "2025-12-29T05:12:14.773208"
   },
   "NHDL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:12:59.798411"
+    "timestamp": "2025-12-29T05:12:43.762574"
   },
   "NHPC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:13:29.512591"
+    "timestamp": "2025-12-29T05:13:12.528151"
   },
   "NIBD84": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:13:53.995162"
+    "timestamp": "2025-12-29T05:13:35.934217"
   },
   "NIBLGF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:14:25.646988"
+    "timestamp": "2025-12-29T05:14:06.585985"
   },
   "NIBLSTF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:14:55.026657"
+    "timestamp": "2025-12-29T05:14:38.238932"
   },
   "NIBSF2": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:15:25.102022"
+    "timestamp": "2025-12-29T05:15:09.639085"
   },
   "NICAD85/86": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:15:34.599209"
+    "timestamp": "2025-12-29T05:15:19.734019"
   },
   "NICFC": {
-    "sentiment_score": 0.3333333333333333,
+    "sentiment_score": 0.2857142857142857,
     "sentiment_label": "Positive",
-    "total_articles": 6,
-    "timestamp": "2025-12-21T05:16:03.649523"
+    "total_articles": 7,
+    "timestamp": "2025-12-29T05:15:49.818977"
   },
   "NICGF2": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T05:16:33.152676"
+    "total_articles": 0,
+    "timestamp": "2025-12-29T05:16:21.451059"
   },
   "NICL": {
     "sentiment_score": 0.07692307692307693,
     "sentiment_label": "Neutral",
     "total_articles": 13,
-    "timestamp": "2025-12-21T05:17:00.518786"
+    "timestamp": "2025-12-29T05:16:49.049842"
   },
   "NICLBSL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 4,
-    "timestamp": "2025-12-21T05:17:28.242567"
+    "timestamp": "2025-12-29T05:17:15.975852"
   },
   "NICSF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:17:57.867342"
+    "timestamp": "2025-12-29T05:17:45.498398"
   },
   "NIFRA": {
     "sentiment_score": 0.3333333333333333,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T05:18:25.496573"
+    "timestamp": "2025-12-29T05:18:13.194006"
   },
   "NIFRAGED": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:18:49.799713"
+    "timestamp": "2025-12-29T05:18:37.592759"
   },
   "NIMB": {
-    "sentiment_score": 0.0,
+    "sentiment_score": 0.2,
     "sentiment_label": "Neutral",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T05:19:16.810004"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T05:19:04.877089"
   },
   "NIMBPO": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:19:42.679152"
+    "timestamp": "2025-12-29T05:19:30.852999"
   },
   "NLG": {
-    "sentiment_score": 0.0,
-    "sentiment_label": "Neutral",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T05:20:10.674249"
+    "sentiment_score": 0.5,
+    "sentiment_label": "Positive",
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:19:58.641990"
   },
   "NLIC": {
     "sentiment_score": 0.23076923076923078,
     "sentiment_label": "Positive",
     "total_articles": 13,
-    "timestamp": "2025-12-21T05:20:38.048815"
+    "timestamp": "2025-12-29T05:20:26.172285"
   },
   "NLICL": {
-    "sentiment_score": 0.4444444444444444,
+    "sentiment_score": 0.5,
     "sentiment_label": "Positive",
-    "total_articles": 9,
-    "timestamp": "2025-12-21T05:21:05.403038"
+    "total_articles": 10,
+    "timestamp": "2025-12-29T05:20:54.260890"
   },
   "NMB": {
-    "sentiment_score": 0.4,
+    "sentiment_score": 0.5,
     "sentiment_label": "Positive",
-    "total_articles": 5,
-    "timestamp": "2025-12-21T05:21:32.982199"
+    "total_articles": 6,
+    "timestamp": "2025-12-29T05:21:22.101547"
   },
   "NMBHF2": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
-    "total_articles": 5,
-    "timestamp": "2025-12-21T05:22:02.476850"
+    "total_articles": 6,
+    "timestamp": "2025-12-29T05:21:51.298612"
   },
   "NMBMF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T05:22:30.455741"
+    "total_articles": 1,
+    "timestamp": "2025-12-29T05:22:18.922565"
   },
   "NMFBS": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T05:22:58.433043"
+    "total_articles": 2,
+    "timestamp": "2025-12-29T05:22:46.678457"
   },
   "NMIC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:23:25.616460"
+    "timestamp": "2025-12-29T05:23:14.794054"
   },
   "NMLBBL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:23:52.987367"
+    "timestamp": "2025-12-29T05:23:42.251151"
   },
   "NRM": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:24:21.002935"
+    "timestamp": "2025-12-29T05:24:09.982894"
   },
   "NRN": {
     "sentiment_score": 0.8,
     "sentiment_label": "Positive",
     "total_articles": 5,
-    "timestamp": "2025-12-21T05:24:48.188128"
+    "timestamp": "2025-12-29T05:24:36.714361"
   },
   "NSIF2": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:25:16.911300"
+    "timestamp": "2025-12-29T05:25:05.775542"
   },
   "NTC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:25:43.811752"
+    "timestamp": "2025-12-29T05:25:33.279369"
   },
   "NWCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:26:11.196424"
+    "timestamp": "2025-12-29T05:26:01.111689"
   },
   "NYADI": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:26:38.902248"
+    "timestamp": "2025-12-29T05:26:28.819042"
   },
   "OMPL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:27:06.750183"
+    "timestamp": "2025-12-29T05:26:56.825318"
   },
   "PBD84": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:27:16.539020"
+    "timestamp": "2025-12-29T05:27:06.277575"
   },
   "PBD85": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:27:40.620897"
+    "timestamp": "2025-12-29T05:27:30.334017"
   },
   "PBD88": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:28:01.218285"
+    "timestamp": "2025-12-29T05:27:50.466993"
   },
   "PCBLP": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:28:29.188910"
+    "timestamp": "2025-12-29T05:28:18.105176"
   },
   "PFL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:28:57.729340"
+    "timestamp": "2025-12-29T05:28:46.620365"
   },
   "PHCL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:29:25.954348"
+    "timestamp": "2025-12-29T05:29:14.883160"
   },
   "PMHPL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:29:54.017892"
+    "timestamp": "2025-12-29T05:29:42.678608"
   },
   "PMLI": {
-    "sentiment_score": 0.6666666666666666,
+    "sentiment_score": 0.75,
     "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T05:30:22.672978"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:30:10.681480"
   },
   "PPCL": {
-    "sentiment_score": -0.3333333333333333,
+    "sentiment_score": -0.25,
     "sentiment_label": "Negative",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T05:30:50.550900"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:30:38.644991"
   },
   "PPL": {
     "sentiment_score": -0.2,
     "sentiment_label": "Neutral",
     "total_articles": 10,
-    "timestamp": "2025-12-21T05:31:17.874053"
+    "timestamp": "2025-12-29T05:31:06.141693"
   },
   "PRIN": {
     "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
     "total_articles": 3,
-    "timestamp": "2025-12-21T05:31:45.486981"
+    "timestamp": "2025-12-29T05:31:34.040725"
   },
   "PROFL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:32:15.712752"
+    "timestamp": "2025-12-29T05:32:03.040298"
   },
   "PRSF": {
-    "sentiment_score": 0.3333333333333333,
+    "sentiment_score": 0.2857142857142857,
     "sentiment_label": "Positive",
-    "total_articles": 6,
-    "timestamp": "2025-12-21T05:32:44.904218"
+    "total_articles": 7,
+    "timestamp": "2025-12-29T05:32:31.756002"
   },
   "PRVU": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:33:13.781572"
+    "timestamp": "2025-12-29T05:33:00.012554"
   },
   "PSF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:33:42.576221"
+    "timestamp": "2025-12-29T05:33:28.883482"
   },
   "PURE": {
     "sentiment_score": 0.5,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T05:34:10.623837"
+    "timestamp": "2025-12-29T05:33:56.562616"
   },
   "RADHI": {
     "sentiment_score": -0.6666666666666666,
     "sentiment_label": "Negative",
     "total_articles": 3,
-    "timestamp": "2025-12-21T05:34:38.146300"
+    "timestamp": "2025-12-29T05:34:24.126570"
   },
   "RAWA": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:35:05.884492"
+    "timestamp": "2025-12-29T05:34:53.262635"
   },
   "RBCLPO": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:35:21.044521"
+    "timestamp": "2025-12-29T05:35:08.038659"
   },
   "RFPL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 12,
-    "timestamp": "2025-12-21T05:35:48.977051"
+    "timestamp": "2025-12-29T05:35:36.838506"
   },
   "RHGCL": {
-    "sentiment_score": -0.125,
-    "sentiment_label": "Neutral",
-    "total_articles": 8,
-    "timestamp": "2025-12-21T05:36:16.356824"
+    "sentiment_score": -0.2222222222222222,
+    "sentiment_label": "Negative",
+    "total_articles": 9,
+    "timestamp": "2025-12-29T05:36:04.489687"
   },
   "RHPL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 3,
-    "timestamp": "2025-12-21T05:36:44.123786"
+    "timestamp": "2025-12-29T05:36:32.680367"
   },
   "RIDI": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:37:11.668692"
+    "timestamp": "2025-12-29T05:37:00.430595"
   },
   "RLFL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:37:39.941006"
+    "timestamp": "2025-12-29T05:37:29.350914"
   },
   "RMF1": {
-    "sentiment_score": -0.16666666666666666,
+    "sentiment_score": -0.14285714285714285,
     "sentiment_label": "Neutral",
-    "total_articles": 6,
-    "timestamp": "2025-12-21T05:38:08.709986"
+    "total_articles": 7,
+    "timestamp": "2025-12-29T05:37:58.582695"
   },
   "RMF2": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:38:37.860773"
+    "timestamp": "2025-12-29T05:38:27.249415"
   },
   "RNLI": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T05:39:05.508931"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:38:54.967656"
   },
   "RSDC": {
     "sentiment_score": 0.6,
     "sentiment_label": "Positive",
     "total_articles": 5,
-    "timestamp": "2025-12-21T05:39:33.338049"
+    "timestamp": "2025-12-29T05:39:23.272362"
   },
   "RSY": {
-    "sentiment_score": 0.0,
-    "sentiment_label": "Neutral",
-    "total_articles": 5,
-    "timestamp": "2025-12-21T05:40:02.201072"
+    "sentiment_score": -0.25,
+    "sentiment_label": "Negative",
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:39:52.149611"
   },
   "RURU": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:40:30.173184"
+    "timestamp": "2025-12-29T05:40:20.192104"
   },
   "SADBL": {
-    "sentiment_score": 0.3333333333333333,
+    "sentiment_score": 0.38461538461538464,
     "sentiment_label": "Positive",
-    "total_articles": 12,
-    "timestamp": "2025-12-21T05:40:58.183755"
+    "total_articles": 13,
+    "timestamp": "2025-12-29T05:40:48.004197"
   },
   "SAGF": {
     "sentiment_score": 0.2857142857142857,
     "sentiment_label": "Positive",
     "total_articles": 7,
-    "timestamp": "2025-12-21T05:41:27.277437"
+    "timestamp": "2025-12-29T05:41:16.362301"
   },
   "SAHAS": {
     "sentiment_score": 0.5833333333333334,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T05:41:54.873046"
+    "timestamp": "2025-12-29T05:41:44.139708"
   },
   "SAND2085": {
     "sentiment_score": -0.7142857142857143,
     "sentiment_label": "Negative",
     "total_articles": 7,
-    "timestamp": "2025-12-21T05:42:17.486937"
+    "timestamp": "2025-12-29T05:42:06.574351"
   },
   "SANIMA": {
     "sentiment_score": 0.5,
     "sentiment_label": "Positive",
     "total_articles": 6,
-    "timestamp": "2025-12-21T05:42:45.199473"
+    "timestamp": "2025-12-29T05:42:34.690623"
   },
   "SANVI": {
     "sentiment_score": -0.5,
     "sentiment_label": "Negative",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:43:13.991354"
+    "timestamp": "2025-12-29T05:43:04.169751"
   },
   "SAPDBL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:43:43.689644"
+    "timestamp": "2025-12-29T05:43:33.756180"
   },
   "SARBTM": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:44:11.431038"
+    "timestamp": "2025-12-29T05:44:01.513653"
   },
   "SBD87": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:44:30.092823"
+    "timestamp": "2025-12-29T05:44:20.039314"
   },
   "SBID83": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:44:52.086739"
+    "timestamp": "2025-12-29T05:44:41.884204"
   },
   "SBLD2082": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 4,
-    "timestamp": "2025-12-21T05:45:12.367207"
+    "timestamp": "2025-12-29T05:45:02.290996"
   },
   "SDBD87": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:45:29.198449"
+    "timestamp": "2025-12-29T05:45:19.147173"
   },
   "SEF": {
-    "sentiment_score": 0.2857142857142857,
+    "sentiment_score": 0.25,
     "sentiment_label": "Positive",
-    "total_articles": 7,
-    "timestamp": "2025-12-21T05:45:58.232532"
+    "total_articles": 8,
+    "timestamp": "2025-12-29T05:45:48.099553"
   },
   "SFCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:46:26.388425"
+    "timestamp": "2025-12-29T05:46:16.493414"
   },
   "SFEF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:46:55.680171"
+    "timestamp": "2025-12-29T05:46:46.047365"
   },
   "SFMF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:47:24.837989"
+    "timestamp": "2025-12-29T05:47:15.987051"
   },
   "SGHC": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T05:47:52.887456"
+    "total_articles": 1,
+    "timestamp": "2025-12-29T05:47:47.018035"
   },
   "SGIC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:48:21.246409"
+    "timestamp": "2025-12-29T05:48:15.178426"
   },
   "SHEL": {
     "sentiment_score": 0.75,
     "sentiment_label": "Positive",
     "total_articles": 4,
-    "timestamp": "2025-12-21T05:48:48.706366"
+    "timestamp": "2025-12-29T05:48:42.665204"
   },
   "SHIVM": {
     "sentiment_score": 0.4,
     "sentiment_label": "Positive",
     "total_articles": 10,
-    "timestamp": "2025-12-21T05:49:15.614401"
+    "timestamp": "2025-12-29T05:49:10.658445"
   },
   "SHL": {
     "sentiment_score": 0.5,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:49:43.872956"
+    "timestamp": "2025-12-29T05:49:38.705682"
   },
   "SHLB": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:50:12.420753"
+    "timestamp": "2025-12-29T05:50:07.823574"
   },
   "SIFC": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
-    "total_articles": 1,
-    "timestamp": "2025-12-21T05:50:40.792777"
+    "total_articles": 2,
+    "timestamp": "2025-12-29T05:50:37.456315"
   },
   "SIGS3": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:51:09.472503"
+    "timestamp": "2025-12-29T05:51:07.681683"
   },
   "SIKLES": {
     "sentiment_score": -0.3333333333333333,
     "sentiment_label": "Negative",
     "total_articles": 3,
-    "timestamp": "2025-12-21T05:51:37.105617"
+    "timestamp": "2025-12-29T05:51:36.430044"
   },
   "SINDU": {
     "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:52:05.718144"
+    "timestamp": "2025-12-29T05:52:05.412299"
   },
   "SJCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:52:33.386376"
+    "timestamp": "2025-12-29T05:52:33.914777"
   },
   "SJLIC": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
-    "total_articles": 2,
-    "timestamp": "2025-12-21T05:53:01.513643"
+    "total_articles": 3,
+    "timestamp": "2025-12-29T05:53:02.283481"
   },
   "SKBBL": {
     "sentiment_score": 0.6666666666666666,
     "sentiment_label": "Positive",
     "total_articles": 3,
-    "timestamp": "2025-12-21T05:53:29.285128"
+    "timestamp": "2025-12-29T05:53:30.942471"
   },
   "SLBBL": {
-    "sentiment_score": 0.75,
+    "sentiment_score": 0.5714285714285714,
     "sentiment_label": "Positive",
-    "total_articles": 4,
-    "timestamp": "2025-12-21T05:53:57.084237"
+    "total_articles": 7,
+    "timestamp": "2025-12-29T05:53:59.037661"
   },
   "SLBSL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:54:26.155123"
+    "timestamp": "2025-12-29T05:54:27.797192"
   },
   "SLCF": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T05:54:54.757467"
+    "timestamp": "2025-12-29T05:54:58.290498"
   },
   "SMATA": {
-    "sentiment_score": 0.5,
+    "sentiment_score": 0.6,
     "sentiment_label": "Positive",
-    "total_articles": 4,
-    "timestamp": "2025-12-21T05:55:21.959240"
+    "total_articles": 5,
+    "timestamp": "2025-12-29T05:55:26.717849"
   },
   "SMB": {
-    "sentiment_score": 0.6666666666666666,
+    "sentiment_score": 0.75,
     "sentiment_label": "Positive",
-    "total_articles": 3,
-    "timestamp": "2025-12-21T05:55:49.869915"
+    "total_articles": 4,
+    "timestamp": "2025-12-29T05:55:55.122249"
   },
   "SMFBS": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 3,
-    "timestamp": "2025-12-21T05:56:18.396602"
+    "timestamp": "2025-12-29T05:56:24.199127"
   },
   "SMH": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 3,
-    "timestamp": "2025-12-21T05:56:45.713076"
+    "timestamp": "2025-12-29T05:56:52.868637"
   },
   "SMHL": {
     "sentiment_score": -0.2777777777777778,
     "sentiment_label": "Negative",
     "total_articles": 6,
-    "timestamp": "2025-12-21T05:57:12.685417"
+    "timestamp": "2025-12-29T05:57:21.331139"
   },
   "SMJC": {
     "sentiment_score": -0.3333333333333333,
     "sentiment_label": "Negative",
     "total_articles": 6,
-    "timestamp": "2025-12-21T05:57:40.785441"
+    "timestamp": "2025-12-29T05:57:49.211179"
   },
   "SMPDA": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 1,
-    "timestamp": "2025-12-21T05:58:04.352600"
+    "timestamp": "2025-12-29T05:58:13.069098"
   },
   "SNLI": {
     "sentiment_score": 0.16666666666666666,
     "sentiment_label": "Neutral",
     "total_articles": 12,
-    "timestamp": "2025-12-21T05:58:31.838962"
+    "timestamp": "2025-12-29T05:58:40.612139"
   },
   "SONA": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
-    "total_articles": 0,
-    "timestamp": "2025-12-21T05:58:59.792517"
+    "total_articles": 1,
+    "timestamp": "2025-12-29T05:59:08.173103"
   },
   "SPDL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 2,
-    "timestamp": "2025-12-21T05:59:27.724873"
+    "timestamp": "2025-12-29T05:59:35.488123"
   },
   "SPHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 4,
-    "timestamp": "2025-12-21T05:59:55.579406"
+    "timestamp": "2025-12-29T06:00:02.629526"
   },
   "SPIL": {
     "sentiment_score": 1.0,
     "sentiment_label": "Positive",
     "total_articles": 3,
-    "timestamp": "2025-12-21T06:00:23.340676"
+    "timestamp": "2025-12-29T06:00:31.203355"
   },
   "SPL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T06:00:51.995981"
+    "timestamp": "2025-12-29T06:01:00.519831"
   },
   "SRLI": {
-    "sentiment_score": 0.42857142857142855,
+    "sentiment_score": 0.375,
     "sentiment_label": "Positive",
-    "total_articles": 7,
-    "timestamp": "2025-12-21T06:01:19.548085"
+    "total_articles": 8,
+    "timestamp": "2025-12-29T06:01:29.498450"
   },
   "SSHL": {
     "sentiment_score": -1.0,
     "sentiment_label": "Negative",
     "total_articles": 8,
-    "timestamp": "2025-12-21T06:01:46.530006"
+    "timestamp": "2025-12-29T06:01:57.856843"
   },
   "STC": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T06:02:14.315492"
+    "timestamp": "2025-12-29T06:02:26.390567"
   },
   "UPPER": {
     "sentiment_score": -0.5,
     "sentiment_label": "Negative",
     "total_articles": 1,
-    "timestamp": "2025-12-21T06:02:41.490639"
+    "timestamp": "2025-12-29T06:02:55.176505"
   },
   "TVCL": {
     "sentiment_score": 0.0,
     "sentiment_label": "Neutral",
     "total_articles": 0,
-    "timestamp": "2025-12-21T06:03:09.377186"
+    "timestamp": "2025-12-29T06:03:24.041149"
   }
 }

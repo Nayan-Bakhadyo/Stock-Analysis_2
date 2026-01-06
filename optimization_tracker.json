@@ -1,6 +1,6 @@
 {
   "started_at": "2025-12-02T12:41:25.133886",
-  "last_updated": "2025-12-21T11:49:27.995223",
+  "last_updated": "2026-01-03T23:54:35.225747",
   "completed": [
     "IGI",
     "AHPC",
@@ -48,15 +48,8 @@
     "NICLBSL",
     "NMBMF",
     "NMLBBL",
-    "SMB"
-  ],
-  "failed": [
-    "IGI",
-    "MNBBL",
-    "GMFIL"
-  ],
-  "in_progress": "DDBL",
-  "pending": [
+    "SMB",
+    "DDBL",
     "GILB",
     "HLBSL",
     "MLBBL",
@@ -78,8 +71,15 @@
     "GBBD85",
     "NBLD87",
     "PBD88",
-    "SBD87",
-    "GBBL",
+    "SBD87"
+  ],
+  "failed": [
+    "IGI",
+    "MNBBL",
+    "GMFIL"
+  ],
+  "in_progress": "GBBL",
+  "pending": [
     "MLBL",
     "NABBC",
     "SINDU",
@@ -248,7 +248,13 @@
     "RURU",
     "SAHAS",
     "SSHL",
-    "NMBHF2"
+    "NMBHF2",
+    "AKPL",
+    "HBLD83",
+    "SAND2085",
+    "PPL",
+    "SMJC",
+    "NHPC"
   ],
   "results": {
     "IGI": {
@@ -890,6 +896,375 @@
         "dir_loss_weight": 0.6
       },
       "sector": "Finance"
+    },
+    "DDBL": {
+      "best_trial": 51,
+      "avg_direction_acc": 68.33333333333333,
+      "avg_mape": 2.4566666666666666,
+      "status": "completed"
+    },
+    "GILB": {
+      "completed_at": "2025-12-24T07:02:28.342836",
+      "best_mape": 2.848333333333333,
+      "best_direction_acc": 73.61111111111111,
+      "trials_run": 78,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Finance"
+    },
+    "HLBSL": {
+      "best_trial": 18,
+      "avg_direction_acc": 68.33333333333333,
+      "avg_mape": 2.485,
+      "status": "completed"
+    },
+    "MLBBL": {
+      "completed_at": "2025-12-26T02:46:17.181943",
+      "best_mape": 2.165,
+      "best_direction_acc": 75.0,
+      "trials_run": 81,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "MLBS": {
+      "completed_at": "2025-12-26T02:55:58.548361",
+      "best_mape": 3.0883333333333334,
+      "best_direction_acc": 75.27777777777779,
+      "trials_run": 5,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "MLBSL": {
+      "completed_at": "2025-12-26T09:35:44.425650",
+      "best_mape": 2.598333333333333,
+      "best_direction_acc": 67.77777777777779,
+      "trials_run": 86,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "RSDC": {
+      "completed_at": "2025-12-28T17:41:26.084651",
+      "best_mape": 3.405,
+      "best_direction_acc": 75.0,
+      "trials_run": 69,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.3,
+        "lr": 0.001,
+        "batch_size": 32,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Finance"
+    },
+    "SLBSL": {
+      "completed_at": "2025-12-29T07:43:52.960812",
+      "best_mape": 3.5499999999999994,
+      "best_direction_acc": 65.0,
+      "trials_run": 39,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 512,
+        "num_layers": 2,
+        "lookback": 90,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Finance"
+    },
+    "SMFBS": {
+      "completed_at": "2025-12-29T10:06:54.031574",
+      "best_mape": 2.953333333333333,
+      "best_direction_acc": 72.77777777777777,
+      "trials_run": 45,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.9
+      },
+      "sector": "Finance"
+    },
+    "ACLBSL": {
+      "completed_at": "2025-12-29T23:51:13.203639",
+      "best_mape": 2.311666666666667,
+      "best_direction_acc": 71.11111111111111,
+      "trials_run": 62,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 512,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.9
+      },
+      "sector": "Finance"
+    },
+    "DLBS": {
+      "completed_at": "2025-12-30T02:23:49.293280",
+      "best_mape": 3.98,
+      "best_direction_acc": 71.66666666666667,
+      "trials_run": 37,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Finance"
+    },
+    "JSLBB": {
+      "completed_at": "2025-12-30T13:41:16.492279",
+      "best_mape": 2.685,
+      "best_direction_acc": 70.27777777777779,
+      "trials_run": 132,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 90,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.9
+      },
+      "sector": "Finance"
+    },
+    "FMDBL": {
+      "completed_at": "2025-12-30T23:02:17.254951",
+      "best_mape": 4.06,
+      "best_direction_acc": 72.77777777777779,
+      "trials_run": 4,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "JBLB": {
+      "completed_at": "2025-12-31T04:26:31.245195",
+      "best_mape": 2.7566666666666664,
+      "best_direction_acc": 70.0,
+      "trials_run": 24,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.0005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Finance"
+    },
+    "NESDO": {
+      "completed_at": "2025-12-31T10:58:31.612148",
+      "best_mape": 2.265,
+      "best_direction_acc": 69.44444444444444,
+      "trials_run": 78,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 512,
+        "num_layers": 1,
+        "lookback": 90,
+        "dropout": 0.3,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "FOWAD": {
+      "completed_at": "2025-12-31T12:16:53.057181",
+      "best_mape": 2.233333333333333,
+      "best_direction_acc": 71.94444444444444,
+      "trials_run": 18,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 2,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.9
+      },
+      "sector": "Finance"
+    },
+    "NMFBS": {
+      "completed_at": "2025-12-31T12:36:42.032487",
+      "best_mape": 2.606666666666667,
+      "best_direction_acc": 76.66666666666667,
+      "trials_run": 7,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Finance"
+    },
+    "EBLD85": {
+      "completed_at": "2025-12-31T14:16:56.228581",
+      "best_mape": 1.5766666666666669,
+      "best_direction_acc": 59.72222222222222,
+      "trials_run": 58,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 512,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Corporate Debentures"
+    },
+    "EBLD86": {
+      "completed_at": "2026-01-01T05:29:32.599790",
+      "best_mape": 1.8466666666666667,
+      "best_direction_acc": 62.77777777777777,
+      "trials_run": 181,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 256,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.9
+      },
+      "sector": "Corporate Debentures"
+    },
+    "GBBD85": {
+      "completed_at": "2026-01-01T07:33:41.465309",
+      "best_mape": 1.2483333333333333,
+      "best_direction_acc": 68.61111111111111,
+      "trials_run": 20,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Corporate Debentures"
+    },
+    "NBLD87": {
+      "completed_at": "2026-01-02T01:18:17.118089",
+      "best_mape": 1.68,
+      "best_direction_acc": 68.05555555555556,
+      "trials_run": 87,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 512,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
+      },
+      "sector": "Corporate Debentures"
+    },
+    "PBD88": {
+      "completed_at": "2026-01-02T01:25:54.061511",
+      "best_mape": 2.0,
+      "best_direction_acc": 70.55555555555556,
+      "trials_run": 6,
+      "criteria_met": true,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.6
+      },
+      "sector": "Corporate Debentures"
+    },
+    "SBD87": {
+      "completed_at": "2026-01-02T07:39:27.373623",
+      "best_mape": 1.5316666666666665,
+      "best_direction_acc": 62.77777777777778,
+      "trials_run": 85,
+      "criteria_met": false,
+      "hyperparams": {
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.8
+      },
+      "sector": "Corporate Debentures"
     }
   },
   "sector_best": {
@@ -930,6 +1305,17 @@
         "dir_loss_weight": 0.8
       },
       {
+        "symbol": "NMFBS",
+        "direction_acc": 76.66666666666667,
+        "hidden_size": 64,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 64,
+        "dir_loss_weight": 0.7
+      },
+      {
         "symbol": "GLBSL",
         "direction_acc": 76.3888888888889,
         "hidden_size": 64,
@@ -939,17 +1325,6 @@
         "lr": 0.005,
         "batch_size": 32,
         "dir_loss_weight": 0.7
-      },
-      {
-        "symbol": "NMBMF",
-        "direction_acc": 75.83333333333333,
-        "hidden_size": 256,
-        "num_layers": 2,
-        "lookback": 30,
-        "dropout": 0.2,
-        "lr": 0.001,
-        "batch_size": 64,
-        "dir_loss_weight": 0.8
       }
     ],
     "Investment": [
@@ -1057,6 +1432,41 @@
         "lr": 0.001,
         "batch_size": 32,
         "dir_loss_weight": 0.6
+      }
+    ],
+    "Corporate Debentures": [
+      {
+        "symbol": "PBD88",
+        "direction_acc": 70.55555555555556,
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 30,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.6
+      },
+      {
+        "symbol": "GBBD85",
+        "direction_acc": 68.61111111111111,
+        "hidden_size": 128,
+        "num_layers": 1,
+        "lookback": 60,
+        "dropout": 0.3,
+        "lr": 0.001,
+        "batch_size": 64,
+        "dir_loss_weight": 0.8
+      },
+      {
+        "symbol": "NBLD87",
+        "direction_acc": 68.05555555555556,
+        "hidden_size": 512,
+        "num_layers": 2,
+        "lookback": 60,
+        "dropout": 0.2,
+        "lr": 0.005,
+        "batch_size": 32,
+        "dir_loss_weight": 0.7
       }
     ]
   }
